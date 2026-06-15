@@ -53,9 +53,12 @@ export default function HiringPage() {
 
   const loadCaptcha = async () => {
     setCaptchaLoading(true);
+     console.log('Loading captcha from:', `${API}/captcha/`);  // Debug log
     try {
-      const res = await fetch(`${API}/captcha/`, { credentials: 'include' });
+      const res = await fetch(`${API}/captcha/`, { credentials: 'include' , mode: 'cors',});
+      console.log('Response status:', res.status); 
       const data = await res.json();
+        console.log('Captcha data:', data); 
       setCaptcha(data.svg || '');
       setCaptchaId(data.challenge_id || '');
       setCaptchaInput('');

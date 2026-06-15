@@ -71,7 +71,7 @@ export default function Contact() {
             {/* Info */}
             <div style={{ borderTop: '1px solid var(--line)' }}>
               {[
-                { l: 'Email', v: 'astirmind@gmail.com', href: 'mailto:astirmind@gmail.com' },
+                { l: 'Email', v: 'info@astirmind.com', href: 'mailto:info@astirmind.com' },
                 { l: 'Phone', v: '+91 98156 74608', href: 'tel:+919815674608' },
                 { l: 'Response', v: 'Within 4 hours' },
               ].map((item, i) => (

@@ -180,7 +180,15 @@ export const agencyServices = [
     desc: 'Connect the physical and digital worlds with custom IoT solutions — from sensor networks and edge computing to cloud dashboards. We also explore AR/VR, computer vision at the edge, and next-gen hardware integrations.',
     tags: ['IoT', 'Edge Computing', 'Sensor Networks', 'MQTT', 'ESP32', 'Arduino', 'AR/VR'],
     Icon: Cpu
-  }
+  },
+  {
+  n: '20',
+  slug: 'data-scraping-workflow-automations',
+  title: 'Data Scraping & Workflow Automations',
+  desc: 'Extract structured data from websites, APIs, and documents at scale. Build end-to-end automation workflows that trigger actions, sync data across platforms, and eliminate manual repetitive tasks. Perfect for lead generation, market research, price monitoring, and operational efficiency.',
+  tags: ['Web Scraping', 'Workflow Automation', 'Data Extraction', 'Zapier', 'Make', 'Python', 'Selenium', 'APIs'],
+  Icon: Workflow
+},
 
 
 ];
@@ -194,9 +202,17 @@ export const courses = [
     tags: ['12 Weeks', 'Live Projects', 'Certification'],
     Icon: Brain
   },
+  {
+  n: '02',
+  slug: 'automation-solutions',
+  title: 'Automation & Data Scraping Solutions',
+  desc: 'We build intelligent automation systems for lead generation, data extraction, workflow automation, browser automation, CRM integrations, and business process optimization. Extract structured data from any website and automate repetitive tasks across your entire tech stack.',
+  tags: ['Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
+  Icon: Bot
+},
 
   {
-    n: '02',
+    n: '03',
     slug: 'fullstack',
     title: 'Full Stack Development',
     desc: 'Master both JavaScript (React/Node) AND Python/Django stacks. Build complete web products from database to UI with REST APIs, authentication, and deployment. Choose your specialization or learn both — the exact stacks companies hire for.',
@@ -205,7 +221,7 @@ export const courses = [
   },
 
   {
-    n: '03',
+    n: '04',
     slug: 'foundational-programming',
     title: 'C, C++, Java & Python',
     desc: 'Master the fundamentals of programming with four essential languages. Learn C for systems programming, C++ for performance-critical applications, Java for enterprise development, and Python for AI, data science, and automation. Build a strong foundation that makes learning any new language easy.',
@@ -214,7 +230,7 @@ export const courses = [
   },
 
   {
-    n: '04',
+    n: '05',
     slug: 'web-design',
     title: 'Web Design',
     desc: 'Master responsive web design principles, typography, color theory, layout techniques, and modern CSS frameworks. Learn to create visually stunning, user-friendly websites that adapt seamlessly across all devices. Build a professional portfolio of real client-ready designs.',
@@ -223,7 +239,7 @@ export const courses = [
   },
 
   {
-    n: '05',
+    n: '06',
     slug: 'web-development',
     title: 'Web Development',
     desc: 'Learn modern frontend and backend web development with HTML5, CSS3, JavaScript, React, and Node.js. Build dynamic, database-driven web applications with authentication, APIs, and deployment. Master the skills to become a professional web developer.',
@@ -233,7 +249,7 @@ export const courses = [
 
   // NEW: Mobile App Development - React Native & Flutter
   {
-    n: '06',
+    n: '07',
     slug: 'mobile-app-development',
     title: 'Mobile App Development (React Native & Flutter)',
     desc: 'Master cross-platform mobile app development using React Native and Flutter. Build high-performance iOS and Android apps from a single codebase. Learn state management, native modules, app deployment to App Store and Play Store, and real-world project workflows.',
@@ -242,7 +258,7 @@ export const courses = [
   },
 
   {
-    n: '07',
+    n: '08',
     slug: 'datascience',
     title: 'Data Science & ML',
     desc: 'Statistics, feature engineering, model training, and production ML. You will deploy models, not just fit them in a notebook.',
@@ -251,7 +267,7 @@ export const courses = [
   },
 
   {
-    n: '08',
+    n: '09',
     slug: 'cv',
     title: 'Computer Vision',
     desc: 'Image classification, object detection, and video analysis using modern deep learning frameworks. Work on real camera and sensing pipelines.',
@@ -260,7 +276,7 @@ export const courses = [
   },
 
   {
-    n: '09',
+    n: '10',
     slug: 'android',
     title: 'Android Development',
     desc: 'Native Android with Kotlin. Architecture patterns, Jetpack Compose, and publishing a real app to the Play Store before you finish.',
@@ -269,7 +285,7 @@ export const courses = [
   },
 
   {
-    n: '10',
+    n: '11',
     slug: 'embedded',
     title: 'Embedded & IoT Systems',
     desc: 'Microcontrollers, sensors, firmware, and connecting hardware to cloud backends. Practical builds from day one.',
@@ -278,7 +294,7 @@ export const courses = [
   },
 
   {
-    n: '11',
+    n: '12',
     slug: 'python',
     title: 'Python Engineering',
     desc: 'From syntax to production-quality Python with Django & FastAPI. Backend development, automation, and scripting with real-world workflows and deployment practices.',
@@ -287,7 +303,7 @@ export const courses = [
   },
 
   {
-    n: '12',
+    n: '13',
     slug: 'uiux',
     title: 'UI/UX Design',
     desc: 'User research, wireframing, prototyping, and high-fidelity interfaces. Build a portfolio that reflects real product design workflows.',
@@ -296,7 +312,7 @@ export const courses = [
   },
 
   {
-    n: '13',
+    n: '14',
     slug: 'cloud-computing',
     title: 'Cloud Computing',
     desc: 'Master AWS, Azure, and Google Cloud fundamentals. Learn cloud architecture, serverless computing, containerization with Docker and Kubernetes, and infrastructure as code. Hands-on deployment of scalable applications.',
@@ -305,7 +321,7 @@ export const courses = [
   },
 
   {
-    n: '14',
+    n: '15',
     slug: 'digital-performance-marketing',
     title: 'Digital Marketing & Performance Marketing',
     desc: 'Learn SEO, Google Ads, Meta Ads, email marketing, and conversion rate optimization. Run real campaigns with measurable ROI. Master analytics, audience targeting, and data-driven growth strategies.',
@@ -314,7 +330,7 @@ export const courses = [
   },
 
   {
-    n: '15',
+    n: '16',
     slug: 'data-analytics',
     title: 'Data Analytics',
     desc: 'Master data cleaning, exploratory data analysis (EDA), statistical analysis, and visualization tools like Power BI, Tableau, and Python (Pandas, Matplotlib, Seaborn). Learn to extract actionable insights from complex datasets and drive business decisions.',

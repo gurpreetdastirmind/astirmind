@@ -27,7 +27,7 @@ const TECH_STACK = [
 ];
 
 const PROJECT_STATS = [
-  { value: '150+', label: 'Projects Completed', icon: CheckCircle },
+  { value: '200+', label: 'Projects Completed', icon: CheckCircle },
   { value: '98%', label: 'Client Satisfaction', icon: BarChart3 },
   { value: '24h', label: 'Avg Response Time', icon: Zap },
   { value: '4.9', label: 'Client Rating', icon: Sparkles },
@@ -59,177 +59,28 @@ function FormField({ label, icon: Icon, children, required }) {
   );
 }
 
-// Google Maps Component - Enhanced version with better error handling
+// Google Maps Component - Direct iframe with marker using Google Maps embed API
+// Google Maps Component - Shows red marker at exact coordinates (no API key issues)
 function GoogleMapLocation({ variant = 'sidebar' }) {
-  const mapRef = useRef(null);
-  const [mapLoaded, setMapLoaded] = useState(false);
-  const [mapError, setMapError] = useState(false);
-
-  // Office location coordinates (update these with your actual office coordinates)
-  const officeLocation = {
-    lat: 28.6139,
-    lng: 77.2090,
-    fullAddress: '123 Business Park, Sector 62, Noida, Uttar Pradesh - 201301'
-  };
-
-  useEffect(() => {
-    // Check if Google Maps API is already loaded
-    if (window.google && window.google.maps) {
-      setMapLoaded(true);
-      return;
-    }
-
-    // Load Google Maps script dynamically
-    const scriptId = 'google-maps-script';
-    if (!document.querySelector(`#${scriptId}`)) {
-      const script = document.createElement('script');
-      script.id = scriptId;
-      // IMPORTANT: Replace 'YOUR_API_KEY_HERE' with your actual Google Maps API key
-      // Get a key from: https://console.cloud.google.com/google/maps-apis
-      const apiKey = 'YOUR_API_KEY_HERE'; // <-- REPLACE THIS WITH YOUR REAL API KEY
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initGoogleMap`;
-      script.async = true;
-      script.defer = true;
-      script.onerror = () => {
-        console.error('Failed to load Google Maps');
-        setMapError(true);
-      };
-      window.initGoogleMap = () => {
-        setMapLoaded(true);
-      };
-      document.head.appendChild(script);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (mapLoaded && mapRef.current && window.google && !mapError) {
-      try {
-        const map = new window.google.maps.Map(mapRef.current, {
-          center: officeLocation,
-          zoom: variant === 'fullwidth' ? 14 : 15,
-          styles: [
-            {
-              featureType: 'all',
-              elementType: 'all',
-              stylers: [{ saturation: -100 }, { lightness: 10 }]
-            }
-          ],
-          disableDefaultUI: true,
-          zoomControl: true,
-          zoomControlOptions: {
-            position: window.google.maps.ControlPosition.RIGHT_BOTTOM
-          },
-          mapTypeControl: variant === 'fullwidth',
-          mapTypeControlOptions: {
-            position: window.google.maps.ControlPosition.TOP_RIGHT,
-            style: window.google.maps.MapTypeControlStyle.DROPDOWN_MENU
-          }
-        });
-
-        const marker = new window.google.maps.Marker({
-          position: officeLocation,
-          map: map,
-          title: 'Astir Mind Office',
-          animation: window.google.maps.Animation.DROP,
-          icon: {
-            url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-            scaledSize: new window.google.maps.Size(variant === 'fullwidth' ? 50 : 40, variant === 'fullwidth' ? 50 : 40)
-          }
-        });
-
-        const infoWindow = new window.google.maps.InfoWindow({
-          content: `
-            <div style="font-family: sans-serif; padding: 8px;">
-              <strong style="color: #333; font-size: 14px;">Astir Mind</strong><br/>
-              <span style="font-size: 12px; color: #666;">${officeLocation.fullAddress}</span>
-              <br/>
-              <a href="https://maps.google.com/?q=${officeLocation.lat},${officeLocation.lng}" 
-                 target="_blank" 
-                 style="font-size: 11px; color: #0066cc; text-decoration: none; display: inline-block; margin-top: 5px;">
-                Get Directions →
-              </a>
-            </div>
-          `
-        });
-
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
-
-        if (variant === 'fullwidth') {
-          setTimeout(() => {
-            infoWindow.open(map, marker);
-          }, 1000);
-        }
-      } catch (err) {
-        console.error('Google Maps error:', err);
-        setMapError(true);
-      }
-    }
-  }, [mapLoaded, officeLocation, variant, mapError]);
-
-  if (mapError) {
-    return (
-      <div style={{ 
-        width: '100%', 
-        height: variant === 'fullwidth' ? '350px' : '200px', 
-        border: '1px solid var(--line)',
-        background: 'var(--bg-alt)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        gap: '1rem'
-      }}>
-        <MapPin size={32} color="var(--accent)" strokeWidth={1.5} />
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-3)', textAlign: 'center', maxWidth: '80%' }}>
-          Unable to load map. Please check your Google Maps API key.
-        </p>
-        <a 
-          href={`https://maps.google.com/?q=${officeLocation.lat},${officeLocation.lng}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--accent)' }}
-        >
-          Open in Google Maps →
-        </a>
-      </div>
-    );
-  }
+  const lat = 30.915967102990805;
+  const lng = 75.8098441938874;
+  
+  // Direct Google Maps URL with coordinates - will show a red pin marker
+  const embedUrl =
+  "https://maps.google.com/maps?q=AstirMind%20Software%20Solution&output=embed";
+  
+  const iframeHeight = variant === 'fullwidth' ? '500px' : '200px';
 
   return (
     <div style={{ width: '100%' }}>
-      <div 
-        ref={mapRef} 
-        style={{ 
-          width: '100%', 
-          height: variant === 'fullwidth' ? '350px' : '200px', 
-          border: '1px solid var(--line)',
-          background: 'var(--bg-alt)'
-        }}
-      >
-        {!mapLoaded && (
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            height: '100%',
-            background: 'var(--bg-alt)',
-            color: 'var(--text-3)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.75rem',
-            gap: '0.5rem'
-          }}>
-            <div style={{ width: 16, height: 16, border: '2px solid var(--accent)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-            Loading map...
-          </div>
-        )}
-      </div>
-      <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+      <iframe
+        title="AstirMind Software Solution - Office Location"
+        style={{ border: '1px solid var(--line)', width: '100%', height: iframeHeight }}
+        src={embedUrl}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
     </div>
   );
 }
@@ -344,7 +195,7 @@ export default function QuotePage() {
               
               {[
                 { label: 'Call us', value: '+91-9815674608', sub: '24 hrs available', link: 'tel:+919815674608' },
-                { label: 'Email', value: 'astirmind@gmail.com', sub: 'Send business requirements', link: 'mailto:astirmind@gmail.com' },
+                { label: 'Email', value: 'info@astirmind.com', sub: 'Send business requirements', link: 'mailto:info@astirmind.com' },
               ].map(({ label, value, sub, link }) => (
                 <div key={label} style={{ marginBottom: '1.25rem' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>{label}</div>
@@ -505,14 +356,14 @@ export default function QuotePage() {
                       <div>
                         <span className="section-label" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>📍 Visit Us</span>
                         <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '1.25rem', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--text)', marginTop: '0.25rem', marginBottom: '0.25rem' }}>
-                          Our Office Location
+                          AstirMind Software Solution
                         </h3>
                         <p style={{ color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
-                          123 Business Park, Sector 62, Noida, Uttar Pradesh - 201301
+                          Punjab, India
                         </p>
                       </div>
                       <a 
-                        href="https://maps.google.com/?q=28.6139,77.2090" 
+                        href={`https://maps.google.com/?q=30.915967102990805,75.8098441938874`} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', textDecoration: 'none', borderBottom: '1px solid var(--accent-dim)', paddingBottom: '0.25rem' }}

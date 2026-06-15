@@ -51,7 +51,7 @@ export default function Footer() {
               Intelligent software. Human-centric design. Training the next generation of engineers.
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {[{ l: 'Instagram', h: 'https://www.instagram.com/astirmind/' }, { l: 'Twitter', h: 'https://twitter.com/AstirMind' }, { l: 'Facebook', h: 'https://www.facebook.com/AstirMind-363890014173446' }].map((s, i) => (
+              {[{ l: 'Instagram', h: 'https://www.instagram.com/astirmind/' }, { l: 'Twitter', h: 'https://twitter.com/AstirMind' }, { l: 'Facebook', h: 'https://www.facebook.com/AstirMind-363890014173446' },{ l: 'YouTube', h: 'www.youtube.com/@astirmind7859' },].map((s, i) => (
                 <a key={i} href={s.h} target="_blank" rel="noopener noreferrer"
                   className="t-mono" style={{ fontSize: '0.625rem', color: 'var(--text-3)', textDecoration: 'none', border: '1px solid var(--line)', padding: '8px 14px', minHeight: 36, display: 'inline-flex', alignItems: 'center', transition: 'color 0.15s, border-color 0.15s' }}
                   onMouseEnter={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.borderColor = 'var(--text)'; }}
@@ -90,10 +90,10 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
           <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>&copy; {year} AstirMind. All rights reserved.</span>
-          <a href="mailto:astirmind@gmail.com" className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', textDecoration: 'none', transition: 'color 0.15s' }}
+          <a href="mailto:info@astirmind.com" className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', textDecoration: 'none', transition: 'color 0.15s' }}
             onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
             onMouseLeave={e => e.currentTarget.style.color = 'var(--text-3)'}
-          >astirmind@gmail.com</a>
+          >info@astirmind.com</a>
         </div>
       </div>
     </footer>

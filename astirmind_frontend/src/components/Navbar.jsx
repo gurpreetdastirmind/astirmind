@@ -69,7 +69,7 @@ export default function Navbar() {
 
   const prefix = isInnerPage ? '/' : '';
   const links = mode === 'Xperience'
-    ? [{ label: 'Work', href: `${prefix}#work` }, { label: 'Services', href: `${prefix}#services` }, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }, { label: 'Hiring', href: '/hiring' }]
+    ? [ { label: 'Services', href: `${prefix}#services` }, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }, { label: 'Hiring', href: '/hiring' }]
     : [{ label: 'Programs', href: '/programs' }, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }, { label: 'Verify', href: '/verify' }];
 
   const isActive = (href) => {

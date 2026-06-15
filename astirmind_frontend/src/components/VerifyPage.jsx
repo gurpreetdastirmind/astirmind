@@ -264,7 +264,7 @@ export default function VerifyPage() {
 
               <div style={{ padding: '1rem 1.5rem 1.25rem', borderTop: '1px solid var(--line)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)', letterSpacing: '0.05em' }}>
-                  This record has been verified from AstirMind's official database. For any discrepancies, contact astirmind@gmail.com.
+                  This record has been verified from AstirMind's official database. For any discrepancies, contact info@astirmind.com.
                 </div>
               </div>
             </div>

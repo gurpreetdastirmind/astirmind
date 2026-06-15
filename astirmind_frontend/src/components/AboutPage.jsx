@@ -432,7 +432,7 @@ export default function AboutPage() {
           <div className="ap-stats-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, marginTop: '3.5rem', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2.5rem' }}>
             {[
               { v: '2016', label: 'Est.', sub: 'Founded in Ludhiana' },
-              { v: '50+', label: 'Projects', sub: 'Shipped to production' },
+              { v: '200+', label: 'Projects', sub: 'Shipped to production' },
               { v: '200+', label: 'Students', sub: 'Trained & placed' },
               { v: '8+', label: 'Years', sub: 'Of active delivery' },
             ].map(({ v, label, sub }, i) => (
@@ -510,7 +510,7 @@ export default function AboutPage() {
                 {[
                   { Icon: MapPin, label: 'Ludhiana, India' },
                   { Icon: Users, label: 'Team of engineers & educators' },
-                  { Icon: Mail, label: 'astirmind@gmail.com' },
+                  { Icon: Mail, label: 'info@astirmind.com' },
                   { Icon: Phone, label: '+91-9815674608' },
                 ].map(({ Icon, label }) => (
                   <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -682,11 +682,11 @@ export default function AboutPage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', flexShrink: 0 }}>
               <a href="/quote" className="btn-solid" style={{ textDecoration: 'none', textAlign: 'center', padding: '0.8rem 2rem' }}>Get a Quote</a>
-              <a href="mailto:astirmind@gmail.com" style={{ textDecoration: 'none', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'rgba(255,255,255,0.4)', transition: 'color 0.15s' }}
+              <a href="mailto:info@astirmind.com" style={{ textDecoration: 'none', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'rgba(255,255,255,0.4)', transition: 'color 0.15s' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.75)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
               >
-                astirmind@gmail.com
+                info@astirmind.com
               </a>
             </div>
           </div>
