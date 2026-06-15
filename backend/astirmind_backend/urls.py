@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+     path('api/captcha/', include('rest_captcha.urls')),
     path('api/programs/', include('programs.urls')),
     path('api/', include('dashboard.urls')),
 ]
