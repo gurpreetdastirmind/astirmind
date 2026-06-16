@@ -15,8 +15,51 @@ from .serializers import (
     BlogPostSerializer, BlogCommentSerializer,
 )
 
-# ── REMOVED: CAPTCHA_CHARS, build_captcha_svg, issue_captcha, 
-# ── REMOVED: captcha_challenge, captcha_verify
+
+CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+
+
+def build_captcha_svg(text):
+    width = 220
+    height = 72
+    colors = ['#d94f2c', '#a0c878', '#4a9eff', '#c5bfb0']
+    lines = []
+    for i in range(6):
+        x1 = 12 + (i * 31)
+        x2 = x1 + 54
+        y1 = 12 + (i % 3) * 16
+        y2 = 56 - (i % 4) * 9
+        lines.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#2b271e" stroke-width="1.4" opacity="0.9" />')
+
+    glyphs = []
+    for i, char in enumerate(text):
+        x = 20 + (i * 31)
+        y = 46 + ((i % 2) * 4)
+        rotate = -11 + (i * 5)
+        color = colors[i % len(colors)]
+        glyphs.append(
+            f'<text x="{x}" y="{y}" fill="{color}" font-family="monospace" font-size="28" font-weight="700" '
+            f'transform="rotate({rotate} {x} {y})">{char}</text>'
+        )
+
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Captcha">'
+        '<rect width="100%" height="100%" rx="8" fill="#12100d" />'
+        '<rect x="1" y="1" width="218" height="70" rx="7" fill="none" stroke="#2b271e" />'
+        f'{"".join(lines)}'
+        f'{"".join(glyphs)}'
+        '</svg>'
+    )
+
+
+def issue_captcha(request):
+    text = ''.join(secrets.choice(CAPTCHA_CHARS) for _ in range(6))
+    challenge_id = secrets.token_urlsafe(16)
+    captcha_store = request.session.get('captcha_store', {})
+    captcha_store[challenge_id] = text
+    request.session['captcha_store'] = captcha_store
+    request.session.modified = True
+    return challenge_id, text
 
 
 def notify_admin(subject, message):
@@ -60,6 +103,34 @@ def admin_status(request):
     if request.user.is_authenticated and request.user.is_staff:
         return Response({'authenticated': True, 'username': request.user.username})
     return Response({'authenticated': False})
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+@ensure_csrf_cookie
+def captcha_challenge(request):
+    challenge_id, text = issue_captcha(request)
+    return Response({'challenge_id': challenge_id, 'svg': build_captcha_svg(text)})
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def captcha_verify(request):
+    challenge_id = request.data.get('challenge_id', '')
+    answer = str(request.data.get('answer', '')).strip().upper()
+    captcha_store = request.session.get('captcha_store', {})
+    expected = captcha_store.get(challenge_id)
+
+    if not expected:
+        return Response({'ok': False, 'error': 'Captcha expired. Please refresh and try again.'}, status=400)
+
+    if answer != expected:
+        return Response({'ok': False, 'error': 'Verification text does not match.'}, status=400)
+
+    del captcha_store[challenge_id]
+    request.session['captcha_store'] = captcha_store
+    request.session.modified = True
+    return Response({'ok': True})
 
 
 # ── Records ───────────────────────────────────────────────────────────────────

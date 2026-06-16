@@ -6,8 +6,8 @@ urlpatterns = [
     path('auth/login/', views.admin_login),
     path('auth/logout/', views.admin_logout),
     path('auth/status/', views.admin_status),
-    # path('captcha/', views.captcha_challenge),
-    # path('captcha/verify/', views.captcha_verify),
+    path('captcha/', views.captcha_challenge),
+    path('captcha/verify/', views.captcha_verify),
 
     # Records
     path('records/', views.records_list),

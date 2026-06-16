@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     # third-party
     'rest_framework',
     'corsheaders',
-     'rest_captcha',
+    #  'rest_captcha',
     # local
     'programs',
     'dashboard',
@@ -150,12 +150,3 @@ ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'info@astirmind.com')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Add this at the bottom of settings.py
-REST_CAPTCHA = {
-    'CAPTCHA_CHALLENGE_FUNCT': 'rest_captcha.utils.math_challenge',  # Use math challenge
-    'CAPTCHA_LENGTH': 4,
-    'CAPTCHA_FONT_SIZE': 22,
-    'CAPTCHA_IMAGE_SIZE': (90, 40),
-    'CAPTCHA_TIMEOUT': 300,
-}
