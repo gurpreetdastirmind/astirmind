@@ -1,10 +1,7 @@
 // Central API configuration
 // Set VITE_API_BASE in .env to override for production
-export const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
-
-// Helper to build media URLs (for files served from Django /media/)
-export const MEDIA_BASE = import.meta.env.VITE_MEDIA_BASE || 'http://localhost:8000';
-
+export const API_BASE = import.meta.env.VITE_API_BASE || 'https://astirmind-backend.onrender.com/api';
+export const MEDIA_BASE = import.meta.env.VITE_MEDIA_BASE || 'https://astirmind-backend.onrender.com';
 // Shared CSRF token helper
 export function getCSRFToken() {
   const match = document.cookie.match(/csrftoken=([^;]+)/);

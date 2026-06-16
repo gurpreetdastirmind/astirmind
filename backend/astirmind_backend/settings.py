@@ -55,6 +55,7 @@ CORS_ALLOWED_ORIGINS = [
        'http://localhost:8000',  # Common React port
     'http://127.0.0.1:8000',
     'https://astirmind-frontend.onrender.com',  # Will be added after frontend deploy
+    'https://astirmind-backend.onrender.com'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -69,6 +70,7 @@ CSRF_TRUSTED_ORIGINS = [
         'http://localhost:8000',  # Common React port
     'http://127.0.0.1:8000',
     'https://astirmind-frontend.onrender.com',
+    'https://astirmind-backend.onrender.com'
 ]
 
 # DRF defaults
