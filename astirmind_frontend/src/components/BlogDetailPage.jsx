@@ -7,6 +7,8 @@ import {
   ArrowLeft, Clock, Calendar, Share2, ExternalLink, Link2,
   MessageSquare, Send, ArrowUpRight, ThumbsUp, Check,
 } from 'lucide-react';
+import { Helmet } from 'react-helmet';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -731,355 +733,369 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
-
-      {/* ── Hero Image ── */}
-      <div className="bd-hero-img" style={{ position: 'relative', height: 'clamp(260px, 38vw, 520px)', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
-        <img
-          src={post.image}
-          alt={post.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6) contrast(1.08)' }}
+      <>
+      <Helmet>
+        <title>{blogData?.title || 'Blog Post'} | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content={blogData?.excerpt || blogData?.description || 'Read this detailed blog post from AstirMind about technology and software development.'}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(6,5,3,0.15) 0%, rgba(6,5,3,0.75) 100%)' }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={`${blogData?.title || 'Blog Post'} | AstirMind Software Solutions`} />
+        <meta property="og:description" content={blogData?.excerpt || blogData?.description || 'Read this detailed blog post from AstirMind.'} />
+        <meta property="og:type" content="article" />
+        {blogData?.image && <meta property="og:image" content={blogData.image} />}
+      </Helmet>
+      <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
-        {/* Back link overlaid on hero */}
-        <div className="container" style={{ position: 'absolute', top: '1.5rem', left: 0, right: 0, margin: '0 auto' }}>
-          <Link to="/blog" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'rgba(255,255,255,0.65)',
-            textDecoration: 'none', background: 'rgba(6,5,3,0.5)', backdropFilter: 'blur(8px)',
-            padding: '5px 10px', border: '1px solid rgba(255,255,255,0.12)',
-            transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.currentTarget.style.color = '#fff'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
-          >
-            <ArrowLeft size={12} /> All Posts
-          </Link>
-        </div>
-      </div>
+        {/* ── Hero Image ── */}
+        <div className="bd-hero-img" style={{ position: 'relative', height: 'clamp(260px, 38vw, 520px)', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+          <img
+            src={post.image}
+            alt={post.title}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6) contrast(1.08)' }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(6,5,3,0.15) 0%, rgba(6,5,3,0.75) 100%)' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
 
-      {/* ── Post Header ── */}
-      <div className="bd-header container" style={{ padding: '3rem 0 0' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
-          <span style={{
-            fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em',
-            color: catColour[post.category] ?? 'var(--accent)',
-            padding: '3px 8px', border: `1px solid ${catColour[post.category] ?? 'var(--accent)'}`,
-          }}>
-            {post.category}
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
-            <Calendar size={11} strokeWidth={1.5} /> {post.date}
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
-            <Clock size={11} strokeWidth={1.5} /> {post.read} read
-          </span>
-        </div>
-
-        <h1 style={{
-          fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-          fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.1,
-          color: '#F5F0E8', maxWidth: 820, marginBottom: '1rem',
-        }}>
-          {post.title}
-        </h1>
-        <p style={{
-          fontFamily: 'var(--font-sans)', fontSize: '1.125rem', lineHeight: 1.65,
-          color: '#B8AFA0', maxWidth: 680,
-        }}>
-          {post.subtitle}
-        </p>
-      </div>
-
-      {/* ── Body + Sidebar Layout ── */}
-      <div className="container bd-layout" style={{ paddingTop: '3rem', paddingBottom: '5rem', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '4rem', alignItems: 'start' }}>
-
-        {/* ── Article Body ── */}
-        <div>
-          <div className="bd-body" style={{ maxWidth: 720 }}>
-            {renderBody(post.body)}
+          {/* Back link overlaid on hero */}
+          <div className="container" style={{ position: 'absolute', top: '1.5rem', left: 0, right: 0, margin: '0 auto' }}>
+            <Link to="/blog" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'rgba(255,255,255,0.65)',
+              textDecoration: 'none', background: 'rgba(6,5,3,0.5)', backdropFilter: 'blur(8px)',
+              padding: '5px 10px', border: '1px solid rgba(255,255,255,0.12)',
+              transition: 'color 0.2s',
+            }}
+              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
+            >
+              <ArrowLeft size={12} /> All Posts
+            </Link>
           </div>
+        </div>
 
-          {/* ── Social Share Strip ── */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap',
-            margin: '3rem 0', padding: '1.5rem', background: 'var(--bg-alt)', border: '1px solid var(--line)',
-          }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginRight: '0.5rem' }}>
-              Share
+        {/* ── Post Header ── */}
+        <div className="bd-header container" style={{ padding: '3rem 0 0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+            <span style={{
+              fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em',
+              color: catColour[post.category] ?? 'var(--accent)',
+              padding: '3px 8px', border: `1px solid ${catColour[post.category] ?? 'var(--accent)'}`,
+            }}>
+              {post.category}
             </span>
-
-            {/* Like */}
-            <button
-              onClick={handleLike}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 14px', border: `1px solid ${liked ? 'var(--accent)' : 'var(--line)'}`,
-                background: liked ? 'rgba(217,79,44,0.1)' : 'transparent',
-                color: liked ? 'var(--accent)' : 'var(--text-3)',
-                fontFamily: 'var(--font-mono)', fontSize: '0.625rem', cursor: liked ? 'default' : 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              <ThumbsUp size={13} strokeWidth={1.8} /> {likes}
-            </button>
-
-            {/* Twitter */}
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
-              target="_blank" rel="noopener noreferrer"
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 14px', border: '1px solid var(--line)', background: 'transparent',
-                color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
-                textDecoration: 'none', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#1d9bf0'; e.currentTarget.style.color = '#1d9bf0'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line)'; e.currentTarget.style.color = 'var(--text-3)'; }}
-            >
-              <Share2 size={13} strokeWidth={1.8} /> Twitter
-            </a>
-
-            {/* LinkedIn */}
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
-              target="_blank" rel="noopener noreferrer"
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 14px', border: '1px solid var(--line)', background: 'transparent',
-                color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
-                textDecoration: 'none', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a66c2'; e.currentTarget.style.color = '#0a66c2'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line)'; e.currentTarget.style.color = 'var(--text-3)'; }}
-            >
-              <ExternalLink size={13} strokeWidth={1.8} /> LinkedIn
-            </a>
-
-            {/* Copy link */}
-            <button
-              onClick={handleCopyLink}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '7px 14px', border: `1px solid ${linkCopied ? 'var(--accent)' : 'var(--line)'}`,
-                background: linkCopied ? 'rgba(217,79,44,0.08)' : 'transparent',
-                color: linkCopied ? 'var(--accent)' : 'var(--text-3)',
-                fontFamily: 'var(--font-mono)', fontSize: '0.625rem', cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              {linkCopied ? <Check size={13} strokeWidth={2} /> : <Link2 size={13} strokeWidth={1.8} />}
-              {linkCopied ? 'Copied' : 'Copy link'}
-            </button>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
+              <Calendar size={11} strokeWidth={1.5} /> {post.date}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
+              <Clock size={11} strokeWidth={1.5} /> {post.read} read
+            </span>
           </div>
 
-          {/* ── Comments ── */}
-          <div className="bd-comments">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-              <MessageSquare size={16} strokeWidth={1.5} style={{ color: '#9A9080' }} />
-              <span style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, color: '#E8E3DC' }}>
-                {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
-              </span>
+          <h1 style={{
+            fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+            fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.1,
+            color: '#F5F0E8', maxWidth: 820, marginBottom: '1rem',
+          }}>
+            {post.title}
+          </h1>
+          <p style={{
+            fontFamily: 'var(--font-sans)', fontSize: '1.125rem', lineHeight: 1.65,
+            color: '#B8AFA0', maxWidth: 680,
+          }}>
+            {post.subtitle}
+          </p>
+        </div>
+
+        {/* ── Body + Sidebar Layout ── */}
+        <div className="container bd-layout" style={{ paddingTop: '3rem', paddingBottom: '5rem', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '4rem', alignItems: 'start' }}>
+
+          {/* ── Article Body ── */}
+          <div>
+            <div className="bd-body" style={{ maxWidth: 720 }}>
+              {renderBody(post.body)}
             </div>
 
-            {commentsLoading && (
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--text-3)', marginBottom: '1rem' }}>
-                Loading comments…
-              </p>
-            )}
+            {/* ── Social Share Strip ── */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap',
+              margin: '3rem 0', padding: '1.5rem', background: 'var(--bg-alt)', border: '1px solid var(--line)',
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em', marginRight: '0.5rem' }}>
+                Share
+              </span>
 
-            {/* Comment list */}
-            {comments.length > 0 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', marginBottom: '2.5rem', border: '1px solid var(--line)' }}>
-                {comments.map(c => (
-                  <div key={c.id} style={{ padding: '1.25rem 1.5rem', background: 'var(--bg-alt)', borderBottom: '1px solid var(--line)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.875rem', color: '#E8E3DC' }}>{c.author}</span>
-                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: '#9A9080' }}>{c.date}</span>
-                    </div>
-                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.65, color: '#C5BFB0', margin: 0 }}>{c.text}</p>
-                  </div>
-                ))}
+              {/* Like */}
+              <button
+                onClick={handleLike}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '7px 14px', border: `1px solid ${liked ? 'var(--accent)' : 'var(--line)'}`,
+                  background: liked ? 'rgba(217,79,44,0.1)' : 'transparent',
+                  color: liked ? 'var(--accent)' : 'var(--text-3)',
+                  fontFamily: 'var(--font-mono)', fontSize: '0.625rem', cursor: liked ? 'default' : 'pointer',
+                  transition: 'all 0.2s',
+                }}
+              >
+                <ThumbsUp size={13} strokeWidth={1.8} /> {likes}
+              </button>
+
+              {/* Twitter */}
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '7px 14px', border: '1px solid var(--line)', background: 'transparent',
+                  color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
+                  textDecoration: 'none', transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#1d9bf0'; e.currentTarget.style.color = '#1d9bf0'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line)'; e.currentTarget.style.color = 'var(--text-3)'; }}
+              >
+                <Share2 size={13} strokeWidth={1.8} /> Twitter
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '7px 14px', border: '1px solid var(--line)', background: 'transparent',
+                  color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
+                  textDecoration: 'none', transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a66c2'; e.currentTarget.style.color = '#0a66c2'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line)'; e.currentTarget.style.color = 'var(--text-3)'; }}
+              >
+                <ExternalLink size={13} strokeWidth={1.8} /> LinkedIn
+              </a>
+
+              {/* Copy link */}
+              <button
+                onClick={handleCopyLink}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '7px 14px', border: `1px solid ${linkCopied ? 'var(--accent)' : 'var(--line)'}`,
+                  background: linkCopied ? 'rgba(217,79,44,0.08)' : 'transparent',
+                  color: linkCopied ? 'var(--accent)' : 'var(--text-3)',
+                  fontFamily: 'var(--font-mono)', fontSize: '0.625rem', cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {linkCopied ? <Check size={13} strokeWidth={2} /> : <Link2 size={13} strokeWidth={1.8} />}
+                {linkCopied ? 'Copied' : 'Copy link'}
+              </button>
+            </div>
+
+            {/* ── Comments ── */}
+            <div className="bd-comments">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+                <MessageSquare size={16} strokeWidth={1.5} style={{ color: '#9A9080' }} />
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, color: '#E8E3DC' }}>
+                  {comments.length} {comments.length === 1 ? 'Comment' : 'Comments'}
+                </span>
               </div>
-            )}
 
-            {!commentsLoading && comments.length === 0 && (
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--text-3)', marginBottom: '1.25rem' }}>
-                No comments yet. Be the first to comment.
-              </p>
-            )}
+              {commentsLoading && (
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--text-3)', marginBottom: '1rem' }}>
+                  Loading comments…
+                </p>
+              )}
 
-            {/* Add comment form */}
-            <form onSubmit={handleComment} style={{ border: '1px solid var(--line)', background: 'var(--bg-alt)', padding: '1.75rem' }}>
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', fontWeight: 600, color: '#E8E3DC', marginBottom: '1.25rem' }}>
-                Leave a comment
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+              {/* Comment list */}
+              {comments.length > 0 && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', marginBottom: '2.5rem', border: '1px solid var(--line)' }}>
+                  {comments.map(c => (
+                    <div key={c.id} style={{ padding: '1.25rem 1.5rem', background: 'var(--bg-alt)', borderBottom: '1px solid var(--line)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.875rem', color: '#E8E3DC' }}>{c.author}</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: '#9A9080' }}>{c.date}</span>
+                      </div>
+                      <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.65, color: '#C5BFB0', margin: 0 }}>{c.text}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!commentsLoading && comments.length === 0 && (
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--text-3)', marginBottom: '1.25rem' }}>
+                  No comments yet. Be the first to comment.
+                </p>
+              )}
+
+              {/* Add comment form */}
+              <form onSubmit={handleComment} style={{ border: '1px solid var(--line)', background: 'var(--bg-alt)', padding: '1.75rem' }}>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', fontWeight: 600, color: '#E8E3DC', marginBottom: '1.25rem' }}>
+                  Leave a comment
+                </p>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    required
+                    style={{
+                      background: 'var(--bg)', border: '1px solid var(--line)', padding: '9px 12px',
+                      fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: 'var(--text)',
+                      outline: 'none', width: '100%', boxSizing: 'border-box',
+                    }}
+                  />
+                  <div /> {/* spacer */}
+                </div>
+                <textarea
+                  placeholder="Write your comment…"
+                  rows={4}
+                  value={form.text}
+                  onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
                   required
                   style={{
                     background: 'var(--bg)', border: '1px solid var(--line)', padding: '9px 12px',
                     fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: 'var(--text)',
-                    outline: 'none', width: '100%', boxSizing: 'border-box',
+                    outline: 'none', width: '100%', resize: 'vertical', marginBottom: '1rem', boxSizing: 'border-box',
                   }}
                 />
-                <div /> {/* spacer */}
-              </div>
-              <textarea
-                placeholder="Write your comment…"
-                rows={4}
-                value={form.text}
-                onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
-                required
-                style={{
-                  background: 'var(--bg)', border: '1px solid var(--line)', padding: '9px 12px',
-                  fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: 'var(--text)',
-                  outline: 'none', width: '100%', resize: 'vertical', marginBottom: '1rem', boxSizing: 'border-box',
-                }}
-              />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  {submitted && (
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: '#a0c878', display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <Check size={12} /> Comment posted
-                    </span>
-                  )}
-                  {commentError && (
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: '#D94F2C' }}>
-                      {commentError}
-                    </span>
-                  )}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    {submitted && (
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: '#a0c878', display: 'flex', alignItems: 'center', gap: 5 }}>
+                        <Check size={12} /> Comment posted
+                      </span>
+                    )}
+                    {commentError && (
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: '#D94F2C' }}>
+                        {commentError}
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ marginLeft: 'auto' }}>
+                    <button
+                      type="submit"
+                      disabled={commentBusy}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 6,
+                        padding: '9px 20px', background: 'var(--text)', color: 'var(--text-inv)',
+                        border: 'none', cursor: 'pointer', fontFamily: 'var(--font-mono)',
+                        fontSize: '0.625rem', textTransform: 'uppercase', letterSpacing: '0.06em',
+                        transition: 'opacity 0.2s', opacity: commentBusy ? 0.65 : 1,
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                      onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                    >
+                      {commentBusy ? 'Posting…' : 'Post'} <Send size={12} strokeWidth={2} />
+                    </button>
+                  </div>
                 </div>
-                <div style={{ marginLeft: 'auto' }}>
-                  <button
-                    type="submit"
-                    disabled={commentBusy}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 6,
-                      padding: '9px 20px', background: 'var(--text)', color: 'var(--text-inv)',
-                      border: 'none', cursor: 'pointer', fontFamily: 'var(--font-mono)',
-                      fontSize: '0.625rem', textTransform: 'uppercase', letterSpacing: '0.06em',
-                      transition: 'opacity 0.2s', opacity: commentBusy ? 0.65 : 1,
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-                  >
-                    {commentBusy ? 'Posting…' : 'Post'} <Send size={12} strokeWidth={2} />
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        {/* ── Sidebar ── */}
-        <aside className="bd-sidebar" style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-
-          {/* About block */}
-          <div style={{ border: '1px solid var(--line)', padding: '1.5rem', background: 'var(--bg-alt)' }}>
-            <div style={{ height: 3, background: 'var(--accent)', margin: '-1.5rem -1.5rem 1.25rem' }} />
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9A9080', marginBottom: '0.75rem' }}>
-              AstirMind
-            </p>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.7, color: '#C5BFB0' }}>
-              Software company and training institute in Pune. We build products and train engineers since 2016.
-            </p>
-            <div style={{ height: '1px', background: 'var(--line)', margin: '1rem 0' }} />
-            <Link to="/about" style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              fontFamily: 'var(--font-mono)', fontSize: '0.5875rem', color: 'var(--accent)',
-              textDecoration: 'none',
-            }}>
-              About us <ArrowUpRight size={13} strokeWidth={2} />
-            </Link>
-          </div>
-
-          {/* Programs CTA */}
-          <div style={{ border: '1px solid var(--line)', padding: '1.5rem', background: 'var(--bg-alt)' }}>
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9A9080', marginBottom: '0.75rem' }}>
-              Training Programs
-            </p>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.6, color: '#C5BFB0', marginBottom: '1rem' }}>
-              Structured programs with mentorship, project reviews, and internship pathways.
-            </p>
-            <Link to="/programs" style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              padding: '8px 14px', background: 'var(--text)', color: 'var(--text-inv)',
-              fontFamily: 'var(--font-mono)', fontSize: '0.5875rem', textTransform: 'uppercase', letterSpacing: '0.05em',
-              textDecoration: 'none', width: 'fit-content',
-            }}>
-              View programs <ArrowUpRight size={12} strokeWidth={2} />
-            </Link>
-          </div>
-
-          {/* Related posts */}
-          <div style={{ border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
-            <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--line)' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-3)' }}>More Posts</span>
+              </form>
             </div>
-            {related.map(r => (
-              <Link key={r.id} to={`/blog/${r.id}`}
-                className="bd-related-card"
-                style={{
-                  display: 'block', padding: '1rem 1.25rem', borderBottom: '1px solid var(--line)',
-                  textDecoration: 'none', transition: 'background 0.18s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: catColour[r.category] ?? 'var(--accent)' }}>
-                  {r.category}
-                </span>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text)', lineHeight: 1.35, margin: '0.35rem 0 0.3rem' }}>
-                  {r.title}
-                </p>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)' }}>
-                  {r.read} read
-                </span>
-              </Link>
-            ))}
           </div>
-        </aside>
-      </div>
 
-      {/* ── Related Posts Full-Width ── */}
-      <div className="bd-related" style={{ borderTop: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
-        <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Related</span>
-            <div style={{ flex: 1, height: '1px', background: 'var(--line)' }} />
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '1px', background: 'var(--line)', border: '1px solid var(--line)' }}>
-            {related.map(r => (
-              <Link key={r.id} to={`/blog/${r.id}`}
-                className="bd-related-card"
-                style={{
-                  display: 'block', background: 'var(--bg)', textDecoration: 'none',
-                  transition: 'background 0.2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-alt)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'var(--bg)'}
-              >
-                <div style={{ aspectRatio: '16/7', overflow: 'hidden' }}>
-                  <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.75)', transition: 'transform 0.5s' }} />
-                </div>
-                <div style={{ padding: '1.25rem' }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: catColour[r.category] ?? 'var(--accent)' }}>{r.category}</span>
-                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text)', lineHeight: 1.35, margin: '0.4rem 0 0.5rem' }}>{r.title}</p>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)' }}>{r.read} read</span>
-                </div>
+          {/* ── Sidebar ── */}
+          <aside className="bd-sidebar" style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+            {/* About block */}
+            <div style={{ border: '1px solid var(--line)', padding: '1.5rem', background: 'var(--bg-alt)' }}>
+              <div style={{ height: 3, background: 'var(--accent)', margin: '-1.5rem -1.5rem 1.25rem' }} />
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9A9080', marginBottom: '0.75rem' }}>
+                AstirMind
+              </p>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.7, color: '#C5BFB0' }}>
+                Software company and training institute in Pune. We build products and train engineers since 2016.
+              </p>
+              <div style={{ height: '1px', background: 'var(--line)', margin: '1rem 0' }} />
+              <Link to="/about" style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                fontFamily: 'var(--font-mono)', fontSize: '0.5875rem', color: 'var(--accent)',
+                textDecoration: 'none',
+              }}>
+                About us <ArrowUpRight size={13} strokeWidth={2} />
               </Link>
-            ))}
+            </div>
+
+            {/* Programs CTA */}
+            <div style={{ border: '1px solid var(--line)', padding: '1.5rem', background: 'var(--bg-alt)' }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9A9080', marginBottom: '0.75rem' }}>
+                Training Programs
+              </p>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.6, color: '#C5BFB0', marginBottom: '1rem' }}>
+                Structured programs with mentorship, project reviews, and internship pathways.
+              </p>
+              <Link to="/programs" style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '8px 14px', background: 'var(--text)', color: 'var(--text-inv)',
+                fontFamily: 'var(--font-mono)', fontSize: '0.5875rem', textTransform: 'uppercase', letterSpacing: '0.05em',
+                textDecoration: 'none', width: 'fit-content',
+              }}>
+                View programs <ArrowUpRight size={12} strokeWidth={2} />
+              </Link>
+            </div>
+
+            {/* Related posts */}
+            <div style={{ border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
+              <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid var(--line)' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-3)' }}>More Posts</span>
+              </div>
+              {related.map(r => (
+                <Link key={r.id} to={`/blog/${r.id}`}
+                  className="bd-related-card"
+                  style={{
+                    display: 'block', padding: '1rem 1.25rem', borderBottom: '1px solid var(--line)',
+                    textDecoration: 'none', transition: 'background 0.18s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                >
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: catColour[r.category] ?? 'var(--accent)' }}>
+                    {r.category}
+                  </span>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text)', lineHeight: 1.35, margin: '0.35rem 0 0.3rem' }}>
+                    {r.title}
+                  </p>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)' }}>
+                    {r.read} read
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </aside>
+        </div>
+
+        {/* ── Related Posts Full-Width ── */}
+        <div className="bd-related" style={{ borderTop: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
+          <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Related</span>
+              <div style={{ flex: 1, height: '1px', background: 'var(--line)' }} />
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '1px', background: 'var(--line)', border: '1px solid var(--line)' }}>
+              {related.map(r => (
+                <Link key={r.id} to={`/blog/${r.id}`}
+                  className="bd-related-card"
+                  style={{
+                    display: 'block', background: 'var(--bg)', textDecoration: 'none',
+                    transition: 'background 0.2s',
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-alt)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'var(--bg)'}
+                >
+                  <div style={{ aspectRatio: '16/7', overflow: 'hidden' }}>
+                    <img src={r.image} alt={r.title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.75)', transition: 'transform 0.5s' }} />
+                  </div>
+                  <div style={{ padding: '1.25rem' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: catColour[r.category] ?? 'var(--accent)' }}>{r.category}</span>
+                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text)', lineHeight: 1.35, margin: '0.4rem 0 0.5rem' }}>{r.title}</p>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)' }}>{r.read} read</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
-  );
+      </div>
+      </>
+      );
 }

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { API_BASE, getCSRFToken } from '../config/api';
+import { Helmet } from 'react-helmet';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +49,18 @@ export default function Contact() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Contact Us | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content="Contact AstirMind for software development, web development, AI solutions, and digital services. Get in touch with our team today."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Contact Us | AstirMind Software Solutions" />
+        <meta property="og:description" content="Contact AstirMind for software development, web development, AI solutions, and digital services." />
+        <meta property="og:type" content="website" />
+      </Helmet>
     <section ref={sectionRef} id="contact" style={{ padding: '7rem 0', borderBottom: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
       <div className="container">
         <div className="grid-12" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '3rem', alignItems: 'start' }}>
@@ -114,5 +127,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </>
   );
 }

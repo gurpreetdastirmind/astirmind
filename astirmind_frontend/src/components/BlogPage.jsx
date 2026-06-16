@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react';
 import { API_BASE as API } from '../config/api';
 import { POSTS as STATIC_POSTS } from './BlogDetailPage';
+import { Helmet } from 'react-helmet';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -227,110 +228,124 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
-
-      {/* ── Page Header ── */}
-      <div className="blog-page-header" style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
-        <img
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=70"
-          alt=""
-          aria-hidden="true"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'brightness(0.14) grayscale(30%) contrast(1.15)', pointerEvents: 'none' }}
+      <>
+      <Helmet>
+        <title>Blog | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content="Read the latest articles and insights from AstirMind about web development, AI, software solutions, technology trends, and internship programs."
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(6,5,3,0.3) 0%, rgba(6,5,3,0.85) 100%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Blog | AstirMind Software Solutions" />
+        <meta property="og:description" content="Read the latest articles and insights from AstirMind about web development, AI, software solutions, technology trends, and internship programs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
+      <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
-        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '4rem', paddingBottom: '3.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem' }}>
-            <div>
-              <span className="section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.12)' }}>Editorial</span>
-              <h1 style={{
-                fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-                fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.1,
-                color: '#fff', marginTop: '0.75rem',
-              }}>
-                Engineering Notes &amp;<br />Training Insights
-              </h1>
+        {/* ── Page Header ── */}
+        <div className="blog-page-header" style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=70"
+            alt=""
+            aria-hidden="true"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'brightness(0.14) grayscale(30%) contrast(1.15)', pointerEvents: 'none' }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(6,5,3,0.3) 0%, rgba(6,5,3,0.85) 100%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
+
+          <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '4rem', paddingBottom: '3.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem' }}>
+              <div>
+                <span className="section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.12)' }}>Editorial</span>
+                <h1 style={{
+                  fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+                  fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.1,
+                  color: '#fff', marginTop: '0.75rem',
+                }}>
+                  Engineering Notes &amp;<br />Training Insights
+                </h1>
+              </div>
+              <p className="t-body" style={{ maxWidth: 380, color: 'rgba(255,255,255,0.55)', alignSelf: 'flex-end' }}>
+                Practical writing from our software team and mentors. Focused on projects, training, and internships.
+              </p>
             </div>
-            <p className="t-body" style={{ maxWidth: 380, color: 'rgba(255,255,255,0.55)', alignSelf: 'flex-end' }}>
-              Practical writing from our software team and mentors. Focused on projects, training, and internships.
-            </p>
+
+            {/* Quote */}
+            <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <blockquote style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', fontStyle: 'italic', maxWidth: 620 }}>
+                "Blogging is just writing — writing using a particularly efficient type of publishing technology."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <div className="container" style={{ paddingTop: '4rem', paddingBottom: '7rem' }}>
+
+          {/* ── Featured Post ── */}
+          {showFeaturedCard && (
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Latest post</span>
+                <div style={{ flex: 1, height: '1px', background: 'var(--line)' }} />
+              </div>
+              <FeaturedCard post={featured} />
+            </div>
+          )}
+
+          {/* ── Category Filter ── */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Filter</span>
+              <div style={{ display: 'flex', border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
+                {CATEGORIES.map(cat => (
+                  <button key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    style={{
+                      padding: '6px 14px',
+                      background: activeCategory === cat ? 'var(--text)' : 'transparent',
+                      color: activeCategory === cat ? 'var(--text-inv)' : 'var(--text-3)',
+                      border: 'none', cursor: 'pointer',
+                      fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
+                      textTransform: 'uppercase', letterSpacing: '0.06em',
+                      transition: 'all 0.18s',
+                    }}
+                    onMouseEnter={e => { if (activeCategory !== cat) e.currentTarget.style.color = 'var(--text)'; }}
+                    onMouseLeave={e => { if (activeCategory !== cat) e.currentTarget.style.color = 'var(--text-3)'; }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
+              {rest.length} {rest.length === 1 ? 'post' : 'posts'}
+            </span>
           </div>
 
-          {/* Quote */}
-          <div style={{ marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <blockquote style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', fontStyle: 'italic', maxWidth: 620 }}>
-              "Blogging is just writing — writing using a particularly efficient type of publishing technology."
-            </blockquote>
+          {/* ── Post Grid ── */}
+          <div className="blog-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
+            gap: '1px',
+            background: 'var(--line)',
+            border: '1px solid var(--line)',
+          }}>
+            {rest.map(post => (
+              <div key={post.id} style={{ background: 'var(--bg)' }}>
+                <PostCard post={post} />
+              </div>
+            ))}
           </div>
+
+          {rest.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '5rem 0', color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
+              No posts in this category yet.
+            </div>
+          )}
+
         </div>
       </div>
-
-      <div className="container" style={{ paddingTop: '4rem', paddingBottom: '7rem' }}>
-
-        {/* ── Featured Post ── */}
-        {showFeaturedCard && (
-          <div style={{ marginBottom: '4rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Latest post</span>
-              <div style={{ flex: 1, height: '1px', background: 'var(--line)' }} />
-            </div>
-            <FeaturedCard post={featured} />
-          </div>
-        )}
-
-        {/* ── Category Filter ── */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0' }}>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Filter</span>
-            <div style={{ display: 'flex', border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
-              {CATEGORIES.map(cat => (
-                <button key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  style={{
-                    padding: '6px 14px',
-                    background: activeCategory === cat ? 'var(--text)' : 'transparent',
-                    color: activeCategory === cat ? 'var(--text-inv)' : 'var(--text-3)',
-                    border: 'none', cursor: 'pointer',
-                    fontFamily: 'var(--font-mono)', fontSize: '0.625rem',
-                    textTransform: 'uppercase', letterSpacing: '0.06em',
-                    transition: 'all 0.18s',
-                  }}
-                  onMouseEnter={e => { if (activeCategory !== cat) e.currentTarget.style.color = 'var(--text)'; }}
-                  onMouseLeave={e => { if (activeCategory !== cat) e.currentTarget.style.color = 'var(--text-3)'; }}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
-            {rest.length} {rest.length === 1 ? 'post' : 'posts'}
-          </span>
-        </div>
-
-        {/* ── Post Grid ── */}
-        <div className="blog-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
-          gap: '1px',
-          background: 'var(--line)',
-          border: '1px solid var(--line)',
-        }}>
-          {rest.map(post => (
-            <div key={post.id} style={{ background: 'var(--bg)' }}>
-              <PostCard post={post} />
-            </div>
-          ))}
-        </div>
-
-        {rest.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '5rem 0', color: 'var(--text-3)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
-            No posts in this category yet.
-          </div>
-        )}
-
-      </div>
-    </div>
-  );
+      </>
+      );
 }

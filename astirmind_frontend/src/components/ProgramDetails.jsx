@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_BASE } from '../config/api';
+import { Helmet } from 'react-helmet';
+
 import {
   Brain,
   Globe,
@@ -107,6 +109,27 @@ export default function ProgramDetails() {
   const Icon = getIcon(program.icon_name);
 
   return (
+
+     <>
+      <Helmet>
+        <title>{program.title} | AstirMind Internship Program</title>
+        <meta name="description" content={metaDescription} />
+        <meta name="keywords" content={keywords} />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph tags */}
+        <meta property="og:title" content={`${program.title} | AstirMind Internship Program`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        
+        {/* Additional meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${program.title} | AstirMind Internship Program`} />
+        <meta name="twitter:description" content={metaDescription} />
+        
+        <link rel="canonical" href={window.location.href} />
+      </Helmet>
     <section
       style={{
         background: 'var(--bg)',
@@ -339,52 +362,53 @@ export default function ProgramDetails() {
           }}
         >
 
-<div>
+          <div>
 
-  <h3
-    style={{
-      marginBottom: '0.5rem'
-    }}
-  >
-    Request Full Curriculum
-  </h3>
+            <h3
+              style={{
+                marginBottom: '0.5rem'
+              }}
+            >
+              Request Full Curriculum
+            </h3>
 
-  <p
-    style={{
-      color: 'var(--text-2)',
-      maxWidth: 520,
-      lineHeight: 1.7
-    }}
-  >
-    Get the complete syllabus, project roadmap,
-    internship details, tools covered, and career guidance
-    directly on WhatsApp.
-  </p>
+            <p
+              style={{
+                color: 'var(--text-2)',
+                maxWidth: 520,
+                lineHeight: 1.7
+              }}
+            >
+              Get the complete syllabus, project roadmap,
+              internship details, tools covered, and career guidance
+              directly on WhatsApp.
+            </p>
 
-</div>
+          </div>
 
-<a
-  href={`https://wa.me/919815674608?text=${encodeURIComponent(
-    `Hi AstirMind, please share the full curriculum and details for ${program.title}`
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="btn-solid"
-  style={{
-    padding: '0.85rem 1.75rem',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 8
-  }}
->
-  Request Curriculum
-  <ArrowUpRight size={16} />
-</a>
+          <a
+            href={`https://wa.me/919815674608?text=${encodeURIComponent(
+              `Hi AstirMind, please share the full curriculum and details for ${program.title}`
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-solid"
+            style={{
+              padding: '0.85rem 1.75rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8
+            }}
+          >
+            Request Curriculum
+            <ArrowUpRight size={16} />
+          </a>
 
         </div>
 
       </div>
 
     </section>
+    </>
   );
 }

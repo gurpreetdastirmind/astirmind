@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { agencyServices } from './Services';
+import { Helmet } from 'react-helmet';
 export default function ServiceDetails() {
 
   const { slug } = useParams();
@@ -19,6 +20,18 @@ export default function ServiceDetails() {
   const Icon = service.Icon;
 
   return (
+        <>
+      <Helmet>
+        <title>{serviceData?.title || 'Service'} | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content={serviceData?.metaDescription || serviceData?.desc || 'Learn about our software development services at AstirMind.'}
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={`${serviceData?.title || 'Service'} | AstirMind Software Solutions`} />
+        <meta property="og:description" content={serviceData?.metaDescription || serviceData?.desc || 'Learn about our software development services.'} />
+        <meta property="og:type" content="website" />
+      </Helmet>
     <section
       style={{
         minHeight: '100vh',
@@ -155,5 +168,6 @@ export default function ServiceDetails() {
 
       </div>
     </section>
+    </>
   );
 }

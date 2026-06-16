@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { API_BASE } from '../config/api';
+import { Helmet } from 'react-helmet';
 import {
   Brain, Globe, Database, Eye, Smartphone, Cpu,
   TerminalSquare, PenTool, ChevronDown, ArrowUpRight, Loader2, AlertCircle,
@@ -130,281 +131,294 @@ export default function ProgramsPage() {
   if (!program) return null;
 
   return (
-    <div style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
+      <>
+      <Helmet>
+        <title>Internship Programs | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content="Explore AstirMind's internship and training programs in web development, AI, mobile development, data science, and more. Gain hands-on experience with real projects."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Internship Programs | AstirMind Software Solutions" />
+        <meta property="og:description" content="Explore AstirMind's internship and training programs in web development, AI, mobile development, data science, and more." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <div style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
-      {/* ── Page header ── */}
-      <div ref={heroRef} style={{
-        position: 'relative', overflow: 'hidden',
-        borderBottom: '1px solid var(--line)',
-        backgroundImage: 'url(/img/page-header-training.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 30%',
-      }}>
-        {/* dark overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.92) 50%, rgba(10,10,10,0.55) 100%)' }} />
-        {/* accent rule top */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)', zIndex: 2 }} />
-        {/* ghost text */}
-        <div style={{ position: 'absolute', right: '-1rem', top: '50%', transform: 'translateY(-50%)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(6rem, 18vw, 14rem)', fontWeight: 700, color: 'rgba(255,255,255,0.04)', letterSpacing: '-0.05em', userSelect: 'none', pointerEvents: 'none', lineHeight: 1, zIndex: 1 }}>
-          LEARN
-        </div>
-        <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem', position: 'relative', zIndex: 2 }}>
-          <span className="prog-hero-in section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.15)' }}>AstirMind Institute</span>
-          <h1 className="prog-hero-in" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1rem' }}>
-            Programs & Courses
-          </h1>
-          <p className="prog-hero-in" style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: 500, marginBottom: '2.5rem' }}>
-            Every program runs on live projects with working mentors. You graduate with a portfolio, code in production, and the experience companies look for.
-          </p>
-          <div className="prog-hero-in programs-stat-row">
-            {[
-              { v: `${programs.length}`, l: 'Programs' },
-              { v: `${programs.filter(p => p.has_internship).length}`, l: 'Internship Tracks' },
-              { v: `${programs.filter(p => p.has_certificate).length}`, l: 'Certified' },
-              { v: '100%', l: 'Project-Based' },
-            ].map(({ v, l }, i) => (
-              <div key={l} style={{ padding: '0.875rem 1.75rem', borderRight: '1px solid rgba(255,255,255,0.12)', borderLeft: i === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none', background: 'rgba(255,255,255,0.04)' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '-0.03em', lineHeight: 1 }}>{v}</div>
-                <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>{l}</div>
-              </div>
-            ))}
+        {/* ── Page header ── */}
+        <div ref={heroRef} style={{
+          position: 'relative', overflow: 'hidden',
+          borderBottom: '1px solid var(--line)',
+          backgroundImage: 'url(/img/page-header-training.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 30%',
+        }}>
+          {/* dark overlay */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.92) 50%, rgba(10,10,10,0.55) 100%)' }} />
+          {/* accent rule top */}
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)', zIndex: 2 }} />
+          {/* ghost text */}
+          <div style={{ position: 'absolute', right: '-1rem', top: '50%', transform: 'translateY(-50%)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(6rem, 18vw, 14rem)', fontWeight: 700, color: 'rgba(255,255,255,0.04)', letterSpacing: '-0.05em', userSelect: 'none', pointerEvents: 'none', lineHeight: 1, zIndex: 1 }}>
+            LEARN
+          </div>
+          <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem', position: 'relative', zIndex: 2 }}>
+            <span className="prog-hero-in section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.15)' }}>AstirMind Institute</span>
+            <h1 className="prog-hero-in" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.04em', color: '#fff', lineHeight: 1.05, marginBottom: '1rem' }}>
+              Programs & Courses
+            </h1>
+            <p className="prog-hero-in" style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: 500, marginBottom: '2.5rem' }}>
+              Every program runs on live projects with working mentors. You graduate with a portfolio, code in production, and the experience companies look for.
+            </p>
+            <div className="prog-hero-in programs-stat-row">
+              {[
+                { v: `${programs.length}`, l: 'Programs' },
+                { v: `${programs.filter(p => p.has_internship).length}`, l: 'Internship Tracks' },
+                { v: `${programs.filter(p => p.has_certificate).length}`, l: 'Certified' },
+                { v: '100%', l: 'Project-Based' },
+              ].map(({ v, l }, i) => (
+                <div key={l} style={{ padding: '0.875rem 1.75rem', borderRight: '1px solid rgba(255,255,255,0.12)', borderLeft: i === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none', background: 'rgba(255,255,255,0.04)' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '-0.03em', lineHeight: 1 }}>{v}</div>
+                  <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>{l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* ── Main layout: sidebar + detail ── */}
-      <div className="programs-layout">
+        {/* ── Main layout: sidebar + detail ── */}
+        <div className="programs-layout">
 
-        {/* ── Left sidebar (desktop) ── */}
-        <div className="programs-sidebar">
-          {/* sidebar header */}
-          <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--line)' }}>
-            <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              {programs.length} Programs
-            </span>
+          {/* ── Left sidebar (desktop) ── */}
+          <div className="programs-sidebar">
+            {/* sidebar header */}
+            <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--line)' }}>
+              <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                {programs.length} Programs
+              </span>
+            </div>
+
+            {/* program list */}
+            {programs.map((p) => {
+              const I = getIcon(p.icon_name);
+              const isActive = activeSlug === p.slug;
+              return (
+                <button
+                  key={p.slug}
+                  onClick={() => setActiveSlug(p.slug)}
+                  style={{
+                    width: '100%', display: 'flex', alignItems: 'center', gap: 14,
+                    padding: '1.125rem 1.5rem',
+                    background: isActive ? 'var(--bg-elevated)' : 'transparent',
+                    border: 'none',
+                    borderBottom: '1px solid var(--line)',
+                    borderLeft: isActive ? '2px solid var(--accent)' : '2px solid transparent',
+                    cursor: 'pointer', textAlign: 'left',
+                    transition: 'background 0.15s, border-color 0.15s',
+                  }}
+                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--bg-alt)'; }}
+                  onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+                >
+                  {/* icon box */}
+                  <div style={{
+                    width: 36, height: 36, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    border: `1px solid ${isActive ? 'var(--accent)' : 'var(--line)'}`,
+                    background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
+                    transition: 'border-color 0.15s',
+                  }}>
+                    <I size={16} strokeWidth={1.5} color={isActive ? 'var(--accent)' : 'var(--text-3)'} />
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', fontWeight: isActive ? 700 : 500, color: isActive ? 'var(--text)' : 'var(--text-2)', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.title}</div>
+                    <div style={{ display: 'flex', gap: 6, marginTop: 4 }}>
+                      <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--text-3)' }}>{p.duration}</span>
+                      {p.has_internship && <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--accent)' }}>· Internship</span>}
+                    </div>
+                  </div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: isActive ? 'var(--accent)' : 'var(--text-3)', flexShrink: 0 }}>{String(p.order).padStart(2, '0')}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* program list */}
-          {programs.map((p) => {
-            const I = getIcon(p.icon_name);
-            const isActive = activeSlug === p.slug;
+          {/* ── Mobile arrow nav ── */}
+          {(() => {
+            const idx = programs.findIndex(p => p.slug === activeSlug);
+            const prev = programs[idx - 1];
+            const next = programs[idx + 1];
             return (
-              <button
-                key={p.slug}
-                onClick={() => setActiveSlug(p.slug)}
-                style={{
-                  width: '100%', display: 'flex', alignItems: 'center', gap: 14,
-                  padding: '1.125rem 1.5rem',
-                  background: isActive ? 'var(--bg-elevated)' : 'transparent',
-                  border: 'none',
-                  borderBottom: '1px solid var(--line)',
-                  borderLeft: isActive ? '2px solid var(--accent)' : '2px solid transparent',
-                  cursor: 'pointer', textAlign: 'left',
-                  transition: 'background 0.15s, border-color 0.15s',
-                }}
-                onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--bg-alt)'; }}
-                onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
-              >
-                {/* icon box */}
-                <div style={{
-                  width: 36, height: 36, flexShrink: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  border: `1px solid ${isActive ? 'var(--accent)' : 'var(--line)'}`,
-                  background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
-                  transition: 'border-color 0.15s',
-                }}>
-                  <I size={16} strokeWidth={1.5} color={isActive ? 'var(--accent)' : 'var(--text-3)'} />
+              <div className="programs-arrow-nav">
+                <button
+                  className="programs-arrow-btn"
+                  onClick={() => prev && setActiveSlug(prev.slug)}
+                  disabled={!prev}
+                  aria-label="Previous program"
+                >
+                  <ChevronLeft size={18} strokeWidth={2} />
+                </button>
+                <div className="programs-arrow-label">
+                  <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--text-3)', display: 'block', marginBottom: 2 }}>
+                    {String(idx + 1).padStart(2, '0')} / {String(programs.length).padStart(2, '0')}
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.01em' }}>
+                    {program.title}
+                  </span>
                 </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', fontWeight: isActive ? 700 : 500, color: isActive ? 'var(--text)' : 'var(--text-2)', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.title}</div>
-                  <div style={{ display: 'flex', gap: 6, marginTop: 4 }}>
-                    <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--text-3)' }}>{p.duration}</span>
-                    {p.has_internship && <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--accent)' }}>· Internship</span>}
-                  </div>
-                </div>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: isActive ? 'var(--accent)' : 'var(--text-3)', flexShrink: 0 }}>{String(p.order).padStart(2, '0')}</span>
-              </button>
+                <button
+                  className="programs-arrow-btn"
+                  onClick={() => next && setActiveSlug(next.slug)}
+                  disabled={!next}
+                  aria-label="Next program"
+                >
+                  <ChevronRight size={18} strokeWidth={2} />
+                </button>
+              </div>
             );
-          })}
-        </div>
+          })()}
 
-        {/* ── Mobile arrow nav ── */}
-        {(() => {
-          const idx = programs.findIndex(p => p.slug === activeSlug);
-          const prev = programs[idx - 1];
-          const next = programs[idx + 1];
-          return (
-            <div className="programs-arrow-nav">
-              <button
-                className="programs-arrow-btn"
-                onClick={() => prev && setActiveSlug(prev.slug)}
-                disabled={!prev}
-                aria-label="Previous program"
-              >
-                <ChevronLeft size={18} strokeWidth={2} />
-              </button>
-              <div className="programs-arrow-label">
-                <span className="t-mono" style={{ fontSize: '0.5rem', color: 'var(--text-3)', display: 'block', marginBottom: 2 }}>
-                  {String(idx + 1).padStart(2, '0')} / {String(programs.length).padStart(2, '0')}
-                </span>
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.01em' }}>
+          {/* ── Right detail panel ── */}
+          <div className="programs-detail">
+
+            {/* program title bar */}
+            <div className="prog-detail-in programs-detail-header">
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '0.75rem' }}>
+                  <Icon size={22} strokeWidth={1.5} color="var(--accent)" />
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em' }}>
+                    PROGRAM {String(program.order).padStart(2, '0')} / {String(programs.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', fontWeight: 700, letterSpacing: '-0.035em', color: 'var(--text)', lineHeight: 1.1, marginBottom: '0.5rem' }}>
                   {program.title}
-                </span>
+                </h2>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'var(--text-2)', lineHeight: 1.5 }}>{program.tagline}</p>
               </div>
-              <button
-                className="programs-arrow-btn"
-                onClick={() => next && setActiveSlug(next.slug)}
-                disabled={!next}
-                aria-label="Next program"
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                  <Badge>{program.duration}</Badge>
+                  <Badge>{program.format}</Badge>
+                  {program.has_internship && <Badge accent>Internship</Badge>}
+                  {program.has_certificate && <Badge dim>Certificate</Badge>}
+                </div>
+                <Link
+                  to={`/programs/${program.slug}`}
+                  className="btn-solid"
+                  style={{
+                    marginTop: 4,
+                    padding: '0.6rem 1.25rem',
+                    fontSize: '0.8125rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    textDecoration: 'none'
+                  }}
+                >
+                  View Details  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            {/* body: overview + curriculum in one readable flow */}
+            <div className="programs-detail-body">
+
+              {/* overview */}
+              <div className="prog-detail-in">
+                <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Overview</div>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.75, color: 'var(--text-2)', maxWidth: 660 }}>{program.overview}</p>
+              </div>
+
+              {/* curriculum */}
+              <div className="prog-detail-in">
+                <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>Curriculum</div>
+                <div style={{ border: '1px solid var(--line)' }}>
+                  {program.modules.map((mod, i) => (
+                    <div key={`${program.slug}-${i}`} style={{ borderBottom: i < program.modules.length - 1 ? '1px solid var(--line)' : 'none', padding: '0 1.5rem' }}>
+                      <AccordionModule mod={mod} index={i} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* tools */}
+              <div className="prog-detail-in">
+                <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Tools & Stack</div>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {program.tools.map(t => (
+                    <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', letterSpacing: '0.05em', color: 'var(--text-2)', border: '1px solid var(--line)', padding: '6px 14px', background: 'var(--bg-alt)' }}>{t}</span>
+                  ))}
+                </div>
+              </div>
+              {/* apply CTA strip */}
+              <div
+                className="prog-detail-in"
+                style={{
+                  borderTop: '1px solid var(--line)',
+                  paddingTop: '2.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '1.5rem'
+                }}
               >
-                <ChevronRight size={18} strokeWidth={2} />
-              </button>
-            </div>
-          );
-        })()}
 
-        {/* ── Right detail panel ── */}
-        <div className="programs-detail">
+                <div>
 
-          {/* program title bar */}
-          <div className="prog-detail-in programs-detail-header">
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '0.75rem' }}>
-                <Icon size={22} strokeWidth={1.5} color="var(--accent)" />
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em' }}>
-                  PROGRAM {String(program.order).padStart(2, '0')} / {String(programs.length).padStart(2, '0')}
-                </span>
-              </div>
-              <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', fontWeight: 700, letterSpacing: '-0.035em', color: 'var(--text)', lineHeight: 1.1, marginBottom: '0.5rem' }}>
-                {program.title}
-              </h2>
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'var(--text-2)', lineHeight: 1.5 }}>{program.tagline}</p>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
-              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <Badge>{program.duration}</Badge>
-                <Badge>{program.format}</Badge>
-                {program.has_internship && <Badge accent>Internship</Badge>}
-                {program.has_certificate && <Badge dim>Certificate</Badge>}
-              </div>
-          <Link
-  to={`/programs/${program.slug}`}
-  className="btn-solid"
-  style={{
-    marginTop: 4,
-    padding: '0.6rem 1.25rem',
-    fontSize: '0.8125rem',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 6,
-    textDecoration: 'none'
-  }}
->
-  View Details  <ArrowUpRight size={14} />
-</Link>
-            </div>
-          </div>
-
-          {/* body: overview + curriculum in one readable flow */}
-          <div className="programs-detail-body">
-
-            {/* overview */}
-            <div className="prog-detail-in">
-              <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Overview</div>
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.75, color: 'var(--text-2)', maxWidth: 660 }}>{program.overview}</p>
-            </div>
-
-            {/* curriculum */}
-            <div className="prog-detail-in">
-              <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>Curriculum</div>
-              <div style={{ border: '1px solid var(--line)' }}>
-                {program.modules.map((mod, i) => (
-                  <div key={`${program.slug}-${i}`} style={{ borderBottom: i < program.modules.length - 1 ? '1px solid var(--line)' : 'none', padding: '0 1.5rem' }}>
-                    <AccordionModule mod={mod} index={i} />
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '1.125rem',
+                      fontWeight: 700,
+                      color: 'var(--text)',
+                      letterSpacing: '-0.02em',
+                      marginBottom: '0.4rem'
+                    }}
+                  >
+                    Request Full Curriculum
                   </div>
-                ))}
+
+                  <div
+                    className="t-mono"
+                    style={{
+                      fontSize: '0.5625rem',
+                      color: 'var(--text-3)',
+                      lineHeight: 1.8,
+                      maxWidth: 520
+                    }}
+                  >
+                    Get complete syllabus, project roadmap,
+                    internship details, tools covered,
+                    fees structure, and career guidance directly on WhatsApp.
+                  </div>
+
+                </div>
+
+                <a
+                  href={`https://wa.me/919815674608?text=${encodeURIComponent(
+                    `Hi AstirMind, please share the full curriculum and complete details for ${program.title}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-solid"
+                  style={{
+                    padding: '0.75rem 1.75rem',
+                    fontSize: '0.9rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8
+                  }}
+                >
+                  Request Curriculum
+                  <ArrowUpRight size={16} />
+                </a>
+
               </div>
-            </div>
-
-            {/* tools */}
-            <div className="prog-detail-in">
-              <div className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Tools & Stack</div>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                {program.tools.map(t => (
-                  <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', letterSpacing: '0.05em', color: 'var(--text-2)', border: '1px solid var(--line)', padding: '6px 14px', background: 'var(--bg-alt)' }}>{t}</span>
-                ))}
-              </div>
-            </div>
-{/* apply CTA strip */}
-<div
-  className="prog-detail-in"
-  style={{
-    borderTop: '1px solid var(--line)',
-    paddingTop: '2.5rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    gap: '1.5rem'
-  }}
->
-
-  <div>
-
-    <div
-      style={{
-        fontFamily: 'var(--font-sans)',
-        fontSize: '1.125rem',
-        fontWeight: 700,
-        color: 'var(--text)',
-        letterSpacing: '-0.02em',
-        marginBottom: '0.4rem'
-      }}
-    >
-      Request Full Curriculum
-    </div>
-
-    <div
-      className="t-mono"
-      style={{
-        fontSize: '0.5625rem',
-        color: 'var(--text-3)',
-        lineHeight: 1.8,
-        maxWidth: 520
-      }}
-    >
-      Get complete syllabus, project roadmap,
-      internship details, tools covered,
-      fees structure, and career guidance directly on WhatsApp.
-    </div>
-
-  </div>
-
-  <a
-    href={`https://wa.me/919815674608?text=${encodeURIComponent(
-      `Hi AstirMind, please share the full curriculum and complete details for ${program.title}`
-    )}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn-solid"
-    style={{
-      padding: '0.75rem 1.75rem',
-      fontSize: '0.9rem',
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: 8
-    }}
-  >
-    Request Curriculum
-    <ArrowUpRight size={16} />
-  </a>
 
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
-  );
+      </>
+      );
 }
