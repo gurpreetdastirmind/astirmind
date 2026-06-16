@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
      'rest_captcha',
+      'captcha',
     # local
     'programs',
     'dashboard',
