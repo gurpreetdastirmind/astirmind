@@ -55,7 +55,10 @@ export default function HiringPage() {
     setCaptchaLoading(true);
      console.log('Loading captcha from:', `${API}/captcha/`);  // Debug log
     try {
-      const res = await fetch(`${API}/captcha/`, { credentials: 'include' , mode: 'cors',});
+      const res = await fetch(`${API}/captcha/`, { method: 'POST',credentials: 'include' , mode: 'cors',  headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(), // ← Add CSRF token
+      },});
       console.log('Response status:', res.status); 
       const data = await res.json();
         console.log('Captcha data:', data); 
