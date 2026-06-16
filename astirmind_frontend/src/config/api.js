@@ -1,7 +1,18 @@
 // Central API configuration
 // Set VITE_API_BASE in .env to override for production
-export const API_BASE = import.meta.env.VITE_API_BASE || 'https://astirmind-backend.onrender.com/api';
-export const MEDIA_BASE = import.meta.env.VITE_MEDIA_BASE || 'https://astirmind-backend.onrender.com';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://astirmind-backend.onrender.com';
+
+export const API_BASE = `${BASE_URL}/api`;
+export const MEDIA_BASE = BASE_URL;
+
+// Optional: Add other API endpoints
+export const ENDPOINTS = {
+    CAPTCHA: `${API_BASE}/captcha/`,
+    HIRING: `${API_BASE}/hiring/`,
+    CONTACT: `${API_BASE}/messages/`,
+    VERIFY: `${API_BASE}/verify/`,
+    QUOTES: `${API_BASE}/quotes/`,
+};
 // Shared CSRF token helper
 export function getCSRFToken() {
   const match = document.cookie.match(/csrftoken=([^;]+)/);
