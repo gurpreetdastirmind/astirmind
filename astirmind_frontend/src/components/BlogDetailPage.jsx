@@ -734,18 +734,19 @@ export default function BlogDetailPage() {
 
   return (
       <>
-      <Helmet>
-        <title>{blogData?.title || 'Blog Post'} | AstirMind Software Solutions</title>
-        <meta
-          name="description"
-          content={blogData?.excerpt || blogData?.description || 'Read this detailed blog post from AstirMind about technology and software development.'}
-        />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={`${blogData?.title || 'Blog Post'} | AstirMind Software Solutions`} />
-        <meta property="og:description" content={blogData?.excerpt || blogData?.description || 'Read this detailed blog post from AstirMind.'} />
-        <meta property="og:type" content="article" />
-        {blogData?.image && <meta property="og:image" content={blogData.image} />}
-      </Helmet>
+        <Helmet>
+      <title>{post?.title || 'Blog Post'} | AstirMind Software Solutions</title>
+      <meta
+        name="description"
+        content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind about technology and software development.'}
+      />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content={`${post?.title || 'Blog Post'} | AstirMind Software Solutions`} />
+      <meta property="og:description" content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind.'} />
+      <meta property="og:type" content="article" />
+      {post?.image && <meta property="og:image" content={post.image} />}
+      <link rel="canonical" href={typeof window !== 'undefined' ? window.location.href : ''} />
+    </Helmet>
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Hero Image ── */}
