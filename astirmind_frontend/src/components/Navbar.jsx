@@ -80,9 +80,9 @@ export default function Navbar() {
   const handleNav = () => setMenuOpen(false);
 
   const handleModeToggle = (m) => {
-    if (isInnerPage) {
-      navigate('/');
-    }
+    // if (isInnerPage) {
+    //   navigate('/');
+    // }
     startModeTransition(m);
   };
 
