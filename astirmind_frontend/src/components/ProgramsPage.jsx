@@ -111,27 +111,40 @@ export default function ProgramsPage() {
   const program = programs.find(p => p.slug === activeSlug) || programs[0];
   const Icon = program ? getIcon(program.icon_name) : Brain;
 
+  // FIXED: Hero animation - only runs when data is loaded
   useEffect(() => {
+    if (loading || !programs.length) return;
+    
     const ctx = gsap.context(() => {
-      gsap.from('.prog-hero-in', {
-        opacity: 0, y: 24, duration: 0.65, stagger: 0.1, ease: 'power2.out',
-      });
-    });
+      const elements = document.querySelectorAll('.prog-hero-in');
+      if (elements.length) {
+        gsap.from(elements, {
+          opacity: 0, y: 24, duration: 0.65, stagger: 0.1, ease: 'power2.out',
+        });
+      }
+    }, heroRef);
     return () => ctx.revert();
-  }, []);
+  }, [loading, programs]);
 
-  // animate detail panel on program change
+  // FIXED: Detail panel animation - only runs when program is loaded
   useEffect(() => {
-    if (!program) return;
-    gsap.fromTo('.prog-detail-in', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out' });
-  }, [activeSlug]);
+    if (!program || loading) return;
+    
+    const elements = document.querySelectorAll('.prog-detail-in');
+    if (elements.length) {
+      gsap.fromTo(elements, 
+        { opacity: 0, y: 16 }, 
+        { opacity: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out' }
+      );
+    }
+  }, [activeSlug, program, loading]);
 
   if (loading) return <div style={{ paddingTop: 68 }}><LoadingState /></div>;
   if (error) return <div style={{ paddingTop: 68 }}><ErrorState message={`Could not load programs: ${error}`} /></div>;
   if (!program) return null;
 
   return (
-      <>
+    <>
       <Helmet>
         <title>Internship Programs | AstirMind Software Solutions</title>
         <meta
@@ -419,6 +432,6 @@ export default function ProgramsPage() {
 
         </div>
       </div>
-      </>
-      );
+    </>
+  );
 }
