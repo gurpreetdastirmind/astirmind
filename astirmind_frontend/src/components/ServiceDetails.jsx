@@ -22,10 +22,10 @@ export default function ServiceDetails() {
   return (
     <>
       <Helmet>
-        <title>{service.title} | AstirMind Software Solutions</title>
+        <title>Service | AstirMind Software Solutions</title>
         <meta name="description" content={service.desc} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={`${service.title} | AstirMind Software Solutions`} />
+        <meta property="og:title" content={`Service| AstirMind Software Solutions`} />
         <meta property="og:description" content={service.desc} />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -68,7 +68,7 @@ export default function ServiceDetails() {
               fontFamily: 'var(--font-sans)',
               letterSpacing: '-0.03em'
             }}>
-              {service.title}
+              Service
             </h1>
 
             <p style={{
