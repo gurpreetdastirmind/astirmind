@@ -10,7 +10,7 @@ export default function ServiceDetails() {
     return (
       <div style={{ padding: '6rem 2rem', minHeight: '100vh', background: 'var(--bg)', color: 'var(--text)' }}>
         <div className="container">
-          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Service Not Found</h1>
+          <h1 style={{ fontSize: '2rem', marginBottom: '1rem', fontFamily: 'var(--font-sans)' }}>Service Not Found</h1>
           <p style={{ color: 'var(--text-2)' }}>The service you're looking for doesn't exist or has been moved.</p>
         </div>
       </div>
@@ -22,10 +22,10 @@ export default function ServiceDetails() {
   return (
     <>
       <Helmet>
-        <title>Service | AstirMind Software Solutions</title>
+        <title>{service.title} | AstirMind Software Solutions</title>
         <meta name="description" content={service.desc} />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={`Service| AstirMind Software Solutions`} />
+        <meta property="og:title" content={`${service.title} | AstirMind Software Solutions`} />
         <meta property="og:description" content={service.desc} />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -58,7 +58,7 @@ export default function ServiceDetails() {
               letterSpacing: '0.08em',
               fontFamily: 'var(--font-mono)'
             }}>
-              SERVICE
+               {service.title}
             </span>
 
             <h1 style={{
@@ -68,7 +68,7 @@ export default function ServiceDetails() {
               fontFamily: 'var(--font-sans)',
               letterSpacing: '-0.03em'
             }}>
-              Service
+              {service.title}
             </h1>
 
             <p style={{
