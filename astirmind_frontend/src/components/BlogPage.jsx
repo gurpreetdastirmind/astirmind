@@ -32,7 +32,7 @@ async function fetchPosts() {
   }
 }
 
-const CATEGORIES = ['All', 'Engineering', 'Training', 'Internship'];
+const CATEGORIES = ['All', 'Engineering', 'Training', 'Internship', 'AI/ML', 'Web Development'];
 
 function FeaturedCard({ post }) {
   const navigate = useNavigate();
@@ -228,7 +228,7 @@ export default function BlogPage() {
   }, []);
 
   return (
-      <>
+    <>
       <Helmet>
         <title>Blog | AstirMind Software Solutions</title>
         <meta
@@ -297,7 +297,7 @@ export default function BlogPage() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0' }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Filter</span>
-              <div style={{ display: 'flex', border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
                 {CATEGORIES.map(cat => (
                   <button key={cat}
                     onClick={() => setActiveCategory(cat)}
@@ -346,6 +346,6 @@ export default function BlogPage() {
 
         </div>
       </div>
-      </>
-      );
+    </>
+  );
 }
