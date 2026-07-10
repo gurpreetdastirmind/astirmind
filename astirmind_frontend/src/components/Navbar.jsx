@@ -10,14 +10,15 @@ export default function Navbar() {
   const navLinkRefs = useRef([]);
   const location = useLocation();
   const navigate = useNavigate();
+  
   const isInnerPage = [
     '/blog',
     '/programs',
     '/hiring',
     '/quote',
     '/verify',
-    '/services',
     '/about',
+    '/services',
   ].some(p => location.pathname.startsWith(p));
 
   useEffect(() => {
@@ -67,13 +68,23 @@ export default function Navbar() {
     return () => ctx.revert();
   }, [mode]);
 
-  const prefix = isInnerPage ? '/' : '';
+  // Navigation links - Services now uses /services route
   const links = mode === 'Xperience'
-    ? [ { label: 'Services', href: `${prefix}#services` }, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }, { label: 'Hiring', href: '/hiring' }]
-    : [{ label: 'Programs', href: '/programs' }, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }, { label: 'Verify', href: '/verify' }];
+    ? [ 
+        { label: 'Services', href: '/services' },
+        { label: 'About', href: '/about' }, 
+        { label: 'Blog', href: '/blog' }, 
+        { label: 'Hiring', href: '/hiring' }
+      ]
+    : [
+        { label: 'Programs', href: '/programs' }, 
+        { label: 'About', href: '/about' }, 
+        { label: 'Blog', href: '/blog' }, 
+        { label: 'Verify', href: '/verify' }
+      ];
 
   const isActive = (href) => {
-    if (href.startsWith('#') || href.startsWith('/#')) return false;
+    if (href.startsWith('#')) return false;
     return location.pathname === href || location.pathname.startsWith(href + '/');
   };
 
@@ -126,6 +137,7 @@ export default function Navbar() {
                 onMouseEnter: (e) => { e.currentTarget.style.color = 'var(--text)'; },
                 onMouseLeave: (e) => { e.currentTarget.style.color = active ? 'var(--text)' : 'var(--text-2)'; },
               };
+              
               return link.href.startsWith('/') ? (
                 <Link key={i} {...commonProps} to={link.href}>
                   {link.label}
@@ -139,33 +151,27 @@ export default function Navbar() {
 
             {/* Toggle */}
             <div style={{ display: 'flex', border: '1px solid var(--line)', background: 'var(--bg-alt)' }}>
-                {['Xperience', 'Training'].map((m) => (
-                  <button key={m} onClick={() => handleModeToggle(m)}
-                    style={{
-                      padding: '5px 16px', background: mode === m ? 'var(--text)' : 'transparent',
-                      color: mode === m ? 'var(--text-inv)' : 'var(--text-3)',
-                      border: 'none', cursor: 'pointer',
-                      fontFamily: 'var(--font-mono)', fontSize: '0.6875rem',
-                      textTransform: 'uppercase', letterSpacing: '0.06em',
-                      transition: 'all 0.18s',
-                    }}
-                    onMouseEnter={e => { if (mode !== m) e.currentTarget.style.color = 'var(--text)'; }}
-                    onMouseLeave={e => { if (mode !== m) e.currentTarget.style.color = 'var(--text-3)'; }}
-                  >{m}</button>
-                ))}
-              </div>
+              {['Xperience', 'Training'].map((m) => (
+                <button key={m} onClick={() => handleModeToggle(m)}
+                  style={{
+                    padding: '5px 16px', background: mode === m ? 'var(--text)' : 'transparent',
+                    color: mode === m ? 'var(--text-inv)' : 'var(--text-3)',
+                    border: 'none', cursor: 'pointer',
+                    fontFamily: 'var(--font-mono)', fontSize: '0.6875rem',
+                    textTransform: 'uppercase', letterSpacing: '0.06em',
+                    transition: 'all 0.18s',
+                  }}
+                  onMouseEnter={e => { if (mode !== m) e.currentTarget.style.color = 'var(--text)'; }}
+                  onMouseLeave={e => { if (mode !== m) e.currentTarget.style.color = 'var(--text-3)'; }}
+                >{m}</button>
+              ))}
+            </div>
           </div>
 
           {/* CTA */}
-          {isInnerPage ? (
-            <Link to="/quote" className="btn-solid hide-mobile" style={{ padding: '0.5rem 1.25rem', fontSize: '0.8125rem', flexShrink: 0, textDecoration: 'none' }}>
-              Get a Quote
-            </Link>
-          ) : (
-            <Link to="/quote" className="btn-solid hide-mobile" style={{ padding: '0.5rem 1.25rem', fontSize: '0.8125rem', flexShrink: 0, textDecoration: 'none' }}>
-              Get a Quote
-            </Link>
-          )}
+          <Link to="/quote" className="btn-solid hide-mobile" style={{ padding: '0.5rem 1.25rem', fontSize: '0.8125rem', flexShrink: 0, textDecoration: 'none' }}>
+            Get a Quote
+          </Link>
 
           {/* Mobile Hamburger */}
           <button className="hide-desktop" onClick={() => setMenuOpen(!menuOpen)}
