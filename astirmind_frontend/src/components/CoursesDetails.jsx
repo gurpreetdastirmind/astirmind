@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase, UserCheck, Building, RefreshCw, Code, Brain, Globe, Smartphone, Database, PenTool, Award, Laptop, TrendingUp } from 'lucide-react';
+import { 
+  Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase, 
+  UserCheck, Building, RefreshCw, Award, Laptop, TrendingUp, 
+  Microscope, Stethoscope, BarChart, Zap, Target, DollarSign, 
+  Clock, Calendar, CreditCard, FileCheck, FolderOpen, Users2,
+  Code, GitBranch, Smartphone, Database, Shield, Cloud, Cpu,
+  Layout, Palette, Terminal, Layers, Package, CheckCircle,
+  ArrowRight, BookOpen, Trophy, Sparkles
+} from 'lucide-react';
 import { courses } from './Services';
 
 // Star Rating Component
@@ -163,162 +171,346 @@ function FAQItem({ faq, index, isOpen, onToggle }) {
   );
 }
 
-// Complete audience data with all categories
+// ALL audience types - SAME for EVERY course
 const allAudienceTypes = [
   {
-    id: 'btech',
     icon: GraduationCap,
     title: 'B.Tech Students',
     description: 'Engineering students looking to build practical skills and gain industry experience before graduation.'
   },
   {
-    id: 'bca',
-    icon: GraduationCap,
-    title: 'BCA Students',
-    description: 'Computer Application students wanting to specialize in modern development technologies.'
-  },
-  {
-    id: 'mca',
-    icon: GraduationCap,
-    title: 'MCA Students',
-    description: 'Master\'s students seeking advanced technical training and real-world project experience.'
-  },
-  {
-    id: 'bcom',
     icon: Award,
     title: 'B.Com Students',
     description: 'Commerce students who want to combine business knowledge with technical skills for better career opportunities.'
   },
   {
-    id: 'msc-it',
+    icon: GraduationCap,
+    title: 'BCA Students',
+    description: 'Computer Application students wanting to specialize in modern development technologies.'
+  },
+  {
     icon: Laptop,
     title: 'M.Sc IT Students',
     description: 'IT postgraduates looking to deepen their technical expertise and work on industry-level projects.'
   },
   {
-    id: 'bba',
+    icon: GraduationCap,
+    title: 'MCA Students',
+    description: 'Master\'s students seeking advanced technical training and real-world project experience.'
+  },
+  {
     icon: TrendingUp,
     title: 'BBA Students',
     description: 'Business administration students aiming to understand technology to lead digital transformation initiatives.'
   },
   {
-    id: 'professionals',
+    icon: Microscope,
+    title: 'B.Sc Non-Medical Students',
+    description: 'Science students (Physics, Chemistry, Mathematics) who want to build technical skills and explore career opportunities in technology.'
+  },
+  {
+    icon: Stethoscope,
+    title: 'B.Sc Medical Students',
+    description: 'Medical science students looking to combine healthcare knowledge with technology for careers in health-tech, bioinformatics, and medical software.'
+  },
+  {
+    icon: BarChart,
+    title: 'MBA Students',
+    description: 'Business administration graduates who want to understand technology to lead digital transformation and manage tech-driven businesses.'
+  },
+  {
     icon: Briefcase,
     title: 'Working Professionals',
     description: 'Professionals looking to upskill, switch careers, or stay current with the latest technologies.'
   },
   {
-    id: 'graduates',
     icon: UserCheck,
     title: 'Fresh Graduates',
     description: 'Recent graduates ready to launch their careers with hands-on training and portfolio development.'
   },
   {
-    id: 'business',
     icon: Building,
     title: 'Business Owners & Entrepreneurs',
     description: 'Entrepreneurs who want to understand technology to better lead their teams and make informed decisions.'
   },
   {
-    id: 'switchers',
     icon: RefreshCw,
     title: 'Career Switchers',
     description: 'Professionals transitioning into tech from other fields, looking for a structured learning path.'
   }
 ];
 
-// Course-specific audience data with tailored selections
-const courseAudienceData = {
-  'genai': {
-    title: 'Who Should Join This Program?',
-    description: 'Generative AI is transforming every industry. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'fullstack': {
-    title: 'Who Should Join This Program?',
-    description: 'Full stack development is the backbone of modern web applications. This program is ideal for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'web-development': {
-    title: 'Who Should Join This Program?',
-    description: 'Web development skills are essential for the digital economy. This program is designed for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'mobile-app-development': {
-    title: 'Who Should Join This Program?',
-    description: 'Mobile apps power the modern world. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'datascience': {
-    title: 'Who Should Join This Program?',
-    description: 'Data science is the future of decision-making. This program is ideal for:',
-    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'bcom', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'uiux': {
-    title: 'Who Should Join This Program?',
-    description: 'Great design drives user engagement. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'android': {
-    title: 'Who Should Join This Program?',
-    description: 'Android development is one of the most in-demand skills. This program is designed for:',
-    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'python': {
-    title: 'Who Should Join This Program?',
-    description: 'Python is the most versatile programming language. This program is ideal for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'cloud-computing': {
-    title: 'Who Should Join This Program?',
-    description: 'Cloud computing is the foundation of modern IT infrastructure. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'embedded': {
-    title: 'Who Should Join This Program?',
-    description: 'Embedded systems power the Internet of Things. This program is ideal for:',
-    audienceIds: ['btech', 'mca', 'msc-it', 'professionals', 'graduates']
-  },
-  'cv': {
-    title: 'Who Should Join This Program?',
-    description: 'Computer vision is revolutionizing AI applications. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers']
-  },
-  'foundational-programming': {
-    title: 'Who Should Join This Program?',
-    description: 'Strong programming fundamentals are the key to a successful tech career. This program is designed for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'web-design': {
-    title: 'Who Should Join This Program?',
-    description: 'Web design combines creativity with technical skills. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'digital-performance-marketing': {
-    title: 'Who Should Join This Program?',
-    description: 'Digital marketing is essential for business growth. This program is ideal for:',
-    audienceIds: ['bcom', 'bba', 'bca', 'mca', 'professionals', 'graduates', 'switchers', 'business']
-  },
-  'data-analytics': {
-    title: 'Who Should Join This Program?',
-    description: 'Data analytics drives business decisions. This program is perfect for:',
-    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
-  }
+// ============ COURSE-SPECIFIC DATA ============
+
+// 1. Career Opportunities for each course
+const courseCareers = {
+  'android': [
+    { role: 'Android Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'Mobile App Developer', experience: '2-4 Years', salary: '₹8-12 LPA' },
+    { role: 'Senior Android Engineer', experience: '4-7 Years', salary: '₹12-20 LPA' },
+    { role: 'Mobile Tech Lead', experience: '7-10 Years', salary: '₹20-30 LPA' },
+    { role: 'Solution Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+  ],
+  'genai': [
+    { role: 'AI Engineer', experience: '0-2 Years', salary: '₹6-12 LPA' },
+    { role: 'ML Engineer', experience: '2-5 Years', salary: '₹12-22 LPA' },
+    { role: 'Prompt Engineer', experience: '2-4 Years', salary: '₹10-18 LPA' },
+    { role: 'AI Product Manager', experience: '5-8 Years', salary: '₹20-35 LPA' },
+    { role: 'Chief AI Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+  ],
+  'fullstack': [
+    { role: 'Frontend Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
+    { role: 'Full Stack Developer', experience: '3-6 Years', salary: '₹12-20 LPA' },
+    { role: 'Tech Lead', experience: '6-10 Years', salary: '₹20-35 LPA' },
+    { role: 'CTO', experience: '10+ Years', salary: '₹35-60 LPA' }
+  ],
+  'web-development': [
+    { role: 'Web Developer', experience: '0-2 Years', salary: '₹3-6 LPA' },
+    { role: 'Frontend Engineer', experience: '2-4 Years', salary: '₹6-12 LPA' },
+    { role: 'Senior Web Developer', experience: '4-7 Years', salary: '₹12-18 LPA' },
+    { role: 'Web Tech Lead', experience: '7-10 Years', salary: '₹18-28 LPA' },
+    { role: 'Web Architect', experience: '10+ Years', salary: '₹28-45 LPA' }
+  ],
+  'mobile-app-development': [
+    { role: 'Mobile Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'React Native Developer', experience: '2-4 Years', salary: '₹8-14 LPA' },
+    { role: 'Flutter Developer', experience: '2-5 Years', salary: '₹10-18 LPA' },
+    { role: 'Mobile Tech Lead', experience: '5-9 Years', salary: '₹18-30 LPA' },
+    { role: 'Mobile Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+  ],
+  'uiux': [
+    { role: 'UI/UX Designer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Product Designer', experience: '2-5 Years', salary: '₹7-15 LPA' },
+    { role: 'Senior UX Designer', experience: '4-8 Years', salary: '₹15-25 LPA' },
+    { role: 'UX Lead', experience: '6-10 Years', salary: '₹22-35 LPA' },
+    { role: 'Design Director', experience: '10+ Years', salary: '₹35-55 LPA' }
+  ],
+  'datascience': [
+    { role: 'Data Analyst', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'Data Scientist', experience: '2-5 Years', salary: '₹10-20 LPA' },
+    { role: 'Senior Data Scientist', experience: '4-8 Years', salary: '₹18-30 LPA' },
+    { role: 'ML Tech Lead', experience: '7-10 Years', salary: '₹25-40 LPA' },
+    { role: 'Chief Data Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+  ],
+  'python': [
+    { role: 'Python Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
+    { role: 'Senior Python Engineer', experience: '4-7 Years', salary: '₹14-22 LPA' },
+    { role: 'Python Tech Lead', experience: '7-10 Years', salary: '₹22-35 LPA' },
+    { role: 'Solution Architect', experience: '10+ Years', salary: '₹35-55 LPA' }
+  ],
+  'cloud-computing': [
+    { role: 'Cloud Engineer', experience: '0-2 Years', salary: '₹5-10 LPA' },
+    { role: 'DevOps Engineer', experience: '2-5 Years', salary: '₹10-20 LPA' },
+    { role: 'Senior Cloud Engineer', experience: '4-8 Years', salary: '₹18-30 LPA' },
+    { role: 'Cloud Architect', experience: '7-12 Years', salary: '₹25-45 LPA' },
+    { role: 'Principal Cloud Architect', experience: '12+ Years', salary: '₹45-70 LPA' }
+  ]
 };
 
-// Default audience for courses without specific data
-const defaultAudienceIds = ['btech', 'bca', 'mca', 'professionals', 'graduates', 'switchers', 'business'];
+// 2. Skills for each course
+const courseSkills = {
+  'android': [
+    { icon: Smartphone, label: 'Android App Development' },
+    { icon: Code, label: 'Kotlin Programming' },
+    { icon: Layout, label: 'Android UI/UX Design' },
+    { icon: Database, label: 'Firebase & SQLite Integration' },
+    { icon: Cloud, label: 'Cloud APIs & Services' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'App Security & Encryption' },
+    { icon: Layers, label: 'MVVM Architecture' },
+    { icon: Package, label: 'Dependency Injection' },
+    { icon: Cpu, label: 'Performance Optimization' },
+    { icon: Terminal, label: 'Command Line Tools' },
+    { icon: Palette, label: 'Material Design Principles' },
+    { icon: Smartphone, label: 'Push Notifications' },
+    { icon: Database, label: 'Offline Data Storage' },
+    { icon: Cloud, label: 'REST API Integration' },
+    { icon: Shield, label: 'Biometric Authentication' },
+    { icon: Layers, label: 'Jetpack Compose' },
+    { icon: Code, label: 'Testing & Debugging' },
+    { icon: GitBranch, label: 'CI/CD Pipelines' },
+    { icon: Package, label: 'Google Play Console' },
+    { icon: Users2, label: 'Agile Development' },
+    { icon: Trophy, label: 'App Monetization' }
+  ],
+  'genai': [
+    { icon: Code, label: 'Prompt Engineering' },
+    { icon: Cloud, label: 'LLM Integration (OpenAI, Claude)' },
+    { icon: Layers, label: 'RAG Pipeline Development' },
+    { icon: Database, label: 'Vector Databases' },
+    { icon: GitBranch, label: 'LangChain & LangGraph' },
+    { icon: Shield, label: 'AI Ethics & Safety' },
+    { icon: Cpu, label: 'Model Fine-tuning' },
+    { icon: Package, label: 'API Development' },
+    { icon: Terminal, label: 'Python Programming' },
+    { icon: Cloud, label: 'Cloud Deployment (AWS/Azure)' },
+    { icon: Users2, label: 'AI Product Strategy' },
+    { icon: Trophy, label: 'AI Agents Development' }
+  ],
+  'fullstack': [
+    { icon: Code, label: 'React.js Development' },
+    { icon: Code, label: 'Node.js Development' },
+    { icon: Code, label: 'Python/Django Development' },
+    { icon: Database, label: 'Database Design (SQL & NoSQL)' },
+    { icon: Cloud, label: 'REST API Development' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'Authentication & Authorization' },
+    { icon: Layers, label: 'Microservices Architecture' },
+    { icon: Package, label: 'Docker & Containerization' },
+    { icon: Cpu, label: 'System Design' },
+    { icon: Terminal, label: 'CI/CD Pipelines' },
+    { icon: Cloud, label: 'Cloud Deployment' }
+  ],
+  'web-development': [
+    { icon: Code, label: 'HTML5 & CSS3' },
+    { icon: Code, label: 'JavaScript (ES6+)' },
+    { icon: Layout, label: 'Responsive Web Design' },
+    { icon: Layers, label: 'React.js Framework' },
+    { icon: Package, label: 'Node.js Backend' },
+    { icon: Database, label: 'MongoDB & SQL' },
+    { icon: Cloud, label: 'API Integration' },
+    { icon: GitBranch, label: 'Git & GitHub' },
+    { icon: Palette, label: 'UI/UX Principles' },
+    { icon: Terminal, label: 'Command Line Basics' },
+    { icon: Cloud, label: 'Web Hosting & Deployment' },
+    { icon: Trophy, label: 'Website Optimization' }
+  ],
+  'mobile-app-development': [
+    { icon: Smartphone, label: 'React Native Development' },
+    { icon: Smartphone, label: 'Flutter Development' },
+    { icon: Code, label: 'Dart Programming' },
+    { icon: Layout, label: 'Mobile UI/UX Design' },
+    { icon: Database, label: 'Firebase Integration' },
+    { icon: Cloud, label: 'REST API Integration' },
+    { icon: Shield, label: 'App Security' },
+    { icon: Layers, label: 'State Management' },
+    { icon: Package, label: 'Push Notifications' },
+    { icon: Cpu, label: 'Performance Optimization' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Trophy, label: 'App Store & Play Store Deployment' }
+  ],
+  'uiux': [
+    { icon: Palette, label: 'User Research & Discovery' },
+    { icon: Layout, label: 'Wireframing & Prototyping' },
+    { icon: Palette, label: 'Visual Design (Color, Typography)' },
+    { icon: Layers, label: 'Design Systems' },
+    { icon: Package, label: 'Figma Advanced' },
+    { icon: Cloud, label: 'Adobe XD & Photoshop' },
+    { icon: Users2, label: 'User Testing & Validation' },
+    { icon: Trophy, label: 'Portfolio Development' },
+    { icon: Terminal, label: 'Interactive Prototyping' },
+    { icon: Database, label: 'Information Architecture' },
+    { icon: GitBranch, label: 'Design Handoff' },
+    { icon: Shield, label: 'Accessibility Design' }
+  ],
+  'datascience': [
+    { icon: Code, label: 'Python Programming' },
+    { icon: Code, label: 'Data Cleaning & Preprocessing' },
+    { icon: Database, label: 'SQL & NoSQL Databases' },
+    { icon: Layers, label: 'Machine Learning Algorithms' },
+    { icon: Cloud, label: 'Deep Learning (TensorFlow, PyTorch)' },
+    { icon: Package, label: 'Data Visualization (Matplotlib, Seaborn)' },
+    { icon: Cpu, label: 'Statistical Analysis' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'ML Model Deployment' },
+    { icon: Terminal, label: 'Big Data Tools (Spark, Hadoop)' },
+    { icon: Cloud, label: 'Cloud ML Services' },
+    { icon: Trophy, label: 'Business Intelligence' }
+  ],
+  'python': [
+    { icon: Code, label: 'Python Fundamentals' },
+    { icon: Code, label: 'Object-Oriented Programming' },
+    { icon: Database, label: 'Data Structures & Algorithms' },
+    { icon: Cloud, label: 'Django Web Framework' },
+    { icon: Package, label: 'REST API Development' },
+    { icon: Layers, label: 'NumPy & Pandas' },
+    { icon: Cpu, label: 'Data Visualization' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'Automation & Scripting' },
+    { icon: Terminal, label: 'Testing & Debugging' },
+    { icon: Cloud, label: 'Database Integration' },
+    { icon: Trophy, label: 'Project Development' }
+  ],
+  'cloud-computing': [
+    { icon: Cloud, label: 'Cloud Fundamentals (IaaS, PaaS, SaaS)' },
+    { icon: Cloud, label: 'AWS Core Services' },
+    { icon: Cloud, label: 'Azure & GCP' },
+    { icon: Layers, label: 'Docker & Kubernetes' },
+    { icon: Package, label: 'CI/CD Pipelines' },
+    { icon: Shield, label: 'Cloud Security' },
+    { icon: Cpu, label: 'Infrastructure as Code (Terraform)' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Terminal, label: 'Monitoring & Logging' },
+    { icon: Database, label: 'Cloud Databases' },
+    { icon: Code, label: 'Serverless Architecture' },
+    { icon: Trophy, label: 'Disaster Recovery & Backup' }
+  ]
+};
+
+// 3. Tools & Technologies for each course
+const courseTools = {
+  'android': [
+    'Kotlin', 'Android Studio', 'Jetpack Compose', 'Git', 'GitHub',
+    'Firebase', 'SQLite', 'Room Database', 'Retrofit', 'REST APIs',
+    'Material Design', 'MVVM', 'Coroutines', 'Flow', 'Dagger/Hilt',
+    'Google Play Console', 'Figma', 'Postman', 'Gradle', 'JUnit'
+  ],
+  'genai': [
+    'Python', 'OpenAI API', 'Claude API', 'LangChain', 'Vector Databases',
+    'Pinecone', 'Weaviate', 'FAISS', 'Hugging Face', 'PyTorch',
+    'TensorFlow', 'Docker', 'FastAPI', 'Streamlit', 'AWS Bedrock',
+    'Git', 'GitHub', 'Jupyter', 'VS Code', 'LangGraph'
+  ],
+  'fullstack': [
+    'React', 'Node.js', 'Python', 'Django', 'Express.js',
+    'MongoDB', 'PostgreSQL', 'MySQL', 'Git', 'GitHub',
+    'Docker', 'AWS', 'REST APIs', 'Redux', 'Webpack',
+    'TypeScript', 'Tailwind CSS', 'JWT', 'Jest', 'Postman'
+  ],
+  'web-development': [
+    'HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js',
+    'Express.js', 'MongoDB', 'MySQL', 'Git', 'GitHub',
+    'Bootstrap', 'Tailwind CSS', 'REST APIs', 'Webpack', 'VS Code',
+    'Chrome DevTools', 'Postman', 'Netlify', 'Vercel', 'Heroku'
+  ],
+  'mobile-app-development': [
+    'React Native', 'Flutter', 'Dart', 'JavaScript', 'Firebase',
+    'SQLite', 'REST APIs', 'Git', 'GitHub', 'Android Studio',
+    'Xcode', 'VS Code', 'Redux', 'Bloc', 'Provider',
+    'App Store Connect', 'Google Play Console', 'Postman', 'Figma', 'Expo'
+  ],
+  'uiux': [
+    'Figma', 'Adobe XD', 'Adobe Photoshop', 'Adobe Illustrator', 'Sketch',
+    'InVision', 'Miro', 'Zeplin', 'UX Research Tools', 'Hotjar',
+    'Google Analytics', 'UsabilityHub', 'Protopie', 'Framer', 'Webflow',
+    'Notion', 'Slack', 'Trello', 'Jira', 'Abstract'
+  ],
+  'datascience': [
+    'Python', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn',
+    'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras', 'Jupyter',
+    'SQL', 'MongoDB', 'Tableau', 'Power BI', 'Hadoop',
+    'Spark', 'Docker', 'Git', 'AWS SageMaker', 'GCP AI Platform'
+  ],
+  'python': [
+    'Python', 'Django', 'Flask', 'FastAPI', 'NumPy',
+    'Pandas', 'Matplotlib', 'Seaborn', 'SQLite', 'PostgreSQL',
+    'MySQL', 'Git', 'GitHub', 'VS Code', 'PyCharm',
+    'Jupyter', 'Docker', 'REST APIs', 'Postman', 'Pytest'
+  ],
+  'cloud-computing': [
+    'AWS (EC2, S3, VPC, IAM)', 'Azure', 'GCP', 'Docker', 'Kubernetes',
+    'Terraform', 'Ansible', 'CI/CD (Jenkins, GitHub Actions)', 'Linux', 'Bash',
+    'Python', 'Node.js', 'MySQL', 'PostgreSQL', 'MongoDB',
+    'Redis', 'Nginx', 'Apache', 'CloudWatch', 'Prometheus'
+  ]
+};
+
+// ============ COMPONENTS ============
 
 // Who Should Join Component
-function WhoShouldJoin({ slug }) {
-  // Get course-specific audience IDs or use default
-  const audienceIds = courseAudienceData[slug]?.audienceIds || defaultAudienceIds;
-  const title = courseAudienceData[slug]?.title || 'Who Should Join This Program?';
-  const description = courseAudienceData[slug]?.description || 'This program is designed for individuals who want to build practical skills and advance their careers:';
-
-  // Filter audience types based on IDs
-  const audienceList = allAudienceTypes.filter(a => audienceIds.includes(a.id));
-
+function WhoShouldJoin() {
   return (
     <div style={{
       marginTop: '4rem',
@@ -337,7 +529,7 @@ function WhoShouldJoin({ slug }) {
           fontSize: '1.75rem',
           margin: 0
         }}>
-          {title}
+          Who Should Join This Program?
         </h2>
       </div>
 
@@ -348,7 +540,7 @@ function WhoShouldJoin({ slug }) {
         lineHeight: 1.7,
         fontSize: '1rem'
       }}>
-        {description}
+        This program is designed for individuals at various stages of their career who want to gain practical, hands-on experience in software development.
       </p>
 
       <div style={{
@@ -358,7 +550,7 @@ function WhoShouldJoin({ slug }) {
         border: '1px solid var(--line)',
         background: 'var(--line)',
       }}>
-        {audienceList.map((item, index) => {
+        {allAudienceTypes.map((item, index) => {
           const Icon = item.icon;
           return (
             <div
@@ -425,7 +617,418 @@ function WhoShouldJoin({ slug }) {
   );
 }
 
-// Syllabus data for each course (keep your existing data)
+// 1. Why Learn This Course?
+function WhyLearnThis({ courseTitle }) {
+  const data = {
+    futureScope: `The demand for ${courseTitle} professionals is growing exponentially. With the rapid digital transformation across industries, skilled developers are needed more than ever.`,
+    careerDemand: 'The job market for developers is projected to grow by 22% through 2030, with thousands of new positions opening each year.',
+    salaryInsights: 'Entry-level: ₹4-8 LPA | Mid-level: ₹8-15 LPA | Senior: ₹15-30 LPA+',
+    industryUsage: 'Technology, Fintech, Healthcare, E-commerce, Education, Entertainment, Banking, Insurance, Real Estate, Manufacturing'
+  };
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Target size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Why Learn This Course?
+        </h2>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '1rem'
+      }}>
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          gridColumn: '1 / -1'
+        }}>
+          <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Zap size={18} color="var(--accent)" /> Future Scope
+          </h4>
+          <p style={{ color: 'var(--text-2)', lineHeight: 1.7, margin: 0 }}>{data.futureScope}</p>
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)'
+        }}>
+          <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <TrendingUp size={18} color="var(--accent)" /> Career Demand
+          </h4>
+          <p style={{ color: 'var(--text-2)', lineHeight: 1.7, margin: 0 }}>{data.careerDemand}</p>
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)'
+        }}>
+          <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <DollarSign size={18} color="var(--accent)" /> Salary Insights
+          </h4>
+          <p style={{ color: 'var(--text-2)', lineHeight: 1.7, margin: 0 }}>{data.salaryInsights}</p>
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          gridColumn: '1 / -1'
+        }}>
+          <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Building size={18} color="var(--accent)" /> Industry Usage
+          </h4>
+          <p style={{ color: 'var(--text-2)', lineHeight: 1.7, margin: 0 }}>{data.industryUsage}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 2. Why AstirMind?
+function WhyAstirMind() {
+  const features = [
+    { icon: Users2, title: 'One-on-One Mentoring', desc: 'Personalized guidance from industry experts to accelerate your learning.' },
+    { icon: Sparkles, title: '2 Free Demo Classes', desc: 'Experience our teaching methodology before committing to the program.' },
+    { icon: Calendar, title: 'Monthly Fee Structure', desc: 'Flexible payment options with monthly installments to ease your financial burden.' },
+    { icon: Clock, title: 'Flexible Timings', desc: 'Choose from morning, evening, or weekend batches as per your convenience.' },
+    { icon: Trophy, title: 'ISO Certified Internship', desc: 'Industry-recognized certification that adds value to your professional profile.' },
+    { icon: Briefcase, title: 'Placement Assistance', desc: 'Dedicated support for job placements and interview preparation.' }
+  ];
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Trophy size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Why AstirMind?
+        </h2>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        {features.map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={index}
+              style={{
+                background: 'var(--bg-card)',
+                padding: '1.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--bg-elevated)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'var(--bg-card)';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <Icon size={20} color="var(--accent)" />
+                <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0, color: 'var(--text)' }}>
+                  {feature.title}
+                </h4>
+              </div>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--text-2)', margin: 0, paddingLeft: '2.75rem' }}>
+                {feature.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// 3. Course Highlights
+function CourseHighlights() {
+  const highlights = [
+    { label: 'Duration', value: '12-16 Weeks' },
+    { label: 'Training Mode', value: 'Online / Hybrid' },
+    { label: 'Fees', value: 'Flexible Monthly Plans' },
+    { label: 'Certification', value: 'ISO Certified' },
+    { label: 'Projects', value: '5+ Live Projects' },
+    { label: 'Internship', value: 'Paid Internship Opportunity' }
+  ];
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <FileCheck size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Course Highlights
+        </h2>
+      </div>
+
+      <div style={{
+        border: '1px solid var(--line)',
+        overflow: 'hidden'
+      }}>
+        {highlights.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '200px 1fr',
+              padding: '0.75rem 1.5rem',
+              borderBottom: index < highlights.length - 1 ? '1px solid var(--line)' : 'none',
+              background: index % 2 === 0 ? 'var(--bg-alt)' : 'var(--bg-card)'
+            }}
+          >
+            <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, color: 'var(--text)' }}>{item.label}</span>
+            <span style={{ fontFamily: 'var(--font-sans)', color: 'var(--text-2)' }}>{item.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// 4. Career Opportunities - COURSE SPECIFIC
+function CareerOpportunities({ courseSlug }) {
+  const careers = courseCareers[courseSlug] || courseCareers['android'];
+  
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Briefcase size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Career Opportunities
+        </h2>
+      </div>
+
+      <div style={{
+        border: '1px solid var(--line)',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+          padding: '0.75rem 1.5rem',
+          background: 'var(--bg-elevated)',
+          borderBottom: '1px solid var(--line)',
+          fontWeight: 600
+        }}>
+          <span>Job Role</span>
+          <span>Experience Level</span>
+          <span>Average Salary</span>
+        </div>
+        {careers.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              padding: '0.75rem 1.5rem',
+              borderBottom: index < careers.length - 1 ? '1px solid var(--line)' : 'none',
+              background: index % 2 === 0 ? 'var(--bg-alt)' : 'var(--bg-card)'
+            }}
+          >
+            <span style={{ color: 'var(--text)' }}>{item.role}</span>
+            <span style={{ color: 'var(--text-2)' }}>{item.experience}</span>
+            <span style={{ color: 'var(--accent)' }}>{item.salary}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// 5. Skills You Will Learn - COURSE SPECIFIC
+function SkillsYouWillLearn({ courseSlug }) {
+  const skills = courseSkills[courseSlug] || courseSkills['android'];
+  
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <BookOpen size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Skills You Will Learn
+        </h2>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(220px, 100%), 1fr))',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        {skills.map((skill, index) => {
+          const Icon = skill.icon;
+          return (
+            <div
+              key={index}
+              style={{
+                background: 'var(--bg-card)',
+                padding: '0.75rem 1.25rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--bg-elevated)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'var(--bg-card)';
+              }}
+            >
+              <Icon size={16} color="var(--accent)" />
+              <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: 'var(--text-2)' }}>
+                {skill.label}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// 6. Tools & Technologies Covered - COURSE SPECIFIC
+function ToolsTechnologies({ courseSlug }) {
+  const tools = courseTools[courseSlug] || courseTools['android'];
+  
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Layers size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Tools & Technologies Covered
+        </h2>
+      </div>
+
+      <div style={{
+        display: 'flex',
+        gap: '0.75rem',
+        flexWrap: 'wrap'
+      }}>
+        {tools.map((tool, index) => (
+          <span
+            key={index}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.6875rem',
+              letterSpacing: '0.05em',
+              color: 'var(--text-2)',
+              border: '1px solid var(--line)',
+              padding: '6px 14px',
+              background: 'var(--bg-alt)',
+              transition: 'background 0.2s, border-color 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--accent)';
+              e.currentTarget.style.background = 'var(--bg-elevated)';
+              e.currentTarget.style.color = 'var(--text)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--line)';
+              e.currentTarget.style.background = 'var(--bg-alt)';
+              e.currentTarget.style.color = 'var(--text-2)';
+            }}
+          >
+            {tool}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Syllabus data for each course
 const courseSyllabus = {
   'genai': {
     modules: [
@@ -741,6 +1344,223 @@ const courseSyllabus = {
         answer: 'No prior design experience is required. We start from fundamentals.'
       }
     ]
+  },
+  'datascience': {
+    modules: [
+      {
+        title: 'Data Science Fundamentals',
+        topics: [
+          'Introduction to Data Science',
+          'Data Types & Structures',
+          'Data Collection',
+          'Data Quality Assessment',
+          'Data Governance'
+        ]
+      },
+      {
+        title: 'Data Cleaning & Preprocessing',
+        topics: [
+          'Data Cleaning Techniques',
+          'Handling Missing Values',
+          'Outlier Detection',
+          'Data Transformation',
+          'Feature Engineering'
+        ]
+      },
+      {
+        title: 'Machine Learning',
+        topics: [
+          'Supervised Learning',
+          'Unsupervised Learning',
+          'Model Evaluation',
+          'Cross Validation',
+          'Hyperparameter Tuning'
+        ]
+      },
+      {
+        title: 'Data Visualization',
+        topics: [
+          'Matplotlib',
+          'Seaborn',
+          'Plotly',
+          'Power BI',
+          'Tableau'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Data Science program?',
+        answer: 'The program spans 14 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'Basic Python knowledge is helpful but not required. We start from fundamentals.'
+      }
+    ]
+  },
+  'python': {
+    modules: [
+      {
+        title: 'Python Fundamentals',
+        topics: [
+          'Python Syntax',
+          'Data Types',
+          'Functions',
+          'Modules & Packages',
+          'File Handling'
+        ]
+      },
+      {
+        title: 'Advanced Python',
+        topics: [
+          'OOP Concepts',
+          'Decorators',
+          'Generators',
+          'Context Managers',
+          'Metaclasses'
+        ]
+      },
+      {
+        title: 'Web Development with Django',
+        topics: [
+          'Django Framework',
+          'Models & Migrations',
+          'Views & Templates',
+          'Django REST Framework',
+          'Authentication'
+        ]
+      },
+      {
+        title: 'Data Science with Python',
+        topics: [
+          'NumPy',
+          'Pandas',
+          'Matplotlib',
+          'Seaborn',
+          'Scikit-learn'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Python program?',
+        answer: 'The program spans 8 weeks with mentor support and certification.'
+      },
+      {
+        question: 'Do I need prior coding experience?',
+        answer: 'No prior experience is required. We start from the basics.'
+      }
+    ]
+  },
+  'android': {
+    modules: [
+      {
+        title: 'Android Fundamentals',
+        topics: [
+          'Kotlin Basics',
+          'Android Studio Setup',
+          'Activities & Fragments',
+          'Layouts & UI Design',
+          'Intents & Navigation'
+        ]
+      },
+      {
+        title: 'Advanced Android',
+        topics: [
+          'RecyclerView',
+          'ViewModels',
+          'LiveData',
+          'Room Database',
+          'Retrofit API Integration'
+        ]
+      },
+      {
+        title: 'Jetpack Compose',
+        topics: [
+          'Compose Fundamentals',
+          'State Management',
+          'Navigation in Compose',
+          'Theming & Styling',
+          'Compose Animations'
+        ]
+      },
+      {
+        title: 'App Deployment',
+        topics: [
+          'Google Play Store Submission',
+          'App Signing',
+          'App Monetization',
+          'Firebase Analytics',
+          'App Maintenance'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Android program?',
+        answer: 'The program spans 12 weeks with live projects and internship opportunities.'
+      },
+      {
+        question: 'Do I need prior Android experience?',
+        answer: 'Basic programming knowledge is helpful, but we start from fundamentals.'
+      }
+    ]
+  },
+  'cloud-computing': {
+    modules: [
+      {
+        title: 'Cloud Fundamentals',
+        topics: [
+          'Introduction to Cloud Computing',
+          'IaaS, PaaS, SaaS Models',
+          'AWS, Azure, GCP Overview',
+          'Virtualization',
+          'Cloud Architecture'
+        ]
+      },
+      {
+        title: 'AWS Services',
+        topics: [
+          'EC2',
+          'S3',
+          'VPC',
+          'IAM',
+          'RDS',
+          'Lambda'
+        ]
+      },
+      {
+        title: 'Containerization & DevOps',
+        topics: [
+          'Docker',
+          'Kubernetes',
+          'CI/CD Pipelines',
+          'Terraform',
+          'Monitoring & Logging'
+        ]
+      },
+      {
+        title: 'Cloud Deployment',
+        topics: [
+          'Deploying Web Applications',
+          'Microservices Architecture',
+          'Serverless Applications',
+          'Disaster Recovery',
+          'Cloud Security'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Cloud Computing program?',
+        answer: 'The program spans 12 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior cloud experience?',
+        answer: 'Basic IT knowledge is helpful, but we start from fundamentals.'
+      }
+    ]
   }
 };
 
@@ -749,10 +1569,7 @@ export default function CoursesDetails() {
   const [openModules, setOpenModules] = useState({});
   const [openFAQs, setOpenFAQs] = useState({});
 
-  // Find the course from local data
   const course = courses.find(item => item.slug === slug);
-
-  // Get syllabus for this course
   const syllabus = courseSyllabus[slug] || {
     modules: [
       { title: 'Module 1: Foundation', topics: ['Core Concepts', 'Best Practices', 'Tools & Technologies'] },
@@ -854,7 +1671,6 @@ export default function CoursesDetails() {
               {course.title}
             </h1>
 
-            {/* Rating Section */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -896,10 +1712,28 @@ export default function CoursesDetails() {
             ))}
           </div>
 
-          {/* Who Should Join Section - Course Specific */}
-          <WhoShouldJoin slug={slug} />
+          {/* 1. Why Learn This Course? */}
+          <WhyLearnThis courseTitle={course.title} />
 
-          {/* Syllabus Section */}
+          {/* 2. Why AstirMind? */}
+          <WhyAstirMind />
+
+          {/* 3. Course Highlights */}
+          <CourseHighlights />
+
+          {/* 4. Career Opportunities - COURSE SPECIFIC */}
+          <CareerOpportunities courseSlug={slug} />
+
+          {/* 5. Skills You Will Learn - COURSE SPECIFIC */}
+          <SkillsYouWillLearn courseSlug={slug} />
+
+          {/* 6. Tools & Technologies Covered - COURSE SPECIFIC */}
+          <ToolsTechnologies courseSlug={slug} />
+
+          {/* 7. Who Should Join? */}
+          <WhoShouldJoin />
+
+          {/* 8. Syllabus Section */}
           <div style={{
             marginTop: '4rem',
             borderTop: '1px solid var(--line)',
@@ -935,7 +1769,6 @@ export default function CoursesDetails() {
               ))}
             </div>
 
-            {/* Module Stats */}
             <div style={{
               display: 'flex',
               gap: '2rem',
