@@ -185,7 +185,7 @@ export default function ProgramsPage() {
               return (
                 <Link
                   key={program.slug}
-                  to={`/programs/${program.slug}`}
+                  to={`/courses/${program.slug}`}
                   style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
                 >
                   <div

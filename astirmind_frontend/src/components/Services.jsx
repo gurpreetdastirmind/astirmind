@@ -502,7 +502,7 @@ export default function Services() {
                 to={
                   isAgency
                     ? `/services/${item.slug}`
-                    : `/programs/${item.slug}`
+                    : `/courses/${item.slug}`
                 }
                 style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
               >

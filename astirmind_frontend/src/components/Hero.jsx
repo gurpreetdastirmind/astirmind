@@ -29,7 +29,7 @@ function AgencyIllustration() {
         ' { launchProgram } ',
         <span key="k2" style={{ color: '#C586C0' }}>from</span>,
         ' ',
-        <span key="k3" style={{ color: '#9CDCFE' }}>'./core/programs'</span>,
+        <span key="k3" style={{ color: '#9CDCFE' }}>'./core/courses'</span>,
         ';',
       ],
       dim: false,

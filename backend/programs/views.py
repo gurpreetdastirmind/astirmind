@@ -5,8 +5,8 @@ from .serializers import ProgramSerializer
 
 class ProgramListCreateView(generics.ListCreateAPIView):
     """
-    GET  /api/programs/       — list all active programs (ordered by `order`)
-    POST /api/programs/       — create a new program
+    GET  /api/courses/       — list all active programs (ordered by `order`)
+    POST /api/courses/       — create a new program
     """
     serializer_class = ProgramSerializer
 
@@ -20,10 +20,10 @@ class ProgramListCreateView(generics.ListCreateAPIView):
 
 class ProgramDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
-    GET    /api/programs/<id>/  — retrieve single program
-    PUT    /api/programs/<id>/  — full update
-    PATCH  /api/programs/<id>/  — partial update
-    DELETE /api/programs/<id>/  — delete
+    GET    /api/courses/<id>/  — retrieve single program
+    PUT    /api/courses/<id>/  — full update
+    PATCH  /api/courses/<id>/  — partial update
+    DELETE /api/courses/<id>/  — delete
     """
     queryset = Program.objects.all()
     serializer_class = ProgramSerializer

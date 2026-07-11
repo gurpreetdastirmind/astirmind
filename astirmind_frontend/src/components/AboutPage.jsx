@@ -606,7 +606,7 @@ export default function AboutPage() {
                 </blockquote>
 
                 <div style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem' }}>
-                  <a href="/programs" style={{ textDecoration: 'none' }} className="btn-solid">View Programs</a>
+                  <a href="/courses" style={{ textDecoration: 'none' }} className="btn-solid">View Programs</a>
                   <a href="/verify" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--text-2)', border: '1px solid var(--line)', padding: '0.65rem 1.2rem', transition: 'color 0.15s, border-color 0.15s' }}
                     onMouseEnter={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.borderColor = 'var(--line-light)'; }}
                     onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-2)'; e.currentTarget.style.borderColor = 'var(--line)'; }}

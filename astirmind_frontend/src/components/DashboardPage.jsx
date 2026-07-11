@@ -1476,7 +1476,7 @@ function ProgramsSection() {
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
-    const data = await apiFetch('/programs/?all=1');
+    const data = await apiFetch('/courses/?all=1');
     if (Array.isArray(data)) setPrograms(data);
   }, []);
 
@@ -1508,7 +1508,7 @@ function ProgramsSection() {
 
   const handleDelete = async (id) => {
     if (!confirm('Delete this program?')) return;
-    await apiFetch(`/programs/${id}/`, { method: 'DELETE' });
+    await apiFetch(`/courses/${id}/`, { method: 'DELETE' });
     load();
   };
 
@@ -1536,12 +1536,12 @@ function ProgramsSection() {
       };
 
       if (editingId) {
-        await apiFetch(`/programs/${editingId}/`, {
+        await apiFetch(`/courses/${editingId}/`, {
           method: 'PUT',
           body: JSON.stringify(payload),
         });
       } else {
-        await apiFetch('/programs/', {
+        await apiFetch('/courses/', {
           method: 'POST',
           body: JSON.stringify(payload),
         });
@@ -1700,7 +1700,7 @@ function OverviewSection({ onNav }) {
       apiFetch('/blog/').then(d => Array.isArray(d) ? d.length : 0),
       apiFetch('/hiring/').then(d => Array.isArray(d) ? d : []),
       apiFetch('/quotes/').then(d => Array.isArray(d) ? d : []),
-      apiFetch('/programs/').then(d => Array.isArray(d) ? d : []),
+      apiFetch('/courses/').then(d => Array.isArray(d) ? d : []),
     ]).then(([records, msgs, posts, hiring, quotes, programs]) => {
       setCounts({
         records, messages: msgs.length, unread: msgs.filter(m => !m.is_read).length, posts,

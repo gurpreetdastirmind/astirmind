@@ -13,7 +13,7 @@ export default function Navbar() {
   
   const isInnerPage = [
     '/blog',
-    '/programs',
+    '/courses',
     '/hiring',
     '/quote',
     '/verify',
@@ -77,7 +77,7 @@ export default function Navbar() {
         { label: 'Hiring', href: '/hiring' }
       ]
     : [
-        { label: 'Programs', href: '/programs' }, 
+        { label: 'Courses', href: '/courses' }, 
         { label: 'About', href: '/about' }, 
         { label: 'Blog', href: '/blog' }, 
         { label: 'Verify', href: '/verify' }

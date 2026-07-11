@@ -10,7 +10,7 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BlogPage from './components/BlogPage';
-import ProgramsPage from './components/ProgramsPage';
+import ProgramsPage from './components/CoursesPage';
 import HiringPage from './components/HiringPage';
 import QuotePage from './components/QuotePage';
 import VerifyPage from './components/VerifyPage';
@@ -22,9 +22,9 @@ import PageSwoosh from './components/PageSwoosh';
 import Cursor from './components/Cursor';
 import { ModeProvider } from './context/ModeContext';
 import ServiceDetails from './components/ServiceDetails';
-import ProgramDetails from './components/ProgramDetails';
+import CousesDetails from './components/CoursesDetails';
 
-const INNER_PAGES = ['/blog', '/programs', '/hiring', '/quote', '/verify', '/about', '/services'];
+const INNER_PAGES = ['/blog', '/courses', '/hiring', '/quote', '/verify', '/about', '/services'];
 const DASH_PAGES = ['/dash'];
 
 const WHATSAPP_NUMBER = '919815674608';
@@ -194,14 +194,14 @@ function AppShell() {
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/courses" element={<ProgramsPage />} />
             <Route path="/hiring" element={<HiringPage />} />
             <Route path="/quote" element={<QuotePage />} />
             <Route path="/verify" element={<VerifyPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog/:id" element={<BlogDetailPage />} />
             <Route path="/services/:slug" element={<ServiceDetails />} />
-            <Route path="/programs/:slug" element={<ProgramDetails />} />
+            <Route path="/courses/:slug" element={<CousesDetails />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </motion.main>

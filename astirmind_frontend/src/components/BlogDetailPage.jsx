@@ -1145,7 +1145,7 @@ export default function BlogDetailPage() {
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', lineHeight: 1.6, color: '#C5BFB0', marginBottom: '1rem' }}>
                 Structured programs with mentorship, project reviews, and internship pathways.
               </p>
-              <Link to="/programs" style={{
+              <Link to="/courses" style={{
                 display: 'flex', alignItems: 'center', gap: 6,
                 padding: '8px 14px', background: 'var(--text)', color: 'var(--text-inv)',
                 fontFamily: 'var(--font-mono)', fontSize: '0.5875rem', textTransform: 'uppercase', letterSpacing: '0.05em',

@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Footer() {
   const year = new Date().getFullYear();
   const location = useLocation();
-  const isInnerPage = ['/blog', '/programs', '/hiring', '/quote', '/verify'].some(p => location.pathname.startsWith(p));
+  const isInnerPage = ['/blog', '/courses', '/hiring', '/quote', '/verify'].some(p => location.pathname.startsWith(p));
 
   const cols = [
     {
@@ -19,7 +19,7 @@ export default function Footer() {
     {
       heading: 'Training',
       links: [
-        { label: 'Programs', href: '/programs' },
+        { label: 'Programs', href: '/courses' },
         { label: 'Internships', href: '#services' },
         { label: 'Verify Certificate', href: '/verify' },
         { label: 'Blog', href: '/blog' },

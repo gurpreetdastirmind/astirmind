@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Star, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase, UserCheck, Building, RefreshCw, Code, Brain, Globe, Smartphone, Database, PenTool, Award, Laptop, TrendingUp } from 'lucide-react';
 import { courses } from './Services';
 
 // Star Rating Component
@@ -163,7 +163,269 @@ function FAQItem({ faq, index, isOpen, onToggle }) {
   );
 }
 
-// Syllabus data for each course
+// Complete audience data with all categories
+const allAudienceTypes = [
+  {
+    id: 'btech',
+    icon: GraduationCap,
+    title: 'B.Tech Students',
+    description: 'Engineering students looking to build practical skills and gain industry experience before graduation.'
+  },
+  {
+    id: 'bca',
+    icon: GraduationCap,
+    title: 'BCA Students',
+    description: 'Computer Application students wanting to specialize in modern development technologies.'
+  },
+  {
+    id: 'mca',
+    icon: GraduationCap,
+    title: 'MCA Students',
+    description: 'Master\'s students seeking advanced technical training and real-world project experience.'
+  },
+  {
+    id: 'bcom',
+    icon: Award,
+    title: 'B.Com Students',
+    description: 'Commerce students who want to combine business knowledge with technical skills for better career opportunities.'
+  },
+  {
+    id: 'msc-it',
+    icon: Laptop,
+    title: 'M.Sc IT Students',
+    description: 'IT postgraduates looking to deepen their technical expertise and work on industry-level projects.'
+  },
+  {
+    id: 'bba',
+    icon: TrendingUp,
+    title: 'BBA Students',
+    description: 'Business administration students aiming to understand technology to lead digital transformation initiatives.'
+  },
+  {
+    id: 'professionals',
+    icon: Briefcase,
+    title: 'Working Professionals',
+    description: 'Professionals looking to upskill, switch careers, or stay current with the latest technologies.'
+  },
+  {
+    id: 'graduates',
+    icon: UserCheck,
+    title: 'Fresh Graduates',
+    description: 'Recent graduates ready to launch their careers with hands-on training and portfolio development.'
+  },
+  {
+    id: 'business',
+    icon: Building,
+    title: 'Business Owners & Entrepreneurs',
+    description: 'Entrepreneurs who want to understand technology to better lead their teams and make informed decisions.'
+  },
+  {
+    id: 'switchers',
+    icon: RefreshCw,
+    title: 'Career Switchers',
+    description: 'Professionals transitioning into tech from other fields, looking for a structured learning path.'
+  }
+];
+
+// Course-specific audience data with tailored selections
+const courseAudienceData = {
+  'genai': {
+    title: 'Who Should Join This Program?',
+    description: 'Generative AI is transforming every industry. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'fullstack': {
+    title: 'Who Should Join This Program?',
+    description: 'Full stack development is the backbone of modern web applications. This program is ideal for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'web-development': {
+    title: 'Who Should Join This Program?',
+    description: 'Web development skills are essential for the digital economy. This program is designed for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'mobile-app-development': {
+    title: 'Who Should Join This Program?',
+    description: 'Mobile apps power the modern world. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'datascience': {
+    title: 'Who Should Join This Program?',
+    description: 'Data science is the future of decision-making. This program is ideal for:',
+    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'bcom', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'uiux': {
+    title: 'Who Should Join This Program?',
+    description: 'Great design drives user engagement. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'android': {
+    title: 'Who Should Join This Program?',
+    description: 'Android development is one of the most in-demand skills. This program is designed for:',
+    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'python': {
+    title: 'Who Should Join This Program?',
+    description: 'Python is the most versatile programming language. This program is ideal for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'cloud-computing': {
+    title: 'Who Should Join This Program?',
+    description: 'Cloud computing is the foundation of modern IT infrastructure. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'embedded': {
+    title: 'Who Should Join This Program?',
+    description: 'Embedded systems power the Internet of Things. This program is ideal for:',
+    audienceIds: ['btech', 'mca', 'msc-it', 'professionals', 'graduates']
+  },
+  'cv': {
+    title: 'Who Should Join This Program?',
+    description: 'Computer vision is revolutionizing AI applications. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'msc-it', 'professionals', 'graduates', 'switchers']
+  },
+  'foundational-programming': {
+    title: 'Who Should Join This Program?',
+    description: 'Strong programming fundamentals are the key to a successful tech career. This program is designed for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'web-design': {
+    title: 'Who Should Join This Program?',
+    description: 'Web design combines creativity with technical skills. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'digital-performance-marketing': {
+    title: 'Who Should Join This Program?',
+    description: 'Digital marketing is essential for business growth. This program is ideal for:',
+    audienceIds: ['bcom', 'bba', 'bca', 'mca', 'professionals', 'graduates', 'switchers', 'business']
+  },
+  'data-analytics': {
+    title: 'Who Should Join This Program?',
+    description: 'Data analytics drives business decisions. This program is perfect for:',
+    audienceIds: ['btech', 'bca', 'mca', 'bcom', 'msc-it', 'bba', 'professionals', 'graduates', 'switchers', 'business']
+  }
+};
+
+// Default audience for courses without specific data
+const defaultAudienceIds = ['btech', 'bca', 'mca', 'professionals', 'graduates', 'switchers', 'business'];
+
+// Who Should Join Component
+function WhoShouldJoin({ slug }) {
+  // Get course-specific audience IDs or use default
+  const audienceIds = courseAudienceData[slug]?.audienceIds || defaultAudienceIds;
+  const title = courseAudienceData[slug]?.title || 'Who Should Join This Program?';
+  const description = courseAudienceData[slug]?.description || 'This program is designed for individuals who want to build practical skills and advance their careers:';
+
+  // Filter audience types based on IDs
+  const audienceList = allAudienceTypes.filter(a => audienceIds.includes(a.id));
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1rem'
+      }}>
+        <Users size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          {title}
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        {description}
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        {audienceList.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={index}
+              style={{
+                background: 'var(--bg-card)',
+                padding: '1.5rem 1.75rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--bg-elevated)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'var(--bg-card)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem'
+              }}>
+                <div style={{
+                  width: 36,
+                  height: 36,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid var(--accent)',
+                  borderRadius: '4px',
+                  background: 'rgba(255,255,255,0.03)'
+                }}>
+                  <Icon size={18} color="var(--accent)" />
+                </div>
+                <h3 style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.95rem',
+                  fontWeight: 600,
+                  margin: 0,
+                  color: 'var(--text)'
+                }}>
+                  {item.title}
+                </h3>
+              </div>
+              <p style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.875rem',
+                lineHeight: 1.6,
+                color: 'var(--text-2)',
+                margin: 0,
+                paddingLeft: '3rem'
+              }}>
+                {item.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Syllabus data for each course (keep your existing data)
 const courseSyllabus = {
   'genai': {
     modules: [
@@ -317,10 +579,172 @@ const courseSyllabus = {
         answer: 'Yes, the program includes internship opportunities with real project experience.'
       }
     ]
+  },
+  'web-development': {
+    modules: [
+      {
+        title: 'HTML & CSS Fundamentals',
+        topics: [
+          'HTML5 Semantic Elements',
+          'CSS3 Styling',
+          'Flexbox & Grid',
+          'Responsive Design',
+          'CSS Frameworks'
+        ]
+      },
+      {
+        title: 'JavaScript Essentials',
+        topics: [
+          'ES6+ Features',
+          'DOM Manipulation',
+          'Event Handling',
+          'Async/Await',
+          'API Integration'
+        ]
+      },
+      {
+        title: 'Frontend Frameworks',
+        topics: [
+          'React.js Fundamentals',
+          'Components & Props',
+          'State Management',
+          'React Router',
+          'Build Tools'
+        ]
+      },
+      {
+        title: 'Backend Development',
+        topics: [
+          'Node.js',
+          'Express.js',
+          'REST APIs',
+          'Authentication',
+          'Database Integration'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Web Development program?',
+        answer: 'The program spans 14 weeks with live projects and internship opportunities.'
+      },
+      {
+        question: 'Do I need prior coding experience?',
+        answer: 'No prior experience is required. We start from the fundamentals.'
+      }
+    ]
+  },
+  'mobile-app-development': {
+    modules: [
+      {
+        title: 'React Native Fundamentals',
+        topics: [
+          'React Native Setup',
+          'Components & Styling',
+          'Navigation',
+          'State Management',
+          'API Integration'
+        ]
+      },
+      {
+        title: 'Flutter Development',
+        topics: [
+          'Dart Fundamentals',
+          'Flutter Widgets',
+          'Layouts',
+          'State Management',
+          'Firebase Integration'
+        ]
+      },
+      {
+        title: 'Advanced Mobile Features',
+        topics: [
+          'Push Notifications',
+          'Camera & Gallery',
+          'Location Services',
+          'Offline Storage',
+          'Biometric Authentication'
+        ]
+      },
+      {
+        title: 'App Deployment',
+        topics: [
+          'App Store Submission',
+          'Play Store Submission',
+          'App Monetization',
+          'Analytics',
+          'App Maintenance'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Mobile App program?',
+        answer: 'The program spans 14 weeks with live projects and internship opportunities.'
+      },
+      {
+        question: 'Which platforms will I learn?',
+        answer: 'You\'ll learn both React Native and Flutter for cross-platform development.'
+      }
+    ]
+  },
+  'uiux': {
+    modules: [
+      {
+        title: 'UX Research & Discovery',
+        topics: [
+          'User Research Methods',
+          'User Personas',
+          'Journey Mapping',
+          'Competitive Analysis',
+          'Information Architecture'
+        ]
+      },
+      {
+        title: 'Wireframing & Prototyping',
+        topics: [
+          'Low-Fidelity Wireframes',
+          'High-Fidelity Wireframes',
+          'Interactive Prototypes',
+          'Figma Advanced',
+          'Adobe XD'
+        ]
+      },
+      {
+        title: 'Visual Design',
+        topics: [
+          'Color Theory',
+          'Typography',
+          'Layout & Composition',
+          'Design Systems',
+          'Responsive Design'
+        ]
+      },
+      {
+        title: 'UI/UX Projects',
+        topics: [
+          'Mobile App Design',
+          'Web App Design',
+          'Design Systems',
+          'Portfolio Development',
+          'Case Studies'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the UI/UX program?',
+        answer: 'The program spans 10 weeks with portfolio projects and certification.'
+      },
+      {
+        question: 'Do I need design experience?',
+        answer: 'No prior design experience is required. We start from fundamentals.'
+      }
+    ]
   }
 };
 
-export default function ProgramDetails() {
+export default function CoursesDetails() {
   const { slug } = useParams();
   const [openModules, setOpenModules] = useState({});
   const [openFAQs, setOpenFAQs] = useState({});
@@ -471,6 +895,9 @@ export default function ProgramDetails() {
               </span>
             ))}
           </div>
+
+          {/* Who Should Join Section - Course Specific */}
+          <WhoShouldJoin slug={slug} />
 
           {/* Syllabus Section */}
           <div style={{
