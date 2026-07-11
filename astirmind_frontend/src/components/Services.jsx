@@ -247,7 +247,7 @@ export const courses = [
     slug: 'genai',
     title: 'Generative AI & LLMs',
     desc: 'Hands-on training with large language models, prompt engineering, RAG pipelines, and building AI-powered applications. Work on real products, not toy examples.',
-    tags: ['12 Weeks', 'Live Projects', 'Certification'],
+    tags: ['120 hours, 45 Days, 12-16 Weeks , 6-8 Months', 'Live Projects', 'Certification'],
     Icon: Brain,
     rating: 4.9,
     reviews: 234

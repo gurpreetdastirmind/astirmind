@@ -171,7 +171,7 @@ function FAQItem({ faq, index, isOpen, onToggle }) {
   );
 }
 
-// ALL audience types - SAME for EVERY course
+// ALL audience types - SAME for EVERY course (UPDATED with B.A. and 12th Class)
 const allAudienceTypes = [
   {
     icon: GraduationCap,
@@ -219,6 +219,16 @@ const allAudienceTypes = [
     description: 'Business administration graduates who want to understand technology to lead digital transformation and manage tech-driven businesses.'
   },
   {
+    icon: Award,
+    title: 'B.A. Students',
+    description: 'Arts students who want to develop technical skills and explore diverse career opportunities in the digital economy, combining creative thinking with technology.'
+  },
+  {
+    icon: GraduationCap,
+    title: '12th Class Students',
+    description: 'High school graduates looking to build a strong foundation in technology before entering college or starting their professional journey.'
+  },
+  {
     icon: Briefcase,
     title: 'Working Professionals',
     description: 'Professionals looking to upskill, switch careers, or stay current with the latest technologies.'
@@ -245,67 +255,67 @@ const allAudienceTypes = [
 // 1. Career Opportunities for each course
 const courseCareers = {
   'android': [
-    { role: 'Android Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
-    { role: 'Mobile App Developer', experience: '2-4 Years', salary: '₹8-12 LPA' },
-    { role: 'Senior Android Engineer', experience: '4-7 Years', salary: '₹12-20 LPA' },
-    { role: 'Mobile Tech Lead', experience: '7-10 Years', salary: '₹20-30 LPA' },
-    { role: 'Solution Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+    { role: 'Android Developer', experience: '0-2 Years' },
+    { role: 'Mobile App Developer', experience: '2-4 Years' },
+    { role: 'Senior Android Engineer', experience: '4-7 Years'  },
+    { role: 'Mobile Tech Lead', experience: '7-10 Years'  },
+    { role: 'Solution Architect', experience: '10+ Years'  }
   ],
   'genai': [
-    { role: 'AI Engineer', experience: '0-2 Years', salary: '₹6-12 LPA' },
-    { role: 'ML Engineer', experience: '2-5 Years', salary: '₹12-22 LPA' },
-    { role: 'Prompt Engineer', experience: '2-4 Years', salary: '₹10-18 LPA' },
-    { role: 'AI Product Manager', experience: '5-8 Years', salary: '₹20-35 LPA' },
-    { role: 'Chief AI Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+    { role: 'AI Engineer', experience: '0-2 Years' },
+    { role: 'ML Engineer', experience: '2-5 Years'},
+    { role: 'Prompt Engineer', experience: '2-4 Years' },
+    { role: 'AI Product Manager', experience: '5-8 Years' },
+    { role: 'Chief AI Officer', experience: '10+ Years' }
   ],
   'fullstack': [
-    { role: 'Frontend Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
-    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
-    { role: 'Full Stack Developer', experience: '3-6 Years', salary: '₹12-20 LPA' },
-    { role: 'Tech Lead', experience: '6-10 Years', salary: '₹20-35 LPA' },
-    { role: 'CTO', experience: '10+ Years', salary: '₹35-60 LPA' }
+    { role: 'Frontend Developer', experience: '0-2 Years' },
+    { role: 'Backend Developer', experience: '2-4 Years' },
+    { role: 'Full Stack Developer', experience: '3-6 Years' },
+    { role: 'Tech Lead', experience: '6-10 Years' },
+    { role: 'CTO', experience: '10+ Years'}
   ],
   'web-development': [
-    { role: 'Web Developer', experience: '0-2 Years', salary: '₹3-6 LPA' },
-    { role: 'Frontend Engineer', experience: '2-4 Years', salary: '₹6-12 LPA' },
-    { role: 'Senior Web Developer', experience: '4-7 Years', salary: '₹12-18 LPA' },
-    { role: 'Web Tech Lead', experience: '7-10 Years', salary: '₹18-28 LPA' },
-    { role: 'Web Architect', experience: '10+ Years', salary: '₹28-45 LPA' }
+    { role: 'Web Developer', experience: '0-2 Years'},
+    { role: 'Frontend Engineer', experience: '2-4 Years' },
+    { role: 'Senior Web Developer', experience: '4-7 Years'},
+    { role: 'Web Tech Lead', experience: '7-10 Years' },
+    { role: 'Web Architect', experience: '10+ Years' }
   ],
   'mobile-app-development': [
-    { role: 'Mobile Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
-    { role: 'React Native Developer', experience: '2-4 Years', salary: '₹8-14 LPA' },
-    { role: 'Flutter Developer', experience: '2-5 Years', salary: '₹10-18 LPA' },
-    { role: 'Mobile Tech Lead', experience: '5-9 Years', salary: '₹18-30 LPA' },
-    { role: 'Mobile Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+    { role: 'Mobile Developer', experience: '0-2 Years'},
+    { role: 'React Native Developer', experience: '2-4 Years'},
+    { role: 'Flutter Developer', experience: '2-5 Years'},
+    { role: 'Mobile Tech Lead', experience: '5-9 Years'},
+    { role: 'Mobile Architect', experience: '10+ Years' }
   ],
   'uiux': [
-    { role: 'UI/UX Designer', experience: '0-2 Years', salary: '₹3-7 LPA' },
-    { role: 'Product Designer', experience: '2-5 Years', salary: '₹7-15 LPA' },
-    { role: 'Senior UX Designer', experience: '4-8 Years', salary: '₹15-25 LPA' },
-    { role: 'UX Lead', experience: '6-10 Years', salary: '₹22-35 LPA' },
-    { role: 'Design Director', experience: '10+ Years', salary: '₹35-55 LPA' }
+    { role: 'UI/UX Designer', experience: '0-2 Years'},
+    { role: 'Product Designer', experience: '2-5 Years'},
+    { role: 'Senior UX Designer', experience: '4-8 Years'},
+    { role: 'UX Lead', experience: '6-10 Years'},
+    { role: 'Design Director', experience: '10+ Years'}
   ],
   'datascience': [
-    { role: 'Data Analyst', experience: '0-2 Years', salary: '₹4-8 LPA' },
-    { role: 'Data Scientist', experience: '2-5 Years', salary: '₹10-20 LPA' },
-    { role: 'Senior Data Scientist', experience: '4-8 Years', salary: '₹18-30 LPA' },
-    { role: 'ML Tech Lead', experience: '7-10 Years', salary: '₹25-40 LPA' },
-    { role: 'Chief Data Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+    { role: 'Data Analyst', experience: '0-2 Years'},
+    { role: 'Data Scientist', experience: '2-5 Years'},
+    { role: 'Senior Data Scientist', experience: '4-8 Years'},
+    { role: 'ML Tech Lead', experience: '7-10 Years'},
+    { role: 'Chief Data Officer', experience: '10+ Years'}
   ],
   'python': [
-    { role: 'Python Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
-    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
-    { role: 'Senior Python Engineer', experience: '4-7 Years', salary: '₹14-22 LPA' },
-    { role: 'Python Tech Lead', experience: '7-10 Years', salary: '₹22-35 LPA' },
-    { role: 'Solution Architect', experience: '10+ Years', salary: '₹35-55 LPA' }
+    { role: 'Python Developer', experience: '0-2 Years'},
+    { role: 'Backend Developer', experience: '2-4 Years'},
+    { role: 'Senior Python Engineer', experience: '4-7 Years' },
+    { role: 'Python Tech Lead', experience: '7-10 Years'},
+    { role: 'Solution Architect', experience: '10+ Years'}
   ],
   'cloud-computing': [
-    { role: 'Cloud Engineer', experience: '0-2 Years', salary: '₹5-10 LPA' },
-    { role: 'DevOps Engineer', experience: '2-5 Years', salary: '₹10-20 LPA' },
-    { role: 'Senior Cloud Engineer', experience: '4-8 Years', salary: '₹18-30 LPA' },
-    { role: 'Cloud Architect', experience: '7-12 Years', salary: '₹25-45 LPA' },
-    { role: 'Principal Cloud Architect', experience: '12+ Years', salary: '₹45-70 LPA' }
+    { role: 'Cloud Engineer', experience: '0-2 Years'},
+    { role: 'DevOps Engineer', experience: '2-5 Years'},
+    { role: 'Senior Cloud Engineer', experience: '4-8 Years'},
+    { role: 'Cloud Architect', experience: '7-12 Years'},
+    { role: 'Principal Cloud Architect', experience: '12+ Years'}
   ]
 };
 
@@ -617,12 +627,11 @@ function WhoShouldJoin() {
   );
 }
 
-// 1. Why Learn This Course?
+// 1. Why Learn This Course? - UPDATED (Salary Insights REMOVED)
 function WhyLearnThis({ courseTitle }) {
   const data = {
     futureScope: `The demand for ${courseTitle} professionals is growing exponentially. With the rapid digital transformation across industries, skilled developers are needed more than ever.`,
     careerDemand: 'The job market for developers is projected to grow by 22% through 2030, with thousands of new positions opening each year.',
-    salaryInsights: 'Entry-level: ₹4-8 LPA | Mid-level: ₹8-15 LPA | Senior: ₹15-30 LPA+',
     industryUsage: 'Technology, Fintech, Healthcare, E-commerce, Education, Entertainment, Banking, Insurance, Real Estate, Manufacturing'
   };
 
@@ -668,7 +677,8 @@ function WhyLearnThis({ courseTitle }) {
         <div style={{
           padding: '1.5rem',
           border: '1px solid var(--line)',
-          background: 'var(--bg-alt)'
+          background: 'var(--bg-alt)',
+          gridColumn: '1 / 2'
         }}>
           <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <TrendingUp size={18} color="var(--accent)" /> Career Demand
@@ -679,19 +689,8 @@ function WhyLearnThis({ courseTitle }) {
         <div style={{
           padding: '1.5rem',
           border: '1px solid var(--line)',
-          background: 'var(--bg-alt)'
-        }}>
-          <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <DollarSign size={18} color="var(--accent)" /> Salary Insights
-          </h4>
-          <p style={{ color: 'var(--text-2)', lineHeight: 1.7, margin: 0 }}>{data.salaryInsights}</p>
-        </div>
-
-        <div style={{
-          padding: '1.5rem',
-          border: '1px solid var(--line)',
           background: 'var(--bg-alt)',
-          gridColumn: '1 / -1'
+          gridColumn: '2 / 3'
         }}>
           <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Building size={18} color="var(--accent)" /> Industry Usage
@@ -783,7 +782,7 @@ function WhyAstirMind() {
 // 3. Course Highlights
 function CourseHighlights() {
   const highlights = [
-    { label: 'Duration', value: '12-16 Weeks' },
+    { label: 'Duration Options', value: '120 hours • 45 Days • 12-16 Weeks • 6-8 Months' },
     { label: 'Training Mode', value: 'Online / Hybrid' },
     { label: 'Fees', value: 'Flexible Monthly Plans' },
     { label: 'Certification', value: 'ISO Certified' },
@@ -869,7 +868,7 @@ function CareerOpportunities({ courseSlug }) {
       }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
+          gridTemplateColumns: '1fr 1fr',
           padding: '0.75rem 1.5rem',
           background: 'var(--bg-elevated)',
           borderBottom: '1px solid var(--line)',
@@ -877,14 +876,13 @@ function CareerOpportunities({ courseSlug }) {
         }}>
           <span>Job Role</span>
           <span>Experience Level</span>
-          <span>Average Salary</span>
         </div>
         {careers.map((item, index) => (
           <div
             key={index}
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr 1fr',
+              gridTemplateColumns: '1fr 1fr',
               padding: '0.75rem 1.5rem',
               borderBottom: index < careers.length - 1 ? '1px solid var(--line)' : 'none',
               background: index % 2 === 0 ? 'var(--bg-alt)' : 'var(--bg-card)'
@@ -892,7 +890,6 @@ function CareerOpportunities({ courseSlug }) {
           >
             <span style={{ color: 'var(--text)' }}>{item.role}</span>
             <span style={{ color: 'var(--text-2)' }}>{item.experience}</span>
-            <span style={{ color: 'var(--accent)' }}>{item.salary}</span>
           </div>
         ))}
       </div>
@@ -1564,6 +1561,677 @@ const courseSyllabus = {
   }
 };
 
+// ============ NEW SECTIONS TO INSERT BEFORE FAQ ============
+
+// Live Projects Section
+function LiveProjects() {
+  const projects = [
+    {
+      name: "E-Commerce Platform with AI Recommendations",
+      description: "A full-featured e-commerce platform with AI-powered product recommendations, real-time inventory management, and secure payment gateway integration.",
+      difficulty: "Advanced",
+      techStack: "React, Node.js, Python, MongoDB, OpenAI API, Stripe, Docker, AWS"
+    },
+    {
+      name: "Healthcare Patient Management System",
+      description: "A comprehensive patient management system with appointment scheduling, EHR integration, telemedicine features, and HIPAA-compliant data security.",
+      difficulty: "Intermediate",
+      techStack: "Flutter, Firebase, Node.js, PostgreSQL, Twilio, JWT, Azure"
+    },
+    {
+      name: "FinTech Mobile Banking App",
+      description: "A secure mobile banking application with biometric authentication, real-time transaction tracking, budget planning, and investment portfolio management.",
+      difficulty: "Advanced",
+      techStack: "Kotlin, Jetpack Compose, Spring Boot, MySQL, Redis, OAuth2, AWS"
+    },
+    {
+      name: "AI-Powered Content Generation Tool",
+      description: "An intelligent content generation platform leveraging LLMs for blog writing, social media posts, and marketing copy with customization options.",
+      difficulty: "Intermediate",
+      techStack: "Python, FastAPI, LangChain, Vector Databases, React, Docker, GCP"
+    },
+    {
+      name: "Smart IoT Home Automation Dashboard",
+      description: "A real-time IoT dashboard for controlling smart home devices with voice commands, automation rules, and energy consumption analytics.",
+      difficulty: "Advanced",
+      techStack: "React Native, Node.js, MQTT, InfluxDB, Grafana, AWS IoT, Python"
+    },
+    {
+      name: "Online Learning Management System",
+      description: "A complete LMS with video streaming, assessment tools, progress tracking, certification generation, and instructor analytics dashboard.",
+      difficulty: "Intermediate",
+      techStack: "Django, React, PostgreSQL, Redis, WebRTC, Stripe, Celery"
+    },
+    {
+      name: "Real Estate Property Finder",
+      description: "A property discovery platform with advanced search filters, map integration, property valuation tools, and virtual tour capabilities.",
+      difficulty: "Intermediate",
+      techStack: "Next.js, TypeScript, MongoDB, Mapbox, ElasticSearch, AWS, Tailwind"
+    },
+    {
+      name: "Food Delivery Optimizer",
+      description: "A logistics optimization platform for food delivery with real-time tracking, route optimization, driver management, and customer analytics.",
+      difficulty: "Advanced",
+      techStack: "Flutter, Go, Redis, Kafka, PostgreSQL, Google Maps API, Docker"
+    }
+  ];
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <FolderOpen size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Live Projects
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        Work on real industry-level projects that build your portfolio and prepare you for the professional world.
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            style={{
+              background: 'var(--bg-card)',
+              padding: '1.75rem',
+              transition: 'background 0.2s, transform 0.2s',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.75rem'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'var(--bg-elevated)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'var(--bg-card)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start'
+            }}>
+              <h4 style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '1rem',
+                fontWeight: 600,
+                margin: 0,
+                color: 'var(--text)'
+              }}>
+                {project.name}
+              </h4>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.5625rem',
+                letterSpacing: '0.08em',
+                padding: '4px 10px',
+                border: '1px solid var(--accent)',
+                color: 'var(--accent)',
+                whiteSpace: 'nowrap',
+                marginLeft: '1rem'
+              }}>
+                {project.difficulty}
+              </span>
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.875rem',
+              lineHeight: 1.7,
+              color: 'var(--text-2)',
+              margin: 0
+            }}>
+              {project.description}
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+              marginTop: '0.25rem'
+            }}>
+              {project.techStack.split(', ').map((tech, i) => (
+                <span
+                  key={i}
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.5625rem',
+                    letterSpacing: '0.03em',
+                    color: 'var(--text-3)',
+                    border: '1px solid var(--line)',
+                    padding: '3px 8px',
+                    background: 'var(--bg-alt)'
+                  }}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Student Portfolio Section
+function StudentPortfolio() {
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Code size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Student Portfolio Showcase
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        Explore the work of our alumni — GitHub profiles, certifications, and project screenshots that demonstrate their growth.
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '1rem',
+        marginBottom: '1.5rem'
+      }}>
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          transition: 'border-color 0.2s, background 0.2s'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'var(--accent)';
+          e.currentTarget.style.background = 'var(--bg-elevated)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--line)';
+          e.currentTarget.style.background = 'var(--bg-alt)';
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <GitBranch size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>GitHub Portfolios</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
+            View student repositories with live projects, contributions, and collaborative work.
+          </p>
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          transition: 'border-color 0.2s, background 0.2s'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'var(--accent)';
+          e.currentTarget.style.background = 'var(--bg-elevated)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--line)';
+          e.currentTarget.style.background = 'var(--bg-alt)';
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <Award size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>Certificates</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
+            ISO Certified Internship certificates with online verification capabilities.
+          </p>
+        </div>
+
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          gridColumn: '1 / -1',
+          transition: 'border-color 0.2s, background 0.2s'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'var(--accent)';
+          e.currentTarget.style.background = 'var(--bg-elevated)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--line)';
+          e.currentTarget.style.background = 'var(--bg-alt)';
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+            <Smartphone size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>App Screenshots & Demos</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
+            Showcase of student-built applications with screenshots, video demos, and case studies.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Internship Program & Certification Section
+function InternshipProgram() {
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Award size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Internship Program & Certification
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        Gain hands-on experience through our unique internship program where you work on real client projects or structured institute projects that mirror professional workflows.
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.75rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Briefcase size={20} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>Real Client Projects</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>
+            Work on actual client requirements with real deadlines, feedback loops, and deliverables. Experience the full project lifecycle from requirements gathering to deployment.
+          </p>
+        </div>
+
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.75rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <FolderOpen size={20} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>Structured Institute Projects</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>
+            Work on carefully designed projects that follow industry workflows, complete with code reviews, sprint planning, and technical documentation.
+          </p>
+        </div>
+
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.75rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          gridColumn: '1 / 2'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Shield size={20} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>ISO Certified Internship Certificate</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>
+            Receive a globally recognized ISO Certified Internship Certificate that adds immense value to your professional profile and resume.
+          </p>
+        </div>
+
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.75rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          gridColumn: '2 / 3'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <CheckCircle size={20} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>Online Verification</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.7, margin: 0 }}>
+            Every certificate comes with a unique verification code that employers can use to instantly verify your certification online.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Placement Support Section
+function PlacementSupport() {
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <UserCheck size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          Placement Support
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        We provide comprehensive placement support to help you land your dream job and stand out in the competitive tech industry.
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))',
+        gap: '1px',
+        border: '1px solid var(--line)',
+        background: 'var(--line)',
+      }}>
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <FileCheck size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>Resume Optimization</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0, paddingLeft: '2.75rem' }}>
+            Get expert guidance on crafting ATS-friendly resumes that highlight your technical skills and project experience to recruiters.
+          </p>
+        </div>
+
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Users2 size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>Mock Interviews</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0, paddingLeft: '2.75rem' }}>
+            Practice with technical and HR mock interviews conducted by industry professionals to build confidence and improve your performance.
+          </p>
+        </div>
+
+        <div style={{
+          background: 'var(--bg-card)',
+          padding: '1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <GitBranch size={18} color="var(--accent)" />
+            <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>GitHub Portfolio Guidance</h4>
+          </div>
+          <p style={{ color: 'var(--text-2)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0, paddingLeft: '2.75rem' }}>
+            Learn how to build an impressive GitHub portfolio with well-documented projects, clean code, and proper README files that attract recruiters.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Testimonials Section
+function Testimonials() {
+  const testimonials = [
+    {
+      name: "Priya Sharma",
+      role: "Android Developer at TechCorp",
+      quote: "The live projects and mentorship at AstirMind transformed my career. I landed my dream job within a month of completing the program.",
+      rating: 5,
+      linkedIn: "linkedin.com/in/priyasharma"
+    },
+    {
+      name: "Rahul Verma",
+      role: "Full Stack Developer at StartupHub",
+      quote: "The structured approach and real client projects gave me the confidence to work in a professional environment. Highly recommended!",
+      rating: 5,
+      linkedIn: "linkedin.com/in/rahulverma"
+    },
+    {
+      name: "Ananya Reddy",
+      role: "Data Scientist at AnalyticsPro",
+      quote: "The Generative AI program was a game-changer. The hands-on projects and expert mentorship helped me transition into AI from traditional development.",
+      rating: 4.5,
+      linkedIn: "linkedin.com/in/ananyareddy"
+    }
+  ];
+
+  return (
+    <div style={{
+      marginTop: '4rem',
+      borderTop: '1px solid var(--line)',
+      paddingTop: '3rem'
+    }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.75rem',
+        marginBottom: '1.5rem'
+      }}>
+        <Sparkles size={24} color="var(--accent)" />
+        <h2 style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: '1.75rem',
+          margin: 0
+        }}>
+          What Our Alumni Say
+        </h2>
+      </div>
+
+      <p style={{
+        color: 'var(--text-2)',
+        marginBottom: '2rem',
+        maxWidth: 700,
+        lineHeight: 1.7,
+        fontSize: '1rem'
+      }}>
+        Hear from our past students who have successfully transitioned into tech careers after completing our programs.
+      </p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
+        gap: '1rem',
+        marginBottom: '1.5rem'
+      }}>
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={index}
+            style={{
+              padding: '1.75rem',
+              border: '1px solid var(--line)',
+              background: 'var(--bg-alt)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.75rem',
+              transition: 'border-color 0.2s, background 0.2s, transform 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--accent)';
+              e.currentTarget.style.background = 'var(--bg-elevated)';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--line)';
+              e.currentTarget.style.background = 'var(--bg-alt)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div>
+                <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>{testimonial.name}</h4>
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--text-3)', margin: '0.25rem 0 0 0' }}>{testimonial.role}</p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--accent)' }}>
+                  {'★'.repeat(Math.floor(testimonial.rating))}{'☆'.repeat(5 - Math.floor(testimonial.rating))}
+                </span>
+              </div>
+            </div>
+            <p style={{ color: 'var(--text-2)', fontSize: '0.9rem', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+              "{testimonial.quote}"
+            </p>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginTop: '0.25rem',
+              paddingTop: '0.75rem',
+              borderTop: '1px solid var(--line)'
+            }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>📎</span>
+              <a
+                href={`https://${testimonial.linkedIn}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.625rem',
+                  color: 'var(--accent)',
+                  textDecoration: 'none',
+                  transition: 'opacity 0.2s'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+              >
+                View on LinkedIn →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{
+        padding: '1.5rem',
+        border: '1px solid var(--line)',
+        background: 'var(--bg-alt)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1.5rem',
+        flexWrap: 'wrap',
+        justifyContent: 'center'
+      }}>
+        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'var(--text-2)' }}>
+          ⭐ See more reviews on:
+        </span>
+        <a
+          href="#"
+          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+        >
+          Google Reviews
+        </a>
+        <a
+          href="#"
+          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+        >
+          LinkedIn Recommendations
+        </a>
+        <a
+          href="#"
+          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+        >
+          Video Testimonials
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function CoursesDetails() {
   const { slug } = useParams();
   const [openModules, setOpenModules] = useState({});
@@ -1721,13 +2389,13 @@ export default function CoursesDetails() {
           {/* 3. Course Highlights */}
           <CourseHighlights />
 
-          {/* 4. Career Opportunities - COURSE SPECIFIC */}
+          {/* 4. Career Opportunities */}
           <CareerOpportunities courseSlug={slug} />
 
-          {/* 5. Skills You Will Learn - COURSE SPECIFIC */}
+          {/* 5. Skills You Will Learn */}
           <SkillsYouWillLearn courseSlug={slug} />
 
-          {/* 6. Tools & Technologies Covered - COURSE SPECIFIC */}
+          {/* 6. Tools & Technologies Covered */}
           <ToolsTechnologies courseSlug={slug} />
 
           {/* 7. Who Should Join? */}
@@ -1838,6 +2506,25 @@ export default function CoursesDetails() {
             </div>
           </div>
 
+          {/* ====== NEW SECTIONS INSERTED HERE (BEFORE FAQ) ====== */}
+          
+          {/* 9. Live Projects */}
+          <LiveProjects />
+
+          {/* 10. Student Portfolio */}
+          <StudentPortfolio />
+
+          {/* 11. Internship Program & Certification */}
+          <InternshipProgram />
+
+          {/* 12. Placement Support */}
+          <PlacementSupport />
+
+          {/* 13. Testimonials */}
+          <Testimonials />
+
+          {/* ====== ORIGINAL FAQ SECTION ====== */}
+          
           {/* FAQ Section */}
           <div style={{
             marginTop: '4rem',
