@@ -240,6 +240,275 @@ const allAudienceTypes = [
   }
 ];
 
+// ============ COURSE-SPECIFIC DATA ============
+
+// 1. Career Opportunities for each course
+const courseCareers = {
+  'android': [
+    { role: 'Android Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'Mobile App Developer', experience: '2-4 Years', salary: '₹8-12 LPA' },
+    { role: 'Senior Android Engineer', experience: '4-7 Years', salary: '₹12-20 LPA' },
+    { role: 'Mobile Tech Lead', experience: '7-10 Years', salary: '₹20-30 LPA' },
+    { role: 'Solution Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+  ],
+  'genai': [
+    { role: 'AI Engineer', experience: '0-2 Years', salary: '₹6-12 LPA' },
+    { role: 'ML Engineer', experience: '2-5 Years', salary: '₹12-22 LPA' },
+    { role: 'Prompt Engineer', experience: '2-4 Years', salary: '₹10-18 LPA' },
+    { role: 'AI Product Manager', experience: '5-8 Years', salary: '₹20-35 LPA' },
+    { role: 'Chief AI Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+  ],
+  'fullstack': [
+    { role: 'Frontend Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
+    { role: 'Full Stack Developer', experience: '3-6 Years', salary: '₹12-20 LPA' },
+    { role: 'Tech Lead', experience: '6-10 Years', salary: '₹20-35 LPA' },
+    { role: 'CTO', experience: '10+ Years', salary: '₹35-60 LPA' }
+  ],
+  'web-development': [
+    { role: 'Web Developer', experience: '0-2 Years', salary: '₹3-6 LPA' },
+    { role: 'Frontend Engineer', experience: '2-4 Years', salary: '₹6-12 LPA' },
+    { role: 'Senior Web Developer', experience: '4-7 Years', salary: '₹12-18 LPA' },
+    { role: 'Web Tech Lead', experience: '7-10 Years', salary: '₹18-28 LPA' },
+    { role: 'Web Architect', experience: '10+ Years', salary: '₹28-45 LPA' }
+  ],
+  'mobile-app-development': [
+    { role: 'Mobile Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'React Native Developer', experience: '2-4 Years', salary: '₹8-14 LPA' },
+    { role: 'Flutter Developer', experience: '2-5 Years', salary: '₹10-18 LPA' },
+    { role: 'Mobile Tech Lead', experience: '5-9 Years', salary: '₹18-30 LPA' },
+    { role: 'Mobile Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
+  ],
+  'uiux': [
+    { role: 'UI/UX Designer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Product Designer', experience: '2-5 Years', salary: '₹7-15 LPA' },
+    { role: 'Senior UX Designer', experience: '4-8 Years', salary: '₹15-25 LPA' },
+    { role: 'UX Lead', experience: '6-10 Years', salary: '₹22-35 LPA' },
+    { role: 'Design Director', experience: '10+ Years', salary: '₹35-55 LPA' }
+  ],
+  'datascience': [
+    { role: 'Data Analyst', experience: '0-2 Years', salary: '₹4-8 LPA' },
+    { role: 'Data Scientist', experience: '2-5 Years', salary: '₹10-20 LPA' },
+    { role: 'Senior Data Scientist', experience: '4-8 Years', salary: '₹18-30 LPA' },
+    { role: 'ML Tech Lead', experience: '7-10 Years', salary: '₹25-40 LPA' },
+    { role: 'Chief Data Officer', experience: '10+ Years', salary: '₹40-70 LPA' }
+  ],
+  'python': [
+    { role: 'Python Developer', experience: '0-2 Years', salary: '₹3-7 LPA' },
+    { role: 'Backend Developer', experience: '2-4 Years', salary: '₹7-14 LPA' },
+    { role: 'Senior Python Engineer', experience: '4-7 Years', salary: '₹14-22 LPA' },
+    { role: 'Python Tech Lead', experience: '7-10 Years', salary: '₹22-35 LPA' },
+    { role: 'Solution Architect', experience: '10+ Years', salary: '₹35-55 LPA' }
+  ],
+  'cloud-computing': [
+    { role: 'Cloud Engineer', experience: '0-2 Years', salary: '₹5-10 LPA' },
+    { role: 'DevOps Engineer', experience: '2-5 Years', salary: '₹10-20 LPA' },
+    { role: 'Senior Cloud Engineer', experience: '4-8 Years', salary: '₹18-30 LPA' },
+    { role: 'Cloud Architect', experience: '7-12 Years', salary: '₹25-45 LPA' },
+    { role: 'Principal Cloud Architect', experience: '12+ Years', salary: '₹45-70 LPA' }
+  ]
+};
+
+// 2. Skills for each course
+const courseSkills = {
+  'android': [
+    { icon: Smartphone, label: 'Android App Development' },
+    { icon: Code, label: 'Kotlin Programming' },
+    { icon: Layout, label: 'Android UI/UX Design' },
+    { icon: Database, label: 'Firebase & SQLite Integration' },
+    { icon: Cloud, label: 'Cloud APIs & Services' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'App Security & Encryption' },
+    { icon: Layers, label: 'MVVM Architecture' },
+    { icon: Package, label: 'Dependency Injection' },
+    { icon: Cpu, label: 'Performance Optimization' },
+    { icon: Terminal, label: 'Command Line Tools' },
+    { icon: Palette, label: 'Material Design Principles' },
+    { icon: Smartphone, label: 'Push Notifications' },
+    { icon: Database, label: 'Offline Data Storage' },
+    { icon: Cloud, label: 'REST API Integration' },
+    { icon: Shield, label: 'Biometric Authentication' },
+    { icon: Layers, label: 'Jetpack Compose' },
+    { icon: Code, label: 'Testing & Debugging' },
+    { icon: GitBranch, label: 'CI/CD Pipelines' },
+    { icon: Package, label: 'Google Play Console' },
+    { icon: Users2, label: 'Agile Development' },
+    { icon: Trophy, label: 'App Monetization' }
+  ],
+  'genai': [
+    { icon: Code, label: 'Prompt Engineering' },
+    { icon: Cloud, label: 'LLM Integration (OpenAI, Claude)' },
+    { icon: Layers, label: 'RAG Pipeline Development' },
+    { icon: Database, label: 'Vector Databases' },
+    { icon: GitBranch, label: 'LangChain & LangGraph' },
+    { icon: Shield, label: 'AI Ethics & Safety' },
+    { icon: Cpu, label: 'Model Fine-tuning' },
+    { icon: Package, label: 'API Development' },
+    { icon: Terminal, label: 'Python Programming' },
+    { icon: Cloud, label: 'Cloud Deployment (AWS/Azure)' },
+    { icon: Users2, label: 'AI Product Strategy' },
+    { icon: Trophy, label: 'AI Agents Development' }
+  ],
+  'fullstack': [
+    { icon: Code, label: 'React.js Development' },
+    { icon: Code, label: 'Node.js Development' },
+    { icon: Code, label: 'Python/Django Development' },
+    { icon: Database, label: 'Database Design (SQL & NoSQL)' },
+    { icon: Cloud, label: 'REST API Development' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'Authentication & Authorization' },
+    { icon: Layers, label: 'Microservices Architecture' },
+    { icon: Package, label: 'Docker & Containerization' },
+    { icon: Cpu, label: 'System Design' },
+    { icon: Terminal, label: 'CI/CD Pipelines' },
+    { icon: Cloud, label: 'Cloud Deployment' }
+  ],
+  'web-development': [
+    { icon: Code, label: 'HTML5 & CSS3' },
+    { icon: Code, label: 'JavaScript (ES6+)' },
+    { icon: Layout, label: 'Responsive Web Design' },
+    { icon: Layers, label: 'React.js Framework' },
+    { icon: Package, label: 'Node.js Backend' },
+    { icon: Database, label: 'MongoDB & SQL' },
+    { icon: Cloud, label: 'API Integration' },
+    { icon: GitBranch, label: 'Git & GitHub' },
+    { icon: Palette, label: 'UI/UX Principles' },
+    { icon: Terminal, label: 'Command Line Basics' },
+    { icon: Cloud, label: 'Web Hosting & Deployment' },
+    { icon: Trophy, label: 'Website Optimization' }
+  ],
+  'mobile-app-development': [
+    { icon: Smartphone, label: 'React Native Development' },
+    { icon: Smartphone, label: 'Flutter Development' },
+    { icon: Code, label: 'Dart Programming' },
+    { icon: Layout, label: 'Mobile UI/UX Design' },
+    { icon: Database, label: 'Firebase Integration' },
+    { icon: Cloud, label: 'REST API Integration' },
+    { icon: Shield, label: 'App Security' },
+    { icon: Layers, label: 'State Management' },
+    { icon: Package, label: 'Push Notifications' },
+    { icon: Cpu, label: 'Performance Optimization' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Trophy, label: 'App Store & Play Store Deployment' }
+  ],
+  'uiux': [
+    { icon: Palette, label: 'User Research & Discovery' },
+    { icon: Layout, label: 'Wireframing & Prototyping' },
+    { icon: Palette, label: 'Visual Design (Color, Typography)' },
+    { icon: Layers, label: 'Design Systems' },
+    { icon: Package, label: 'Figma Advanced' },
+    { icon: Cloud, label: 'Adobe XD & Photoshop' },
+    { icon: Users2, label: 'User Testing & Validation' },
+    { icon: Trophy, label: 'Portfolio Development' },
+    { icon: Terminal, label: 'Interactive Prototyping' },
+    { icon: Database, label: 'Information Architecture' },
+    { icon: GitBranch, label: 'Design Handoff' },
+    { icon: Shield, label: 'Accessibility Design' }
+  ],
+  'datascience': [
+    { icon: Code, label: 'Python Programming' },
+    { icon: Code, label: 'Data Cleaning & Preprocessing' },
+    { icon: Database, label: 'SQL & NoSQL Databases' },
+    { icon: Layers, label: 'Machine Learning Algorithms' },
+    { icon: Cloud, label: 'Deep Learning (TensorFlow, PyTorch)' },
+    { icon: Package, label: 'Data Visualization (Matplotlib, Seaborn)' },
+    { icon: Cpu, label: 'Statistical Analysis' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'ML Model Deployment' },
+    { icon: Terminal, label: 'Big Data Tools (Spark, Hadoop)' },
+    { icon: Cloud, label: 'Cloud ML Services' },
+    { icon: Trophy, label: 'Business Intelligence' }
+  ],
+  'python': [
+    { icon: Code, label: 'Python Fundamentals' },
+    { icon: Code, label: 'Object-Oriented Programming' },
+    { icon: Database, label: 'Data Structures & Algorithms' },
+    { icon: Cloud, label: 'Django Web Framework' },
+    { icon: Package, label: 'REST API Development' },
+    { icon: Layers, label: 'NumPy & Pandas' },
+    { icon: Cpu, label: 'Data Visualization' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'Automation & Scripting' },
+    { icon: Terminal, label: 'Testing & Debugging' },
+    { icon: Cloud, label: 'Database Integration' },
+    { icon: Trophy, label: 'Project Development' }
+  ],
+  'cloud-computing': [
+    { icon: Cloud, label: 'Cloud Fundamentals (IaaS, PaaS, SaaS)' },
+    { icon: Cloud, label: 'AWS Core Services' },
+    { icon: Cloud, label: 'Azure & GCP' },
+    { icon: Layers, label: 'Docker & Kubernetes' },
+    { icon: Package, label: 'CI/CD Pipelines' },
+    { icon: Shield, label: 'Cloud Security' },
+    { icon: Cpu, label: 'Infrastructure as Code (Terraform)' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Terminal, label: 'Monitoring & Logging' },
+    { icon: Database, label: 'Cloud Databases' },
+    { icon: Code, label: 'Serverless Architecture' },
+    { icon: Trophy, label: 'Disaster Recovery & Backup' }
+  ]
+};
+
+// 3. Tools & Technologies for each course
+const courseTools = {
+  'android': [
+    'Kotlin', 'Android Studio', 'Jetpack Compose', 'Git', 'GitHub',
+    'Firebase', 'SQLite', 'Room Database', 'Retrofit', 'REST APIs',
+    'Material Design', 'MVVM', 'Coroutines', 'Flow', 'Dagger/Hilt',
+    'Google Play Console', 'Figma', 'Postman', 'Gradle', 'JUnit'
+  ],
+  'genai': [
+    'Python', 'OpenAI API', 'Claude API', 'LangChain', 'Vector Databases',
+    'Pinecone', 'Weaviate', 'FAISS', 'Hugging Face', 'PyTorch',
+    'TensorFlow', 'Docker', 'FastAPI', 'Streamlit', 'AWS Bedrock',
+    'Git', 'GitHub', 'Jupyter', 'VS Code', 'LangGraph'
+  ],
+  'fullstack': [
+    'React', 'Node.js', 'Python', 'Django', 'Express.js',
+    'MongoDB', 'PostgreSQL', 'MySQL', 'Git', 'GitHub',
+    'Docker', 'AWS', 'REST APIs', 'Redux', 'Webpack',
+    'TypeScript', 'Tailwind CSS', 'JWT', 'Jest', 'Postman'
+  ],
+  'web-development': [
+    'HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js',
+    'Express.js', 'MongoDB', 'MySQL', 'Git', 'GitHub',
+    'Bootstrap', 'Tailwind CSS', 'REST APIs', 'Webpack', 'VS Code',
+    'Chrome DevTools', 'Postman', 'Netlify', 'Vercel', 'Heroku'
+  ],
+  'mobile-app-development': [
+    'React Native', 'Flutter', 'Dart', 'JavaScript', 'Firebase',
+    'SQLite', 'REST APIs', 'Git', 'GitHub', 'Android Studio',
+    'Xcode', 'VS Code', 'Redux', 'Bloc', 'Provider',
+    'App Store Connect', 'Google Play Console', 'Postman', 'Figma', 'Expo'
+  ],
+  'uiux': [
+    'Figma', 'Adobe XD', 'Adobe Photoshop', 'Adobe Illustrator', 'Sketch',
+    'InVision', 'Miro', 'Zeplin', 'UX Research Tools', 'Hotjar',
+    'Google Analytics', 'UsabilityHub', 'Protopie', 'Framer', 'Webflow',
+    'Notion', 'Slack', 'Trello', 'Jira', 'Abstract'
+  ],
+  'datascience': [
+    'Python', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn',
+    'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras', 'Jupyter',
+    'SQL', 'MongoDB', 'Tableau', 'Power BI', 'Hadoop',
+    'Spark', 'Docker', 'Git', 'AWS SageMaker', 'GCP AI Platform'
+  ],
+  'python': [
+    'Python', 'Django', 'Flask', 'FastAPI', 'NumPy',
+    'Pandas', 'Matplotlib', 'Seaborn', 'SQLite', 'PostgreSQL',
+    'MySQL', 'Git', 'GitHub', 'VS Code', 'PyCharm',
+    'Jupyter', 'Docker', 'REST APIs', 'Postman', 'Pytest'
+  ],
+  'cloud-computing': [
+    'AWS (EC2, S3, VPC, IAM)', 'Azure', 'GCP', 'Docker', 'Kubernetes',
+    'Terraform', 'Ansible', 'CI/CD (Jenkins, GitHub Actions)', 'Linux', 'Bash',
+    'Python', 'Node.js', 'MySQL', 'PostgreSQL', 'MongoDB',
+    'Redis', 'Nginx', 'Apache', 'CloudWatch', 'Prometheus'
+  ]
+};
+
+// ============ COMPONENTS ============
+
 // Who Should Join Component
 function WhoShouldJoin() {
   return (
@@ -347,8 +616,6 @@ function WhoShouldJoin() {
     </div>
   );
 }
-
-// ============ NEW SECTIONS ============
 
 // 1. Why Learn This Course?
 function WhyLearnThis({ courseTitle }) {
@@ -570,16 +837,10 @@ function CourseHighlights() {
   );
 }
 
-// 4. Career Opportunities
-function CareerOpportunities() {
-  const careers = [
-    { role: 'Android Developer', experience: '0-2 Years', salary: '₹4-8 LPA' },
-    { role: 'Mobile App Developer', experience: '2-4 Years', salary: '₹8-12 LPA' },
-    { role: 'Senior Android Engineer', experience: '4-7 Years', salary: '₹12-20 LPA' },
-    { role: 'Mobile Tech Lead', experience: '7-10 Years', salary: '₹20-30 LPA' },
-    { role: 'Solution Architect', experience: '10+ Years', salary: '₹30-50 LPA' }
-  ];
-
+// 4. Career Opportunities - COURSE SPECIFIC
+function CareerOpportunities({ courseSlug }) {
+  const careers = courseCareers[courseSlug] || courseCareers['android'];
+  
   return (
     <div style={{
       marginTop: '4rem',
@@ -639,33 +900,10 @@ function CareerOpportunities() {
   );
 }
 
-// 5. Skills You Will Learn
-function SkillsYouWillLearn() {
-  const skills = [
-    { icon: Smartphone, label: 'Android App Development' },
-    { icon: Code, label: 'Kotlin Programming' },
-    { icon: Layout, label: 'Android UI/UX Design' },
-    { icon: Database, label: 'Firebase & SQLite Integration' },
-    { icon: Cloud, label: 'Cloud APIs & Services' },
-    { icon: GitBranch, label: 'Git & Version Control' },
-    { icon: Shield, label: 'App Security & Encryption' },
-    { icon: Layers, label: 'MVVM Architecture' },
-    { icon: Package, label: 'Dependency Injection' },
-    { icon: Cpu, label: 'Performance Optimization' },
-    { icon: Terminal, label: 'Command Line Tools' },
-    { icon: Palette, label: 'Material Design Principles' },
-    { icon: Smartphone, label: 'Push Notifications' },
-    { icon: Database, label: 'Offline Data Storage' },
-    { icon: Cloud, label: 'REST API Integration' },
-    { icon: Shield, label: 'Biometric Authentication' },
-    { icon: Layers, label: 'Jetpack Compose' },
-    { icon: Code, label: 'Testing & Debugging' },
-    { icon: GitBranch, label: 'CI/CD Pipelines' },
-    { icon: Package, label: 'Google Play Console' },
-    { icon: Users2, label: 'Agile Development' },
-    { icon: Trophy, label: 'App Monetization' }
-  ];
-
+// 5. Skills You Will Learn - COURSE SPECIFIC
+function SkillsYouWillLearn({ courseSlug }) {
+  const skills = courseSkills[courseSlug] || courseSkills['android'];
+  
   return (
     <div style={{
       marginTop: '4rem',
@@ -727,15 +965,10 @@ function SkillsYouWillLearn() {
   );
 }
 
-// 6. Tools & Technologies Covered
-function ToolsTechnologies() {
-  const tools = [
-    'Kotlin', 'Android Studio', 'Jetpack Compose', 'Git', 'GitHub',
-    'Firebase', 'SQLite', 'Room Database', 'Retrofit', 'REST APIs',
-    'Material Design', 'MVVM', 'Coroutines', 'Flow', 'Dagger/Hilt',
-    'Google Play Console', 'Figma', 'Postman', 'Gradle', 'JUnit'
-  ];
-
+// 6. Tools & Technologies Covered - COURSE SPECIFIC
+function ToolsTechnologies({ courseSlug }) {
+  const tools = courseTools[courseSlug] || courseTools['android'];
+  
   return (
     <div style={{
       marginTop: '4rem',
@@ -1336,10 +1569,7 @@ export default function CoursesDetails() {
   const [openModules, setOpenModules] = useState({});
   const [openFAQs, setOpenFAQs] = useState({});
 
-  // Find the course from local data
   const course = courses.find(item => item.slug === slug);
-
-  // Get syllabus for this course
   const syllabus = courseSyllabus[slug] || {
     modules: [
       { title: 'Module 1: Foundation', topics: ['Core Concepts', 'Best Practices', 'Tools & Technologies'] },
@@ -1441,7 +1671,6 @@ export default function CoursesDetails() {
               {course.title}
             </h1>
 
-            {/* Rating Section */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -1483,8 +1712,6 @@ export default function CoursesDetails() {
             ))}
           </div>
 
-          {/* ========== ALL NEW SECTIONS ========== */}
-          
           {/* 1. Why Learn This Course? */}
           <WhyLearnThis courseTitle={course.title} />
 
@@ -1494,14 +1721,14 @@ export default function CoursesDetails() {
           {/* 3. Course Highlights */}
           <CourseHighlights />
 
-          {/* 4. Career Opportunities */}
-          <CareerOpportunities />
+          {/* 4. Career Opportunities - COURSE SPECIFIC */}
+          <CareerOpportunities courseSlug={slug} />
 
-          {/* 5. Skills You Will Learn */}
-          <SkillsYouWillLearn />
+          {/* 5. Skills You Will Learn - COURSE SPECIFIC */}
+          <SkillsYouWillLearn courseSlug={slug} />
 
-          {/* 6. Tools & Technologies Covered */}
-          <ToolsTechnologies />
+          {/* 6. Tools & Technologies Covered - COURSE SPECIFIC */}
+          <ToolsTechnologies courseSlug={slug} />
 
           {/* 7. Who Should Join? */}
           <WhoShouldJoin />
@@ -1542,7 +1769,6 @@ export default function CoursesDetails() {
               ))}
             </div>
 
-            {/* Module Stats */}
             <div style={{
               display: 'flex',
               gap: '2rem',
