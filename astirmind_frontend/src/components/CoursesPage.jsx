@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { courses } from './Services';
+import { useGoogleRating } from '../hooks/useGoogleRating';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,8 +33,8 @@ function getIcon(iconName) {
   return Brain;
 }
 
-// Star Rating Component
-function StarRating({ rating, total = 5 }) {
+// Google Star Rating Component
+function GoogleStarRating({ rating, total = 5 }) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
 
@@ -51,14 +52,6 @@ function StarRating({ rating, total = 5 }) {
           }}
         />
       ))}
-      <span style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.5625rem',
-        color: 'var(--text-3)',
-        marginLeft: '4px'
-      }}>
-        {rating.toFixed(1)}
-      </span>
     </div>
   );
 }
@@ -66,6 +59,9 @@ function StarRating({ rating, total = 5 }) {
 export default function ProgramsPage() {
   const [programs, setPrograms] = useState([]);
   const heroRef = useRef(null);
+  
+  // Get Google Rating dynamically
+  const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
   // Use local courses data
   useEffect(() => {
@@ -248,18 +244,46 @@ export default function ProgramsPage() {
                       </p>
                     </div>
 
-                    {/* Rating */}
-                    <div>
-                      <StarRating rating={program.rating || 4.5} />
-                      <span style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.5rem',
-                        color: 'var(--text-3)',
-                        marginLeft: '4px'
+                    {/* Google Rating Section - Dynamic from Google */}
+                    {!ratingLoading ? (
+                      <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '0.5rem', 
+                        flexWrap: 'wrap'
                       }}>
-                        ({program.reviews || 0} reviews)
-                      </span>
-                    </div>
+                        <GoogleStarRating rating={googleRating.ratingValue} />
+                        <span style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.5625rem',
+                          color: 'var(--text-2)',
+                          fontWeight: 600
+                        }}>
+                          {googleRating.ratingValue.toFixed(1)}
+                        </span>
+                        <span style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: '0.5rem',
+                          color: 'var(--text-3)'
+                        }}>
+                          ({googleRating.reviewCount.toLocaleString()} Google reviews)
+                        </span>
+                      </div>
+                    ) : (
+                      <div style={{ 
+                        display: 'flex', 
+                        gap: '0.5rem',
+                        alignItems: 'center'
+                      }}>
+                        <div style={{ 
+                          width: 80, 
+                          height: 16, 
+                          background: 'var(--bg-alt)', 
+                          borderRadius: 4,
+                          animation: 'pulse 1.5s ease-in-out infinite'
+                        }} />
+                      </div>
+                    )}
 
                     {/* Tags */}
                     <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginTop: 'auto' }}>

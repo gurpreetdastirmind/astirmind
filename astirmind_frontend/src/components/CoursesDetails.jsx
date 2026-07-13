@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { 
-  Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase, 
-  UserCheck, Building, RefreshCw, Award, Laptop, TrendingUp, 
-  Microscope, Stethoscope, BarChart, Zap, Target, DollarSign, 
+import { useGoogleRating } from '../hooks/useGoogleRating';
+import {
+  Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase,
+  UserCheck, Building, RefreshCw, Award, Laptop, TrendingUp,
+  Microscope, Stethoscope, BarChart, Zap, Target, DollarSign,
   Clock, Calendar, CreditCard, FileCheck, FolderOpen, Users2,
   Code, GitBranch, Smartphone, Database, Shield, Cloud, Cpu,
   Layout, Palette, Terminal, Layers, Package, CheckCircle,
@@ -257,13 +258,13 @@ const courseCareers = {
   'android': [
     { role: 'Android Developer', experience: '0-2 Years' },
     { role: 'Mobile App Developer', experience: '2-4 Years' },
-    { role: 'Senior Android Engineer', experience: '4-7 Years'  },
-    { role: 'Mobile Tech Lead', experience: '7-10 Years'  },
-    { role: 'Solution Architect', experience: '10+ Years'  }
+    { role: 'Senior Android Engineer', experience: '4-7 Years' },
+    { role: 'Mobile Tech Lead', experience: '7-10 Years' },
+    { role: 'Solution Architect', experience: '10+ Years' }
   ],
   'genai': [
     { role: 'AI Engineer', experience: '0-2 Years' },
-    { role: 'ML Engineer', experience: '2-5 Years'},
+    { role: 'ML Engineer', experience: '2-5 Years' },
     { role: 'Prompt Engineer', experience: '2-4 Years' },
     { role: 'AI Product Manager', experience: '5-8 Years' },
     { role: 'Chief AI Officer', experience: '10+ Years' }
@@ -273,49 +274,49 @@ const courseCareers = {
     { role: 'Backend Developer', experience: '2-4 Years' },
     { role: 'Full Stack Developer', experience: '3-6 Years' },
     { role: 'Tech Lead', experience: '6-10 Years' },
-    { role: 'CTO', experience: '10+ Years'}
+    { role: 'CTO', experience: '10+ Years' }
   ],
   'web-development': [
-    { role: 'Web Developer', experience: '0-2 Years'},
+    { role: 'Web Developer', experience: '0-2 Years' },
     { role: 'Frontend Engineer', experience: '2-4 Years' },
-    { role: 'Senior Web Developer', experience: '4-7 Years'},
+    { role: 'Senior Web Developer', experience: '4-7 Years' },
     { role: 'Web Tech Lead', experience: '7-10 Years' },
     { role: 'Web Architect', experience: '10+ Years' }
   ],
   'mobile-app-development': [
-    { role: 'Mobile Developer', experience: '0-2 Years'},
-    { role: 'React Native Developer', experience: '2-4 Years'},
-    { role: 'Flutter Developer', experience: '2-5 Years'},
-    { role: 'Mobile Tech Lead', experience: '5-9 Years'},
+    { role: 'Mobile Developer', experience: '0-2 Years' },
+    { role: 'React Native Developer', experience: '2-4 Years' },
+    { role: 'Flutter Developer', experience: '2-5 Years' },
+    { role: 'Mobile Tech Lead', experience: '5-9 Years' },
     { role: 'Mobile Architect', experience: '10+ Years' }
   ],
   'uiux': [
-    { role: 'UI/UX Designer', experience: '0-2 Years'},
-    { role: 'Product Designer', experience: '2-5 Years'},
-    { role: 'Senior UX Designer', experience: '4-8 Years'},
-    { role: 'UX Lead', experience: '6-10 Years'},
-    { role: 'Design Director', experience: '10+ Years'}
+    { role: 'UI/UX Designer', experience: '0-2 Years' },
+    { role: 'Product Designer', experience: '2-5 Years' },
+    { role: 'Senior UX Designer', experience: '4-8 Years' },
+    { role: 'UX Lead', experience: '6-10 Years' },
+    { role: 'Design Director', experience: '10+ Years' }
   ],
   'datascience': [
-    { role: 'Data Analyst', experience: '0-2 Years'},
-    { role: 'Data Scientist', experience: '2-5 Years'},
-    { role: 'Senior Data Scientist', experience: '4-8 Years'},
-    { role: 'ML Tech Lead', experience: '7-10 Years'},
-    { role: 'Chief Data Officer', experience: '10+ Years'}
+    { role: 'Data Analyst', experience: '0-2 Years' },
+    { role: 'Data Scientist', experience: '2-5 Years' },
+    { role: 'Senior Data Scientist', experience: '4-8 Years' },
+    { role: 'ML Tech Lead', experience: '7-10 Years' },
+    { role: 'Chief Data Officer', experience: '10+ Years' }
   ],
   'python': [
-    { role: 'Python Developer', experience: '0-2 Years'},
-    { role: 'Backend Developer', experience: '2-4 Years'},
+    { role: 'Python Developer', experience: '0-2 Years' },
+    { role: 'Backend Developer', experience: '2-4 Years' },
     { role: 'Senior Python Engineer', experience: '4-7 Years' },
-    { role: 'Python Tech Lead', experience: '7-10 Years'},
-    { role: 'Solution Architect', experience: '10+ Years'}
+    { role: 'Python Tech Lead', experience: '7-10 Years' },
+    { role: 'Solution Architect', experience: '10+ Years' }
   ],
   'cloud-computing': [
-    { role: 'Cloud Engineer', experience: '0-2 Years'},
-    { role: 'DevOps Engineer', experience: '2-5 Years'},
-    { role: 'Senior Cloud Engineer', experience: '4-8 Years'},
-    { role: 'Cloud Architect', experience: '7-12 Years'},
-    { role: 'Principal Cloud Architect', experience: '12+ Years'}
+    { role: 'Cloud Engineer', experience: '0-2 Years' },
+    { role: 'DevOps Engineer', experience: '2-5 Years' },
+    { role: 'Senior Cloud Engineer', experience: '4-8 Years' },
+    { role: 'Cloud Architect', experience: '7-12 Years' },
+    { role: 'Principal Cloud Architect', experience: '12+ Years' }
   ],
   'data-analytics': [
     { role: 'Data Analyst', experience: '0-2 Years' },
@@ -686,7 +687,7 @@ const courseTools = {
     'Redis', 'Nginx', 'Apache', 'CloudWatch', 'Prometheus'
   ],
   'data-analytics': [
-    'Python', 'Git', 'GitHub', 'Jupyter', 'NumPy', 'Pandas', 
+    'Python', 'Git', 'GitHub', 'Jupyter', 'NumPy', 'Pandas',
     'Matplotlib', 'MySQL', 'Excel (Advanced)', 'Power BI', 'Tableau'
   ],
   'automation-solutions': [
@@ -1001,10 +1002,10 @@ function WhyAstirMind() {
 // 3. Course Highlights - DYNAMIC DURATION PER COURSE
 function CourseHighlights({ course }) {
   // Extract duration from course tags
-  const durationOptions = course.tags.filter(t => 
-    t === '6-8 Months' || 
-    t === '2 Months' || 
-    t === '45 days' || 
+  const durationOptions = course.tags.filter(t =>
+    t === '6-8 Months' ||
+    t === '2 Months' ||
+    t === '45 days' ||
     t === '120-Hours' ||
     t.includes('Week') ||
     t.includes('Days') ||
@@ -1013,8 +1014,8 @@ function CourseHighlights({ course }) {
   );
 
   // If multiple duration tags exist, combine them
-  const duration = durationOptions.length > 0 
-    ? durationOptions.join(' • ') 
+  const duration = durationOptions.length > 0
+    ? durationOptions.join(' • ')
     : 'Flexible';
 
   const highlights = [
@@ -1075,7 +1076,7 @@ function CourseHighlights({ course }) {
 // 4. Career Opportunities - COURSE SPECIFIC
 function CareerOpportunities({ courseSlug }) {
   const careers = courseCareers[courseSlug] || courseCareers['fullstack'];
-  
+
   return (
     <div style={{
       marginTop: '4rem',
@@ -1136,7 +1137,7 @@ function CareerOpportunities({ courseSlug }) {
 // 5. Skills You Will Learn - COURSE SPECIFIC
 function SkillsYouWillLearn({ courseSlug }) {
   const skills = courseSkills[courseSlug] || courseSkills['fullstack'];
-  
+
   return (
     <div style={{
       marginTop: '4rem',
@@ -1201,7 +1202,7 @@ function SkillsYouWillLearn({ courseSlug }) {
 // 6. Tools & Technologies Covered - COURSE SPECIFIC
 function ToolsTechnologies({ courseSlug }) {
   const tools = courseTools[courseSlug] || courseTools['fullstack'];
-  
+
   return (
     <div style={{
       marginTop: '4rem',
@@ -3181,14 +3182,14 @@ function StudentPortfolio() {
           background: 'var(--bg-alt)',
           transition: 'border-color 0.2s, background 0.2s'
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'var(--accent)';
-          e.currentTarget.style.background = 'var(--bg-elevated)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'var(--line)';
-          e.currentTarget.style.background = 'var(--bg-alt)';
-        }}>
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--accent)';
+            e.currentTarget.style.background = 'var(--bg-elevated)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'var(--line)';
+            e.currentTarget.style.background = 'var(--bg-alt)';
+          }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
             <GitBranch size={18} color="var(--accent)" />
             <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>GitHub Portfolios</h4>
@@ -3204,14 +3205,14 @@ function StudentPortfolio() {
           background: 'var(--bg-alt)',
           transition: 'border-color 0.2s, background 0.2s'
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'var(--accent)';
-          e.currentTarget.style.background = 'var(--bg-elevated)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'var(--line)';
-          e.currentTarget.style.background = 'var(--bg-alt)';
-        }}>
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--accent)';
+            e.currentTarget.style.background = 'var(--bg-elevated)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'var(--line)';
+            e.currentTarget.style.background = 'var(--bg-alt)';
+          }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
             <Award size={18} color="var(--accent)" />
             <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>Certificates</h4>
@@ -3228,14 +3229,14 @@ function StudentPortfolio() {
           gridColumn: '1 / -1',
           transition: 'border-color 0.2s, background 0.2s'
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'var(--accent)';
-          e.currentTarget.style.background = 'var(--bg-elevated)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'var(--line)';
-          e.currentTarget.style.background = 'var(--bg-alt)';
-        }}>
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'var(--accent)';
+            e.currentTarget.style.background = 'var(--bg-elevated)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'var(--line)';
+            e.currentTarget.style.background = 'var(--bg-alt)';
+          }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
             <Smartphone size={18} color="var(--accent)" />
             <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>App Screenshots & Demos</h4>
@@ -3630,6 +3631,7 @@ export default function CoursesDetails() {
   const { slug } = useParams();
   const [openModules, setOpenModules] = useState({});
   const [openFAQs, setOpenFAQs] = useState({});
+  const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
   const course = courses.find(item => item.slug === slug);
   const syllabus = courseSyllabus[slug] || {
@@ -3761,22 +3763,73 @@ export default function CoursesDetails() {
               {course.title}
             </h1>
 
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              marginBottom: '1.5rem',
-              flexWrap: 'wrap'
-            }}>
-              <StarRating rating={course.rating || 4.5} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--text-3)'
+            {/* Google Rating Section - Dynamic from Google */}
+            {!ratingLoading ? (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                marginBottom: '1.5rem',
+                flexWrap: 'wrap'
               }}>
-                Based on {course.reviews || 0} reviews
-              </span>
-            </div>
+                {/* Stars */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={18}
+                      strokeWidth={1.5}
+                      fill={i < Math.floor(googleRating.ratingValue) ? 'var(--accent)' : 'none'}
+                      style={{
+                        color: i < Math.floor(googleRating.ratingValue) ? 'var(--accent)' : 'var(--line)',
+                        opacity: i < Math.floor(googleRating.ratingValue) ? 1 : 0.3
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-2)',
+                  fontWeight: 600
+                }}>
+                  {googleRating.ratingValue.toFixed(1)}
+                </span>
+
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-3)'
+                }}>
+                  ({googleRating.reviewCount.toLocaleString()} Google reviews)
+                </span>
+
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--accent)',
+                  marginLeft: '0.5rem'
+                }}>
+                  ★★★★★
+                </span>
+              </div>
+            ) : (
+              <div style={{
+                display: 'flex',
+                gap: '0.5rem',
+                alignItems: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <div style={{
+                  width: 120,
+                  height: 24,
+                  background: 'var(--bg-alt)',
+                  borderRadius: 4,
+                  animation: 'pulse 1.5s ease-in-out infinite'
+                }} />
+              </div>
+            )}
 
             <p style={{
               maxWidth: 760,

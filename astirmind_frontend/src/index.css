@@ -671,3 +671,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); font-weight: 600; line-h
     font-size: 0.9375rem;
   }
 }
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

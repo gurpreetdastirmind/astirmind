@@ -2,9 +2,10 @@ import { useParams } from 'react-router-dom';
 import { agencyServices } from './Services';
 import { Helmet } from 'react-helmet';
 import { Star } from 'lucide-react';
+import { useGoogleRating } from '../hooks/useGoogleRating';
 
-// Star Rating Component
-function StarRating({ rating, total = 5 }) {
+// Google Star Rating Component
+function GoogleStarRating({ rating, total = 5 }) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
 
@@ -22,14 +23,6 @@ function StarRating({ rating, total = 5 }) {
           }}
         />
       ))}
-      <span style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.75rem',
-        color: 'var(--text-2)',
-        marginLeft: '8px'
-      }}>
-        {rating.toFixed(1)}
-      </span>
     </div>
   );
 }
@@ -37,6 +30,9 @@ function StarRating({ rating, total = 5 }) {
 export default function ServiceDetails() {
   const { slug } = useParams();
   const service = agencyServices.find(item => item.slug === slug);
+  
+  // Get Google Rating dynamically
+  const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
   if (!service) {
     return (
@@ -103,23 +99,56 @@ export default function ServiceDetails() {
               {service.title}
             </h1>
 
-            {/* Rating Section */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              marginBottom: '1.5rem',
-              flexWrap: 'wrap'
-            }}>
-              <StarRating rating={service.rating || 4.5} />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--text-3)'
+            {/* Google Rating Section - Dynamic from Google */}
+            {!ratingLoading ? (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                marginBottom: '1.5rem',
+                flexWrap: 'wrap'
               }}>
-                Based on {service.reviews || 0} reviews
-              </span>
-            </div>
+                <GoogleStarRating rating={googleRating.ratingValue} />
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-2)',
+                  fontWeight: 600
+                }}>
+                  {googleRating.ratingValue.toFixed(1)}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-3)'
+                }}>
+                  ({googleRating.reviewCount.toLocaleString()} Google reviews)
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--accent)',
+                  marginLeft: '0.5rem'
+                }}>
+                  ★★★★★
+                </span>
+              </div>
+            ) : (
+              <div style={{ 
+                display: 'flex', 
+                gap: '0.5rem',
+                alignItems: 'center',
+                marginBottom: '1.5rem'
+              }}>
+                <div style={{ 
+                  width: 120, 
+                  height: 24, 
+                  background: 'var(--bg-alt)', 
+                  borderRadius: 4,
+                  animation: 'pulse 1.5s ease-in-out infinite'
+                }} />
+              </div>
+            )}
 
             <p style={{
               maxWidth: 760,
@@ -204,7 +233,7 @@ export default function ServiceDetails() {
                       fontWeight: 700,
                       color: 'var(--accent)'
                     }}>
-                      {service.rating || '4.5'}
+                      {googleRating.ratingValue.toFixed(1)}
                     </div>
                   </div>
                   <div>
@@ -223,7 +252,7 @@ export default function ServiceDetails() {
                       fontWeight: 700,
                       color: 'var(--text)'
                     }}>
-                      {service.reviews || 0}
+                      {googleRating.reviewCount.toLocaleString()}
                     </div>
                   </div>
                 </div>

@@ -4,11 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, CloudSun, Target, TrendingUp, LineChart, Code2, Layout, Code, Phone, Star, Atom, Calculator } from 'lucide-react';
 import { useMode } from '../context/ModeContext';
 import { Link } from 'react-router-dom';
+import { useGoogleRating } from '../hooks/useGoogleRating';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Star Rating Component
-function StarRating({ rating, total = 5 }) {
+// Google Star Rating Component
+function GoogleStarRating({ rating, total = 5 }) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
   
@@ -26,14 +27,6 @@ function StarRating({ rating, total = 5 }) {
           }}
         />
       ))}
-      <span style={{ 
-        fontFamily: 'var(--font-mono)', 
-        fontSize: '0.5625rem', 
-        color: 'var(--text-3)',
-        marginLeft: '4px'
-      }}>
-        {rating.toFixed(1)}
-      </span>
     </div>
   );
 }
@@ -46,8 +39,6 @@ export const agencyServices = [
     desc: 'AstirMind leverages Machine Learning, Automatic Speech Recognition (ASR), Image Recognition, Text-to-Speech, and AI-driven systems to build intelligent and scalable digital solutions.',
     tags: ['Machine Learning', 'ASR', 'AI Automation', 'Computer Vision'],
     Icon: Brain,
-    rating: 4.8,
-    reviews: 124
   },
   {
     n: '02',
@@ -56,8 +47,6 @@ export const agencyServices = [
     desc: 'We build intelligent automation systems for lead generation, workflow automation, browser automation, CRM integrations, and business process optimization.',
     tags: ['Automation', 'Selenium', 'CRM', 'Workflow Systems'],
     Icon: Bot,
-    rating: 4.7,
-    reviews: 89
   },
   {
     n: '03',
@@ -66,8 +55,6 @@ export const agencyServices = [
     desc: 'We craft modern, responsive, and high-performance websites and web applications focused on scalability, accessibility, and user experience.',
     tags: ['React', 'Next.js', 'Node.js', 'Django'],
     Icon: MonitorCog,
-    rating: 4.9,
-    reviews: 156
   },
   {
     n: '04',
@@ -76,8 +63,6 @@ export const agencyServices = [
     desc: 'Build full-stack JavaScript applications using MongoDB, Express.js, React, and Node.js. We create scalable, high-performance web apps with seamless frontend-backend integration, real-time features, and robust REST APIs.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'REST APIs', 'Full Stack'],
     Icon: Globe,
-    rating: 4.8,
-    reviews: 98
   },
   {
     n: '05',
@@ -86,8 +71,6 @@ export const agencyServices = [
     desc: 'AstirMind builds feature-rich Android and cross-platform mobile applications designed for performance, usability, and business growth.',
     tags: ['Android', 'React Native', 'Flutter', 'Mobile UI'],
     Icon: Smartphone,
-    rating: 4.6,
-    reviews: 112
   },
   {
     n: '06',
@@ -96,8 +79,6 @@ export const agencyServices = [
     desc: 'We develop scalable CMS and MVC-based platforms tailored for businesses across multiple industries with secure and efficient architectures.',
     tags: ['Django', 'Laravel', 'CMS', 'MVC'],
     Icon: LayoutDashboard,
-    rating: 4.7,
-    reviews: 76
   },
   {
     n: '07',
@@ -106,8 +87,6 @@ export const agencyServices = [
     desc: 'AstirMind helps businesses migrate, optimize, and scale applications on cloud platforms with secure infrastructure and growth-focused strategies.',
     tags: ['AWS', 'Cloud Infrastructure', 'DevOps', 'Scalability'],
     Icon: Cloud,
-    rating: 4.8,
-    reviews: 67
   },
   {
     n: '08',
@@ -116,8 +95,6 @@ export const agencyServices = [
     desc: 'Secure and scalable REST API development with seamless third-party integrations including CRMs, payment gateways, cloud services, and enterprise tools.',
     tags: ['REST APIs', 'DRF', 'Microservices', 'Integrations'],
     Icon: Workflow,
-    rating: 4.9,
-    reviews: 83
   },
   {
     n: '09',
@@ -126,8 +103,6 @@ export const agencyServices = [
     desc: 'Building intelligent AI-powered assistants, customer support bots, document assistants, and conversational systems using modern LLM technologies.',
     tags: ['LLM', 'Chatbots', 'OpenAI', 'Conversational AI'],
     Icon: MessageSquareMore,
-    rating: 4.8,
-    reviews: 91
   },
   {
     n: '10',
@@ -136,8 +111,6 @@ export const agencyServices = [
     desc: 'Transforming raw data into meaningful insights through interactive dashboards, reporting systems, graph analytics, and business intelligence solutions.',
     tags: ['Analytics', 'Dashboards', 'Data Visualization', 'Business Intelligence'],
     Icon: BarChart3,
-    rating: 4.7,
-    reviews: 104
   },
   {
     n: '11',
@@ -146,8 +119,6 @@ export const agencyServices = [
     desc: 'End-to-end SaaS application development including scalable architectures, subscription systems, dashboards, and cloud-native platforms.',
     tags: ['SaaS', 'Cloud Apps', 'Multi-Tenant', 'Subscriptions'],
     Icon: Layers3,
-    rating: 4.9,
-    reviews: 72
   },
   {
     n: '12',
@@ -156,8 +127,6 @@ export const agencyServices = [
     desc: 'We create intuitive, visually engaging, and user-focused interfaces that align perfectly with client goals and modern design standards.',
     tags: ['Figma', 'UI Design', 'UX Research', 'Wireframing'],
     Icon: Palette,
-    rating: 4.8,
-    reviews: 145
   },
   {
     n: '13',
@@ -166,8 +135,6 @@ export const agencyServices = [
     desc: 'AstirMind develops scalable e-commerce platforms with secure payment systems, optimized user journeys, and seamless shopping experiences.',
     tags: ['E-Commerce', 'Shopify', 'WooCommerce', 'Payment Gateway'],
     Icon: ShoppingCart,
-    rating: 4.6,
-    reviews: 88
   },
   {
     n: '14',
@@ -176,8 +143,6 @@ export const agencyServices = [
     desc: 'We help brands grow digitally through strategic marketing, lead generation, SEO, social media campaigns, and performance-driven advertising.',
     tags: ['SEO', 'Branding', 'Lead Generation', 'Social Media'],
     Icon: Megaphone,
-    rating: 4.7,
-    reviews: 95
   },
   {
     n: '15',
@@ -186,8 +151,6 @@ export const agencyServices = [
     desc: 'Custom ERP and CRM platforms designed to streamline operations, manage workflows, improve productivity, and centralize business management.',
     tags: ['ERP', 'CRM', 'Business Automation', 'Enterprise Solutions'],
     Icon: BriefcaseBusiness,
-    rating: 4.8,
-    reviews: 63
   },
   {
     n: '16',
@@ -196,8 +159,6 @@ export const agencyServices = [
     desc: 'AstirMind provides industry-oriented internships, project guidance, and practical training in web development, AI, mobile development, and UI/UX.',
     tags: ['Training', 'Internships', 'Project Mentorship', 'Skill Development'],
     Icon: GraduationCap,
-    rating: 4.9,
-    reviews: 178
   },
   {
     n: '17',
@@ -206,8 +167,6 @@ export const agencyServices = [
     desc: 'Build decentralized applications (dApps), smart contracts, tokenomics, and secure crypto wallets. We help enterprises leverage blockchain for transparency, traceability, and trustless transactions across industries like finance, supply chain, and real estate.',
     tags: ['Blockchain', 'Smart Contracts', 'Web3', 'Solidity', 'Crypto Wallets', 'dApps'],
     Icon: ShieldCheck,
-    rating: 4.7,
-    reviews: 56
   },
   {
     n: '18',
@@ -216,8 +175,6 @@ export const agencyServices = [
     desc: 'Automate your software delivery lifecycle with robust CI/CD pipelines, infrastructure as code, container orchestration, and 24/7 monitoring. We help teams ship faster, rollback safely, and scale without downtime.',
     tags: ['CI/CD', 'Docker', 'Kubernetes', 'Jenkins', 'GitHub Actions', 'Terraform', 'Monitoring'],
     Icon: TrendingUp,
-    rating: 4.8,
-    reviews: 71
   },
   {
     n: '19',
@@ -226,8 +183,6 @@ export const agencyServices = [
     desc: 'Connect the physical and digital worlds with custom IoT solutions — from sensor networks and edge computing to cloud dashboards. We also explore AR/VR, computer vision at the edge, and next-gen hardware integrations.',
     tags: ['IoT', 'Edge Computing', 'Sensor Networks', 'MQTT', 'ESP32', 'Arduino', 'AR/VR'],
     Icon: Cpu,
-    rating: 4.6,
-    reviews: 49
   },
   {
     n: '20',
@@ -236,8 +191,6 @@ export const agencyServices = [
     desc: 'Extract structured data from websites, APIs, and documents at scale. Build end-to-end automation workflows that trigger actions, sync data across platforms, and eliminate manual repetitive tasks. Perfect for lead generation, market research, price monitoring, and operational efficiency.',
     tags: ['Web Scraping', 'Workflow Automation', 'Data Extraction', 'Zapier', 'Make', 'Python', 'Selenium', 'APIs'],
     Icon: Workflow,
-    rating: 4.7,
-    reviews: 82
   },
 ];
 
@@ -249,8 +202,6 @@ export const courses = [
     desc: 'Hands-on training with large language models, prompt engineering, RAG pipelines, and building AI-powered applications. Work on real products, not toy examples.',
     tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Brain,
-    rating: 4.9,
-    reviews: 234
   },
   {
     n: '02',
@@ -259,8 +210,6 @@ export const courses = [
     desc: 'We build intelligent automation systems for lead generation, data extraction, workflow automation, browser automation, CRM integrations, and business process optimization. Extract structured data from any website and automate repetitive tasks across your entire tech stack.',
     tags: ['6-8 Months','Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
     Icon: Bot,
-    rating: 4.7,
-    reviews: 156
   },
   {
     n: '03',
@@ -269,8 +218,6 @@ export const courses = [
     desc: 'Master both JavaScript (React/Node) AND Python/Django stacks. Build complete web products from database to UI with REST APIs, authentication, and deployment. Choose your specialization or learn both — the exact stacks companies hire for.',
     tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification', 'React/Node', 'Python/Django'],
     Icon: Globe,
-    rating: 4.8,
-    reviews: 289
   },
   {
     n: '04',
@@ -279,8 +226,6 @@ export const courses = [
     desc: 'Master the fundamentals of programming with four essential languages. Learn C for systems programming, C++ for performance-critical applications, Java for enterprise development, and Python for AI, data science, and automation. Build a strong foundation that makes learning any new language easy.',
     tags: ['2 Months', 'Live Projects', 'Certification', 'C', 'C++', 'Java', 'Python', 'DSA'],
     Icon: Code,
-    rating: 4.7,
-    reviews: 192
   },
   {
     n: '05',
@@ -289,8 +234,6 @@ export const courses = [
     desc: 'Master responsive web design principles, typography, color theory, layout techniques, and modern CSS frameworks. Learn to create visually stunning, user-friendly websites that adapt seamlessly across all devices. Build a professional portfolio of real client-ready designs.',
     tags: ['45 days','120-Hours', 'Live Projects', 'Certification', 'Figma', 'Responsive Design', 'CSS', 'Portfolio'],
     Icon: Layout,
-    rating: 4.8,
-    reviews: 167
   },
   {
     n: '06',
@@ -299,8 +242,6 @@ export const courses = [
     desc: 'Learn modern frontend and backend web development with HTML5, CSS3, JavaScript, React, and Node.js. Build dynamic, database-driven web applications with authentication, APIs, and deployment. Master the skills to become a professional web developer.',
     tags: ['45 days','120-Hours', 'Live Projects', 'Internship', 'Certification', 'React', 'Node.js', 'MongoDB'],
     Icon: Code2,
-    rating: 4.9,
-    reviews: 245
   },
   {
     n: '07',
@@ -309,8 +250,6 @@ export const courses = [
     desc: 'Master cross-platform mobile app development using React Native and Flutter. Build high-performance iOS and Android apps from a single codebase. Learn state management, native modules, app deployment to App Store and Play Store, and real-world project workflows.',
     tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification', 'React Native', 'Flutter', 'iOS', 'Android'],
     Icon: Phone,
-    rating: 4.7,
-    reviews: 178
   },
   {
     n: '08',
@@ -319,8 +258,6 @@ export const courses = [
     desc: 'Statistics, feature engineering, model training, and production ML. You will deploy models, not just fit them in a notebook.',
     tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Database,
-    rating: 4.9,
-    reviews: 312
   },
   {
     n: '09',
@@ -329,8 +266,6 @@ export const courses = [
     desc: 'Image classification, object detection, and video analysis using modern deep learning frameworks. Work on real camera and sensing pipelines.',
     tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Eye,
-    rating: 4.7,
-    reviews: 143
   },
   {
     n: '10',
@@ -339,8 +274,6 @@ export const courses = [
     desc: 'Native Android with Kotlin. Architecture patterns, Jetpack Compose, and publishing a real app to the Play Store before you finish.',
     tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification'],
     Icon: Smartphone,
-    rating: 4.8,
-    reviews: 201
   },
   {
     n: '11',
@@ -349,8 +282,6 @@ export const courses = [
     desc: 'Microcontrollers, sensors, firmware, and connecting hardware to cloud backends. Practical builds from day one.',
     tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Cpu,
-    rating: 4.6,
-    reviews: 98
   },
   {
     n: '12',
@@ -359,8 +290,6 @@ export const courses = [
     desc: 'From syntax to production-quality Python with Django & FastAPI. Backend development, automation, and scripting with real-world workflows and deployment practices.',
     tags: ['6-8 Months', 'Mentor Support', 'Certification', 'Django', 'FastAPI'],
     Icon: TerminalSquare,
-    rating: 4.8,
-    reviews: 234
   },
   {
     n: '13',
@@ -369,8 +298,6 @@ export const courses = [
     desc: 'User research, wireframing, prototyping, and high-fidelity interfaces. Build a portfolio that reflects real product design workflows.',
     tags: ['6-8 Months', 'Portfolio Projects', 'Certification'],
     Icon: PenTool,
-    rating: 4.9,
-    reviews: 189
   },
   {
     n: '14',
@@ -379,8 +306,6 @@ export const courses = [
     desc: 'Master AWS, Azure, and Google Cloud fundamentals. Learn cloud architecture, serverless computing, containerization with Docker and Kubernetes, and infrastructure as code. Hands-on deployment of scalable applications.',
     tags: ['6-8 Months', 'Live Projects', 'Certification', 'AWS', 'Docker', 'Kubernetes'],
     Icon: CloudSun,
-    rating: 4.7,
-    reviews: 156
   },
   {
     n: '15',
@@ -389,8 +314,6 @@ export const courses = [
     desc: 'Learn SEO, Google Ads, Meta Ads, email marketing, and conversion rate optimization. Run real campaigns with measurable ROI. Master analytics, audience targeting, and data-driven growth strategies.',
     tags: ['6-8 Months', 'Live Campaigns', 'Certification', 'Google Ads', 'Meta Ads', 'Analytics'],
     Icon: Target,
-    rating: 4.6,
-    reviews: 167
   },
   {
     n: '16',
@@ -399,10 +322,7 @@ export const courses = [
     desc: 'Master data cleaning, exploratory data analysis (EDA), statistical analysis, and visualization tools like Power BI, Tableau, and Python (Pandas, Matplotlib, Seaborn). Learn to extract actionable insights from complex datasets and drive business decisions.',
     tags: ['6-8 Months', 'Live Projects', 'Certification', 'Power BI', 'Tableau', 'Python', 'SQL'],
     Icon: LineChart,
-    rating: 4.8,
-    reviews: 203
   },
-  // NEW COURSE 1: Python Foundation for Artificial Intelligence
   {
     n: '17',
     slug: 'python-ai-foundation',
@@ -410,10 +330,7 @@ export const courses = [
     desc: 'Build a strong foundation in Python programming specifically tailored for AI development. Master essential tools and libraries including Python 3.x, VS Code, Jupyter Notebook, Python IDLE, Tkinter, SQLite3, NumPy, Pandas, and SciPy. Perfect for beginners looking to start their AI journey.',
     tags: ['45 days', '120-Hours', 'Live Projects', 'Certification', 'Python 3.x', 'NumPy', 'Pandas', 'SciPy', 'Tkinter', 'SQLite3'],
     Icon: Atom,
-    rating: 4.8,
-    reviews: 145
   },
-  // NEW COURSE 2: Python Foundation for Data Analytics
   {
     n: '18',
     slug: 'python-data-analytics-foundation',
@@ -421,14 +338,15 @@ export const courses = [
     desc: 'Learn Python programming with a focus on data analytics. Master data manipulation, cleaning, visualization, and analysis using Python 3.x, VS Code, Jupyter Notebook, Python IDLE, NumPy, Pandas, and SciPy. Build real-world analytics projects and develop data-driven decision-making skills.',
     tags: ['45 days', '120-Hours', 'Live Projects', 'Certification', 'Python 3.x', 'NumPy', 'Pandas', 'SciPy', 'Data Visualization', 'Analytics'],
     Icon: Calculator,
-    rating: 4.7,
-    reviews: 132
   },
 ];
 
 export default function Services() {
   const { mode } = useMode();
   const sectionRef = useRef(null);
+  
+  // Get Google Rating dynamically
+  const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -562,16 +480,57 @@ export default function Services() {
                     <h3 className="t-h3" style={{ marginBottom: '0.5rem', fontSize: 'clamp(1rem, 1.8vw, 1.375rem)' }}>{item.title}</h3>
                     <p className="t-body" style={{ fontSize: '0.9375rem', lineHeight: 1.65, marginBottom: '0.75rem' }}>{item.desc}</p>
                     
-                    {/* Rating Section */}
-                    <StarRating rating={item.rating} />
-                    <span style={{ 
-                      fontFamily: 'var(--font-mono)', 
-                      fontSize: '0.5rem', 
-                      color: 'var(--text-3)',
-                      marginLeft: '4px'
-                    }}>
-                      ({item.reviews} reviews)
-                    </span>
+                    {/* Google Rating Section - Dynamic from Google */}
+                    {!ratingLoading ? (
+                      <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '0.5rem', 
+                        flexWrap: 'wrap',
+                        marginTop: '0.25rem'
+                      }}>
+                        <GoogleStarRating rating={googleRating.ratingValue} />
+                        <span style={{ 
+                          fontFamily: 'var(--font-mono)', 
+                          fontSize: '0.625rem', 
+                          color: 'var(--text-2)',
+                          fontWeight: 600
+                        }}>
+                          {googleRating.ratingValue.toFixed(1)}
+                        </span>
+                        <span style={{ 
+                          fontFamily: 'var(--font-mono)', 
+                          fontSize: '0.5rem', 
+                          color: 'var(--text-3)'
+                        }}>
+                          ({googleRating.reviewCount.toLocaleString()} Google reviews)
+                        </span>
+                        <span style={{ 
+                          fontFamily: 'var(--font-mono)', 
+                          fontSize: '0.5rem', 
+                          color: 'var(--accent)',
+                          opacity: 0.7,
+                          marginLeft: '0.25rem'
+                        }}>
+                          ★★★★★
+                        </span>
+                      </div>
+                    ) : (
+                      <div style={{ 
+                        display: 'flex', 
+                        gap: '0.5rem',
+                        alignItems: 'center',
+                        marginTop: '0.25rem'
+                      }}>
+                        <div style={{ 
+                          width: 80, 
+                          height: 16, 
+                          background: 'var(--bg-alt)', 
+                          borderRadius: 4,
+                          animation: 'pulse 1.5s ease-in-out infinite'
+                        }} />
+                      </div>
+                    )}
                   </div>
                   <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginTop: 'auto' }}>
                     {item.tags.map((tag, j) => (
