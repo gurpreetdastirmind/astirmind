@@ -365,21 +365,6 @@ const courseCareers = {
     { role: 'Senior Marketing Manager', experience: '4-7 Years' },
     { role: 'Marketing Director', experience: '7-10 Years' },
     { role: 'Chief Marketing Officer', experience: '10+ Years' }
-  ],
-    'python-ai-foundation': [
-    { role: 'Junior AI Developer', experience: '0-2 Years' },
-    { role: 'Python Developer', experience: '0-2 Years' },
-    { role: 'AI Engineer', experience: '2-4 Years' },
-    { role: 'ML Engineer', experience: '3-5 Years' },
-    { role: 'AI Tech Lead', experience: '5-10 Years' }
-  ],
-  // Add for python-data-analytics-foundation
-  'python-data-analytics-foundation': [
-    { role: 'Data Analyst', experience: '0-2 Years' },
-    { role: 'Junior Data Scientist', experience: '0-2 Years' },
-    { role: 'Business Analyst', experience: '2-4 Years' },
-    { role: 'Senior Data Analyst', experience: '4-7 Years' },
-    { role: 'Data Analytics Manager', experience: '7-10 Years' }
   ]
 };
 
@@ -619,50 +604,28 @@ const courseSkills = {
     { icon: Cloud, label: 'Brand Strategy' },
     { icon: Trophy, label: 'ROI Optimization' }
   ],
-    'python-ai-foundation': [
+  'python-ai-foundation': [
     { icon: Code, label: 'Python 3.x Fundamentals' },
     { icon: Code, label: 'Python Syntax & Data Types' },
     { icon: Code, label: 'Functions & Modules' },
     { icon: Database, label: 'File Handling & I/O Operations' },
     { icon: Database, label: 'SQLite3 Database Management' },
-    { icon: Code, label: 'Object-Oriented Programming (OOP)' },
-    { icon: Package, label: 'NumPy for Numerical Computing' },
     { icon: Package, label: 'Pandas for Data Manipulation' },
-    { icon: Cloud, label: 'SciPy for Scientific Computing' },
     { icon: Layout, label: 'Tkinter GUI Development' },
     { icon: Terminal, label: 'VS Code & Jupyter Notebook' },
     { icon: Code, label: 'Python IDLE & Debugging' },
-    { icon: Shield, label: 'Error Handling & Exceptions' },
-    { icon: GitBranch, label: 'Version Control with Git' },
-    { icon: Layers, label: 'Data Structures & Algorithms' },
     { icon: Cpu, label: 'Problem Solving Skills' },
-    { icon: Trophy, label: 'Project Development Lifecycle' },
-    { icon: Cloud, label: 'API Integration Basics' },
-    { icon: Users2, label: 'Collaborative Development' },
-    { icon: BookOpen, label: 'AI & ML Fundamentals' }
   ],
-  // Add for python-data-analytics-foundation
   'python-data-analytics-foundation': [
     { icon: Code, label: 'Python 3.x Fundamentals' },
     { icon: Code, label: 'Python Syntax & Data Types' },
     { icon: Code, label: 'Functions & Modules' },
     { icon: Database, label: 'File Handling & I/O Operations' },
     { icon: Code, label: 'Data Cleaning & Preprocessing' },
-    { icon: Package, label: 'NumPy for Numerical Computing' },
     { icon: Package, label: 'Pandas for Data Manipulation' },
-    { icon: Cloud, label: 'SciPy for Scientific Computing' },
-    { icon: Cloud, label: 'Data Visualization with Matplotlib' },
-    { icon: Cloud, label: 'Statistical Analysis with SciPy' },
-    { icon: BarChart, label: 'Exploratory Data Analysis (EDA)' },
     { icon: Terminal, label: 'VS Code & Jupyter Notebook' },
     { icon: Code, label: 'Python IDLE & Debugging' },
     { icon: Shield, label: 'Data Validation & Quality' },
-    { icon: GitBranch, label: 'Version Control with Git' },
-    { icon: Layers, label: 'Data Structures & Algorithms' },
-    { icon: Cpu, label: 'Analytical Problem Solving' },
-    { icon: Trophy, label: 'Data Storytelling & Reporting' },
-    { icon: Cloud, label: 'SQL & Database Basics' },
-    { icon: BookOpen, label: 'Business Intelligence Fundamentals' }
   ]
 };
 
@@ -762,9 +725,9 @@ const courseTools = {
     'Canva', 'Adobe Creative Cloud', 'WordPress', 'Shopify',
     'Google Tag Manager', 'Facebook Business Manager'
   ],
-  'python-ai-foundation':[
-    'Python 3.x','VS Code','Jupiter Notebook','Python IDLE','Tkinter','SQLite3 or MySQL',
-    'Scikit-learn','Numpy','Pandas','SciPy'
+  'python-ai-foundation': [
+    'Python 3.x', 'VS Code', 'Jupyter Notebook', 'Python IDLE', 'Tkinter', 'SQLite3',
+    'Pandas', 'SciPy', 'Git', 'GitHub', 'Jupyter Lab', 'PyCharm', 'Anaconda', 'Pip', 'Virtual Environments'
   ],
   'python-data-analytics-foundation': [
     'Python 3.x', 'VS Code', 'Jupyter Notebook', 'Python IDLE', 'NumPy', 'Pandas',
@@ -1035,10 +998,27 @@ function WhyAstirMind() {
   );
 }
 
-// 3. Course Highlights
-function CourseHighlights() {
+// 3. Course Highlights - DYNAMIC DURATION PER COURSE
+function CourseHighlights({ course }) {
+  // Extract duration from course tags
+  const durationOptions = course.tags.filter(t => 
+    t === '6-8 Months' || 
+    t === '2 Months' || 
+    t === '45 days' || 
+    t === '120-Hours' ||
+    t.includes('Week') ||
+    t.includes('Days') ||
+    t.includes('Months') ||
+    t.includes('Hours')
+  );
+
+  // If multiple duration tags exist, combine them
+  const duration = durationOptions.length > 0 
+    ? durationOptions.join(' • ') 
+    : 'Flexible';
+
   const highlights = [
-    { label: 'Duration Options', value: '120 hours • 45 Days • 12-16 Weeks • 6-8 Months' },
+    { label: 'Duration', value: duration },
     { label: 'Training Mode', value: 'Online / Hybrid' },
     { label: 'Fees', value: 'Flexible Monthly Plans' },
     { label: 'Certification', value: 'ISO Certified' },
@@ -2661,7 +2641,7 @@ const courseSyllabus = {
       }
     ]
   },
-    'python-ai-foundation': {
+  'python-ai-foundation': {
     modules: [
       {
         title: 'Python Fundamentals',
@@ -2817,8 +2797,6 @@ const courseSyllabus = {
       }
     ]
   },
-
-  // Add for python-data-analytics-foundation
   'python-data-analytics-foundation': {
     modules: [
       {
@@ -3830,8 +3808,8 @@ export default function CoursesDetails() {
           {/* 2. Why AstirMind? */}
           <WhyAstirMind />
 
-          {/* 3. Course Highlights */}
-          <CourseHighlights />
+          {/* 3. Course Highlights - PASS course prop */}
+          <CourseHighlights course={course} />
 
           {/* 4. Career Opportunities */}
           <CareerOpportunities courseSlug={slug} />
