@@ -365,6 +365,21 @@ const courseCareers = {
     { role: 'Senior Marketing Manager', experience: '4-7 Years' },
     { role: 'Marketing Director', experience: '7-10 Years' },
     { role: 'Chief Marketing Officer', experience: '10+ Years' }
+  ],
+    'python-ai-foundation': [
+    { role: 'Junior AI Developer', experience: '0-2 Years' },
+    { role: 'Python Developer', experience: '0-2 Years' },
+    { role: 'AI Engineer', experience: '2-4 Years' },
+    { role: 'ML Engineer', experience: '3-5 Years' },
+    { role: 'AI Tech Lead', experience: '5-10 Years' }
+  ],
+  // Add for python-data-analytics-foundation
+  'python-data-analytics-foundation': [
+    { role: 'Data Analyst', experience: '0-2 Years' },
+    { role: 'Junior Data Scientist', experience: '0-2 Years' },
+    { role: 'Business Analyst', experience: '2-4 Years' },
+    { role: 'Senior Data Analyst', experience: '4-7 Years' },
+    { role: 'Data Analytics Manager', experience: '7-10 Years' }
   ]
 };
 
@@ -603,6 +618,51 @@ const courseSkills = {
     { icon: Cloud, label: 'Marketing Analytics' },
     { icon: Cloud, label: 'Brand Strategy' },
     { icon: Trophy, label: 'ROI Optimization' }
+  ],
+    'python-ai-foundation': [
+    { icon: Code, label: 'Python 3.x Fundamentals' },
+    { icon: Code, label: 'Python Syntax & Data Types' },
+    { icon: Code, label: 'Functions & Modules' },
+    { icon: Database, label: 'File Handling & I/O Operations' },
+    { icon: Database, label: 'SQLite3 Database Management' },
+    { icon: Code, label: 'Object-Oriented Programming (OOP)' },
+    { icon: Package, label: 'NumPy for Numerical Computing' },
+    { icon: Package, label: 'Pandas for Data Manipulation' },
+    { icon: Cloud, label: 'SciPy for Scientific Computing' },
+    { icon: Layout, label: 'Tkinter GUI Development' },
+    { icon: Terminal, label: 'VS Code & Jupyter Notebook' },
+    { icon: Code, label: 'Python IDLE & Debugging' },
+    { icon: Shield, label: 'Error Handling & Exceptions' },
+    { icon: GitBranch, label: 'Version Control with Git' },
+    { icon: Layers, label: 'Data Structures & Algorithms' },
+    { icon: Cpu, label: 'Problem Solving Skills' },
+    { icon: Trophy, label: 'Project Development Lifecycle' },
+    { icon: Cloud, label: 'API Integration Basics' },
+    { icon: Users2, label: 'Collaborative Development' },
+    { icon: BookOpen, label: 'AI & ML Fundamentals' }
+  ],
+  // Add for python-data-analytics-foundation
+  'python-data-analytics-foundation': [
+    { icon: Code, label: 'Python 3.x Fundamentals' },
+    { icon: Code, label: 'Python Syntax & Data Types' },
+    { icon: Code, label: 'Functions & Modules' },
+    { icon: Database, label: 'File Handling & I/O Operations' },
+    { icon: Code, label: 'Data Cleaning & Preprocessing' },
+    { icon: Package, label: 'NumPy for Numerical Computing' },
+    { icon: Package, label: 'Pandas for Data Manipulation' },
+    { icon: Cloud, label: 'SciPy for Scientific Computing' },
+    { icon: Cloud, label: 'Data Visualization with Matplotlib' },
+    { icon: Cloud, label: 'Statistical Analysis with SciPy' },
+    { icon: BarChart, label: 'Exploratory Data Analysis (EDA)' },
+    { icon: Terminal, label: 'VS Code & Jupyter Notebook' },
+    { icon: Code, label: 'Python IDLE & Debugging' },
+    { icon: Shield, label: 'Data Validation & Quality' },
+    { icon: GitBranch, label: 'Version Control with Git' },
+    { icon: Layers, label: 'Data Structures & Algorithms' },
+    { icon: Cpu, label: 'Analytical Problem Solving' },
+    { icon: Trophy, label: 'Data Storytelling & Reporting' },
+    { icon: Cloud, label: 'SQL & Database Basics' },
+    { icon: BookOpen, label: 'Business Intelligence Fundamentals' }
   ]
 };
 
@@ -701,6 +761,15 @@ const courseTools = {
     'Semrush', 'Ahrefs', 'Moz', 'Mailchimp', 'HubSpot',
     'Canva', 'Adobe Creative Cloud', 'WordPress', 'Shopify',
     'Google Tag Manager', 'Facebook Business Manager'
+  ],
+  'python-ai-foundation':[
+    'Python 3.x','VS Code','Jupiter Notebook','Python IDLE','Tkinter','SQLite3 or MySQL',
+    'Scikit-learn','Numpy','Pandas','SciPy'
+  ],
+  'python-data-analytics-foundation': [
+    'Python 3.x', 'VS Code', 'Jupyter Notebook', 'Python IDLE', 'NumPy', 'Pandas',
+    'SciPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Git', 'GitHub', 'Jupyter Lab',
+    'Anaconda', 'Pip', 'MySQL', 'SQLite3', 'Excel (Advanced)', 'Power BI', 'Tableau'
   ]
 };
 
@@ -2589,6 +2658,320 @@ const courseSyllabus = {
       {
         question: 'Do you provide placement assistance?',
         answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      }
+    ]
+  },
+    'python-ai-foundation': {
+    modules: [
+      {
+        title: 'Python Fundamentals',
+        topics: [
+          'Introduction to Python 3.x',
+          'Python Syntax & Comments',
+          'Variables & Data Types',
+          'Operators & Expressions',
+          'Conditional Statements',
+          'Loops & Iterations'
+        ]
+      },
+      {
+        title: 'Functions & Modules',
+        topics: [
+          'Defining Functions',
+          'Function Parameters & Arguments',
+          'Scope & Lifetime of Variables',
+          'Lambda Functions',
+          'Importing Modules',
+          'Creating Custom Modules'
+        ]
+      },
+      {
+        title: 'Data Structures',
+        topics: [
+          'Lists & Tuples',
+          'Dictionaries & Sets',
+          'Strings & String Operations',
+          'List Comprehensions',
+          'Iterator & Generators',
+          'Working with Collections'
+        ]
+      },
+      {
+        title: 'File Handling & Error Management',
+        topics: [
+          'Reading & Writing Files',
+          'Working with CSV & JSON',
+          'Exception Handling (Try/Except)',
+          'Custom Exceptions',
+          'Logging & Debugging',
+          'Python IDLE & Debugging Tools'
+        ]
+      },
+      {
+        title: 'Object-Oriented Programming (OOP)',
+        topics: [
+          'Classes & Objects',
+          'Inheritance & Polymorphism',
+          'Encapsulation & Abstraction',
+          'Magic Methods',
+          'Property Decorators',
+          'Design Patterns Basics'
+        ]
+      },
+      {
+        title: 'Database Management with SQLite3',
+        topics: [
+          'Introduction to SQLite3',
+          'Creating Databases & Tables',
+          'CRUD Operations (Insert, Update, Delete, Select)',
+          'SQL Queries & Joins',
+          'Database Integration in Python',
+          'Transaction Management'
+        ]
+      },
+      {
+        title: 'GUI Development with Tkinter',
+        topics: [
+          'Introduction to Tkinter',
+          'Creating Windows & Frames',
+          'Widgets (Buttons, Labels, Entry, etc.)',
+          'Layout Management (Pack, Grid, Place)',
+          'Event Handling & Callbacks',
+          'Building Desktop Applications'
+        ]
+      },
+      {
+        title: 'Version Control with Git',
+        topics: [
+          'Introduction to Git',
+          'Basic Git Commands (Init, Add, Commit)',
+          'Branching & Merging',
+          'Working with GitHub',
+          'Collaborative Development',
+          'Best Practices'
+        ]
+      },
+      {
+        title: 'Introduction to AI & ML',
+        topics: [
+          'What is Artificial Intelligence?',
+          'Machine Learning Overview',
+          'Types of ML (Supervised, Unsupervised, Reinforcement)',
+          'AI Development Lifecycle',
+          'Ethics in AI',
+          'Career Paths in AI'
+        ]
+      },
+      {
+        title: 'Projects & Capstone',
+        topics: [
+          'Building a GUI Application with Tkinter',
+          'Database Management Project',
+          'Data Analysis & Visualization Project',
+          'Mini AI/ML Project',
+          'Capstone Project Development',
+          'Project Presentation & Review'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Python AI Foundation program?',
+        answer: 'The program spans 45 days with 120 hours of intensive training covering all essential Python concepts for AI development.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'No prior programming experience is required. This course is designed for absolute beginners who want to start their journey in AI and programming.'
+      },
+      {
+        question: 'What tools and technologies will I learn?',
+        answer: 'You will learn Python 3.x, VS Code, Jupyter Notebook, Python IDLE, Tkinter, SQLite3, NumPy, Pandas, SciPy, Git, GitHub, and more.'
+      },
+      {
+        question: 'What projects will I build?',
+        answer: 'You will build GUI applications with Tkinter, database management systems, data analysis projects, and a mini AI/ML project as your capstone.'
+      },
+      {
+        question: 'Will I get a certificate?',
+        answer: 'Yes, you will receive an industry-recognized ISO Certified certificate upon successful completion.'
+      },
+      {
+        question: 'Is this course suitable for students from non-CS backgrounds?',
+        answer: 'Absolutely! This course is designed to be accessible to students from all backgrounds including B.Com, BBA, B.Sc, B.A., and 12th class students.'
+      },
+      {
+        question: 'What are the career opportunities after this course?',
+        answer: 'You can work as Junior AI Developer, Python Developer, AI Engineer, ML Engineer, or pursue further specialization in AI and Data Science.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building, mock interviews, and job referrals.'
+      },
+      {
+        question: 'What is the class schedule?',
+        answer: 'We offer flexible timing options including morning, evening, and weekend batches to accommodate students and working professionals.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology before enrolling.'
+      }
+    ]
+  },
+
+  // Add for python-data-analytics-foundation
+  'python-data-analytics-foundation': {
+    modules: [
+      {
+        title: 'Python Fundamentals for Analytics',
+        topics: [
+          'Introduction to Python 3.x',
+          'Python Syntax & Comments',
+          'Variables & Data Types',
+          'Operators & Expressions',
+          'Conditional Statements',
+          'Loops & Iterations'
+        ]
+      },
+      {
+        title: 'Functions & Modules for Data Processing',
+        topics: [
+          'Defining Functions',
+          'Function Parameters & Arguments',
+          'Lambda Functions for Data',
+          'Importing & Creating Modules',
+          'Working with Libraries',
+          'Best Practices'
+        ]
+      },
+      {
+        title: 'Data Structures for Analytics',
+        topics: [
+          'Lists & Tuples for Data Storage',
+          'Dictionaries & Sets for Data Mapping',
+          'Strings & String Operations',
+          'List Comprehensions for Data',
+          'Working with Collections',
+          'Data Type Conversion'
+        ]
+      },
+      {
+        title: 'NumPy for Numerical Computing',
+        topics: [
+          'Introduction to NumPy',
+          'NumPy Arrays & Operations',
+          'Array Indexing & Slicing',
+          'Broadcasting & Vectorization',
+          'Mathematical Functions',
+          'Linear Algebra with NumPy'
+        ]
+      },
+      {
+        title: 'Pandas for Data Manipulation',
+        topics: [
+          'Introduction to Pandas',
+          'Series & DataFrames',
+          'Data Loading (CSV, Excel, JSON)',
+          'Data Cleaning & Preprocessing',
+          'Data Filtering & Selection',
+          'Data Aggregation & Grouping'
+        ]
+      },
+      {
+        title: 'Data Visualization',
+        topics: [
+          'Matplotlib Fundamentals',
+          'Creating Charts & Plots',
+          'Plot Customization & Styling',
+          'Seaborn for Statistical Visualization',
+          'Interactive Visualizations with Plotly',
+          'Visualizing Data Insights'
+        ]
+      },
+      {
+        title: 'Statistical Analysis with SciPy',
+        topics: [
+          'Introduction to SciPy',
+          'Statistical Functions',
+          'Hypothesis Testing',
+          'Descriptive Statistics',
+          'Probability Distributions',
+          'Correlation & Regression'
+        ]
+      },
+      {
+        title: 'Data Analytics Lifecycle',
+        topics: [
+          'Understanding the Data Analytics Lifecycle',
+          'Data Collection & Acquisition',
+          'Data Cleaning & Quality Check',
+          'Exploratory Data Analysis (EDA)',
+          'Feature Engineering & Selection',
+          'Business Intelligence Fundamentals'
+        ]
+      },
+      {
+        title: 'Version Control & Best Practices',
+        topics: [
+          'Introduction to Git',
+          'Basic Git Commands',
+          'Working with GitHub',
+          'Collaborative Analytics Projects',
+          'Code Documentation',
+          'Best Practices'
+        ]
+      },
+      {
+        title: 'Real-World Analytics Projects',
+        topics: [
+          'Sales Data Analysis Project',
+          'Customer Analytics Dashboard',
+          'Financial Data Analysis',
+          'Healthcare Data Analytics',
+          'E-commerce Analytics Project',
+          'Project Presentation & Review'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Python Data Analytics Foundation program?',
+        answer: 'The program spans 45 days with 120 hours of intensive training covering all essential Python concepts for data analytics.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'No prior programming experience is required. This course is designed for absolute beginners who want to start their career in data analytics.'
+      },
+      {
+        question: 'What tools and technologies will I learn?',
+        answer: 'You will learn Python 3.x, VS Code, Jupyter Notebook, Python IDLE, NumPy, Pandas, Matplotlib, Seaborn, SciPy, Git, GitHub, MySQL, Power BI, and Tableau.'
+      },
+      {
+        question: 'What projects will I build?',
+        answer: 'You will work on sales data analysis, customer analytics dashboard, financial data analysis, healthcare analytics, and e-commerce analytics projects.'
+      },
+      {
+        question: 'Will I get a certificate?',
+        answer: 'Yes, you will receive an industry-recognized ISO Certified certificate upon successful completion.'
+      },
+      {
+        question: 'Is this course suitable for students from non-CS backgrounds?',
+        answer: 'Absolutely! This course is designed to be accessible to students from all backgrounds including B.Com, BBA, B.Sc, B.A., and 12th class students.'
+      },
+      {
+        question: 'What are the career opportunities after this course?',
+        answer: 'You can work as Data Analyst, Junior Data Scientist, Business Analyst, Senior Data Analyst, or Data Analytics Manager.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building, mock interviews, and job referrals.'
+      },
+      {
+        question: 'What is the class schedule?',
+        answer: 'We offer flexible timing options including morning, evening, and weekend batches to accommodate students and working professionals.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology before enrolling.'
       }
     ]
   }
