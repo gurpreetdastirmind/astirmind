@@ -171,7 +171,7 @@ function FAQItem({ faq, index, isOpen, onToggle }) {
   );
 }
 
-// ALL audience types - SAME for EVERY course (UPDATED with B.A. and 12th Class)
+// ALL audience types - SAME for EVERY course
 const allAudienceTypes = [
   {
     icon: GraduationCap,
@@ -316,10 +316,59 @@ const courseCareers = {
     { role: 'Senior Cloud Engineer', experience: '4-8 Years'},
     { role: 'Cloud Architect', experience: '7-12 Years'},
     { role: 'Principal Cloud Architect', experience: '12+ Years'}
+  ],
+  'data-analytics': [
+    { role: 'Data Analyst', experience: '0-2 Years' },
+    { role: 'Business Analyst', experience: '2-4 Years' },
+    { role: 'Senior Data Analyst', experience: '4-7 Years' },
+    { role: 'Data Analytics Manager', experience: '7-10 Years' },
+    { role: 'Director of Analytics', experience: '10+ Years' }
+  ],
+  'automation-solutions': [
+    { role: 'Automation Engineer', experience: '0-2 Years' },
+    { role: 'Data Extraction Specialist', experience: '2-4 Years' },
+    { role: 'Senior Automation Engineer', experience: '4-7 Years' },
+    { role: 'Automation Lead', experience: '7-10 Years' },
+    { role: 'Solution Architect', experience: '10+ Years' }
+  ],
+  'foundational-programming': [
+    { role: 'Junior Developer', experience: '0-2 Years' },
+    { role: 'Software Engineer', experience: '2-4 Years' },
+    { role: 'Senior Developer', experience: '4-7 Years' },
+    { role: 'Technical Lead', experience: '7-10 Years' },
+    { role: 'Software Architect', experience: '10+ Years' }
+  ],
+  'web-design': [
+    { role: 'Web Designer', experience: '0-2 Years' },
+    { role: 'UI/UX Designer', experience: '2-4 Years' },
+    { role: 'Senior Web Designer', experience: '4-7 Years' },
+    { role: 'Design Lead', experience: '7-10 Years' },
+    { role: 'Creative Director', experience: '10+ Years' }
+  ],
+  'cv': [
+    { role: 'Computer Vision Engineer', experience: '0-2 Years' },
+    { role: 'ML Engineer', experience: '2-5 Years' },
+    { role: 'Senior CV Engineer', experience: '4-8 Years' },
+    { role: 'AI Tech Lead', experience: '7-10 Years' },
+    { role: 'Chief AI Officer', experience: '10+ Years' }
+  ],
+  'embedded': [
+    { role: 'Embedded Engineer', experience: '0-2 Years' },
+    { role: 'IoT Developer', experience: '2-4 Years' },
+    { role: 'Senior Embedded Engineer', experience: '4-7 Years' },
+    { role: 'Embedded Tech Lead', experience: '7-10 Years' },
+    { role: 'Hardware Architect', experience: '10+ Years' }
+  ],
+  'digital-performance-marketing': [
+    { role: 'Digital Marketing Executive', experience: '0-2 Years' },
+    { role: 'Performance Marketing Specialist', experience: '2-4 Years' },
+    { role: 'Senior Marketing Manager', experience: '4-7 Years' },
+    { role: 'Marketing Director', experience: '7-10 Years' },
+    { role: 'Chief Marketing Officer', experience: '10+ Years' }
   ]
 };
 
-// 2. Skills for each course
+// 2. Skills for each course - COMPLETE
 const courseSkills = {
   'android': [
     { icon: Smartphone, label: 'Android App Development' },
@@ -456,10 +505,108 @@ const courseSkills = {
     { icon: Database, label: 'Cloud Databases' },
     { icon: Code, label: 'Serverless Architecture' },
     { icon: Trophy, label: 'Disaster Recovery & Backup' }
+  ],
+  'data-analytics': [
+    { icon: Code, label: 'Python for Data Analytics' },
+    { icon: Database, label: 'SQL & MySQL for Data Analysis' },
+    { icon: Package, label: 'NumPy & Pandas Fundamentals' },
+    { icon: Cloud, label: 'Data Visualization with Matplotlib' },
+    { icon: Layers, label: 'Advanced Excel for Analytics' },
+    { icon: Cpu, label: 'Power BI & Tableau Dashboards' },
+    { icon: GitBranch, label: 'Git & Version Control' },
+    { icon: Shield, label: 'Data Cleaning & Preprocessing' },
+    { icon: Terminal, label: 'Jupyter Notebook & VS Code' },
+    { icon: Cloud, label: 'Data Storytelling & Reporting' },
+    { icon: Database, label: 'Data Warehousing Concepts' },
+    { icon: Trophy, label: 'Business Intelligence Solutions' }
+  ],
+  'automation-solutions': [
+    { icon: Code, label: 'Python Programming' },
+    { icon: Code, label: 'Web Scraping Fundamentals' },
+    { icon: Database, label: 'Data Extraction & Processing' },
+    { icon: Cloud, label: 'REST API Development' },
+    { icon: Layers, label: 'Selenium & Playwright' },
+    { icon: Package, label: 'Workflow Automation' },
+    { icon: Cpu, label: 'CRM Integration' },
+    { icon: GitBranch, label: 'Version Control (Git)' },
+    { icon: Shield, label: 'Data Validation & Cleaning' },
+    { icon: Terminal, label: 'Automation Scripting' },
+    { icon: Cloud, label: 'Zapier & Make Integration' },
+    { icon: Trophy, label: 'Business Process Optimization' }
+  ],
+  'foundational-programming': [
+    { icon: Code, label: 'C Programming Fundamentals' },
+    { icon: Code, label: 'C++ Programming' },
+    { icon: Code, label: 'Java Programming' },
+    { icon: Code, label: 'Python Programming' },
+    { icon: Database, label: 'Data Structures' },
+    { icon: Layers, label: 'Algorithms' },
+    { icon: Package, label: 'Object-Oriented Programming' },
+    { icon: Cpu, label: 'Memory Management' },
+    { icon: GitBranch, label: 'Version Control' },
+    { icon: Terminal, label: 'Command Line Tools' },
+    { icon: Cloud, label: 'Problem Solving' },
+    { icon: Trophy, label: 'Debugging & Testing' }
+  ],
+  'web-design': [
+    { icon: Code, label: 'HTML5 Semantic Markup' },
+    { icon: Code, label: 'CSS3 Styling' },
+    { icon: Layout, label: 'Responsive Design' },
+    { icon: Palette, label: 'Color Theory & Typography' },
+    { icon: Layers, label: 'CSS Grid & Flexbox' },
+    { icon: Package, label: 'Bootstrap & Tailwind CSS' },
+    { icon: Cloud, label: 'Figma & Adobe XD' },
+    { icon: GitBranch, label: 'Version Control' },
+    { icon: Shield, label: 'Web Accessibility' },
+    { icon: Terminal, label: 'Web Performance' },
+    { icon: Cloud, label: 'Web Hosting & Deployment' },
+    { icon: Trophy, label: 'Portfolio Development' }
+  ],
+  'cv': [
+    { icon: Code, label: 'Python Programming' },
+    { icon: Code, label: 'OpenCV Library' },
+    { icon: Database, label: 'Image Processing' },
+    { icon: Layers, label: 'Convolutional Neural Networks' },
+    { icon: Cloud, label: 'Object Detection & Recognition' },
+    { icon: Package, label: 'TensorFlow & PyTorch' },
+    { icon: Cpu, label: 'Video Analysis' },
+    { icon: GitBranch, label: 'Version Control' },
+    { icon: Shield, label: 'Model Deployment' },
+    { icon: Terminal, label: 'Cloud Vision APIs' },
+    { icon: Cloud, label: 'Edge Computing' },
+    { icon: Trophy, label: 'Real-time Processing' }
+  ],
+  'embedded': [
+    { icon: Code, label: 'C & C++ Programming' },
+    { icon: Code, label: 'Python for IoT' },
+    { icon: Database, label: 'Arduino & ESP32' },
+    { icon: Layers, label: 'Raspberry Pi' },
+    { icon: Cloud, label: 'Sensor Integration' },
+    { icon: Package, label: 'MQTT & IoT Protocols' },
+    { icon: Cpu, label: 'Firmware Development' },
+    { icon: GitBranch, label: 'Version Control' },
+    { icon: Shield, label: 'RTOS Concepts' },
+    { icon: Terminal, label: 'Electronics Fundamentals' },
+    { icon: Cloud, label: 'Cloud & Edge Computing' },
+    { icon: Trophy, label: 'Hardware-Software Integration' }
+  ],
+  'digital-performance-marketing': [
+    { icon: Cloud, label: 'Google Ads & Meta Ads' },
+    { icon: Code, label: 'SEO Strategies' },
+    { icon: Database, label: 'Google Analytics' },
+    { icon: Layers, label: 'Content Marketing' },
+    { icon: Package, label: 'Email Marketing' },
+    { icon: Cpu, label: 'Conversion Rate Optimization' },
+    { icon: GitBranch, label: 'A/B Testing' },
+    { icon: Shield, label: 'Campaign Management' },
+    { icon: Terminal, label: 'Social Media Marketing' },
+    { icon: Cloud, label: 'Marketing Analytics' },
+    { icon: Cloud, label: 'Brand Strategy' },
+    { icon: Trophy, label: 'ROI Optimization' }
   ]
 };
 
-// 3. Tools & Technologies for each course
+// 3. Tools & Technologies for each course - COMPLETE
 const courseTools = {
   'android': [
     'Kotlin', 'Android Studio', 'Jetpack Compose', 'Git', 'GitHub',
@@ -514,6 +661,46 @@ const courseTools = {
     'Terraform', 'Ansible', 'CI/CD (Jenkins, GitHub Actions)', 'Linux', 'Bash',
     'Python', 'Node.js', 'MySQL', 'PostgreSQL', 'MongoDB',
     'Redis', 'Nginx', 'Apache', 'CloudWatch', 'Prometheus'
+  ],
+  'data-analytics': [
+    'Python', 'Git', 'GitHub', 'Jupyter', 'NumPy', 'Pandas', 
+    'Matplotlib', 'MySQL', 'Excel (Advanced)', 'Power BI', 'Tableau'
+  ],
+  'automation-solutions': [
+    'Python', 'Selenium', 'BeautifulSoup', 'Scrapy', 'Playwright',
+    'Puppeteer', 'Zapier', 'Make', 'CRM Systems', 'REST APIs',
+    'Git', 'GitHub', 'Docker', 'Postman', 'Webhooks',
+    'Automation Tools', 'Data Extraction', 'Workflow Automation'
+  ],
+  'foundational-programming': [
+    'C', 'C++', 'Java', 'Python', 'Visual Studio Code',
+    'Eclipse', 'IntelliJ IDEA', 'CodeBlocks', 'PyCharm',
+    'Git', 'GitHub', 'Data Structures', 'Algorithms',
+    'Debugging Tools', 'Memory Management', 'OOP Concepts'
+  ],
+  'web-design': [
+    'HTML5', 'CSS3', 'JavaScript', 'Figma', 'Adobe XD',
+    'Photoshop', 'Illustrator', 'Bootstrap', 'Tailwind CSS',
+    'Sass/SCSS', 'Responsive Design', 'Grid', 'Flexbox',
+    'Webflow', 'Git', 'GitHub', 'Chrome DevTools'
+  ],
+  'cv': [
+    'Python', 'OpenCV', 'TensorFlow', 'PyTorch', 'Keras',
+    'NumPy', 'Pandas', 'Matplotlib', 'Jupyter', 'Docker',
+    'Git', 'GitHub', 'AWS Rekognition', 'GCP Vision API',
+    'Azure Computer Vision', 'YOLO', 'CNN', 'RCNN'
+  ],
+  'embedded': [
+    'C', 'C++', 'Python', 'Arduino', 'ESP32',
+    'Raspberry Pi', 'MQTT', 'IoT Protocols', 'Sensors',
+    'Actuators', 'RTOS', 'Linux', 'Git', 'GitHub',
+    'Electronics', 'Circuit Design', 'UART', 'SPI', 'I2C'
+  ],
+  'digital-performance-marketing': [
+    'Google Ads', 'Meta Ads', 'SEO Tools', 'Google Analytics',
+    'Semrush', 'Ahrefs', 'Moz', 'Mailchimp', 'HubSpot',
+    'Canva', 'Adobe Creative Cloud', 'WordPress', 'Shopify',
+    'Google Tag Manager', 'Facebook Business Manager'
   ]
 };
 
@@ -627,7 +814,7 @@ function WhoShouldJoin() {
   );
 }
 
-// 1. Why Learn This Course? - UPDATED (Salary Insights REMOVED)
+// 1. Why Learn This Course?
 function WhyLearnThis({ courseTitle }) {
   const data = {
     futureScope: `The demand for ${courseTitle} professionals is growing exponentially. With the rapid digital transformation across industries, skilled developers are needed more than ever.`,
@@ -838,7 +1025,7 @@ function CourseHighlights() {
 
 // 4. Career Opportunities - COURSE SPECIFIC
 function CareerOpportunities({ courseSlug }) {
-  const careers = courseCareers[courseSlug] || courseCareers['android'];
+  const careers = courseCareers[courseSlug] || courseCareers['fullstack'];
   
   return (
     <div style={{
@@ -899,7 +1086,7 @@ function CareerOpportunities({ courseSlug }) {
 
 // 5. Skills You Will Learn - COURSE SPECIFIC
 function SkillsYouWillLearn({ courseSlug }) {
-  const skills = courseSkills[courseSlug] || courseSkills['android'];
+  const skills = courseSkills[courseSlug] || courseSkills['fullstack'];
   
   return (
     <div style={{
@@ -964,7 +1151,7 @@ function SkillsYouWillLearn({ courseSlug }) {
 
 // 6. Tools & Technologies Covered - COURSE SPECIFIC
 function ToolsTechnologies({ courseSlug }) {
-  const tools = courseTools[courseSlug] || courseTools['android'];
+  const tools = courseTools[courseSlug] || courseTools['fullstack'];
   
   return (
     <div style={{
@@ -1109,11 +1296,31 @@ const courseSyllabus = {
       },
       {
         question: 'Will I get a certificate?',
-        answer: 'Yes, you will receive an industry-recognized certificate upon completion.'
+        answer: 'Yes, you will receive an industry-recognized ISO Certified certificate upon completion.'
       },
       {
         question: 'What tools will I use?',
         answer: 'You will work with OpenAI API, LangChain, Vector Databases, Python, and modern AI frameworks.'
+      },
+      {
+        question: 'Is this program suitable for beginners?',
+        answer: 'Yes, the program is designed for both beginners and experienced professionals. We start with fundamentals and gradually move to advanced concepts.'
+      },
+      {
+        question: 'What is the class schedule?',
+        answer: 'We offer flexible timing options including morning, evening, and weekend batches to accommodate working professionals and students.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume optimization, mock interviews, and job referral opportunities.'
+      },
+      {
+        question: 'Can I attend a demo class before enrolling?',
+        answer: 'Absolutely! We offer 2 free demo classes so you can experience our teaching methodology before making a commitment.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans to make our programs accessible to everyone. Contact us for detailed pricing information.'
       }
     ]
   },
@@ -1176,7 +1383,35 @@ const courseSyllabus = {
       },
       {
         question: 'Will I get an internship?',
-        answer: 'Yes, the program includes internship opportunities with real project experience.'
+        answer: 'Yes, the program includes internship opportunities with real project experience on client projects.'
+      },
+      {
+        question: 'What technologies will I learn?',
+        answer: 'You will learn React, Node.js, Python/Django, MongoDB, PostgreSQL, Docker, AWS, and many more modern technologies.'
+      },
+      {
+        question: 'Is this program suitable for working professionals?',
+        answer: 'Yes, we offer flexible timings including weekend batches specifically designed for working professionals.'
+      },
+      {
+        question: 'What kind of projects will I build?',
+        answer: 'You will build 5+ live projects including e-commerce platforms, healthcare management systems, and fintech applications.'
+      },
+      {
+        question: 'Do you provide career guidance?',
+        answer: 'Yes, we provide complete career guidance including resume building, portfolio development, and interview preparation.'
+      },
+      {
+        question: 'What is the certification value?',
+        answer: 'Our ISO Certified internship certificate is globally recognized and adds significant value to your professional profile.'
+      },
+      {
+        question: 'Can I switch to part-time mode?',
+        answer: 'Yes, we offer flexible learning options and you can switch between full-time and part-time modes based on your convenience.'
+      },
+      {
+        question: 'What is the batch size?',
+        answer: 'We maintain small batch sizes (10-15 students) to ensure personalized attention and effective learning.'
       }
     ]
   },
@@ -1230,7 +1465,39 @@ const courseSyllabus = {
       },
       {
         question: 'Do I need prior coding experience?',
-        answer: 'No prior experience is required. We start from the fundamentals.'
+        answer: 'No prior experience is required. We start from the fundamentals and build your skills progressively.'
+      },
+      {
+        question: 'Will I be able to build websites after this course?',
+        answer: 'Yes, you will be able to build fully functional, responsive websites and web applications independently.'
+      },
+      {
+        question: 'What makes this program different from other courses?',
+        answer: 'Our program focuses on hands-on learning with live projects, one-on-one mentoring, and real-world industry exposure.'
+      },
+      {
+        question: 'Do you provide internship opportunities?',
+        answer: 'Yes, we provide internship opportunities where you work on real client projects or structured institute projects.'
+      },
+      {
+        question: 'What technologies will I learn?',
+        answer: 'You will learn HTML5, CSS3, JavaScript, React, Node.js, Express.js, MongoDB, and various deployment tools.'
+      },
+      {
+        question: 'Is there any age limit?',
+        answer: 'No, there is no age limit. Our program is open to students, graduates, and working professionals of all ages.'
+      },
+      {
+        question: 'What is the class duration per day?',
+        answer: 'Classes typically run for 2-3 hours per day, with additional time for practice and project work.'
+      },
+      {
+        question: 'Do you provide study materials?',
+        answer: 'Yes, we provide comprehensive study materials, code samples, and recorded sessions for revision.'
+      },
+      {
+        question: 'Can I pursue this course alongside college?',
+        answer: 'Absolutely! We offer flexible timings that can be adjusted to fit your college schedule.'
       }
     ]
   },
@@ -1284,7 +1551,39 @@ const courseSyllabus = {
       },
       {
         question: 'Which platforms will I learn?',
-        answer: 'You\'ll learn both React Native and Flutter for cross-platform development.'
+        answer: 'You\'ll learn both React Native and Flutter for cross-platform development on iOS and Android.'
+      },
+      {
+        question: 'Do I need prior mobile development experience?',
+        answer: 'No prior experience is required. We teach everything from fundamentals to advanced concepts.'
+      },
+      {
+        question: 'Will I be able to publish apps to app stores?',
+        answer: 'Yes, we guide you through the complete app submission process for both Apple App Store and Google Play Store.'
+      },
+      {
+        question: 'What kind of apps will I build?',
+        answer: 'You will build e-commerce apps, social media apps, healthcare apps, and fintech applications.'
+      },
+      {
+        question: 'Is this program suitable for beginners?',
+        answer: 'Yes, we start from basics and gradually move to advanced topics, making it suitable for all skill levels.'
+      },
+      {
+        question: 'What tools will I use?',
+        answer: 'You will work with React Native, Flutter, Firebase, Android Studio, Xcode, Git, and various API tools.'
+      },
+      {
+        question: 'Do you provide placement support?',
+        answer: 'Yes, we offer complete placement support including resume building, portfolio development, and interview preparation.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing information.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes so you can experience our teaching style before enrolling.'
       }
     ]
   },
@@ -1338,7 +1637,39 @@ const courseSyllabus = {
       },
       {
         question: 'Do I need design experience?',
-        answer: 'No prior design experience is required. We start from fundamentals.'
+        answer: 'No prior design experience is required. We start from fundamentals and guide you through every step.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Figma, Adobe XD, Photoshop, Illustrator, InVision, Miro, and other industry-standard tools.'
+      },
+      {
+        question: 'Will I have a portfolio after this course?',
+        answer: 'Yes, you will have a complete professional portfolio with 4-5 projects and detailed case studies.'
+      },
+      {
+        question: 'Is this course suitable for career switchers?',
+        answer: 'Absolutely! Many of our students have successfully switched from non-design careers to UI/UX design.'
+      },
+      {
+        question: 'What kind of projects will I work on?',
+        answer: 'You will work on mobile app design, web app design, design systems, and real client projects.'
+      },
+      {
+        question: 'Do you provide internship opportunities?',
+        answer: 'Yes, we provide internship opportunities with real client projects and professional design workflows.'
+      },
+      {
+        question: 'What is the certification value?',
+        answer: 'Our ISO Certified Internship certificate is globally recognized and highly valued by employers.'
+      },
+      {
+        question: 'Can I pursue this course alongside my job?',
+        answer: 'Yes, we offer flexible timing options including weekend batches for working professionals.'
+      },
+      {
+        question: 'What is the average salary after this course?',
+        answer: 'UI/UX designers typically earn between 4-12 LPA depending on experience and skill level.'
       }
     ]
   },
@@ -1393,6 +1724,38 @@ const courseSyllabus = {
       {
         question: 'Do I need prior programming experience?',
         answer: 'Basic Python knowledge is helpful but not required. We start from fundamentals.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Python, NumPy, Pandas, Scikit-learn, TensorFlow, Tableau, Power BI, and more.'
+      },
+      {
+        question: 'Will I be job-ready after this course?',
+        answer: 'Yes, with 5+ live projects and hands-on experience, you will be ready for data science roles.'
+      },
+      {
+        question: 'What is the scope of data science?',
+        answer: 'Data science has immense scope across industries including healthcare, finance, e-commerce, and technology.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide resume optimization, mock interviews, and job referral support.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology.'
+      },
+      {
+        question: 'What are the career options after this course?',
+        answer: 'You can work as Data Analyst, Data Scientist, ML Engineer, AI Engineer, or Business Intelligence Analyst.'
+      },
+      {
+        question: 'Is this course suitable for non-IT students?',
+        answer: 'Yes, we welcome students from all backgrounds. Our curriculum is designed to be accessible to everyone.'
       }
     ]
   },
@@ -1446,7 +1809,39 @@ const courseSyllabus = {
       },
       {
         question: 'Do I need prior coding experience?',
-        answer: 'No prior experience is required. We start from the basics.'
+        answer: 'No prior experience is required. We start from the basics and build your skills gradually.'
+      },
+      {
+        question: 'What will I learn in this program?',
+        answer: 'You will learn Python fundamentals, OOP, Django for web development, and data science libraries.'
+      },
+      {
+        question: 'Is Python in demand?',
+        answer: 'Yes, Python is one of the most in-demand programming languages with applications across industries.'
+      },
+      {
+        question: 'What career opportunities are available?',
+        answer: 'You can work as Python Developer, Django Developer, Data Analyst, Automation Engineer, or AI Engineer.'
+      },
+      {
+        question: 'Do you provide hands-on projects?',
+        answer: 'Yes, you will work on multiple projects including web applications and data analysis projects.'
+      },
+      {
+        question: 'What is the certification value?',
+        answer: 'Our ISO Certified certificate is recognized by employers and adds value to your resume.'
+      },
+      {
+        question: 'Can I pursue this course alongside college?',
+        answer: 'Yes, we offer flexible timings that can be adjusted to fit your schedule.'
+      },
+      {
+        question: 'What tools will I use?',
+        answer: 'You will work with Python, Django, NumPy, Pandas, Matplotlib, and various development tools.'
+      },
+      {
+        question: 'Do you offer internship opportunities?',
+        answer: 'Yes, we offer internship opportunities with real-world projects and professional experience.'
       }
     ]
   },
@@ -1501,6 +1896,38 @@ const courseSyllabus = {
       {
         question: 'Do I need prior Android experience?',
         answer: 'Basic programming knowledge is helpful, but we start from fundamentals.'
+      },
+      {
+        question: 'What technologies will I learn?',
+        answer: 'You will learn Kotlin, Android Studio, Jetpack Compose, Firebase, Room, Retrofit, and more.'
+      },
+      {
+        question: 'Will I be able to publish apps to Play Store?',
+        answer: 'Yes, we guide you through the complete Play Store submission process.'
+      },
+      {
+        question: 'What kind of apps will I build?',
+        answer: 'You will build e-commerce, social media, healthcare, and fintech applications.'
+      },
+      {
+        question: 'Is this program suitable for beginners?',
+        answer: 'Yes, we start from basics and gradually move to advanced Android development concepts.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology.'
+      },
+      {
+        question: 'What is the career scope for Android developers?',
+        answer: 'Android developers are in high demand with salaries ranging from 4-15 LPA based on experience.'
       }
     ]
   },
@@ -1556,12 +1983,618 @@ const courseSyllabus = {
       {
         question: 'Do I need prior cloud experience?',
         answer: 'Basic IT knowledge is helpful, but we start from fundamentals.'
+      },
+      {
+        question: 'What cloud platforms will I learn?',
+        answer: 'You will learn AWS, Azure, and GCP with a focus on AWS core services.'
+      },
+      {
+        question: 'What is the scope of cloud computing?',
+        answer: 'Cloud computing has immense scope with organizations rapidly migrating to cloud infrastructure.'
+      },
+      {
+        question: 'Will I be job-ready after this course?',
+        answer: 'Yes, with hands-on experience on live projects, you will be ready for cloud engineering roles.'
+      },
+      {
+        question: 'What tools will I work with?',
+        answer: 'You will work with AWS, Docker, Kubernetes, Terraform, Jenkins, Git, and monitoring tools.'
+      },
+      {
+        question: 'Do you provide certification?',
+        answer: 'Yes, you will receive an ISO Certified Internship certificate upon successful completion.'
+      },
+      {
+        question: 'What are the career options?',
+        answer: 'You can work as Cloud Engineer, DevOps Engineer, Cloud Architect, or Site Reliability Engineer.'
+      },
+      {
+        question: 'Is this program suitable for non-IT professionals?',
+        answer: 'Yes, we welcome professionals from all backgrounds looking to transition into cloud computing.'
+      },
+      {
+        question: 'What is the average salary for cloud professionals?',
+        answer: 'Cloud professionals typically earn between 5-20 LPA based on experience and expertise.'
+      }
+    ]
+  },
+  'data-analytics': {
+    modules: [
+      {
+        title: 'Introduction to Data Analytics',
+        topics: [
+          'What is Data Analytics?',
+          'Types of Data Analytics',
+          'Data Analytics Lifecycle',
+          'Roles & Responsibilities of a Data Analyst',
+          'Tools & Technologies Overview'
+        ]
+      },
+      {
+        title: 'Python for Data Analytics',
+        topics: [
+          'Python Fundamentals',
+          'Data Types & Structures',
+          'Functions & Modules',
+          'File Handling',
+          'Working with Jupyter Notebook'
+        ]
+      },
+      {
+        title: 'Data Manipulation with NumPy & Pandas',
+        topics: [
+          'NumPy Arrays & Operations',
+          'Pandas Series & DataFrames',
+          'Data Cleaning & Preprocessing',
+          'Data Aggregation & Grouping',
+          'Merging, Joining & Concatenating',
+          'Handling Missing Values'
+        ]
+      },
+      {
+        title: 'Data Visualization',
+        topics: [
+          'Matplotlib Fundamentals',
+          'Creating Charts & Graphs',
+          'Plot Customization & Styling',
+          'Seaborn for Statistical Visualization',
+          'Interactive Visualizations with Plotly'
+        ]
+      },
+      {
+        title: 'SQL & Database Management',
+        topics: [
+          'SQL Fundamentals',
+          'MySQL Setup & Operations',
+          'CRUD Operations',
+          'Joins & Subqueries',
+          'Aggregate Functions & Group By',
+          'Database Design & Normalization'
+        ]
+      },
+      {
+        title: 'Advanced Excel for Data Analytics',
+        topics: [
+          'Excel Fundamentals',
+          'Advanced Formulas & Functions',
+          'Pivot Tables & Charts',
+          'Data Analysis with Power Query',
+          'Macros & VBA Basics',
+          'Dashboard Creation in Excel'
+        ]
+      },
+      {
+        title: 'Business Intelligence with Power BI & Tableau',
+        topics: [
+          'Introduction to Power BI',
+          'Data Modeling in Power BI',
+          'Creating Reports & Dashboards',
+          'Introduction to Tableau',
+          'Data Visualization Best Practices',
+          'Sharing & Publishing Dashboards'
+        ]
+      },
+      {
+        title: 'Data Storytelling & Reporting',
+        topics: [
+          'What is Data Storytelling?',
+          'Creating Compelling Narratives',
+          'Report Design Principles',
+          'Executive Dashboards',
+          'Presenting Data to Stakeholders',
+          'Creating Actionable Insights'
+        ]
+      },
+      {
+        title: 'Real-World Projects',
+        topics: [
+          'Sales Data Analysis Project',
+          'Customer Analytics Dashboard',
+          'Financial Data Analysis',
+          'Healthcare Data Analytics',
+          'E-commerce Analytics Project',
+          'Project Presentation & Review'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Data Analytics program?',
+        answer: 'The program spans 12 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'No prior experience is required. We start from basics and build your skills progressively.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Python, NumPy, Pandas, Matplotlib, Excel (Advanced), SQL, MySQL, Power BI, and Tableau.'
+      },
+      {
+        question: 'Will I be job-ready after this course?',
+        answer: 'Yes, with 5+ live projects and hands-on experience, you will be ready for data analyst roles.'
+      },
+      {
+        question: 'What is the scope of data analytics?',
+        answer: 'Data analytics has immense scope across industries including finance, healthcare, e-commerce, and technology.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide resume optimization, mock interviews, and job referral support.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology.'
+      },
+      {
+        question: 'What are the career options after this course?',
+        answer: 'You can work as Data Analyst, Business Analyst, Data Analytics Manager, or BI Developer.'
+      },
+      {
+        question: 'Is this course suitable for non-IT students?',
+        answer: 'Yes, we welcome students from all backgrounds. Our curriculum is designed to be accessible to everyone.'
+      }
+    ]
+  },
+  'automation-solutions': {
+    modules: [
+      {
+        title: 'Introduction to Automation',
+        topics: [
+          'What is Automation?',
+          'Types of Automation',
+          'Business Process Automation',
+          'ROI of Automation',
+          'Automation Tools Overview'
+        ]
+      },
+      {
+        title: 'Python for Automation',
+        topics: [
+          'Python Fundamentals',
+          'Data Types & Structures',
+          'Functions & Modules',
+          'File Handling',
+          'Working with APIs'
+        ]
+      },
+      {
+        title: 'Web Scraping & Data Extraction',
+        topics: [
+          'HTML & CSS Basics',
+          'XPath & CSS Selectors',
+          'BeautifulSoup',
+          'Selenium & Playwright',
+          'Scrapy Framework',
+          'Data Cleaning & Storage'
+        ]
+      },
+      {
+        title: 'Workflow Automation',
+        topics: [
+          'Zapier & Make',
+          'CRM Integration',
+          'Email Automation',
+          'Business Process Workflows',
+          'Automation with APIs'
+        ]
+      },
+      {
+        title: 'Real-World Projects',
+        topics: [
+          'Lead Generation Automation',
+          'Price Monitoring System',
+          'CRM Integration Project',
+          'Data Pipeline Automation',
+          'Workflow Optimization'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Automation program?',
+        answer: 'The program spans 12 weeks with live projects and internship opportunities.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'Basic programming knowledge is helpful but not required. We start from fundamentals.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Python, Selenium, BeautifulSoup, Scrapy, Zapier, Make, REST APIs, and more.'
+      },
+      {
+        question: 'Will I be job-ready after this course?',
+        answer: 'Yes, with hands-on experience on real automation projects, you will be ready for automation engineer roles.'
+      },
+      {
+        question: 'What is the scope of automation?',
+        answer: 'Automation has immense scope across industries with companies looking to optimize their business processes.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology.'
+      }
+    ]
+  },
+  'foundational-programming': {
+    modules: [
+      {
+        title: 'C Programming Fundamentals',
+        topics: [
+          'Introduction to C',
+          'Data Types & Variables',
+          'Control Structures',
+          'Functions & Pointers',
+          'Arrays & Strings',
+          'File Handling'
+        ]
+      },
+      {
+        title: 'C++ Programming',
+        topics: [
+          'OOP Concepts',
+          'Classes & Objects',
+          'Inheritance & Polymorphism',
+          'Operator Overloading',
+          'Templates & STL'
+        ]
+      },
+      {
+        title: 'Java Programming',
+        topics: [
+          'Java Fundamentals',
+          'OOP in Java',
+          'Exception Handling',
+          'Collections Framework',
+          'Multithreading'
+        ]
+      },
+      {
+        title: 'Python Programming',
+        topics: [
+          'Python Basics',
+          'Data Structures',
+          'Functions & Modules',
+          'File Handling',
+          'OOP in Python'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Foundational Programming program?',
+        answer: 'The program spans 8 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior programming experience?',
+        answer: 'No prior experience is required. This program is designed for absolute beginners.'
+      },
+      {
+        question: 'What languages will I learn?',
+        answer: 'You will learn C, C++, Java, and Python - four of the most important programming languages.'
+      },
+      {
+        question: 'Why learn multiple languages?',
+        answer: 'Learning multiple languages gives you a strong foundation and makes it easier to learn any new language in the future.'
+      },
+      {
+        question: 'What is the career scope?',
+        answer: 'You can work as a Software Engineer, Full Stack Developer, or specialize in any of the languages you learn.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      }
+    ]
+  },
+  'web-design': {
+    modules: [
+      {
+        title: 'HTML & CSS Fundamentals',
+        topics: [
+          'HTML5 Semantic Elements',
+          'CSS3 Styling',
+          'CSS Grid & Flexbox',
+          'Responsive Design',
+          'CSS Animations'
+        ]
+      },
+      {
+        title: 'Design Principles',
+        topics: [
+          'Color Theory',
+          'Typography',
+          'Layout & Composition',
+          'Visual Hierarchy',
+          'Design Thinking'
+        ]
+      },
+      {
+        title: 'Tools & Workflows',
+        topics: [
+          'Figma Fundamentals',
+          'Adobe XD',
+          'Photoshop Basics',
+          'Design Systems',
+          'Prototyping'
+        ]
+      },
+      {
+        title: 'Portfolio Projects',
+        topics: [
+          'Website Design Projects',
+          'Mobile App Design',
+          'Design System Creation',
+          'Portfolio Development',
+          'Client Presentations'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Web Design program?',
+        answer: 'The program spans 8 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior design experience?',
+        answer: 'No prior experience is required. We start from fundamentals and build your skills gradually.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Figma, Adobe XD, Photoshop, Illustrator, and various design tools.'
+      },
+      {
+        question: 'Will I have a portfolio after this course?',
+        answer: 'Yes, you will have a complete professional portfolio with real-world design projects.'
+      },
+      {
+        question: 'What are the career opportunities?',
+        answer: 'You can work as Web Designer, UI/UX Designer, Frontend Developer, or Creative Director.'
+      },
+      {
+        question: 'Do you provide internship opportunities?',
+        answer: 'Yes, we provide internship opportunities with real client projects and professional design workflows.'
+      }
+    ]
+  },
+  'cv': {
+    modules: [
+      {
+        title: 'Computer Vision Fundamentals',
+        topics: [
+          'Introduction to Computer Vision',
+          'Image Processing',
+          'OpenCV Basics',
+          'Image Filters & Transformations',
+          'Feature Detection'
+        ]
+      },
+      {
+        title: 'Deep Learning for Vision',
+        topics: [
+          'Neural Networks',
+          'Convolutional Neural Networks',
+          'Transfer Learning',
+          'Object Detection',
+          'Image Segmentation'
+        ]
+      },
+      {
+        title: 'Advanced Vision Applications',
+        topics: [
+          'Face Recognition',
+          'Video Analysis',
+          'Real-time Processing',
+          'Edge Detection',
+          'Motion Tracking'
+        ]
+      },
+      {
+        title: 'Projects & Deployment',
+        topics: [
+          'Face Detection System',
+          'Object Recognition',
+          'Video Analytics',
+          'Model Deployment',
+          'Edge AI Applications'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Computer Vision program?',
+        answer: 'The program spans 12 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior AI/ML experience?',
+        answer: 'Basic Python knowledge is recommended. We start from fundamentals and gradually move to advanced concepts.'
+      },
+      {
+        question: 'What tools will I use?',
+        answer: 'You will work with Python, OpenCV, TensorFlow, PyTorch, and various vision libraries.'
+      },
+      {
+        question: 'What is the career scope?',
+        answer: 'Computer Vision has immense scope in healthcare, security, automotive, robotics, and many other industries.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      }
+    ]
+  },
+  'embedded': {
+    modules: [
+      {
+        title: 'Embedded Systems Fundamentals',
+        topics: [
+          'Introduction to Embedded Systems',
+          'Microcontrollers',
+          'Sensors & Actuators',
+          'Circuit Design',
+          'Embedded C Programming'
+        ]
+      },
+      {
+        title: 'IoT & Connectivity',
+        topics: [
+          'IoT Architecture',
+          'Communication Protocols',
+          'MQTT & HTTP',
+          'Cloud Integration',
+          'Edge Computing'
+        ]
+      },
+      {
+        title: 'Hardware Platforms',
+        topics: [
+          'Arduino Programming',
+          'ESP32 Development',
+          'Raspberry Pi Projects',
+          'Sensor Integration',
+          'Actuator Control'
+        ]
+      },
+      {
+        title: 'Real-World Projects',
+        topics: [
+          'Smart Home System',
+          'IoT Sensor Network',
+          'Environmental Monitoring',
+          'Industrial Automation',
+          'Wearable Technology'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Embedded & IoT program?',
+        answer: 'The program spans 12 weeks with live projects and certification.'
+      },
+      {
+        question: 'Do I need prior electronics experience?',
+        answer: 'Basic electronics knowledge is helpful but not required. We start from fundamentals.'
+      },
+      {
+        question: 'What hardware platforms will I use?',
+        answer: 'You will work with Arduino, ESP32, Raspberry Pi, and various sensors and actuators.'
+      },
+      {
+        question: 'What is the career scope?',
+        answer: 'Embedded systems engineers are in high demand in automotive, consumer electronics, healthcare, and IoT industries.'
+      },
+      {
+        question: 'Do you provide internship opportunities?',
+        answer: 'Yes, we provide internship opportunities with real hardware projects and industry exposure.'
+      }
+    ]
+  },
+  'digital-performance-marketing': {
+    modules: [
+      {
+        title: 'Digital Marketing Fundamentals',
+        topics: [
+          'Introduction to Digital Marketing',
+          'Digital Marketing Strategy',
+          'Consumer Behavior',
+          'Marketing Funnel',
+          'Marketing Analytics'
+        ]
+      },
+      {
+        title: 'Search Engine Marketing',
+        topics: [
+          'SEO Fundamentals',
+          'On-Page SEO',
+          'Off-Page SEO',
+          'Google Ads',
+          'Search Campaigns'
+        ]
+      },
+      {
+        title: 'Social Media & Content Marketing',
+        topics: [
+          'Facebook/Meta Ads',
+          'Instagram Marketing',
+          'Content Strategy',
+          'Email Marketing',
+          'Influencer Marketing'
+        ]
+      },
+      {
+        title: 'Performance Analytics',
+        topics: [
+          'Google Analytics',
+          'Conversion Tracking',
+          'A/B Testing',
+          'ROI Analysis',
+          'Campaign Optimization'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is the duration of the Digital Marketing program?',
+        answer: 'The program spans 12 weeks with live campaigns and certification.'
+      },
+      {
+        question: 'Do I need prior marketing experience?',
+        answer: 'No prior experience is required. We start from fundamentals and build your skills gradually.'
+      },
+      {
+        question: 'What tools will I learn?',
+        answer: 'You will learn Google Ads, Meta Ads, SEO tools, Google Analytics, Mailchimp, and more.'
+      },
+      {
+        question: 'Will I run real campaigns?',
+        answer: 'Yes, you will work on real campaigns with measurable ROI and live performance tracking.'
+      },
+      {
+        question: 'What is the career scope?',
+        answer: 'Digital marketing has immense scope with companies investing heavily in online presence and lead generation.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
       }
     ]
   }
 };
 
-// ============ NEW SECTIONS TO INSERT BEFORE FAQ ============
+// ============ NEW SECTIONS ============
 
 // Live Projects Section
 function LiveProjects() {
@@ -2256,6 +3289,34 @@ export default function CoursesDetails() {
       {
         question: 'What kind of support do you provide?',
         answer: 'We provide comprehensive support including mentorship, project guidance, and post-program assistance.'
+      },
+      {
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we provide comprehensive placement support including resume building and interview preparation.'
+      },
+      {
+        question: 'Can I attend a demo class?',
+        answer: 'Yes, we offer 2 free demo classes for you to experience our teaching methodology.'
+      },
+      {
+        question: 'What is the fee structure?',
+        answer: 'We offer flexible monthly payment plans. Contact us for detailed pricing.'
+      },
+      {
+        question: 'Is this program suitable for beginners?',
+        answer: 'Yes, our programs are designed for all skill levels, from beginners to experienced professionals.'
+      },
+      {
+        question: 'What is the class schedule?',
+        answer: 'We offer flexible timing options including morning, evening, and weekend batches.'
+      },
+      {
+        question: 'What is the certification value?',
+        answer: 'Our ISO Certified Internship certificate is globally recognized and adds significant value to your professional profile.'
+      },
+      {
+        question: 'What makes AstirMind different from other training institutes?',
+        answer: 'We focus on hands-on learning with live projects, one-on-one mentoring, flexible schedules, and industry-recognized certification.'
       }
     ]
   };
@@ -2500,31 +3561,26 @@ export default function CoursesDetails() {
                   fontWeight: 700,
                   color: 'var(--text)'
                 }}>
-                  {course.tags.find(t => t.includes('Week')) || 'Flexible'}
+                  {
+                    course.tags.find(t => t === '6-8 Months') ||
+                    course.tags.find(t => t === '2 Months') ||
+                    course.tags.find(t => t === '45 days') ||
+                    course.tags.find(t => t === '120-Hours') ||
+                    course.tags.find(t => t.includes('Week')) ||
+                    'Flexible'
+                  }
                 </div>
               </div>
             </div>
           </div>
 
-          {/* ====== NEW SECTIONS INSERTED HERE (BEFORE FAQ) ====== */}
-          
-          {/* 9. Live Projects */}
+          {/* NEW SECTIONS */}
           <LiveProjects />
-
-          {/* 10. Student Portfolio */}
           <StudentPortfolio />
-
-          {/* 11. Internship Program & Certification */}
           <InternshipProgram />
-
-          {/* 12. Placement Support */}
           <PlacementSupport />
-
-          {/* 13. Testimonials */}
           <Testimonials />
 
-          {/* ====== ORIGINAL FAQ SECTION ====== */}
-          
           {/* FAQ Section */}
           <div style={{
             marginTop: '4rem',

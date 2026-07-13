@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, CloudSun, Target, TrendingUp, LineChart, Code2, Layout, Code, Phone, Star } from 'lucide-react';
+import { Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, CloudSun, Target, TrendingUp, LineChart, Code2, Layout, Code, Phone, Star, Atom, Calculator } from 'lucide-react';
 import { useMode } from '../context/ModeContext';
 import { Link } from 'react-router-dom';
 
@@ -247,7 +247,7 @@ export const courses = [
     slug: 'genai',
     title: 'Generative AI & LLMs',
     desc: 'Hands-on training with large language models, prompt engineering, RAG pipelines, and building AI-powered applications. Work on real products, not toy examples.',
-    tags: ['120 hours, 45 Days, 12-16 Weeks , 6-8 Months', 'Live Projects', 'Certification'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Brain,
     rating: 4.9,
     reviews: 234
@@ -257,7 +257,7 @@ export const courses = [
     slug: 'automation-solutions',
     title: 'Automation & Data Scraping Solutions',
     desc: 'We build intelligent automation systems for lead generation, data extraction, workflow automation, browser automation, CRM integrations, and business process optimization. Extract structured data from any website and automate repetitive tasks across your entire tech stack.',
-    tags: ['Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
+    tags: ['6-8 Months','Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
     Icon: Bot,
     rating: 4.7,
     reviews: 156
@@ -267,7 +267,7 @@ export const courses = [
     slug: 'fullstack',
     title: 'Full Stack Development',
     desc: 'Master both JavaScript (React/Node) AND Python/Django stacks. Build complete web products from database to UI with REST APIs, authentication, and deployment. Choose your specialization or learn both — the exact stacks companies hire for.',
-    tags: ['16 Weeks', 'Live Projects', 'Internship', 'Certification', 'React/Node', 'Python/Django'],
+    tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification', 'React/Node', 'Python/Django'],
     Icon: Globe,
     rating: 4.8,
     reviews: 289
@@ -277,7 +277,7 @@ export const courses = [
     slug: 'foundational-programming',
     title: 'C, C++, Java & Python',
     desc: 'Master the fundamentals of programming with four essential languages. Learn C for systems programming, C++ for performance-critical applications, Java for enterprise development, and Python for AI, data science, and automation. Build a strong foundation that makes learning any new language easy.',
-    tags: ['16 Weeks', 'Live Projects', 'Certification', 'C', 'C++', 'Java', 'Python', 'DSA'],
+    tags: ['2 Months', 'Live Projects', 'Certification', 'C', 'C++', 'Java', 'Python', 'DSA'],
     Icon: Code,
     rating: 4.7,
     reviews: 192
@@ -287,7 +287,7 @@ export const courses = [
     slug: 'web-design',
     title: 'Web Design',
     desc: 'Master responsive web design principles, typography, color theory, layout techniques, and modern CSS frameworks. Learn to create visually stunning, user-friendly websites that adapt seamlessly across all devices. Build a professional portfolio of real client-ready designs.',
-    tags: ['8 Weeks', 'Live Projects', 'Certification', 'Figma', 'Responsive Design', 'CSS', 'Portfolio'],
+    tags: ['45 days','120-Hours', 'Live Projects', 'Certification', 'Figma', 'Responsive Design', 'CSS', 'Portfolio'],
     Icon: Layout,
     rating: 4.8,
     reviews: 167
@@ -297,7 +297,7 @@ export const courses = [
     slug: 'web-development',
     title: 'Web Development',
     desc: 'Learn modern frontend and backend web development with HTML5, CSS3, JavaScript, React, and Node.js. Build dynamic, database-driven web applications with authentication, APIs, and deployment. Master the skills to become a professional web developer.',
-    tags: ['14 Weeks', 'Live Projects', 'Internship', 'Certification', 'React', 'Node.js', 'MongoDB'],
+    tags: ['45 days','120-Hours', 'Live Projects', 'Internship', 'Certification', 'React', 'Node.js', 'MongoDB'],
     Icon: Code2,
     rating: 4.9,
     reviews: 245
@@ -307,7 +307,7 @@ export const courses = [
     slug: 'mobile-app-development',
     title: 'Mobile App Development (React Native & Flutter)',
     desc: 'Master cross-platform mobile app development using React Native and Flutter. Build high-performance iOS and Android apps from a single codebase. Learn state management, native modules, app deployment to App Store and Play Store, and real-world project workflows.',
-    tags: ['14 Weeks', 'Live Projects', 'Internship', 'Certification', 'React Native', 'Flutter', 'iOS', 'Android'],
+    tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification', 'React Native', 'Flutter', 'iOS', 'Android'],
     Icon: Phone,
     rating: 4.7,
     reviews: 178
@@ -317,7 +317,7 @@ export const courses = [
     slug: 'datascience',
     title: 'Data Science & ML',
     desc: 'Statistics, feature engineering, model training, and production ML. You will deploy models, not just fit them in a notebook.',
-    tags: ['14 Weeks', 'Live Projects', 'Certification'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Database,
     rating: 4.9,
     reviews: 312
@@ -327,7 +327,7 @@ export const courses = [
     slug: 'cv',
     title: 'Computer Vision',
     desc: 'Image classification, object detection, and video analysis using modern deep learning frameworks. Work on real camera and sensing pipelines.',
-    tags: ['10 Weeks', 'Live Projects', 'Certification'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Eye,
     rating: 4.7,
     reviews: 143
@@ -337,7 +337,7 @@ export const courses = [
     slug: 'android',
     title: 'Android Development',
     desc: 'Native Android with Kotlin. Architecture patterns, Jetpack Compose, and publishing a real app to the Play Store before you finish.',
-    tags: ['12 Weeks', 'Live Projects', 'Internship', 'Certification'],
+    tags: ['6-8 Months', 'Live Projects', 'Internship', 'Certification'],
     Icon: Smartphone,
     rating: 4.8,
     reviews: 201
@@ -347,7 +347,7 @@ export const courses = [
     slug: 'embedded',
     title: 'Embedded & IoT Systems',
     desc: 'Microcontrollers, sensors, firmware, and connecting hardware to cloud backends. Practical builds from day one.',
-    tags: ['10 Weeks', 'Live Projects', 'Certification'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification'],
     Icon: Cpu,
     rating: 4.6,
     reviews: 98
@@ -357,7 +357,7 @@ export const courses = [
     slug: 'python',
     title: 'Python Engineering',
     desc: 'From syntax to production-quality Python with Django & FastAPI. Backend development, automation, and scripting with real-world workflows and deployment practices.',
-    tags: ['8 Weeks', 'Mentor Support', 'Certification', 'Django', 'FastAPI'],
+    tags: ['6-8 Months', 'Mentor Support', 'Certification', 'Django', 'FastAPI'],
     Icon: TerminalSquare,
     rating: 4.8,
     reviews: 234
@@ -367,7 +367,7 @@ export const courses = [
     slug: 'uiux',
     title: 'UI/UX Design',
     desc: 'User research, wireframing, prototyping, and high-fidelity interfaces. Build a portfolio that reflects real product design workflows.',
-    tags: ['10 Weeks', 'Portfolio Projects', 'Certification'],
+    tags: ['6-8 Months', 'Portfolio Projects', 'Certification'],
     Icon: PenTool,
     rating: 4.9,
     reviews: 189
@@ -377,7 +377,7 @@ export const courses = [
     slug: 'cloud-computing',
     title: 'Cloud Computing',
     desc: 'Master AWS, Azure, and Google Cloud fundamentals. Learn cloud architecture, serverless computing, containerization with Docker and Kubernetes, and infrastructure as code. Hands-on deployment of scalable applications.',
-    tags: ['12 Weeks', 'Live Projects', 'Certification', 'AWS', 'Docker', 'Kubernetes'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification', 'AWS', 'Docker', 'Kubernetes'],
     Icon: CloudSun,
     rating: 4.7,
     reviews: 156
@@ -387,7 +387,7 @@ export const courses = [
     slug: 'digital-performance-marketing',
     title: 'Digital Marketing & Performance Marketing',
     desc: 'Learn SEO, Google Ads, Meta Ads, email marketing, and conversion rate optimization. Run real campaigns with measurable ROI. Master analytics, audience targeting, and data-driven growth strategies.',
-    tags: ['10 Weeks', 'Live Campaigns', 'Certification', 'Google Ads', 'Meta Ads', 'Analytics'],
+    tags: ['6-8 Months', 'Live Campaigns', 'Certification', 'Google Ads', 'Meta Ads', 'Analytics'],
     Icon: Target,
     rating: 4.6,
     reviews: 167
@@ -397,10 +397,32 @@ export const courses = [
     slug: 'data-analytics',
     title: 'Data Analytics',
     desc: 'Master data cleaning, exploratory data analysis (EDA), statistical analysis, and visualization tools like Power BI, Tableau, and Python (Pandas, Matplotlib, Seaborn). Learn to extract actionable insights from complex datasets and drive business decisions.',
-    tags: ['10 Weeks', 'Live Projects', 'Certification', 'Power BI', 'Tableau', 'Python', 'SQL'],
+    tags: ['6-8 Months', 'Live Projects', 'Certification', 'Power BI', 'Tableau', 'Python', 'SQL'],
     Icon: LineChart,
     rating: 4.8,
     reviews: 203
+  },
+  // NEW COURSE 1: Python Foundation for Artificial Intelligence
+  {
+    n: '17',
+    slug: 'python-ai-foundation',
+    title: 'Python Foundation for Artificial Intelligence',
+    desc: 'Build a strong foundation in Python programming specifically tailored for AI development. Master essential tools and libraries including Python 3.x, VS Code, Jupyter Notebook, Python IDLE, Tkinter, SQLite3, NumPy, Pandas, and SciPy. Perfect for beginners looking to start their AI journey.',
+    tags: ['45 days', '120-Hours', 'Live Projects', 'Certification', 'Python 3.x', 'NumPy', 'Pandas', 'SciPy', 'Tkinter', 'SQLite3'],
+    Icon: Atom,
+    rating: 4.8,
+    reviews: 145
+  },
+  // NEW COURSE 2: Python Foundation for Data Analytics
+  {
+    n: '18',
+    slug: 'python-data-analytics-foundation',
+    title: 'Python Foundation for Data Analytics',
+    desc: 'Learn Python programming with a focus on data analytics. Master data manipulation, cleaning, visualization, and analysis using Python 3.x, VS Code, Jupyter Notebook, Python IDLE, NumPy, Pandas, and SciPy. Build real-world analytics projects and develop data-driven decision-making skills.',
+    tags: ['45 days', '120-Hours', 'Live Projects', 'Certification', 'Python 3.x', 'NumPy', 'Pandas', 'SciPy', 'Data Visualization', 'Analytics'],
+    Icon: Calculator,
+    rating: 4.7,
+    reviews: 132
   },
 ];
 
@@ -476,7 +498,7 @@ export default function Services() {
               </p>
             </div>
             <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-              {[{ v: '15', l: 'Programs' }, { v: '100%', l: 'Project-Based' }, { v: 'Internships', l: 'Available' }].map(({ v, l }) => (
+              {[{ v: '18', l: 'Programs' }, { v: '100%', l: 'Project-Based' }, { v: 'Internships', l: 'Available' }].map(({ v, l }) => (
                 <div key={l} style={{ border: '1px solid var(--line)', padding: '0.6rem 1.25rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--accent)' }}>{v}</span>
                   <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>{l}</span>
