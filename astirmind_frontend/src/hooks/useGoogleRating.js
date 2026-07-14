@@ -48,7 +48,7 @@ export function useGoogleRating() {
         const response = await fetch(url, {
           headers: {
             'X-Goog-Api-Key': GOOGLE_API_KEY,
-            'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews'
+            'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews(reviews.authorAttribution.photoUri)'
           }
         });
 
