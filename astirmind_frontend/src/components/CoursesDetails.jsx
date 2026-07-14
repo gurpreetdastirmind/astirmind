@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useGoogleRating } from '../hooks/useGoogleRating';
+import GoogleReviews from '../components/GoogleReviews';
 import {
   Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase,
   UserCheck, Building, RefreshCw, Award, Laptop, TrendingUp,
@@ -276,13 +277,6 @@ const courseCareers = {
     { role: 'Tech Lead', experience: '6-10 Years' },
     { role: 'CTO', experience: '10+ Years' }
   ],
-  'web-development': [
-    { role: 'Web Developer', experience: '0-2 Years' },
-    { role: 'Frontend Engineer', experience: '2-4 Years' },
-    { role: 'Senior Web Developer', experience: '4-7 Years' },
-    { role: 'Web Tech Lead', experience: '7-10 Years' },
-    { role: 'Web Architect', experience: '10+ Years' }
-  ],
   'mobile-app-development': [
     { role: 'Mobile Developer', experience: '0-2 Years' },
     { role: 'React Native Developer', experience: '2-4 Years' },
@@ -331,20 +325,6 @@ const courseCareers = {
     { role: 'Senior Automation Engineer', experience: '4-7 Years' },
     { role: 'Automation Lead', experience: '7-10 Years' },
     { role: 'Solution Architect', experience: '10+ Years' }
-  ],
-  'foundational-programming': [
-    { role: 'Junior Developer', experience: '0-2 Years' },
-    { role: 'Software Engineer', experience: '2-4 Years' },
-    { role: 'Senior Developer', experience: '4-7 Years' },
-    { role: 'Technical Lead', experience: '7-10 Years' },
-    { role: 'Software Architect', experience: '10+ Years' }
-  ],
-  'web-design': [
-    { role: 'Web Designer', experience: '0-2 Years' },
-    { role: 'UI/UX Designer', experience: '2-4 Years' },
-    { role: 'Senior Web Designer', experience: '4-7 Years' },
-    { role: 'Design Lead', experience: '7-10 Years' },
-    { role: 'Creative Director', experience: '10+ Years' }
   ],
   'cv': [
     { role: 'Computer Vision Engineer', experience: '0-2 Years' },
@@ -427,15 +407,10 @@ const courseSkills = {
     { icon: Code, label: 'HTML5 & CSS3' },
     { icon: Code, label: 'JavaScript (ES6+)' },
     { icon: Layout, label: 'Responsive Web Design' },
-    { icon: Layers, label: 'React.js Framework' },
     { icon: Package, label: 'Node.js Backend' },
-    { icon: Database, label: 'MongoDB & SQL' },
+    { icon: Database, label: 'SQL' },
     { icon: Cloud, label: 'API Integration' },
     { icon: GitBranch, label: 'Git & GitHub' },
-    { icon: Palette, label: 'UI/UX Principles' },
-    { icon: Terminal, label: 'Command Line Basics' },
-    { icon: Cloud, label: 'Web Hosting & Deployment' },
-    { icon: Trophy, label: 'Website Optimization' }
   ],
   'mobile-app-development': [
     { icon: Smartphone, label: 'React Native Development' },
@@ -553,14 +528,10 @@ const courseSkills = {
     { icon: Code, label: 'HTML5 Semantic Markup' },
     { icon: Code, label: 'CSS3 Styling' },
     { icon: Layout, label: 'Responsive Design' },
-    { icon: Palette, label: 'Color Theory & Typography' },
     { icon: Layers, label: 'CSS Grid & Flexbox' },
     { icon: Package, label: 'Bootstrap & Tailwind CSS' },
-    { icon: Cloud, label: 'Figma & Adobe XD' },
-    { icon: GitBranch, label: 'Version Control' },
     { icon: Shield, label: 'Web Accessibility' },
     { icon: Terminal, label: 'Web Performance' },
-    { icon: Cloud, label: 'Web Hosting & Deployment' },
     { icon: Trophy, label: 'Portfolio Development' }
   ],
   'cv': [
@@ -651,10 +622,10 @@ const courseTools = {
     'TypeScript', 'Tailwind CSS', 'JWT', 'Jest', 'Postman'
   ],
   'web-development': [
-    'HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js',
+    'HTML5', 'CSS3', 'JavaScript', 'Node.js',
     'Express.js', 'MongoDB', 'MySQL', 'Git', 'GitHub',
-    'Bootstrap', 'Tailwind CSS', 'REST APIs', 'Webpack', 'VS Code',
-    'Chrome DevTools', 'Postman', 'Netlify', 'Vercel', 'Heroku'
+    'Bootstrap', 'REST APIs', 'VS Code',
+    'Chrome DevTools', 'Postman'
   ],
   'mobile-app-development': [
     'React Native', 'Flutter', 'Dart', 'JavaScript', 'Firebase',
@@ -703,10 +674,9 @@ const courseTools = {
     'Debugging Tools', 'Memory Management', 'OOP Concepts'
   ],
   'web-design': [
-    'HTML5', 'CSS3', 'JavaScript', 'Figma', 'Adobe XD',
-    'Photoshop', 'Illustrator', 'Bootstrap', 'Tailwind CSS',
+    'HTML5', 'CSS3', 'JavaScript', 'Bootstrap',
     'Sass/SCSS', 'Responsive Design', 'Grid', 'Flexbox',
-    'Webflow', 'Git', 'GitHub', 'Chrome DevTools'
+    'Webflow', 'Git', 'GitHub'
   ],
   'cv': [
     'Python', 'OpenCV', 'TensorFlow', 'PyTorch', 'Keras',
@@ -1075,7 +1045,11 @@ function CourseHighlights({ course }) {
 
 // 4. Career Opportunities - COURSE SPECIFIC
 function CareerOpportunities({ courseSlug }) {
-  const careers = courseCareers[courseSlug] || courseCareers['fullstack'];
+  const careers = courseCareers[courseSlug];
+
+  if (!careers) {
+    return null;
+  }
 
   return (
     <div style={{
@@ -3455,177 +3429,212 @@ function PlacementSupport() {
 }
 
 // Testimonials Section
-function Testimonials() {
-  const testimonials = [
-    {
-      name: "Priya Sharma",
-      role: "Android Developer at TechCorp",
-      quote: "The live projects and mentorship at AstirMind transformed my career. I landed my dream job within a month of completing the program.",
-      rating: 5,
-      linkedIn: "linkedin.com/in/priyasharma"
-    },
-    {
-      name: "Rahul Verma",
-      role: "Full Stack Developer at StartupHub",
-      quote: "The structured approach and real client projects gave me the confidence to work in a professional environment. Highly recommended!",
-      rating: 5,
-      linkedIn: "linkedin.com/in/rahulverma"
-    },
-    {
-      name: "Ananya Reddy",
-      role: "Data Scientist at AnalyticsPro",
-      quote: "The Generative AI program was a game-changer. The hands-on projects and expert mentorship helped me transition into AI from traditional development.",
-      rating: 4.5,
-      linkedIn: "linkedin.com/in/ananyareddy"
-    }
-  ];
+// function Testimonials() {
+//   const testimonials = [
+//     {
+//       name: "Priya Sharma",
+//       role: "Android Developer at TechCorp",
+//       quote: "The live projects and mentorship at AstirMind transformed my career. I landed my dream job within a month of completing the program.",
+//       rating: 5,
+//       linkedIn: "linkedin.com/in/priyasharma"
+//     },
+//     {
+//       name: "Rahul Verma",
+//       role: "Full Stack Developer at StartupHub",
+//       quote: "The structured approach and real client projects gave me the confidence to work in a professional environment. Highly recommended!",
+//       rating: 5,
+//       linkedIn: "linkedin.com/in/rahulverma"
+//     },
+//     {
+//       name: "Ananya Reddy",
+//       role: "Data Scientist at AnalyticsPro",
+//       quote: "The Generative AI program was a game-changer. The hands-on projects and expert mentorship helped me transition into AI from traditional development.",
+//       rating: 4.5,
+//       linkedIn: "linkedin.com/in/ananyareddy"
+//     }
+//   ];
 
-  return (
-    <div style={{
-      marginTop: '4rem',
-      borderTop: '1px solid var(--line)',
-      paddingTop: '3rem'
+//   return (
+//     <div style={{
+//       marginTop: '4rem',
+//       borderTop: '1px solid var(--line)',
+//       paddingTop: '3rem'
+//     }}>
+//       <div style={{
+//         display: 'flex',
+//         alignItems: 'center',
+//         gap: '0.75rem',
+//         marginBottom: '1.5rem'
+//       }}>
+//         <Sparkles size={24} color="var(--accent)" />
+//         <h2 style={{
+//           fontFamily: 'var(--font-sans)',
+//           fontSize: '1.75rem',
+//           margin: 0
+//         }}>
+//           What Our Alumni Say
+//         </h2>
+//       </div>
+
+//       <p style={{
+//         color: 'var(--text-2)',
+//         marginBottom: '2rem',
+//         maxWidth: 700,
+//         lineHeight: 1.7,
+//         fontSize: '1rem'
+//       }}>
+//         Hear from our past students who have successfully transitioned into tech careers after completing our programs.
+//       </p>
+
+//       <div style={{
+//         display: 'grid',
+//         gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
+//         gap: '1rem',
+//         marginBottom: '1.5rem'
+//       }}>
+//         {testimonials.map((testimonial, index) => (
+//           <div
+//             key={index}
+//             style={{
+//               padding: '1.75rem',
+//               border: '1px solid var(--line)',
+//               background: 'var(--bg-alt)',
+//               display: 'flex',
+//               flexDirection: 'column',
+//               gap: '0.75rem',
+//               transition: 'border-color 0.2s, background 0.2s, transform 0.2s'
+//             }}
+//             onMouseEnter={(e) => {
+//               e.currentTarget.style.borderColor = 'var(--accent)';
+//               e.currentTarget.style.background = 'var(--bg-elevated)';
+//               e.currentTarget.style.transform = 'translateY(-3px)';
+//             }}
+//             onMouseLeave={(e) => {
+//               e.currentTarget.style.borderColor = 'var(--line)';
+//               e.currentTarget.style.background = 'var(--bg-alt)';
+//               e.currentTarget.style.transform = 'translateY(0)';
+//             }}
+//           >
+//             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+//               <div>
+//                 <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>{testimonial.name}</h4>
+//                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--text-3)', margin: '0.25rem 0 0 0' }}>{testimonial.role}</p>
+//               </div>
+//               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+//                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--accent)' }}>
+//                   {'★'.repeat(Math.floor(testimonial.rating))}{'☆'.repeat(5 - Math.floor(testimonial.rating))}
+//                 </span>
+//               </div>
+//             </div>
+//             <p style={{ color: 'var(--text-2)', fontSize: '0.9rem', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+//               "{testimonial.quote}"
+//             </p>
+//             <div style={{
+//               display: 'flex',
+//               alignItems: 'center',
+//               gap: '0.5rem',
+//               marginTop: '0.25rem',
+//               paddingTop: '0.75rem',
+//               borderTop: '1px solid var(--line)'
+//             }}>
+//               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>📎</span>
+//               <a
+//                 href={`https://${testimonial.linkedIn}`}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 style={{
+//                   fontFamily: 'var(--font-mono)',
+//                   fontSize: '0.625rem',
+//                   color: 'var(--accent)',
+//                   textDecoration: 'none',
+//                   transition: 'opacity 0.2s'
+//                 }}
+//                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+//                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+//               >
+//                 View on LinkedIn →
+//               </a>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+//       <div style={{
+//         padding: '1.5rem',
+//         border: '1px solid var(--line)',
+//         background: 'var(--bg-alt)',
+//         display: 'flex',
+//         alignItems: 'center',
+//         gap: '1.5rem',
+//         flexWrap: 'wrap',
+//         justifyContent: 'center'
+//       }}>
+//         <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'var(--text-2)' }}>
+//           ⭐ See more reviews on:
+//         </span>
+//         <a
+//           href="#"
+//           style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+//           onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+//           onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+//         >
+//           Google Reviews
+//         </a>
+//         <a
+//           href="#"
+//           style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+//           onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+//           onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+//         >
+//           LinkedIn Recommendations
+//         </a>
+//         <a
+//           href="#"
+//           style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
+//           onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+//           onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+//         >
+//           Video Testimonials
+//         </a>
+//       </div>
+//     </div>
+//   );
+// }
+
+{/* Google Reviews Section */ }
+<div style={{
+  marginTop: '4rem',
+  borderTop: '1px solid var(--line)',
+  paddingTop: '3rem'
+}}>
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.75rem',
+    marginBottom: '1.5rem'
+  }}>
+    <Sparkles size={24} color="var(--accent)" />
+    <h2 style={{
+      fontFamily: 'var(--font-sans)',
+      fontSize: '1.75rem',
+      margin: 0
     }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.75rem',
-        marginBottom: '1.5rem'
-      }}>
-        <Sparkles size={24} color="var(--accent)" />
-        <h2 style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: '1.75rem',
-          margin: 0
-        }}>
-          What Our Alumni Say
-        </h2>
-      </div>
+      What Our Clients Say
+    </h2>
+  </div>
 
-      <p style={{
-        color: 'var(--text-2)',
-        marginBottom: '2rem',
-        maxWidth: 700,
-        lineHeight: 1.7,
-        fontSize: '1rem'
-      }}>
-        Hear from our past students who have successfully transitioned into tech careers after completing our programs.
-      </p>
+  <p style={{
+    color: 'var(--text-2)',
+    marginBottom: '1rem',
+    maxWidth: 700,
+    lineHeight: 1.7,
+    fontSize: '1rem'
+  }}>
+    Real reviews from our valued clients on Google
+  </p>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
-        gap: '1rem',
-        marginBottom: '1.5rem'
-      }}>
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            style={{
-              padding: '1.75rem',
-              border: '1px solid var(--line)',
-              background: 'var(--bg-alt)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.75rem',
-              transition: 'border-color 0.2s, background 0.2s, transform 0.2s'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--accent)';
-              e.currentTarget.style.background = 'var(--bg-elevated)';
-              e.currentTarget.style.transform = 'translateY(-3px)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--line)';
-              e.currentTarget.style.background = 'var(--bg-alt)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div>
-                <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', fontWeight: 600, margin: 0 }}>{testimonial.name}</h4>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--text-3)', margin: '0.25rem 0 0 0' }}>{testimonial.role}</p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.625rem', color: 'var(--accent)' }}>
-                  {'★'.repeat(Math.floor(testimonial.rating))}{'☆'.repeat(5 - Math.floor(testimonial.rating))}
-                </span>
-              </div>
-            </div>
-            <p style={{ color: 'var(--text-2)', fontSize: '0.9rem', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
-              "{testimonial.quote}"
-            </p>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginTop: '0.25rem',
-              paddingTop: '0.75rem',
-              borderTop: '1px solid var(--line)'
-            }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>📎</span>
-              <a
-                href={`https://${testimonial.linkedIn}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.625rem',
-                  color: 'var(--accent)',
-                  textDecoration: 'none',
-                  transition: 'opacity 0.2s'
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-              >
-                View on LinkedIn →
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{
-        padding: '1.5rem',
-        border: '1px solid var(--line)',
-        background: 'var(--bg-alt)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1.5rem',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
-      }}>
-        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'var(--text-2)' }}>
-          ⭐ See more reviews on:
-        </span>
-        <a
-          href="#"
-          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
-          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-        >
-          Google Reviews
-        </a>
-        <a
-          href="#"
-          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
-          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-        >
-          LinkedIn Recommendations
-        </a>
-        <a
-          href="#"
-          style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.875rem', transition: 'opacity 0.2s' }}
-          onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-        >
-          Video Testimonials
-        </a>
-      </div>
-    </div>
-  );
-}
+  <GoogleReviews />
+</div>
 
 export default function CoursesDetails() {
   const { slug } = useParams();
@@ -3993,7 +4002,40 @@ export default function CoursesDetails() {
           <StudentPortfolio />
           <InternshipProgram />
           <PlacementSupport />
-          <Testimonials />
+          {/* Google Reviews Section */}
+          <div style={{
+            marginTop: '4rem',
+            borderTop: '1px solid var(--line)',
+            paddingTop: '3rem'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              marginBottom: '1.5rem'
+            }}>
+              <Sparkles size={24} color="var(--accent)" />
+              <h2 style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '1.75rem',
+                margin: 0
+              }}>
+                What Our Clients Say
+              </h2>
+            </div>
+
+            <p style={{
+              color: 'var(--text-2)',
+              marginBottom: '1rem',
+              maxWidth: 700,
+              lineHeight: 1.7,
+              fontSize: '1rem'
+            }}>
+              Real reviews from our valued clients on Google
+            </p>
+
+            <GoogleReviews />
+          </div>
 
           {/* FAQ Section */}
           <div style={{
