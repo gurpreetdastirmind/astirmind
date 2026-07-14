@@ -92,64 +92,6 @@ export default function GoogleReviews() {
                         {rating.reviewCount} Google reviews
                     </span>
                 </div>
-
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    {[5, 4, 3, 2, 1].map((star) => {
-                        const count = reviews.filter(r => Math.floor(r.rating) === star).length;
-                        const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
-                        return (
-                            <div key={star} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', minWidth: '1.5rem' }}>
-                                    {star}★
-                                </span>
-                                <div style={{
-                                    width: 100,
-                                    height: 6,
-                                    background: 'var(--line)',
-                                    borderRadius: 3,
-                                    overflow: 'hidden'
-                                }}>
-                                    <div style={{
-                                        width: `${percentage}%`,
-                                        height: '100%',
-                                        background: 'var(--accent)',
-                                        borderRadius: 3
-                                    }} />
-                                </div>
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)' }}>
-                                    {count}
-                                </span>
-                            </div>
-                        );
-                    })}
-                </div>
-
-                <a
-                    href="https://g.page/r/CTjY1mM5N4r8EBM/review"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                        fontFamily: 'var(--font-sans)',
-                        fontSize: '0.75rem',
-                        color: 'var(--accent)',
-                        textDecoration: 'none',
-                        border: '1px solid var(--accent)',
-                        padding: '0.4rem 1rem',
-                        borderRadius: '4px',
-                        transition: 'all 0.2s',
-                        marginLeft: 'auto'
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--accent)';
-                        e.currentTarget.style.color = 'var(--bg)';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'var(--accent)';
-                    }}
-                >
-                    Write a Review
-                </a>
             </div>
 
             {/* Individual Reviews */}
