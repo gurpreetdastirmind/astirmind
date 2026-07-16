@@ -16,7 +16,7 @@ const ABOUT = {
 We specialize in custom software development, advanced automation systems, AI-powered platforms, and web applications. From intelligent data processing and scraping systems to OCR solutions and CRM automation, we build cloud-based architecture designed to solve real-world problems. Our goal is simple: to help companies streamline their operations, maximize productivity, and build a highly reliable digital infrastructure.
 
 At AstirMind, we believe in building technology that is not just technically robust, but perfectly aligned with your business objectives. By combining innovation with performance, scalability, and long-term maintainability, we ensure every product we develop delivers measurable value. Whether you are a startup looking to launch your first product, or an enterprise aiming to optimize workflows, AstirMind Software Solutions is your trusted technology partner to scale with confidence.`,
-    stats: [{ v: 50, suffix: '+', l: 'Projects Shipped' }, { v: 8, suffix: '', l: 'Years Experience' }, { v: 100, suffix: '%', l: 'Independent' }],
+    stats: [{ v: 200, suffix: '+', l: 'Projects Shipped' }, { v: 8, suffix: '', l: 'Years Experience' }, { v: 100, suffix: '%', l: 'Independent' }],
   },
   Training: {
     headline: 'We train engineers on real projects, with real mentors, to build real careers.',
