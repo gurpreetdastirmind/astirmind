@@ -155,7 +155,6 @@ export const SERVICES = [
     Icon: GraduationCap
   },
 
-  // NEW: Blockchain & Crypto Solutions
   {
     n: '17',
     slug: 'blockchain-crypto-solutions',
@@ -165,7 +164,6 @@ export const SERVICES = [
     Icon: LinkIcon
   },
 
-  // NEW: DevOps & CI/CD Solutions
   {
     n: '18',
     slug: 'devops-solutions',
@@ -175,7 +173,6 @@ export const SERVICES = [
     Icon: Server
   },
 
-  // NEW: IoT & Emerging Technologies
   {
     n: '19',
     slug: 'iot-emerging-technologies',
@@ -249,12 +246,29 @@ const PROGRAMS = [
   }
 ];
 
+// Updated Testimonials with new data - formatted for better layout
 const TESTIMONIALS = [
-  { name: 'Austins', domain: 'Machine Learning', country: 'USA', quote: 'Very good work quality and excellent at communicating with updates almost daily. Delivered exactly what was needed.' },
-  { name: 'Neha Wadera', domain: 'Machine Learning', country: 'India', quote: 'Extremely bright and very capable. They went above and beyond what was initially specified. Highly recommended.' },
-  { name: 'Jessie', domain: 'Artificial Intelligence', country: 'Canada', quote: 'Very easy to communicate with. Available when needed, completed our job on time. We are very happy and look forward to working with them again.' },
-  { name: 'Ravi', domain: 'Frontend', country: 'India', quote: 'I\'ve worked with them on previous projects and their quality of work is top notch every single time. Highly recommended.' },
-  { name: 'Sukhdeep', domain: 'WordPress', country: 'India', quote: 'Excellent work. Their communication was top-notch and their skills were strong. I enjoyed working with them and will have additional jobs for them in the future.' },
+  { 
+    name: 'Julieanne Downing', 
+    domain: 'Client', 
+    country: 'USA', 
+    quote: 'Team AstirMind has been very reliable and always available during U.S. hours when needed. Their responsiveness and willingness to assist have been greatly appreciated. It\'s been a pleasure working with someone so dependable. Thank you, Aksh, for your support!',
+    initial: 'J'
+  },
+  { 
+    name: 'Daniel Nejo', 
+    domain: 'Presidential Ideas', 
+    country: 'USA', 
+    quote: 'Team AstirMind is a talented developers who was able to achieve the task needed for my project and was able to come up with creative solutions on the fly! Will definitely recommend 👌',
+    initial: 'D'
+  },
+  { 
+    name: 'Guillermo Vila', 
+    domain: 'BBO Agency', 
+    country: 'International', 
+    quote: 'Work completed as requested and in a quick time, there has been good and understandable communication with Team, I am satisfied and recommend it',
+    initial: 'G'
+  },
 ];
 
 const STACK = ['React', 'Python', 'TensorFlow', 'Node.js', 'AWS', 'Android', 'Angular', 'FastAPI', 'PostgreSQL', 'Docker', 'Next.js', 'Kubernetes', 'MongoDB', 'Django', 'Firebase', 'Kotlin', 'Express.js', 'Solidity', 'Ethereum', 'Terraform', 'Arduino'];
@@ -322,18 +336,92 @@ function TestimonialCard({ t }) {
       border: '1px solid var(--line)',
       background: 'var(--bg-alt)',
       padding: '2rem',
-      display: 'flex', flexDirection: 'column', gap: '1.25rem',
+      display: 'flex', 
+      flexDirection: 'column', 
+      gap: '1.25rem',
       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)',
-    }}>
-      <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', lineHeight: 1.7, color: 'var(--text-2)', fontStyle: 'italic' }}>
-        "{t.quote}"
-      </div>
-      <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '0.875rem', color: 'var(--text)', marginBottom: 2 }}>{t.name}</div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5rem', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{t.domain}</div>
+      height: '100%',
+      transition: 'transform 0.2s, border-color 0.2s',
+    }}
+    onMouseEnter={e => {
+      e.currentTarget.style.transform = 'translateY(-4px)';
+      e.currentTarget.style.borderColor = 'var(--line-light)';
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.transform = 'translateY(0)';
+      e.currentTarget.style.borderColor = 'var(--line)';
+    }}
+    >
+      {/* Quote with accent */}
+      <div style={{ position: 'relative' }}>
+        <div style={{ 
+          fontFamily: 'var(--font-sans)', 
+          fontSize: '2.5rem', 
+          color: 'var(--accent)', 
+          opacity: 0.3,
+          lineHeight: 0.8,
+          marginBottom: '-0.5rem'
+        }}>
+          &ldquo;
         </div>
-        <span className="badge-raw">{t.country}</span>
+        <div style={{ 
+          fontFamily: 'var(--font-sans)', 
+          fontSize: '0.9375rem', 
+          lineHeight: 1.7, 
+          color: 'var(--text-2)', 
+          fontStyle: 'italic',
+          paddingLeft: '0.5rem'
+        }}>
+          {t.quote}
+        </div>
+      </div>
+      
+      {/* Divider with accent */}
+      <div style={{ 
+        width: '2rem', 
+        height: '2px', 
+        background: 'var(--accent)',
+        margin: '0.25rem 0'
+      }} />
+      
+      {/* Author info - improved layout */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        paddingTop: '0.5rem'
+      }}>
+        <div>
+          <div style={{ 
+            fontFamily: 'var(--font-sans)', 
+            fontWeight: 700, 
+            fontSize: '0.9375rem', 
+            color: 'var(--text)', 
+            marginBottom: 2 
+          }}>
+            {t.name}
+          </div>
+          <div style={{ 
+            fontFamily: 'var(--font-mono)', 
+            fontSize: '0.5rem', 
+            color: 'var(--text-2)', 
+            textTransform: 'uppercase', 
+            letterSpacing: '0.08em' 
+          }}>
+            {t.domain}
+          </div>
+        </div>
+        <span style={{ 
+          fontFamily: 'var(--font-mono)', 
+          fontSize: '0.65rem', 
+          color: 'var(--accent)',
+          border: '1px solid var(--accent)',
+          padding: '3px 10px',
+          letterSpacing: '0.06em',
+          opacity: 0.8
+        }}>
+          {t.country}
+        </span>
       </div>
     </div>
   );
@@ -368,9 +456,9 @@ export default function AboutPage() {
         scrollTrigger: { trigger: '.ap-institute', start: 'top 82%' },
       });
 
-      // Testimonials
+      // Testimonials - improved animation
       gsap.from('.ap-testimonial', {
-        opacity: 0, y: 28, duration: 0.5, stagger: 0.1, ease: 'power2.out',
+        opacity: 0, y: 28, duration: 0.5, stagger: 0.15, ease: 'power2.out',
         scrollTrigger: { trigger: '.ap-testimonials-grid', start: 'top 85%' },
       });
 
@@ -630,7 +718,7 @@ export default function AboutPage() {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
                         {p.internship && (
-                          <span className="badge-raw" style={{ borderColor: 'var(--accent)', color: 'var(--accent)', fontSize: '0.45rem' }}>Internship</span>
+                          <span className="badge-raw" style={{ borderColor: 'var(--accent)', color: 'var(--accent)', fontSize: '0.55rem' }}>Internship</span>
                         )}
                       </div>
                     </div>
@@ -664,17 +752,31 @@ export default function AboutPage() {
                 <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.1, color: 'var(--text)', marginTop: '0.75rem' }}>
                   What clients say.
                 </h2>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.875rem', color: 'var(--text-3)', marginTop: '0.5rem', maxWidth: 400 }}>
+                  Real feedback from real clients who trusted us with their projects.
+                </p>
               </div>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                {['ML / AI', 'Frontend', 'WordPress', 'Internships'].map(t => (
-                  <span key={t} className="badge-raw">{t}</span>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {['AI / ML', 'Web Development', 'Automation', 'Consulting'].map(t => (
+                  <span key={t} className="badge-raw" style={{ fontSize: '0.65rem' }}>{t}</span>
                 ))}
               </div>
             </div>
 
-            <div className="ap-testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))', gap: '1px', background: 'var(--line)', border: '1px solid var(--line)' }}>
+            {/* Improved grid layout with better card styling */}
+            <div className="ap-testimonials-grid" style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(3, 1fr)', 
+              gap: '1.5rem',
+              alignItems: 'stretch',
+              
+            }}>
               {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="ap-testimonial" style={{ background: 'var(--bg)' }}>
+                <div key={i} className="ap-testimonial" style={{ 
+                  display: 'flex',
+                  height: '100%',
+                  fontSize: '0.65rem'
+                }}>
                   <TestimonialCard t={t} />
                 </div>
               ))}
