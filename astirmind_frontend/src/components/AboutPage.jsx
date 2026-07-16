@@ -7,6 +7,13 @@ import { Helmet } from 'react-helmet';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Calculate years of experience dynamically
+const getYearsExperience = () => {
+  const startYear = 2016;
+  const currentYear = new Date().getFullYear();
+  return currentYear - startYear;
+};
+
 /* ─── Data ──────────────────────────────────────────────────── */
 
 export const SERVICES = [
@@ -432,6 +439,9 @@ function TestimonialCard({ t }) {
 export default function AboutPage() {
   const pageRef = useRef(null);
 
+  // Get dynamic years for stats
+  const yearsExperience = getYearsExperience();
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header
@@ -545,7 +555,7 @@ export default function AboutPage() {
                 { v: '2016', label: 'Est.', sub: 'Founded in Ludhiana' },
                 { v: '200+', label: 'Projects', sub: 'Shipped to production' },
                 { v: '200+', label: 'Students', sub: 'Trained & placed' },
-                { v: '8+', label: 'Years', sub: 'Of active delivery' },
+                { v: `${yearsExperience}`, label: 'Years', sub: 'Of active delivery' },
               ].map(({ v, label, sub }, i) => (
                 <div key={i} style={{ paddingRight: '2rem', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none', paddingLeft: i > 0 ? '2rem' : 0 }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1 }}>{v}</div>
