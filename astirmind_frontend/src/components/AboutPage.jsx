@@ -718,7 +718,7 @@ export default function AboutPage() {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
                         {p.internship && (
-                          <span className="badge-raw" style={{ borderColor: 'var(--accent)', color: 'var(--accent)', fontSize: '0.55rem' }}>Internship</span>
+                          <span className="badge-raw" style={{ borderColor: 'var(--accent)', color: 'var(--accent)', fontSize: '0.45rem' }}>Internship</span>
                         )}
                       </div>
                     </div>
