@@ -8,26 +8,50 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MARQUEE = ['React', 'Python', 'TensorFlow', 'Node.js', 'AWS', 'Android', 'Angular', 'FastAPI', 'PostgreSQL', 'Docker', 'Next.js', 'Kubernetes', 'MongoDB'];
 
+// Calculate years of experience dynamically
+const getYearsExperience = () => {
+  const startYear = 2016; // Company founding year
+  const currentYear = new Date().getFullYear();
+  return currentYear - startYear;
+};
+
+// Get stats with dynamic years
+const getStats = (type) => {
+  const baseStats = {
+    Xperience: [
+      { v: 200, suffix: '+', l: 'Projects Shipped' },
+      { v: getYearsExperience(), suffix: '', l: 'Years Experience' },
+      { v: 100, suffix: '%', l: 'Independent' }
+    ],
+    Training: [
+      { v: 200, suffix: '+', l: 'Students Trained' },
+      { v: 9, suffix: '', l: 'Active Programs' },
+      { v: 80, suffix: '%', l: 'Placement Rate' }
+    ]
+  };
+  return baseStats[type];
+};
+
 const ABOUT = {
   Xperience: {
     headline: 'Software crafted with care. We partner with you to solve real human problems.',
-    body: `Welcome to AstirMind Software Solutions. We are a premier, technology-driven development agency dedicated to delivering smart, scalable, and business-oriented digital solutions. In today’s fast-paced digital landscape, we bridge the gap between complex operational challenges and cutting-edge engineering.
+    body: `Welcome to AstirMind Software Solutions. We are a premier, technology-driven development agency dedicated to delivering smart, scalable, and business-oriented digital solutions. In today's fast-paced digital landscape, we bridge the gap between complex operational challenges and cutting-edge engineering.
 
 We specialize in custom software development, advanced automation systems, AI-powered platforms, and web applications. From intelligent data processing and scraping systems to OCR solutions and CRM automation, we build cloud-based architecture designed to solve real-world problems. Our goal is simple: to help companies streamline their operations, maximize productivity, and build a highly reliable digital infrastructure.
 
 At AstirMind, we believe in building technology that is not just technically robust, but perfectly aligned with your business objectives. By combining innovation with performance, scalability, and long-term maintainability, we ensure every product we develop delivers measurable value. Whether you are a startup looking to launch your first product, or an enterprise aiming to optimize workflows, AstirMind Software Solutions is your trusted technology partner to scale with confidence.`,
-    stats: [{ v: 200, suffix: '+', l: 'Projects Shipped' }, { v: 8, suffix: '', l: 'Years Experience' }, { v: 100, suffix: '%', l: 'Independent' }],
+    stats: getStats('Xperience'),
   },
   Training: {
     headline: 'We train engineers on real projects, with real mentors, to build real careers.',
- body: `Welcome to the AstirMind Software Solutions Training and Internship Hub. We believe that the best way to master modern technology is by building it in the real world. Beyond being a technology-driven development agency, AstirMind is a launchpad for the next generation of tech talent.
+    body: `Welcome to the AstirMind Software Solutions Training and Internship Hub. We believe that the best way to master modern technology is by building it in the real world. Beyond being a technology-driven development agency, AstirMind is a launchpad for the next generation of tech talent.
 
 Our training and internship programs are carefully designed to bridge the gap between academic learning and actual industry demands. Because our core agency specializes in custom software development, AI integrations, CRM automation, and cloud-based applications, our interns don't just learn theory—they get hands-on experience in a live, professional environment.
 
 During your time with us, you will work with modern technologies and practical engineering solutions, learning how to streamline operations, process data, and build scalable digital products. We teach you how to write code that is technically strong, highly performant, and aligned with real business objectives.
 
 With a strong focus on quality, communication, and execution, AstirMind is here to mentor you, transform your ideas into practical skills, and kickstart your career in the tech industry with confidence.`,
-    stats: [{ v: 200, suffix: '+', l: 'Students Trained' }, { v: 9, suffix: '', l: 'Active Programs' }, { v: 80, suffix: '%', l: 'Placement Rate' }],
+    stats: getStats('Training'),
   },
 };
 
@@ -134,15 +158,16 @@ export default function About() {
 
           {/* Right */}
           <div className="about-reveal" style={{ gridColumn: '8 / 13', paddingLeft: '2rem', borderLeft: '1px solid var(--line)', display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-<p
-  className="t-body-lg"
-  style={{
-    fontSize: '1rem',
-    whiteSpace: 'pre-line'
-  }}
->
-  {c.body}
-</p>            <div>
+            <p
+              className="t-body-lg"
+              style={{
+                fontSize: '1rem',
+                whiteSpace: 'pre-line'
+              }}
+            >
+              {c.body}
+            </p>
+            <div>
               {c.stats.map((stat, i) => <StatCounter key={i} stat={stat} index={i} />)}
             </div>
           </div>

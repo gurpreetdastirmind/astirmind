@@ -6,11 +6,21 @@ import { useMode } from '../context/ModeContext';
 gsap.registerPlugin(ScrollTrigger);
 
 const agencyTestimonials = [
-  { quote: 'Very good work quality and excellent communication. They kept me updated almost daily.', name: 'Austins', role: 'Machine Learning Project' },
-  { quote: 'They are extremely bright and very capable. They went above and beyond what was initially specified.', name: 'Neha Wadera', role: 'Machine Learning Project' },
-  { quote: 'Very easy to communicate with. Available when needed and completed our job on time.', name: 'Jessie', role: 'AI Development' },
-  { quote: "I've worked with them on multiple projects and their quality of work is always top notch.", name: 'Ravi', role: 'Frontend Development' },
-  { quote: 'They delivered excellent work. Communication was top-notch. Will likely have additional jobs for them.', name: 'Sukhdeep', role: 'WordPress Development' },
+  { 
+    quote: 'Team AstirMind has been very reliable and always available during U.S. hours when needed. Their responsiveness and willingness to assist have been greatly appreciated. It\'s been a pleasure working with someone so dependable. Thank you, Aksh, for your support!', 
+    name: 'Julieanne Downing', 
+    role: 'Client' 
+  },
+  { 
+    quote: 'Team AstirMind is a talented developers who was able to achieve the task needed for my project and was able to come up with creative solutions on the fly! Will definitely recommend 👌', 
+    name: 'Daniel Nejo', 
+    role: 'Presidential Ideas' 
+  },
+  { 
+    quote: 'Work completed as requested and in a quick time, there has been good and understandable communication with Team, I am satisfied and recommend it', 
+    name: 'Guillermo Vila', 
+    role: 'BBO Agency' 
+  },
 ];
 
 const instituteTestimonials = [
