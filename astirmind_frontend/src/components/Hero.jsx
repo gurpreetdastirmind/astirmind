@@ -231,7 +231,7 @@ function InstituteIllustration() {
       ))}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid var(--line)' }}>
-        {[{ l: 'Duration', v: '16 wks' }, { l: 'Format', v: 'Live' }, { l: 'Mode', v: 'Online' }].map((s, i) => (
+        {[{ l: 'Duration', v: '16 wks' }, { l: 'Format', v: 'Live' }, { l: 'Mode', v: 'Offline' }].map((s, i) => (
           <div key={i} style={{ padding: '12px 10px', textAlign: 'center', borderRight: i < 2 ? '1px solid var(--line)' : 'none' }}>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.5625rem', color: 'var(--text-3)', marginBottom: 4 }}>{s.l}</div>
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', fontWeight: 600, color: 'var(--text)' }}>{s.v}</div>

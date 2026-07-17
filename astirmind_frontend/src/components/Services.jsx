@@ -36,7 +36,7 @@ export const agencyServices = [
     n: '01',
     slug: 'ml-ai-solutions',
     title: 'ML & AI Solutions',
-    desc: 'AstirMind leverages Machine Learning, Automatic Speech Recognition (ASR), Image Recognition, Text-to-Speech, and AI-driven systems to build intelligent and scalable digital solutions. We develop custom AI models that learn from your data, automate complex decision-making processes, and deliver actionable insights. Our solutions include predictive analytics, natural language processing, computer vision, and intelligent automation that transforms raw data into strategic business value.',
+    desc: 'AstirMind leverages Machine Learning, Automatic Speech Recognition (ASR), Image Recognition, Text-to-Speech, and AI-driven systems to build intelligent and scalable digital solutions.',
     tags: ['Machine Learning', 'ASR', 'AI Automation', 'Computer Vision'],
     Icon: Brain,
   },
@@ -44,7 +44,7 @@ export const agencyServices = [
     n: '02',
     slug: 'automation-solutions',
     title: 'Automation Solutions',
-    desc: 'We build intelligent automation systems for lead generation, workflow automation, browser automation, CRM integrations, and business process optimization. Our solutions eliminate manual repetitive tasks, reduce operational costs, and improve efficiency across your entire organization. From data extraction to complex business process automation, we help you focus on growth while your systems run seamlessly in the background.',
+    desc: 'We build intelligent automation systems for lead generation, workflow automation, browser automation, CRM integrations, and business process optimization.',
     tags: ['Automation', 'Selenium', 'CRM', 'Workflow Systems'],
     Icon: Bot,
   },
@@ -52,7 +52,7 @@ export const agencyServices = [
     n: '03',
     slug: 'web-development',
     title: 'Web Development',
-    desc: 'We craft modern, responsive, and high-performance websites and web applications focused on scalability, accessibility, and user experience. Using cutting-edge frameworks like React, Next.js, and Node.js, we deliver solutions that load fast, rank well, and convert visitors into customers. Our development process emphasizes clean code, progressive enhancement, and seamless integration with existing systems.',
+    desc: 'We craft modern, responsive, and high-performance websites and web applications focused on scalability, accessibility, and user experience.',
     tags: ['React', 'Next.js', 'Node.js', 'Django'],
     Icon: MonitorCog,
   },
@@ -60,7 +60,7 @@ export const agencyServices = [
     n: '04',
     slug: 'mern-stack-development',
     title: 'MERN Stack Development',
-    desc: 'Build full-stack JavaScript applications using MongoDB, Express.js, React, and Node.js. We create scalable, high-performance web apps with seamless frontend-backend integration, real-time features, and robust REST APIs. Our MERN stack solutions deliver exceptional user experiences, handle high traffic loads, and scale effortlessly as your business grows. We implement best practices for state management, authentication, and data security.',
+    desc: 'Build full-stack JavaScript applications using MongoDB, Express.js, React, and Node.js. We create scalable, high-performance web apps with seamless frontend-backend integration, real-time features, and robust REST APIs.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'REST APIs', 'Full Stack'],
     Icon: Globe,
   },
@@ -68,7 +68,7 @@ export const agencyServices = [
     n: '05',
     slug: 'mobile-app-development',
     title: 'Mobile App Development',
-    desc: 'AstirMind builds feature-rich Android and cross-platform mobile applications designed for performance, usability, and business growth. We leverage React Native and Flutter to deliver native-quality apps from a single codebase. Our mobile solutions include real-time synchronization, offline capabilities, push notifications, and biometric authentication. We follow a user-centered design approach to ensure your app delights users and drives engagement.',
+    desc: 'AstirMind builds feature-rich Android and cross-platform mobile applications designed for performance, usability, and business growth.',
     tags: ['Android', 'React Native', 'Flutter', 'Mobile UI'],
     Icon: Smartphone,
   },
@@ -76,7 +76,7 @@ export const agencyServices = [
     n: '06',
     slug: 'cms-mvc-development',
     title: 'CMS & MVC Development',
-    desc: 'We develop scalable CMS and MVC-based platforms tailored for businesses across multiple industries with secure and efficient architectures. Our content management solutions give you complete control over your digital content while maintaining consistent branding and user experience. Using frameworks like Django and Laravel, we build systems that are both powerful and easy to manage.',
+    desc: 'We develop scalable CMS and MVC-based platforms tailored for businesses across multiple industries with secure and efficient architectures.',
     tags: ['Django', 'Laravel', 'CMS', 'MVC'],
     Icon: LayoutDashboard,
   },
@@ -84,7 +84,7 @@ export const agencyServices = [
     n: '07',
     slug: 'cloud-consulting',
     title: 'Cloud Consulting',
-    desc: 'AstirMind helps businesses migrate, optimize, and scale applications on cloud platforms with secure infrastructure and growth-focused strategies. We provide expert guidance on cloud architecture, cost optimization, security compliance, and disaster recovery. Our team ensures your cloud infrastructure is reliable, scalable, and aligned with your business goals.',
+    desc: 'AstirMind helps businesses migrate, optimize, and scale applications on cloud platforms with secure infrastructure and growth-focused strategies.',
     tags: ['AWS', 'Cloud Infrastructure', 'DevOps', 'Scalability'],
     Icon: Cloud,
   },
@@ -92,7 +92,7 @@ export const agencyServices = [
     n: '08',
     slug: 'api-development-integrations',
     title: 'API Development & Integrations',
-    desc: 'Secure and scalable REST API development with seamless third-party integrations including CRMs, payment gateways, cloud services, and enterprise tools. We design APIs with proper documentation, versioning, authentication, and rate limiting. Our integration services connect your systems, automate workflows, and enable data exchange across your technology stack.',
+    desc: 'Secure and scalable REST API development with seamless third-party integrations including CRMs, payment gateways, cloud services, and enterprise tools.',
     tags: ['REST APIs', 'DRF', 'Microservices', 'Integrations'],
     Icon: Workflow,
   },
@@ -100,7 +100,7 @@ export const agencyServices = [
     n: '09',
     slug: 'ai-chatbots-conversational-ai',
     title: 'AI Chatbots & Conversational AI',
-    desc: 'Building intelligent AI-powered assistants, customer support bots, document assistants, and conversational systems using modern LLM technologies. Our conversational AI solutions understand natural language, learn from interactions, and provide human-like responses. We integrate with WhatsApp, Slack, web, and mobile platforms to deliver consistent support experiences across all channels.',
+    desc: 'Building intelligent AI-powered assistants, customer support bots, document assistants, and conversational systems using modern LLM technologies.',
     tags: ['LLM', 'Chatbots', 'OpenAI', 'Conversational AI'],
     Icon: MessageSquareMore,
   },
@@ -108,7 +108,7 @@ export const agencyServices = [
     n: '10',
     slug: 'data-analytics-visualization',
     title: 'Data Analytics & Visualization',
-    desc: 'Transforming raw data into meaningful insights through interactive dashboards, reporting systems, graph analytics, and business intelligence solutions. We help you understand your data, identify patterns, and make data-driven decisions. Our visualization solutions present complex information in clear, actionable formats that drive business growth.',
+    desc: 'Transforming raw data into meaningful insights through interactive dashboards, reporting systems, graph analytics, and business intelligence solutions.',
     tags: ['Analytics', 'Dashboards', 'Data Visualization', 'Business Intelligence'],
     Icon: BarChart3,
   },
@@ -116,7 +116,7 @@ export const agencyServices = [
     n: '11',
     slug: 'saas-product-development',
     title: 'SaaS Product Development',
-    desc: 'End-to-end SaaS application development including scalable architectures, subscription systems, dashboards, and cloud-native platforms. We build multi-tenant applications with robust security, seamless upgrades, and flexible pricing models. Our SaaS solutions help you bring your product to market quickly while maintaining enterprise-grade reliability.',
+    desc: 'End-to-end SaaS application development including scalable architectures, subscription systems, dashboards, and cloud-native platforms.',
     tags: ['SaaS', 'Cloud Apps', 'Multi-Tenant', 'Subscriptions'],
     Icon: Layers3,
   },
@@ -124,7 +124,7 @@ export const agencyServices = [
     n: '12',
     slug: 'ui-ux-design',
     title: 'UI/UX Design',
-    desc: 'We create intuitive, visually engaging, and user-focused interfaces that align perfectly with client goals and modern design standards. Our design process includes user research, wireframing, prototyping, and user testing. We deliver pixel-perfect designs that enhance user satisfaction, reduce bounce rates, and drive conversions.',
+    desc: 'We create intuitive, visually engaging, and user-focused interfaces that align perfectly with client goals and modern design standards.',
     tags: ['Figma', 'UI Design', 'UX Research', 'Wireframing'],
     Icon: Palette,
   },
@@ -132,7 +132,7 @@ export const agencyServices = [
     n: '13',
     slug: 'ecommerce-development',
     title: 'E-Commerce Development',
-    desc: 'AstirMind develops scalable e-commerce platforms with secure payment systems, optimized user journeys, and seamless shopping experiences. We build custom e-commerce solutions using Shopify, WooCommerce, and custom frameworks. Our solutions include inventory management, payment gateway integration, and data analytics to help you sell more effectively.',
+    desc: 'AstirMind develops scalable e-commerce platforms with secure payment systems, optimized user journeys, and seamless shopping experiences.',
     tags: ['E-Commerce', 'Shopify', 'WooCommerce', 'Payment Gateway'],
     Icon: ShoppingCart,
   },
@@ -140,7 +140,7 @@ export const agencyServices = [
     n: '14',
     slug: 'digital-marketing',
     title: 'Digital Marketing',
-    desc: 'We help brands grow digitally through strategic marketing, lead generation, SEO, social media campaigns, and performance-driven advertising. Our marketing strategies are data-driven, ROI-focused, and designed to build lasting customer relationships. We help you reach the right audience with the right message at the right time.',
+    desc: 'We help brands grow digitally through strategic marketing, lead generation, SEO, social media campaigns, and performance-driven advertising.',
     tags: ['SEO', 'Branding', 'Lead Generation', 'Social Media'],
     Icon: Megaphone,
   },
@@ -148,7 +148,7 @@ export const agencyServices = [
     n: '15',
     slug: 'erp-crm-solutions',
     title: 'ERP & CRM Solutions',
-    desc: 'Custom ERP and CRM platforms designed to streamline operations, manage workflows, improve productivity, and centralize business management. We build comprehensive systems that connect sales, marketing, customer support, and operations. Our solutions provide a unified view of your business and enable smarter decision-making.',
+    desc: 'Custom ERP and CRM platforms designed to streamline operations, manage workflows, improve productivity, and centralize business management.',
     tags: ['ERP', 'CRM', 'Business Automation', 'Enterprise Solutions'],
     Icon: BriefcaseBusiness,
   },
@@ -156,7 +156,7 @@ export const agencyServices = [
     n: '16',
     slug: 'internship-project-assistance',
     title: 'Internship & Project Assistance',
-    desc: 'AstirMind provides industry-oriented internships, project guidance, and practical training in web development, AI, mobile development, and UI/UX. Our programs combine hands-on experience with expert mentorship to prepare students for successful careers in technology. We work on real projects that build portfolios and develop job-ready skills.',
+    desc: 'AstirMind provides industry-oriented internships, project guidance, and practical training in web development, AI, mobile development, and UI/UX.',
     tags: ['Training', 'Internships', 'Project Mentorship', 'Skill Development'],
     Icon: GraduationCap,
   },
@@ -164,7 +164,7 @@ export const agencyServices = [
     n: '17',
     slug: 'blockchain-crypto-solutions',
     title: 'Blockchain & Crypto Solutions',
-    desc: 'Build decentralized applications (dApps), smart contracts, tokenomics, and secure crypto wallets. We help enterprises leverage blockchain for transparency, traceability, and trustless transactions across industries like finance, supply chain, and real estate. Our solutions include blockchain consulting, development, and integration with existing systems.',
+    desc: 'Build decentralized applications (dApps), smart contracts, tokenomics, and secure crypto wallets. We help enterprises leverage blockchain for transparency, traceability, and trustless transactions across industries like finance, supply chain, and real estate.',
     tags: ['Blockchain', 'Smart Contracts', 'Web3', 'Solidity', 'Crypto Wallets', 'dApps'],
     Icon: ShieldCheck,
   },
@@ -172,7 +172,7 @@ export const agencyServices = [
     n: '18',
     slug: 'devops-cicd-solutions',
     title: 'DevOps & CI/CD Solutions',
-    desc: 'Automate your software delivery lifecycle with robust CI/CD pipelines, infrastructure as code, container orchestration, and 24/7 monitoring. We help teams ship faster, rollback safely, and scale without downtime. Our DevOps solutions reduce deployment risks, improve collaboration, and ensure your applications are always available.',
+    desc: 'Automate your software delivery lifecycle with robust CI/CD pipelines, infrastructure as code, container orchestration, and 24/7 monitoring. We help teams ship faster, rollback safely, and scale without downtime.',
     tags: ['CI/CD', 'Docker', 'Kubernetes', 'Jenkins', 'GitHub Actions', 'Terraform', 'Monitoring'],
     Icon: TrendingUp,
   },
@@ -180,7 +180,7 @@ export const agencyServices = [
     n: '19',
     slug: 'iot-emerging-technologies',
     title: 'IoT & Emerging Technologies',
-    desc: 'Connect the physical and digital worlds with custom IoT solutions — from sensor networks and edge computing to cloud dashboards. We also explore AR/VR, computer vision at the edge, and next-gen hardware integrations. Our IoT solutions help you collect, analyze, and act on real-time data from connected devices.',
+    desc: 'Connect the physical and digital worlds with custom IoT solutions — from sensor networks and edge computing to cloud dashboards. We also explore AR/VR, computer vision at the edge, and next-gen hardware integrations.',
     tags: ['IoT', 'Edge Computing', 'Sensor Networks', 'MQTT', 'ESP32', 'Arduino', 'AR/VR'],
     Icon: Cpu,
   },
@@ -188,7 +188,7 @@ export const agencyServices = [
     n: '20',
     slug: 'data-scraping-workflow-automations',
     title: 'Data Scraping & Workflow Automations',
-    desc: 'Extract structured data from websites, APIs, and documents at scale. Build end-to-end automation workflows that trigger actions, sync data across platforms, and eliminate manual repetitive tasks. Perfect for lead generation, market research, price monitoring, and operational efficiency. Our solutions handle large data volumes with precision and reliability.',
+    desc: 'Extract structured data from websites, APIs, and documents at scale. Build end-to-end automation workflows that trigger actions, sync data across platforms, and eliminate manual repetitive tasks. Perfect for lead generation, market research, price monitoring, and operational efficiency.',
     tags: ['Web Scraping', 'Workflow Automation', 'Data Extraction', 'Zapier', 'Make', 'Python', 'Selenium', 'APIs'],
     Icon: Workflow,
   },
@@ -341,49 +341,12 @@ export const courses = [
   },
 ];
 
-// Rotating taglines for Agency mode
-const agencyTaglines = [
-  "Core engineering principles over trends. Solid foundations build better products.",
-  "We don't follow trends. We set the standard for quality engineering.",
-  "Built to last. Engineered for scale. Designed for the future.",
-  "From concept to production — we deliver excellence at every stage.",
-  "Where innovation meets reliability. Your vision, our expertise.",
-  "Clean code, robust systems, and solutions that stand the test of time.",
-  "Engineering that powers businesses. Technology that drives growth.",
-  "We build systems that scale, adapt, and outperform expectations.",
-  "Every line of code is a step toward building something extraordinary.",
-  "Trusted by businesses that demand quality. Delivered by engineers who value craft."
-];
-
-// Rotating taglines for Institute mode
-const instituteTaglines = [
-  "Every program runs on live projects with working mentors. You graduate with a portfolio, not just a certificate.",
-  "Learn by building. Master by doing. Succeed by delivering.",
-  "From classroom to production — real skills for real careers.",
-  "Mentorship that matters. Projects that prove your worth.",
-  "Build your future with hands-on experience and industry mentorship.",
-  "Where theory meets practice and passion meets profession.",
-  "Your journey from student to professional starts with real projects.",
-  "Learn from experts. Build with purpose. Launch your career.",
-  "Skills that employers want. Projects that showcase your talent.",
-  "Transform your potential into professional excellence with guided learning."
-];
-
 export default function Services() {
   const { mode } = useMode();
   const sectionRef = useRef(null);
-  const [taglineIndex, setTaglineIndex] = useState(0);
   
   // Get Google Rating dynamically
   const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
-
-  // Rotate taglines every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTaglineIndex(prev => (prev + 1) % (mode === 'Xperience' ? agencyTaglines.length : instituteTaglines.length));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [mode]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -410,15 +373,13 @@ export default function Services() {
 
   const isAgency = mode === 'Xperience';
   const items = isAgency ? agencyServices : courses;
-  const taglines = isAgency ? agencyTaglines : instituteTaglines;
-  const currentTagline = taglines[taglineIndex];
 
   return (
     <section ref={sectionRef} id="services" style={{ borderBottom: '1px solid var(--line)', background: isAgency ? 'var(--bg-alt)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
 
       {/* ── Agency: full-bleed photo banner at the top of the section ── */}
       {isAgency && (
-        <div style={{ position: 'relative', height: 300, overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+        <div style={{ position: 'relative', height: 260, overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
           <img
             src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=2000&q=85"
             alt="Engineering team at work"
@@ -426,19 +387,13 @@ export default function Services() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(6,5,3,0.88) 0%, rgba(6,5,3,0.3) 60%, rgba(6,5,3,0.65) 100%)' }} />
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 3, background: 'var(--accent)' }} />
-          <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '2rem' }}>
+          <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <span className="section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.15)', marginBottom: '0.75rem' }}>Capabilities</span>
-            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.035em', color: '#fff', lineHeight: 1.1, maxWidth: 540, marginBottom: '0.75rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.035em', color: '#fff', lineHeight: 1.1, maxWidth: 540 }}>
               What We Build
             </h2>
-            <p style={{ 
-              fontFamily: 'var(--font-sans)', 
-              fontSize: '0.9375rem', 
-              color: 'rgba(255,255,255,0.6)', 
-              maxWidth: 450,
-              transition: 'opacity 0.5s ease-in-out'
-            }}>
-              {currentTagline}
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'rgba(255,255,255,0.6)', marginTop: '0.75rem', maxWidth: 400 }}>
+              Core engineering principles over trends. Solid foundations build better products.
             </p>
           </div>
         </div>
@@ -456,8 +411,8 @@ export default function Services() {
             <span className="section-label">Curriculum</span>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
               <h2 className="t-h2">What You Will Learn</h2>
-              <p className="t-body" style={{ maxWidth: 380, transition: 'opacity 0.5s ease-in-out' }}>
-                {currentTagline}
+              <p className="t-body" style={{ maxWidth: 380 }}>
+                Every program runs on live projects with working mentors. You graduate with a portfolio, not just a certificate.
               </p>
             </div>
             <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
