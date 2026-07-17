@@ -9,7 +9,7 @@ const DEFAULT_RATING = {
 
 const CACHE_KEY = 'astirmind_google_rating';
 const CACHE_REVIEWS_KEY = 'astirmind_google_reviews';
-const CACHE_DURATION = 24 * 60 * 60 * 1000;
+const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000;
 
 const GOOGLE_PLACE_ID = 'ChIJqdR6UIaDGjkR2iiyvu19dHs';
 const GOOGLE_API_KEY = 'AIzaSyCB9glwEPd0J6l3c9dJc5O5cMdDCRnhi3E';
