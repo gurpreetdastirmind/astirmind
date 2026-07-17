@@ -472,7 +472,7 @@ export default function Services() {
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--accent)', letterSpacing: '0.08em' }}>{item.n}</span>
-                    <span style={{ width: 28, height: 28, color: 'var(--text-2)' }}>
+                    <span style={{ width: 28, height: 28, color: 'var(--accent)' }}>
                       <Icon size={28} strokeWidth={1.5} />
                     </span>
                   </div>
@@ -505,15 +505,7 @@ export default function Services() {
                         }}>
                           ({googleRating.reviewCount.toLocaleString()} Google reviews)
                         </span>
-                        <span style={{ 
-                          fontFamily: 'var(--font-mono)', 
-                          fontSize: '0.5rem', 
-                          color: 'var(--accent)',
-                          opacity: 0.7,
-                          marginLeft: '0.25rem'
-                        }}>
-                          ★★★★★
-                        </span>
+                       
                       </div>
                     ) : (
                       <div style={{ 

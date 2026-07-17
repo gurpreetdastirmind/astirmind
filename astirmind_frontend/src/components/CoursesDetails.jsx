@@ -3870,15 +3870,6 @@ export default function CoursesDetails() {
                 }}>
                   ({googleRating.reviewCount.toLocaleString()} Google reviews)
                 </span>
-
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  color: 'var(--accent)',
-                  marginLeft: '0.5rem'
-                }}>
-                  ★★★★★
-                </span>
               </div>
             ) : (
               <div style={{
