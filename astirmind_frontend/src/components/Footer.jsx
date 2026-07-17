@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Footer() {
   const year = new Date().getFullYear();
   const location = useLocation();
-  const isInnerPage = ['/blog', '/courses', '/hiring', '/quote', '/verify'].some(p => location.pathname.startsWith(p));
+  const isInnerPage = ['/blog', '/courses', '/hiring', '/quote', '/verify', '/about', '/services'].some(p => location.pathname.startsWith(p));
 
   const cols = [
     {
@@ -36,6 +36,23 @@ export default function Footer() {
     },
   ];
 
+  // Array of powerful taglines - changes every visit
+  const taglines = [
+    "Intelligent software. Human-centric design. Training the next generation of engineers.",
+    "Building the future, one line of code at a time.",
+    "Where innovation meets expertise — and ideas become reality.",
+    "Engineering excellence. Digital transformation. Future-ready solutions.",
+    "From concept to code — we build what matters.",
+    "Technology that empowers. Solutions that endure.",
+    "Crafting digital experiences that drive real-world impact.",
+    "Your vision, our engineering. Together, we build extraordinary things.",
+    "Quality engineering. Lasting impact. Endless possibilities.",
+    "We don't just write code. We build the future.",
+  ];
+
+  // Get a random tagline on each load
+  const randomTagline = taglines[Math.floor(Math.random() * taglines.length)];
+
   return (
     <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--line)' }}>
       <div className="container" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
@@ -47,8 +64,8 @@ export default function Footer() {
             <div style={{ marginBottom: '1rem' }}>
               <img src="/img/brand-logo-white.png" alt="AstirMind" style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
             </div>
-            <p className="t-body" style={{ fontSize: '0.875rem', maxWidth: 240, marginBottom: '1.5rem' }}>
-              Intelligent software. Human-centric design. Training the next generation of engineers.
+            <p className="t-body" style={{ fontSize: '0.875rem', maxWidth: 240, marginBottom: '1.5rem', lineHeight: 1.6, color: 'var(--text-2)' }}>
+              {randomTagline}
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               {[{ l: 'Instagram', h: 'https://www.instagram.com/astirmind/' }, { l: 'Twitter', h: 'https://twitter.com/AstirMind' }, { l: 'Facebook', h: 'https://www.facebook.com/AstirMind-363890014173446' },{ l: 'YouTube', h: 'https://www.youtube.com/@astirmind7859' },].map((s, i) => (
@@ -90,10 +107,13 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
           <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>&copy; {year} AstirMind. All rights reserved.</span>
-          <a href="mailto:info@astirmind.com" className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', textDecoration: 'none', transition: 'color 0.15s' }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-3)'}
-          >info@astirmind.com</a>
+          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <a href="mailto:info@astirmind.com" className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)', textDecoration: 'none', transition: 'color 0.15s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-3)'}
+            >info@astirmind.com</a>
+            <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>+91 98156 74608</span>
+          </div>
         </div>
       </div>
     </footer>
