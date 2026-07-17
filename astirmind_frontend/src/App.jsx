@@ -84,7 +84,8 @@ function ServicesPage() {
   );
 }
 
-// ContactPage component
+// In App.jsx, update the ContactPage component:
+
 function ContactPage() {
   return (
     <>
@@ -95,7 +96,7 @@ function ContactPage() {
           content="Contact AstirMind for software development, web development, AI solutions, and digital services. Get in touch with our team today."
         />
       </Helmet>
-      <Contact />
+      <Contact isPage={true} />
     </>
   );
 }
@@ -124,7 +125,7 @@ function HomePage() {
       <Services />
       <About />
       <Testimonials />
-      <Contact />
+      <Contact /> {/* No isPage prop - renders as section */}
     </>
   );
 }
