@@ -3,50 +3,29 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Helmet } from 'react-helmet';
 import {
-  Brain, Globe, Database, Eye, Smartphone, Cpu,
-  TerminalSquare, PenTool, Star, ArrowUpRight,
+  Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, CloudSun, Target, TrendingUp, LineChart, Code2, Layout, Code, Phone, Star, Atom, Calculator
 } from 'lucide-react';
+import { useMode } from '../context/ModeContext';
 import { Link } from 'react-router-dom';
-import { courses } from './Services';
 import { useGoogleRating } from '../hooks/useGoogleRating';
+import { courses } from './Services';
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Map icon_name strings → Lucide components
-const ICON_MAP = {
-  Brain,
-  Globe,
-  Database,
-  Eye,
-  Smartphone,
-  Cpu,
-  TerminalSquare,
-  PenTool,
-};
-
-function getIcon(iconName) {
-  for (const [key, Icon] of Object.entries(ICON_MAP)) {
-    if (iconName && iconName.toLowerCase() === key.toLowerCase()) {
-      return Icon;
-    }
-  }
-  return Brain;
-}
 
 // Google Star Rating Component
 function GoogleStarRating({ rating, total = 5 }) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-
+  
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
       {[...Array(total)].map((_, i) => (
-        <Star
+        <Star 
           key={i}
-          size={14}
+          size={14} 
           strokeWidth={1.5}
           fill={i < fullStars ? 'var(--accent)' : (i === fullStars && hasHalfStar ? 'var(--accent)' : 'none')}
-          style={{
+          style={{ 
             color: i < fullStars || (i === fullStars && hasHalfStar) ? 'var(--accent)' : 'var(--line)',
             opacity: i < fullStars || (i === fullStars && hasHalfStar) ? 1 : 0.3
           }}
@@ -56,26 +35,239 @@ function GoogleStarRating({ rating, total = 5 }) {
   );
 }
 
-export default function ProgramsPage() {
+// Complete Icon Map - All icons used in courses
+const ICON_MAP = {
+  Brain: Brain,
+  Globe: Globe,
+  Database: Database,
+  Eye: Eye,
+  Smartphone: Smartphone,
+  Cpu: Cpu,
+  TerminalSquare: TerminalSquare,
+  PenTool: PenTool,
+  Bot: Bot,
+  Cloud: Cloud,
+  MonitorCog: MonitorCog,
+  Layout: Layout,
+  Code2: Code2,
+  Phone: Phone,
+  Code: Code,
+  CloudSun: CloudSun,
+  Target: Target,
+  LineChart: LineChart,
+  Atom: Atom,
+  Calculator: Calculator,
+  // Add any other icons your courses might use
+};
+
+function getIcon(icon) {
+  // If icon is already a React component, return it
+  if (icon && typeof icon === 'function') {
+    return icon;
+  }
+  // If icon is a string, look it up in the map
+  if (typeof icon === 'string') {
+    return ICON_MAP[icon] || Brain;
+  }
+  // Fallback
+  return Brain;
+}
+
+export const agencyServices = [
+  {
+    n: '01',
+    slug: 'ml-ai-solutions',
+    title: 'ML & AI Solutions',
+    desc: 'AstirMind leverages Machine Learning, Automatic Speech Recognition (ASR), Image Recognition, Text-to-Speech, and AI-driven systems to build intelligent and scalable digital solutions.',
+    tags: ['Machine Learning', 'ASR', 'AI Automation', 'Computer Vision'],
+    Icon: Brain,
+  },
+  {
+    n: '02',
+    slug: 'automation-solutions',
+    title: 'Automation Solutions',
+    desc: 'We build intelligent automation systems for lead generation, workflow automation, browser automation, CRM integrations, and business process optimization.',
+    tags: ['Automation', 'Selenium', 'CRM', 'Workflow Systems'],
+    Icon: Bot,
+  },
+  {
+    n: '03',
+    slug: 'web-development',
+    title: 'Web Development',
+    desc: 'We craft modern, responsive, and high-performance websites and web applications focused on scalability, accessibility, and user experience.',
+    tags: ['React', 'Next.js', 'Node.js', 'Django'],
+    Icon: MonitorCog,
+  },
+  {
+    n: '04',
+    slug: 'mern-stack-development',
+    title: 'MERN Stack Development',
+    desc: 'Build full-stack JavaScript applications using MongoDB, Express.js, React, and Node.js. We create scalable, high-performance web apps with seamless frontend-backend integration, real-time features, and robust REST APIs.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'REST APIs', 'Full Stack'],
+    Icon: Globe,
+  },
+  {
+    n: '05',
+    slug: 'mobile-app-development',
+    title: 'Mobile App Development',
+    desc: 'AstirMind builds feature-rich Android and cross-platform mobile applications designed for performance, usability, and business growth.',
+    tags: ['Android', 'React Native', 'Flutter', 'Mobile UI'],
+    Icon: Smartphone,
+  },
+  {
+    n: '06',
+    slug: 'cms-mvc-development',
+    title: 'CMS & MVC Development',
+    desc: 'We develop scalable CMS and MVC-based platforms tailored for businesses across multiple industries with secure and efficient architectures.',
+    tags: ['Django', 'Laravel', 'CMS', 'MVC'],
+    Icon: LayoutDashboard,
+  },
+  {
+    n: '07',
+    slug: 'cloud-consulting',
+    title: 'Cloud Consulting',
+    desc: 'AstirMind helps businesses migrate, optimize, and scale applications on cloud platforms with secure infrastructure and growth-focused strategies.',
+    tags: ['AWS', 'Cloud Infrastructure', 'DevOps', 'Scalability'],
+    Icon: Cloud,
+  },
+  {
+    n: '08',
+    slug: 'api-development-integrations',
+    title: 'API Development & Integrations',
+    desc: 'Secure and scalable REST API development with seamless third-party integrations including CRMs, payment gateways, cloud services, and enterprise tools.',
+    tags: ['REST APIs', 'DRF', 'Microservices', 'Integrations'],
+    Icon: Workflow,
+  },
+  {
+    n: '09',
+    slug: 'ai-chatbots-conversational-ai',
+    title: 'AI Chatbots & Conversational AI',
+    desc: 'Building intelligent AI-powered assistants, customer support bots, document assistants, and conversational systems using modern LLM technologies.',
+    tags: ['LLM', 'Chatbots', 'OpenAI', 'Conversational AI'],
+    Icon: MessageSquareMore,
+  },
+  {
+    n: '10',
+    slug: 'data-analytics-visualization',
+    title: 'Data Analytics & Visualization',
+    desc: 'Transforming raw data into meaningful insights through interactive dashboards, reporting systems, graph analytics, and business intelligence solutions.',
+    tags: ['Analytics', 'Dashboards', 'Data Visualization', 'Business Intelligence'],
+    Icon: BarChart3,
+  },
+  {
+    n: '11',
+    slug: 'saas-product-development',
+    title: 'SaaS Product Development',
+    desc: 'End-to-end SaaS application development including scalable architectures, subscription systems, dashboards, and cloud-native platforms.',
+    tags: ['SaaS', 'Cloud Apps', 'Multi-Tenant', 'Subscriptions'],
+    Icon: Layers3,
+  },
+  {
+    n: '12',
+    slug: 'ui-ux-design',
+    title: 'UI/UX Design',
+    desc: 'We create intuitive, visually engaging, and user-focused interfaces that align perfectly with client goals and modern design standards.',
+    tags: ['Figma', 'UI Design', 'UX Research', 'Wireframing'],
+    Icon: Palette,
+  },
+  {
+    n: '13',
+    slug: 'ecommerce-development',
+    title: 'E-Commerce Development',
+    desc: 'AstirMind develops scalable e-commerce platforms with secure payment systems, optimized user journeys, and seamless shopping experiences.',
+    tags: ['E-Commerce', 'Shopify', 'WooCommerce', 'Payment Gateway'],
+    Icon: ShoppingCart,
+  },
+  {
+    n: '14',
+    slug: 'digital-marketing',
+    title: 'Digital Marketing',
+    desc: 'We help brands grow digitally through strategic marketing, lead generation, SEO, social media campaigns, and performance-driven advertising.',
+    tags: ['SEO', 'Branding', 'Lead Generation', 'Social Media'],
+    Icon: Megaphone,
+  },
+  {
+    n: '15',
+    slug: 'erp-crm-solutions',
+    title: 'ERP & CRM Solutions',
+    desc: 'Custom ERP and CRM platforms designed to streamline operations, manage workflows, improve productivity, and centralize business management.',
+    tags: ['ERP', 'CRM', 'Business Automation', 'Enterprise Solutions'],
+    Icon: BriefcaseBusiness,
+  },
+  {
+    n: '16',
+    slug: 'internship-project-assistance',
+    title: 'Internship & Project Assistance',
+    desc: 'AstirMind provides industry-oriented internships, project guidance, and practical training in web development, AI, mobile development, and UI/UX.',
+    tags: ['Training', 'Internships', 'Project Mentorship', 'Skill Development'],
+    Icon: GraduationCap,
+  },
+  {
+    n: '17',
+    slug: 'blockchain-crypto-solutions',
+    title: 'Blockchain & Crypto Solutions',
+    desc: 'Build decentralized applications (dApps), smart contracts, tokenomics, and secure crypto wallets. We help enterprises leverage blockchain for transparency, traceability, and trustless transactions across industries like finance, supply chain, and real estate.',
+    tags: ['Blockchain', 'Smart Contracts', 'Web3', 'Solidity', 'Crypto Wallets', 'dApps'],
+    Icon: ShieldCheck,
+  },
+  {
+    n: '18',
+    slug: 'devops-cicd-solutions',
+    title: 'DevOps & CI/CD Solutions',
+    desc: 'Automate your software delivery lifecycle with robust CI/CD pipelines, infrastructure as code, container orchestration, and 24/7 monitoring. We help teams ship faster, rollback safely, and scale without downtime.',
+    tags: ['CI/CD', 'Docker', 'Kubernetes', 'Jenkins', 'GitHub Actions', 'Terraform', 'Monitoring'],
+    Icon: TrendingUp,
+  },
+  {
+    n: '19',
+    slug: 'iot-emerging-technologies',
+    title: 'IoT & Emerging Technologies',
+    desc: 'Connect the physical and digital worlds with custom IoT solutions — from sensor networks and edge computing to cloud dashboards. We also explore AR/VR, computer vision at the edge, and next-gen hardware integrations.',
+    tags: ['IoT', 'Edge Computing', 'Sensor Networks', 'MQTT', 'ESP32', 'Arduino', 'AR/VR'],
+    Icon: Cpu,
+  },
+  {
+    n: '20',
+    slug: 'data-scraping-workflow-automations',
+    title: 'Data Scraping & Workflow Automations',
+    desc: 'Extract structured data from websites, APIs, and documents at scale. Build end-to-end automation workflows that trigger actions, sync data across platforms, and eliminate manual repetitive tasks. Perfect for lead generation, market research, price monitoring, and operational efficiency.',
+    tags: ['Web Scraping', 'Workflow Automation', 'Data Extraction', 'Zapier', 'Make', 'Python', 'Selenium', 'APIs'],
+    Icon: Workflow,
+  },
+];
+
+export default function CoursesPage() {
+  const { mode } = useMode();
+  const sectionRef = useRef(null);
   const [programs, setPrograms] = useState([]);
-  const heroRef = useRef(null);
   
   // Get Google Rating dynamically
   const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
-  // Use local courses data
+  // Use local courses data from Services.jsx
   useEffect(() => {
     const mappedPrograms = courses.map((course, index) => ({
       ...course,
       order: index + 1,
-      icon_name: course.Icon ? course.Icon.name : 'Brain',
+      // Use the Icon directly from the course data
+      IconComponent: course.Icon || getIcon(course.icon_name),
       tagline: course.desc.split('.')[0] + '.',
       overview: course.desc,
-      duration: course.tags.find(t => t.includes('Week')) || '12 Weeks',
+      duration: course.tags.find(t => t.includes('Week') || t.includes('Months') || t.includes('days') || t.includes('Hours')) || 'Flexible',
       format: 'Hybrid',
       has_certificate: course.tags.includes('Certification'),
       has_internship: course.tags.includes('Internship'),
-      tools: course.tags.filter(t => !t.includes('Week') && !t.includes('Project') && !t.includes('Certification') && !t.includes('Internship') && !t.includes('Mentor') && !t.includes('Campaign')),
+      tools: course.tags.filter(t => 
+        !t.includes('Week') && 
+        !t.includes('Months') && 
+        !t.includes('days') &&
+        !t.includes('Hours') &&
+        !t.includes('Project') && 
+        !t.includes('Certification') && 
+        !t.includes('Internship') && 
+        !t.includes('Mentor') && 
+        !t.includes('Campaign')
+      ),
     }));
     
     setPrograms(mappedPrograms);
@@ -101,11 +293,14 @@ export default function ProgramsPage() {
         ease: 'power3.out',
         scrollTrigger: { trigger: '.programs-grid', start: 'top 85%' },
       });
-    }, heroRef);
+    }, sectionRef);
     return () => ctx.revert();
   }, [programs]);
 
-  if (!programs.length) {
+  const isAgency = mode === 'Xperience';
+  const items = isAgency ? agencyServices : programs;
+
+  if (!items.length) {
     return (
       <div style={{ paddingTop: 68, minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', color: 'var(--text)' }}>
         <div style={{ textAlign: 'center' }}>
@@ -131,7 +326,7 @@ export default function ProgramsPage() {
       <div style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page header ── */}
-        <div ref={heroRef} style={{
+        <div ref={sectionRef} style={{
           position: 'relative', overflow: 'hidden',
           borderBottom: '1px solid var(--line)',
           backgroundImage: 'url(/img/page-header-training.jpg)',
@@ -153,9 +348,9 @@ export default function ProgramsPage() {
             </p>
             <div className="prog-hero-in programs-stat-row" style={{ display: 'flex', flexWrap: 'wrap' }}>
               {[
-                { v: `${programs.length}`, l: 'Programs' },
-                { v: `${programs.filter(p => p.has_internship).length}`, l: 'Internship Tracks' },
-                { v: `${programs.filter(p => p.has_certificate).length}`, l: 'Certified' },
+                { v: `${items.length}`, l: 'Programs' },
+                { v: `${items.filter(p => p.has_internship).length}`, l: 'Internship Tracks' },
+                { v: `${items.filter(p => p.has_certificate).length}`, l: 'Certified' },
                 { v: '100%', l: 'Project-Based' },
               ].map(({ v, l }, i) => (
                 <div key={l} style={{ padding: '0.875rem 1.75rem', borderRight: '1px solid rgba(255,255,255,0.12)', borderLeft: i === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none', background: 'rgba(255,255,255,0.04)' }}>
@@ -176,12 +371,20 @@ export default function ProgramsPage() {
             border: '1px solid var(--line)',
             background: 'var(--line)',
           }}>
-            {programs.map((program, index) => {
-              const Icon = getIcon(program.icon_name);
+            {items.map((program, index) => {
+              // Get the icon - if it's a course from the courses array, use IconComponent
+              // If it's from agencyServices, use Icon directly
+              let Icon;
+              if (isAgency) {
+                Icon = program.Icon || Brain;
+              } else {
+                Icon = program.IconComponent || getIcon(program.icon_name) || Brain;
+              }
+              
               return (
                 <Link
-                  key={program.slug}
-                  to={`/courses/${program.slug}`}
+                  key={program.slug || index}
+                  to={isAgency ? `/services/${program.slug}` : `/courses/${program.slug}`}
                   style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
                 >
                   <div
@@ -211,7 +414,7 @@ export default function ProgramsPage() {
                     {/* Header: Number + Icon */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--accent)', letterSpacing: '0.08em' }}>
-                        {String(program.order).padStart(2, '0')}
+                        {String(program.order || program.n || index + 1).padStart(2, '0')}
                       </span>
                       <span style={{ width: 28, height: 28, color: 'var(--text-2)' }}>
                         <Icon size={28} strokeWidth={1.5} />
@@ -287,7 +490,7 @@ export default function ProgramsPage() {
 
                     {/* Tags */}
                     <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginTop: 'auto' }}>
-                      {program.tags.slice(0, 4).map((tag, j) => (
+                      {(program.tags || []).slice(0, 4).map((tag, j) => (
                         <span
                           key={j}
                           className="badge-raw"
@@ -296,8 +499,8 @@ export default function ProgramsPage() {
                           {tag}
                         </span>
                       ))}
-                      {program.tags.length > 4 && (
-                        <span className="badge-raw" style={{ opacity: 0.6 }}>+{program.tags.length - 4}</span>
+                      {(program.tags || []).length > 4 && (
+                        <span className="badge-raw" style={{ opacity: 0.6 }}>+{(program.tags || []).length - 4}</span>
                       )}
                     </div>
                   </div>

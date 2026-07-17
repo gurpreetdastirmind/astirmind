@@ -24,7 +24,7 @@ import { ModeProvider } from './context/ModeContext';
 import ServiceDetails from './components/ServiceDetails';
 import CousesDetails from './components/CoursesDetails';
 
-const INNER_PAGES = ['/blog', '/courses', '/hiring', '/quote', '/verify', '/about', '/services'];
+const INNER_PAGES = ['/blog', '/courses', '/hiring', '/quote', '/verify', '/about', '/services', '/contact'];
 const DASH_PAGES = ['/dash'];
 
 const WHATSAPP_NUMBER = '919815674608';
@@ -80,6 +80,22 @@ function ServicesPage() {
         />
       </Helmet>
       <Services />
+    </>
+  );
+}
+
+// ContactPage component
+function ContactPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Contact Us | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content="Contact AstirMind for software development, web development, AI solutions, and digital services. Get in touch with our team today."
+        />
+      </Helmet>
+      <Contact />
     </>
   );
 }
@@ -193,6 +209,7 @@ function AppShell() {
           <Routes location={location}>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/courses" element={<ProgramsPage />} />
             <Route path="/hiring" element={<HiringPage />} />

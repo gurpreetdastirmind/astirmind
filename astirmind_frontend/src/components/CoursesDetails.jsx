@@ -987,13 +987,17 @@ function CourseHighlights({ course }) {
   const duration = durationOptions.length > 0
     ? durationOptions.join(' • ')
     : 'Flexible';
+  
+  
+  // Check if this course has 6-8 months duration
+  const isLongDuration = course.tags.some(t => t === '6-8 Months');
 
   const highlights = [
     { label: 'Duration', value: duration },
-    { label: 'Training Mode', value: 'Online / Hybrid' },
+    { label: 'Training Mode', value: 'Offline / Hybrid' },
     { label: 'Fees', value: 'Flexible Monthly Plans' },
     { label: 'Certification', value: 'ISO Certified' },
-    { label: 'Projects', value: '5+ Live Projects' },
+    { label: 'Projects', value: isLongDuration ? '5+ Live Projects' : '1 Live Project + Multiple Assignments' },
     { label: 'Internship', value: 'Paid Internship Opportunity' }
   ];
 
@@ -2933,8 +2937,12 @@ const courseSyllabus = {
 // ============ NEW SECTIONS ============
 
 // Live Projects Section
-function LiveProjects() {
-  const projects = [
+function LiveProjects({ course }) {
+   // Check if this course has 6-8 months duration
+  const isLongDuration = course?.tags?.some(t => t === '6-8 Months') || false;
+  
+  // Project data - 5 projects for long duration, 1 for short
+  const longProjects = [
     {
       name: "E-Commerce Platform with AI Recommendations",
       description: "A full-featured e-commerce platform with AI-powered product recommendations, real-time inventory management, and secure payment gateway integration.",
@@ -2964,7 +2972,8 @@ function LiveProjects() {
       description: "A real-time IoT dashboard for controlling smart home devices with voice commands, automation rules, and energy consumption analytics.",
       difficulty: "Advanced",
       techStack: "React Native, Node.js, MQTT, InfluxDB, Grafana, AWS IoT, Python"
-    },
+    }];
+     const shortProjects = [
     {
       name: "Online Learning Management System",
       description: "A complete LMS with video streaming, assessment tools, progress tracking, certification generation, and instructor analytics dashboard.",
@@ -2984,6 +2993,8 @@ function LiveProjects() {
       techStack: "Flutter, Go, Redis, Kafka, PostgreSQL, Google Maps API, Docker"
     }
   ];
+  
+const projects = isLongDuration ? longProjects : shortProjects;
 
   return (
     <div style={{
@@ -3003,7 +3014,7 @@ function LiveProjects() {
           fontSize: '1.75rem',
           margin: 0
         }}>
-          Live Projects
+          Live Projects {isLongDuration ? '(5+ Projects)' : '(1 Live Project + Multiple Assignments)'}
         </h2>
       </div>
 
@@ -3014,12 +3025,58 @@ function LiveProjects() {
         lineHeight: 1.7,
         fontSize: '1rem'
       }}>
-        Work on real industry-level projects that build your portfolio and prepare you for the professional world.
+        {isLongDuration 
+          ? 'Work on real industry-level projects that build your portfolio and prepare you for the professional world.' 
+          : 'Build a complete end-to-end application and work on multiple assignments that reinforce your learning.'}
       </p>
+
+      {/* Assignment Details */}
+      {!isLongDuration && (
+        <div style={{
+          padding: '1.5rem',
+          border: '1px solid var(--line)',
+          background: 'var(--bg-alt)',
+          marginBottom: '2rem',
+          borderRadius: '4px'
+        }}>
+          <h4 style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: '1rem',
+            fontWeight: 600,
+            margin: '0 0 0.75rem 0',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}>
+            <CheckCircle size={18} color="var(--accent)" />
+            Multiple Assignments Included:
+          </h4>
+          <ul style={{
+            margin: 0,
+            padding: '0 0 0 1.5rem',
+            color: 'var(--text-2)',
+            lineHeight: 2,
+            listStyle: 'none'
+          }}>
+            {[
+              'Module-based assignments after each module',
+              'Mini-projects to practice specific concepts',
+              'Code review and feedback sessions',
+              'Problem-solving exercises',
+              'Documentation and presentation tasks'
+            ].map((item, i) => (
+              <li key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'baseline' }}>
+                <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>▸</span>
+                <span style={{ fontSize: '0.9rem' }}>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))',
+        gridTemplateColumns: isLongDuration ? 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))' : '1fr',
         gap: '1px',
         border: '1px solid var(--line)',
         background: 'var(--line)',
@@ -3998,7 +4055,7 @@ export default function CoursesDetails() {
           </div>
 
           {/* NEW SECTIONS */}
-          <LiveProjects />
+          <LiveProjects course={course} />
           <StudentPortfolio />
           <InternshipProgram />
           <PlacementSupport />
