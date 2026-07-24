@@ -142,3 +142,38 @@ class BlogComment(models.Model):
     def __str__(self):
         return f"{self.author_name} on {self.post_id}"
 
+
+class GooglePlaceRating(models.Model):
+    """Stores the overall rating and review count"""
+    place_id = models.CharField(max_length=100, unique=True)
+    rating_value = models.FloatField(default=5.0)
+    review_count = models.IntegerField(default=0)
+    last_updated = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = "Google Place Rating"
+        verbose_name_plural = "Google Place Ratings"
+    
+    def __str__(self):
+        return f"{self.place_id} - {self.rating_value} ({self.review_count} reviews)"
+
+
+class GoogleReview(models.Model):
+    """Stores individual reviews"""
+    place_rating = models.ForeignKey(GooglePlaceRating, on_delete=models.CASCADE, related_name='reviews')
+    author_name = models.CharField(max_length=200)
+    rating = models.FloatField(default=5.0)
+    text = models.TextField(blank=True)
+    time = models.CharField(max_length=100, blank=True)
+    profile_photo_url = models.URLField(blank=True, null=True)
+    language = models.CharField(max_length=10, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Google Review"
+        verbose_name_plural = "Google Reviews"
+    
+    def __str__(self):
+        return f"{self.author_name} - {self.rating}★"
+

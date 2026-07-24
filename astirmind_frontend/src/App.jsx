@@ -1,7 +1,9 @@
+// src/App.jsx
 import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from './components/Schema';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -23,6 +25,11 @@ import Cursor from './components/Cursor';
 import { ModeProvider } from './context/ModeContext';
 import ServiceDetails from './components/ServiceDetails';
 import CousesDetails from './components/CoursesDetails';
+import WhyAstirMind from './components/WhyAstirMind';
+import ChoosePath from './components/ChoosePath';
+import TrustMetrics from './components/TrustMetrics';
+import CaseStudies, { ClientCaseStudies, StudentProjects } from './components/CaseStudies';
+import { useMode } from './context/ModeContext';
 
 const INNER_PAGES = ['/blog', '/courses', '/hiring', '/quote', '/verify', '/about', '/services', '/contact'];
 const DASH_PAGES = ['/dash'];
@@ -68,64 +75,105 @@ function WhatsAppFloat() {
   );
 }
 
-// ServicesPage component that renders just the Services section
+// ServicesPage component
 function ServicesPage() {
   return (
     <>
-      <Helmet>
+      <Helmet key="services-page-helmet">
         <title>Our Services | AstirMind Software Solutions</title>
         <meta
           name="description"
           content="Explore our comprehensive range of services including ML & AI, Automation, Web Development, and more."
         />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Our Services | AstirMind Software Solutions" />
+        <meta property="og:description" content="Explore our comprehensive range of services including ML & AI, Automation, Web Development, and more." />
+        <meta property="og:type" content="website" />
       </Helmet>
-      <Services />
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' }
+      ]} />
+       <Services isPage={true} />
     </>
   );
 }
 
-// In App.jsx, update the ContactPage component:
-
+// ContactPage component
 function ContactPage() {
   return (
     <>
-      <Helmet>
+      <Helmet key="contact-page-helmet">
         <title>Contact Us | AstirMind Software Solutions</title>
         <meta
           name="description"
           content="Contact AstirMind for software development, web development, AI solutions, and digital services. Get in touch with our team today."
         />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Contact Us | AstirMind Software Solutions" />
+        <meta property="og:description" content="Contact AstirMind for software development, web development, AI solutions, and digital services." />
+        <meta property="og:type" content="website" />
       </Helmet>
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/contact' }
+      ]} />
       <Contact isPage={true} />
     </>
   );
 }
 
+// HomePage component - FIXED with a Helmet reset
 function HomePage() {
+  const { mode } = useMode(); // ← Add this
+  const location = useLocation();
+  const isAgency = mode === 'Xperience';
+  
   return (
     <>
-      <Helmet>
-        <title>AstirMind Software Solutions</title>
+      <Helmet key={`home-${location.key}`}>
+        <title>{isAgency ? 'Astirmind Software Development & AI Solutions' : 'IT Training & Internships'} | AstirMind</title>
         <meta
           name="description"
-          content="AstirMind Software Solutions provides web development, software development, mobile app development, UI/UX design, and digital solutions for businesses."
+          content={isAgency 
+            ? 'Custom software, AI, and automation solutions for businesses.'
+            : 'Practical IT training with 1-on-1 mentoring, live projects, and placement assistance.'}
         />
         <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="AstirMind Software Solutions | Web & Software Development"
-        />
-        <meta
-          property="og:description"
-          content="AstirMind Software Solutions provides web development, software development, mobile app development, UI/UX design, and digital solutions for businesses."
-        />
-        <meta property="og:type" content="website" />
       </Helmet>
+      
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      
+      {/* Shared Components - These work for both modes */}
       <Hero />
-      <Services />
-      <About />
-      <Testimonials />
-      <Contact /> {/* No isPage prop - renders as section */}
+      <ChoosePath />
+      
+      {isAgency ? (
+        // ─── SERVICES MODE (Xperience) ───
+        <>
+          <TrustMetrics />        {/* Shows business metrics */}
+          <Services />            {/* Shows agency services */}
+          <WhyAstirMind />        {/* Shows business value props */}
+          <ClientCaseStudies />   {/* Shows client projects */}
+          <Testimonials />        {/* Shows client testimonials */}
+          <Contact />             {/* Shows business contact form */}
+        </>
+      ) : (
+        // ─── ACADEMY MODE (Training) ───
+        <>
+          <TrustMetrics />        {/* Shows academy metrics */}
+          <Services />            {/* Shows courses */}
+          <WhyAstirMind />        {/* Shows training value props */}
+          <StudentProjects />     {/* Shows student projects */}
+          <Testimonials />        {/* Shows student testimonials */}
+          <Contact />             {/* Shows academy contact form */}
+        </>
+      )}
     </>
   );
 }
@@ -136,7 +184,6 @@ function AppShell() {
   const isDash = DASH_PAGES.some(p => location.pathname.startsWith(p));
 
   useEffect(() => {
-    // Handle hash scrolling (for #services, #contact, etc.)
     if (location.hash) {
       const timer = setTimeout(() => {
         const targetId = location.hash.slice(1);
@@ -156,7 +203,6 @@ function AppShell() {
       }, 150);
       return () => clearTimeout(timer);
     } else {
-      // For all other routes, scroll to top
       window.scrollTo(0, 0);
     }
   }, [location.pathname, location.hash]);
@@ -172,7 +218,8 @@ function AppShell() {
     document.body.classList.add('with-custom-cursor');
   }, [isDash]);
 
-  // Dashboard renders without Navbar / Footer, uses normal cursor
+  
+
   if (isDash) {
     return (
       <Routes location={location}>
@@ -207,7 +254,7 @@ function AppShell() {
           exit={transition.exit}
           transition={transition.transition}
         >
-          <Routes location={location}>
+          <Routes  location={location} key={location.key}>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />

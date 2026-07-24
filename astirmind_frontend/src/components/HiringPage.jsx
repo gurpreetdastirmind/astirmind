@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { Upload, RefreshCw, Send, User, Mail, Phone, MessageSquare, ShieldCheck } from 'lucide-react';
 import { API_BASE as API, getCSRFToken } from '../config/api';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
 
 function FormField({ label, icon: Icon, children, required }) {
   return (
@@ -32,6 +34,7 @@ const inputStyle = {
 
 export default function HiringPage() {
   const pageRef = useRef(null);
+  const location = useLocation();
   const [captcha, setCaptcha] = useState('');
   const [captchaId, setCaptchaId] = useState('');
   const [captchaInput, setCaptchaInput] = useState('');
@@ -51,6 +54,17 @@ export default function HiringPage() {
     }, pageRef);
     return () => ctx.revert();
   }, []);
+
+    useEffect(() => {
+    document.title = 'Careers | Join AstirMind Team';
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.content = 'Join AstirMind\'s talented team of developers, designers, and innovators. Explore career opportunities in software development, AI, and digital solutions.';
+    }
+  }, [location.pathname]);
+
 
   const loadCaptcha = async () => {
     setCaptchaLoading(true);
@@ -148,7 +162,7 @@ export default function HiringPage() {
 
   return (
         <>
-      <Helmet>
+      <Helmet key={`hiring-page-${location.key || location.pathname}`}>
         <title>Careers | Join AstirMind Team</title>
         <meta
           name="description"
@@ -159,6 +173,12 @@ export default function HiringPage() {
         <meta property="og:description" content="Join AstirMind's talented team of developers, designers, and innovators." />
         <meta property="og:type" content="website" />
       </Helmet>
+
+         <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Careers', url: '/hiring' }
+      ]} />
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page Header ── */}

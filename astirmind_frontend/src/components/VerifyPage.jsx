@@ -3,9 +3,12 @@ import { gsap } from 'gsap';
 import { Search, ShieldCheck, Download, AlertCircle } from 'lucide-react';
 import { API_BASE as API, MEDIA_BASE } from '../config/api';
 import { Helmet } from 'react-helmet';
+import { useLocation } from 'react-router-dom';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
 
 export default function VerifyPage() {
   const pageRef = useRef(null);
+   const location = useLocation();
   const [certNum, setCertNum] = useState('');
   const [status, setStatus] = useState('idle'); // idle | loading | found | not_found | error
   const [record, setRecord] = useState(null);
@@ -24,6 +27,15 @@ export default function VerifyPage() {
     }, pageRef);
     return () => ctx.revert();
   }, []);
+
+  // ADD THIS - Force title update
+  useEffect(() => {
+    document.title = 'Verify Certificate | AstirMind Software Solutions';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.content = 'Verify your AstirMind certificate and internship credentials. Authenticate your achievements and training certifications.';
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (status === 'found') {
@@ -65,7 +77,7 @@ export default function VerifyPage() {
 
   return (
       <>
-      <Helmet>
+      <Helmet key={`verify-${location.key ||location.pathname}`}> 
         <title>Verify Certificate | AstirMind Software Solutions</title>
         <meta
           name="description"
@@ -76,6 +88,13 @@ export default function VerifyPage() {
         <meta property="og:description" content="Verify your AstirMind certificate and internship credentials." />
         <meta property="og:type" content="website" />
       </Helmet>
+
+       <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Verify Certificate', url: '/verify' }
+      ]} />
+
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page Header ── */}

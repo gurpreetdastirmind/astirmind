@@ -12,6 +12,7 @@ import {
   Target 
 } from 'lucide-react';
 import { useGoogleRating } from '../hooks/useGoogleRating';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
 
 // Google Star Rating Component
 function GoogleStarRating({ rating, total = 5 }) {
@@ -1245,6 +1246,14 @@ export default function ServiceDetails() {
         <meta property="og:description" content={service.desc} />
         <meta property="og:type" content="website" />
       </Helmet>
+
+       {/* ADD SCHEMA HERE */}
+      <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' },
+        { name: service.title, url: `/services/${service.slug}` }
+      ]} />
 
       <section style={{
         minHeight: '100vh',

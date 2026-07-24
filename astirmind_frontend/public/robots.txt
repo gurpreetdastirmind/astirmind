@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.astirmind.com/sitemap.xml
+Disallow: /dash/
+Disallow: /admin/

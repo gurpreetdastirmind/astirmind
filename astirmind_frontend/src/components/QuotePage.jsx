@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Send, User, Mail, Phone, MessageSquare, Paperclip, DollarSign, CheckCircle, Clock, Code, BarChart3, Shield, Zap, Calendar, FileText, Sparkles, MapPin, ExternalLink } from 'lucide-react';
 import { API_BASE as API, getCSRFToken } from '../config/api';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from './Schema';
 
 const BUDGETS = [
   'Less than $5k',
@@ -157,6 +158,14 @@ export default function QuotePage() {
         <meta property="og:description" content="Get a free quote for your software development, web development, mobile app, AI, or digital solution project." />
         <meta property="og:type" content="website" />
       </Helmet>
+
+        <OrganizationSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Get a Quote', url: '/quote' }
+      ]} />
+
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page Header ── */}

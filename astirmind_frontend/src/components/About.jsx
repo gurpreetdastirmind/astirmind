@@ -3,7 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Blocks, GraduationCap } from 'lucide-react';
 import { useMode } from '../context/ModeContext';
-
+import { OrganizationSchema, LocalBusinessSchema } from './Schema';
+import { Helmet } from 'react-helmet'; 
 gsap.registerPlugin(ScrollTrigger);
 
 const MARQUEE = ['React', 'Python', 'TensorFlow', 'Node.js', 'AWS', 'Android', 'Angular', 'FastAPI', 'PostgreSQL', 'Docker', 'Next.js', 'Kubernetes', 'MongoDB'];
@@ -77,7 +78,7 @@ function StatCounter({ stat, index }) {
   );
 }
 
-export default function About() {
+export default function About({ isPage = false }) {
   const { mode } = useMode();
   const sectionRef = useRef(null);
 
@@ -94,6 +95,22 @@ export default function About() {
   const c = ABOUT[mode];
 
   return (
+    <>
+    {isPage && (
+      <Helmet>
+        <title>About | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content="Learn about AstirMind Software Solutions, our custom software development, AI solutions, and IT training programs in Ludhiana."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="About | AstirMind Software Solutions" />
+        <meta property="og:description" content="Learn about AstirMind Software Solutions, our custom software development, AI solutions, and IT training programs." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+        )}
+      <OrganizationSchema />
+      <LocalBusinessSchema />
     <section ref={sectionRef} id="about" style={{ background: 'var(--bg)', borderBottom: '1px solid var(--line)' }}>
 
       {/* Marquee */}
@@ -175,5 +192,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }

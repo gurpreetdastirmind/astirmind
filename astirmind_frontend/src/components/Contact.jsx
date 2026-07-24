@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { API_BASE, getCSRFToken } from '../config/api';
-
+import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from './Schema';
+import { Helmet } from 'react-helmet'; 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact({ isPage = false }) {
@@ -48,6 +49,31 @@ export default function Contact({ isPage = false }) {
   };
 
   return (
+      <>
+      {/* Only run SEO header metadata injections if explicitly loaded as an inner page route */}
+      {isPage && (
+        <>
+          <Helmet>
+            <title>Contact Us | AstirMind Software Solutions</title>
+            <meta
+              name="description"
+              content="Contact AstirMind for software development, web development, AI solutions, and digital services. Get in touch with our team today."
+            />
+            <meta name="robots" content="index, follow" />
+            <meta property="og:title" content="Contact Us | AstirMind Software Solutions" />
+            <meta property="og:description" content="Contact AstirMind for software development, web development, AI solutions, and digital services." />
+            <meta property="og:type" content="website" />
+          </Helmet>
+
+          <OrganizationSchema />
+          <LocalBusinessSchema />
+          <BreadcrumbSchema items={[
+            { name: 'Home', url: '/' },
+            { name: 'Contact', url: '/contact' }
+          ]} />
+        </>
+      )}
+
     <section ref={sectionRef} id="contact" style={{ 
       padding: isPage ? '7rem 0' : '7rem 0', 
       borderBottom: '1px solid var(--line)', 
@@ -119,5 +145,6 @@ export default function Contact({ isPage = false }) {
         </div>
       </div>
     </section>
+    </>
   );
 }

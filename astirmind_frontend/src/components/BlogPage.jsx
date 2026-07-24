@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation  } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react';
 import { API_BASE as API } from '../config/api';
 import { POSTS as STATIC_POSTS } from './BlogDetailPage';
 import { Helmet } from 'react-helmet';
-
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
 gsap.registerPlugin(ScrollTrigger);
 
 async function fetchPosts() {
@@ -192,6 +192,7 @@ export default function BlogPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const pageRef = useRef(null);
+   const location = useLocation(); 
 
   useEffect(() => {
     fetchPosts().then(data => {
@@ -227,9 +228,20 @@ export default function BlogPage() {
     return () => ctx.revert();
   }, []);
 
+   useEffect(() => {
+    // Force update document title when component mounts
+    document.title = 'Blog | AstirMind Software Solutions';
+    
+    // Also update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.content = 'Read the latest articles and insights from AstirMind about web development, AI, software solutions, technology trends, and internship programs.';
+    }
+  }, [location.pathname]); // Add location as dependency
+
   return (
     <>
-      <Helmet>
+       <Helmet key={`blog-page-${location.key || location.pathname}`}>
         <title>Blog | AstirMind Software Solutions</title>
         <meta
           name="description"
@@ -241,6 +253,13 @@ export default function BlogPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
       </Helmet>
+
+      <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog' }
+      ]} />
+
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page Header ── */}

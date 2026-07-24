@@ -8,6 +8,7 @@ import {
   MessageSquare, Send, ArrowUpRight, ThumbsUp, Check,
 } from 'lucide-react';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -855,19 +856,27 @@ export default function BlogDetailPage() {
 
   return (
       <>
-        <Helmet>
-      <title>{post?.title || 'Blog Post'} | AstirMind Software Solutions</title>
-      <meta
-        name="description"
-        content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind about technology and software development.'}
-      />
-      <meta name="robots" content="index, follow" />
-      <meta property="og:title" content={`${post?.title || 'Blog Post'} | AstirMind Software Solutions`} />
-      <meta property="og:description" content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind.'} />
-      <meta property="og:type" content="article" />
-      {post?.image && <meta property="og:image" content={post.image} />}
-      <link rel="canonical" href={typeof window !== 'undefined' ? window.location.href : ''} />
-    </Helmet>
+     <Helmet key={`blog-detail-${post?.id || 'loading'}-helmet`}>
+        <title>{post?.title || 'Blog Post'} | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind about technology and software development.'}
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={`${post?.title || 'Blog Post'} | AstirMind Software Solutions`} />
+        <meta property="og:description" content={post?.subtitle || post?.body?.substring(0, 160) || 'Read this detailed blog post from AstirMind.'} />
+        <meta property="og:type" content="article" />
+        {post?.image && <meta property="og:image" content={post.image} />}
+        <link rel="canonical" href={typeof window !== 'undefined' ? window.location.href : ''} />
+      </Helmet>
+
+      <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog' },
+        { name: post?.title || 'Post', url: `/blog/${post?.id || ''}` }
+      ]} />
+
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Hero Image ── */}

@@ -5,6 +5,8 @@ import { Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquare
 import { useMode } from '../context/ModeContext';
 import { Link } from 'react-router-dom';
 import { useGoogleRating } from '../hooks/useGoogleRating';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema';
+import { Helmet } from 'react-helmet'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,16 +14,16 @@ gsap.registerPlugin(ScrollTrigger);
 function GoogleStarRating({ rating, total = 5 }) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-  
+
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
       {[...Array(total)].map((_, i) => (
-        <Star 
+        <Star
           key={i}
-          size={14} 
+          size={14}
           strokeWidth={1.5}
           fill={i < fullStars ? 'var(--accent)' : (i === fullStars && hasHalfStar ? 'var(--accent)' : 'none')}
-          style={{ 
+          style={{
             color: i < fullStars || (i === fullStars && hasHalfStar) ? 'var(--accent)' : 'var(--line)',
             opacity: i < fullStars || (i === fullStars && hasHalfStar) ? 1 : 0.3
           }}
@@ -208,7 +210,7 @@ export const courses = [
     slug: 'automation-solutions',
     title: 'Automation & Data Scraping Solutions',
     desc: 'We build intelligent automation systems for lead generation, data extraction, workflow automation, browser automation, CRM integrations, and business process optimization. Extract structured data from any website and automate repetitive tasks across your entire tech stack.',
-    tags: ['6-8 Months','Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
+    tags: ['6-8 Months', 'Web Scraping', 'Workflow Automation', 'Selenium', 'CRM', 'Lead Generation', 'Data Extraction'],
     Icon: Bot,
   },
   {
@@ -232,7 +234,7 @@ export const courses = [
     slug: 'web-design',
     title: 'Web Design',
     desc: 'Master responsive web design principles, typography, color theory, layout techniques, and modern CSS frameworks. Learn to create visually stunning, user-friendly websites that adapt seamlessly across all devices. Build a professional portfolio of real client-ready designs.',
-    tags: ['45 days','120-Hours', 'Live Projects', 'Certification', 'Figma', 'Responsive Design', 'CSS', 'Portfolio'],
+    tags: ['45 days', '120-Hours', 'Live Projects', 'Certification', 'Figma', 'Responsive Design', 'CSS', 'Portfolio'],
     Icon: Layout,
   },
   {
@@ -240,7 +242,7 @@ export const courses = [
     slug: 'web-development',
     title: 'Web Development',
     desc: 'Learn modern frontend and backend web development with HTML5, CSS3, JavaScript, React, and Node.js. Build dynamic, database-driven web applications with authentication, APIs, and deployment. Master the skills to become a professional web developer.',
-    tags: ['45 days','120-Hours', 'Live Projects', 'Internship', 'Certification', 'React', 'Node.js', 'MongoDB'],
+    tags: ['45 days', '120-Hours', 'Live Projects', 'Internship', 'Certification', 'React', 'Node.js', 'MongoDB'],
     Icon: Code2,
   },
   {
@@ -341,10 +343,10 @@ export const courses = [
   },
 ];
 
-export default function Services() {
+export default function Services({ isPage = false }) {
   const { mode } = useMode();
   const sectionRef = useRef(null);
-  
+
   // Get Google Rating dynamically
   const { rating: googleRating, loading: ratingLoading } = useGoogleRating();
 
@@ -375,173 +377,206 @@ export default function Services() {
   const items = isAgency ? agencyServices : courses;
 
   return (
-    <section ref={sectionRef} id="services" style={{ borderBottom: '1px solid var(--line)', background: isAgency ? 'var(--bg-alt)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+    <>
+      {isPage && (
+      <Helmet>
+        <title>{mode === 'Xperience' ? 'Our Services' : 'Training Programs'} | AstirMind Software Solutions</title>
+        <meta
+          name="description"
+          content={isAgency
+            ? 'Explore our comprehensive range of services including ML & AI, Automation, Web Development, and more.'
+            : 'Explore AstirMind\'s training programs in web development, AI, mobile development, data science, and more.'
+          }
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={isAgency ? 'Our Services' : 'Training Programs'} />
+        <meta property="og:description" content={isAgency
+          ? 'Explore our comprehensive range of services including ML & AI, Automation, Web Development, and more.'
+          : 'Explore AstirMind\'s training programs in web development, AI, mobile development, data science, and more.'
+        } />
+        <meta property="og:type" content="website" />
+      </Helmet>
+       )}
 
-      {/* ── Agency: full-bleed photo banner at the top of the section ── */}
-      {isAgency && (
-        <div style={{ position: 'relative', height: 260, overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
-          <img
-            src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=2000&q=85"
-            alt="Engineering team at work"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'brightness(0.55) contrast(1.1)' }}
-          />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(6,5,3,0.88) 0%, rgba(6,5,3,0.3) 60%, rgba(6,5,3,0.65) 100%)' }} />
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 3, background: 'var(--accent)' }} />
-          <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <span className="section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.15)', marginBottom: '0.75rem' }}>Capabilities</span>
-            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.035em', color: '#fff', lineHeight: 1.1, maxWidth: 540 }}>
-              What We Build
-            </h2>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'rgba(255,255,255,0.6)', marginTop: '0.75rem', maxWidth: 400 }}>
-              Core engineering principles over trends. Solid foundations build better products.
-            </p>
-          </div>
-        </div>
+      {/* ADD SCHEMA HERE */}
+       {isPage && (
+        <>
+      <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: isAgency ? 'Services' : 'Courses', url: isAgency ? '/services' : '/courses' }
+      ]} />
+         </>
       )}
 
-      {/* Institute: accent rule at top */}
-      {!isAgency && (
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
-      )}
+      <section ref={sectionRef} id="services" style={{ borderBottom: '1px solid var(--line)', background: isAgency ? 'var(--bg-alt)' : 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: isAgency ? '4rem' : '7rem', paddingBottom: isAgency ? '7rem' : '7rem' }}>
-        {/* Agency header is now the photo banner above; Institute header stays here */}
-        {!isAgency && (
-          <div className="svc-header" style={{ marginBottom: '3rem' }}>
-            <span className="section-label">Curriculum</span>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
-              <h2 className="t-h2">What You Will Learn</h2>
-              <p className="t-body" style={{ maxWidth: 380 }}>
-                Every program runs on live projects with working mentors. You graduate with a portfolio, not just a certificate.
+        {/* ── Agency: full-bleed photo banner at the top of the section ── */}
+        {isAgency && (
+          <div style={{ position: 'relative', height: 260, overflow: 'hidden', borderBottom: '1px solid var(--line)' }}>
+            <img
+              src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=2000&q=85"
+              alt="Engineering team at work"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'brightness(0.55) contrast(1.1)' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(6,5,3,0.88) 0%, rgba(6,5,3,0.3) 60%, rgba(6,5,3,0.65) 100%)' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: 3, background: 'var(--accent)' }} />
+            <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span className="section-label" style={{ color: 'var(--accent)', borderColor: 'rgba(255,255,255,0.15)',marginTop:'1.5rem', marginBottom: '0.75rem' }}>Capabilities</span>
+              <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.035em', color: '#fff', lineHeight: 1.1, maxWidth: 540 }}>
+                What We Build
+              </h2>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.9375rem', color: 'rgba(255,255,255,0.6)', marginTop: '0.75rem', maxWidth: 400 }}>
+                We don't chase hype — we build the infrastructure that makes it work.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-              {[{ v: '18', l: 'Programs' }, { v: '100%', l: 'Project-Based' }, { v: 'Internships', l: 'Available' }].map(({ v, l }) => (
-                <div key={l} style={{ border: '1px solid var(--line)', padding: '0.6rem 1.25rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--accent)' }}>{v}</span>
-                  <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>{l}</span>
-                </div>
-              ))}
-            </div>
           </div>
-        )}
-        {isAgency && (
-          <div className="svc-header" style={{ marginBottom: '3rem' }} />
         )}
 
-        <div className="svc-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: isAgency ? 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))' : 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
-          gap: '1px', border: '1px solid var(--line)', background: 'var(--line)',
-        }}>
-          {items.map((item, i) => {
-            const Icon = item.Icon;
-            return (
-              <Link
-                key={i}
-                to={
-                  isAgency
-                    ? `/services/${item.slug}`
-                    : `/courses/${item.slug}`
-                }
-                style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
-              >
-                <div
-                  className="svc-card"
-                  style={{
-                    background: 'var(--bg-card)',
-                    padding: '2.5rem',
-                    height: '100%',
-                    minHeight: isAgency ? 480 : 400,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.5rem',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)',
-                    transition: 'background 0.2s, transform 0.25s, box-shadow 0.25s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'var(--bg-elevated)';
-                    e.currentTarget.style.transform = 'translateY(-6px)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04), 0 18px 38px rgba(0,0,0,0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'var(--bg-card)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.03)';
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--accent)', letterSpacing: '0.08em' }}>{item.n}</span>
-                    <span style={{ width: 28, height: 28, color: 'var(--accent)' }}>
-                      <Icon size={28} strokeWidth={1.5} />
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="t-h3" style={{ marginBottom: '0.5rem', fontSize: 'clamp(1rem, 1.8vw, 1.375rem)' }}>{item.title}</h3>
-                    <p className="t-body" style={{ fontSize: '0.9375rem', lineHeight: 1.65, marginBottom: '0.75rem' }}>{item.desc}</p>
-                    
-                    {/* Google Rating Section - Dynamic from Google */}
-                    {!ratingLoading ? (
-                      <div style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '0.5rem', 
-                        flexWrap: 'wrap',
-                        marginTop: '0.25rem'
-                      }}>
-                        <GoogleStarRating rating={googleRating.ratingValue} />
-                        <span style={{ 
-                          fontFamily: 'var(--font-mono)', 
-                          fontSize: '0.625rem', 
-                          color: 'var(--text-2)',
-                          fontWeight: 600
-                        }}>
-                          {googleRating.ratingValue.toFixed(1)}
-                        </span>
-                        <span style={{ 
-                          fontFamily: 'var(--font-mono)', 
-                          fontSize: '0.5rem', 
-                          color: 'var(--text-3)'
-                        }}>
-                          ({googleRating.reviewCount.toLocaleString()} Google reviews)
-                        </span>
-                       
-                      </div>
-                    ) : (
-                      <div style={{ 
-                        display: 'flex', 
-                        gap: '0.5rem',
-                        alignItems: 'center',
-                        marginTop: '0.25rem'
-                      }}>
-                        <div style={{ 
-                          width: 80, 
-                          height: 16, 
-                          background: 'var(--bg-alt)', 
-                          borderRadius: 4,
-                          animation: 'pulse 1.5s ease-in-out infinite'
-                        }} />
-                      </div>
-                    )}
-                  </div>
-                  <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginTop: 'auto' }}>
-                    {item.tags.map((tag, j) => (
-                      <span key={j} className="badge-raw" style={tag === 'Internship' || tag === 'Certification' ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : {}}>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        {/* Institute: accent rule at top */}
         {!isAgency && (
-          <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
-            <a href="#contact" className="btn-solid" style={{ padding: '0.65rem 1.75rem', fontSize: '0.875rem' }}>
-              Apply for a Program
-            </a>
-          </div>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)' }} />
         )}
-      </div>
-    </section>
-  );
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: isAgency ? '4rem' : '7rem', paddingBottom: isAgency ? '7rem' : '7rem' }}>
+          {/* Agency header is now the photo banner above; Institute header stays here */}
+          {!isAgency && (
+            <div className="svc-header" style={{ marginBottom: '3rem' }}>
+              <span className="section-label">Curriculum</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
+                <h2 className="t-h2">What You Will Learn</h2>
+                <p className="t-body" style={{ maxWidth: 380 }}>
+                  Every program runs on live projects with working mentors. You graduate with a portfolio, not just a certificate.
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+                {[{ v: '18', l: 'Programs' }, { v: '100%', l: 'Project-Based' }, { v: 'Internships', l: 'Available' }].map(({ v, l }) => (
+                  <div key={l} style={{ border: '1px solid var(--line)', padding: '0.6rem 1.25rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', fontWeight: 700, color: 'var(--accent)' }}>{v}</span>
+                    <span className="t-mono" style={{ fontSize: '0.5625rem', color: 'var(--text-3)' }}>{l}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {isAgency && (
+            <div className="svc-header" style={{ marginBottom: '3rem' }} />
+          )}
+
+          <div className="svc-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: isAgency ? 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))' : 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
+            gap: '1px', border: '1px solid var(--line)', background: 'var(--line)',
+          }}>
+            {items.map((item, i) => {
+              const Icon = item.Icon;
+              return (
+                <Link
+                  key={i}
+                  to={
+                    isAgency
+                      ? `/services/${item.slug}`
+                      : `/courses/${item.slug}`
+                  }
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}
+                >
+                  <div
+                    className="svc-card"
+                    style={{
+                      background: 'var(--bg-card)',
+                      padding: '2.5rem',
+                      height: '100%',
+                      minHeight: isAgency ? 480 : 400,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1.5rem',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)',
+                      transition: 'background 0.2s, transform 0.25s, box-shadow 0.25s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'var(--bg-elevated)';
+                      e.currentTarget.style.transform = 'translateY(-6px)';
+                      e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04), 0 18px 38px rgba(0,0,0,0.2)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'var(--bg-card)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.03)';
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6875rem', color: 'var(--accent)', letterSpacing: '0.08em' }}>{item.n}</span>
+                      <span style={{ width: 28, height: 28, color: 'var(--accent)' }}>
+                        <Icon size={28} strokeWidth={1.5} />
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="t-h3" style={{ marginBottom: '0.5rem', fontSize: 'clamp(1rem, 1.8vw, 1.375rem)' }}>{item.title}</h3>
+                      <p className="t-body" style={{ fontSize: '0.9375rem', lineHeight: 1.65, marginBottom: '0.75rem' }}>{item.desc}</p>
+
+                      {/* Google Rating Section - Dynamic from Google */}
+                      {!ratingLoading ? (
+                        <div style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          flexWrap: 'wrap',
+                          marginTop: '0.25rem'
+                        }}>
+                          <GoogleStarRating rating={googleRating.ratingValue} />
+                          <span style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.625rem',
+                            color: 'var(--text-2)',
+                            fontWeight: 600
+                          }}>
+                            {googleRating.ratingValue.toFixed(1)}
+                          </span>
+                          <span style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.5rem',
+                            color: 'var(--text-3)'
+                          }}>
+                            ({googleRating.reviewCount.toLocaleString()} Google reviews)
+                          </span>
+
+                        </div>
+                      ) : (
+                        <div style={{
+                          display: 'flex',
+                          gap: '0.5rem',
+                          alignItems: 'center',
+                          marginTop: '0.25rem'
+                        }}>
+                          <div style={{
+                            width: 80,
+                            height: 16,
+                            background: 'var(--bg-alt)',
+                            borderRadius: 4,
+                            animation: 'pulse 1.5s ease-in-out infinite'
+                          }} />
+                        </div>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', gap: '0.375rem', flexWrap: 'wrap', marginTop: 'auto' }}>
+                      {item.tags.map((tag, j) => (
+                        <span key={j} className="badge-raw" style={tag === 'Internship' || tag === 'Certification' ? { borderColor: 'var(--accent)', color: 'var(--accent)' } : {}}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          {!isAgency && (
+            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
+              <a href="#contact" className="btn-solid" style={{ padding: '0.65rem 1.75rem', fontSize: '0.875rem' }}>
+                Apply for a Program
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+      );
 }

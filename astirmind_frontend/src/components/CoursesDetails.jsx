@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useGoogleRating } from '../hooks/useGoogleRating';
 import GoogleReviews from '../components/GoogleReviews';
+import { OrganizationSchema, CourseSchema, BreadcrumbSchema } from './Schema';
 import {
   Star, ChevronDown, ChevronUp, Users, GraduationCap, Briefcase,
   UserCheck, Building, RefreshCw, Award, Laptop, TrendingUp,
@@ -3779,7 +3780,7 @@ export default function CoursesDetails() {
 
   return (
     <>
-      <Helmet>
+     <Helmet>
         <title>{course.title} | AstirMind Training Program</title>
         <meta name="description" content={course.desc} />
         <meta name="robots" content="index, follow" />
@@ -3787,6 +3788,15 @@ export default function CoursesDetails() {
         <meta property="og:description" content={course.desc} />
         <meta property="og:type" content="website" />
       </Helmet>
+
+        {/* ADD SCHEMA HERE */}
+      <OrganizationSchema />
+      <CourseSchema course={course} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Courses', url: '/courses' },
+        { name: course.title, url: `/courses/${course.slug}` }
+      ]} />
 
       <section style={{
         minHeight: '100vh',
@@ -4125,4 +4135,4 @@ export default function CoursesDetails() {
       </section>
     </>
   );
-}
+} 

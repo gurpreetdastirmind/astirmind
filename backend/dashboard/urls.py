@@ -30,4 +30,8 @@ urlpatterns = [
     path('blog/', views.blog_posts_list),
     path('blog/<int:pk>/', views.blog_post_detail),
     path('blog/<int:pk>/comments/', views.blog_comments_list),
+
+     # Google Reviews (NEW)
+    path('google-reviews/', views.get_google_reviews_view, name='google-reviews'),
+    path('google-reviews/update/', views.manual_update_reviews, name='update-reviews'),
 ]

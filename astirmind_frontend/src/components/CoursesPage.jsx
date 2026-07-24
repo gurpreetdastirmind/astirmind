@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+  import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, BreadcrumbSchema } from './Schema'; 
 import {
   Brain, Cloud, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, CloudSun, Target, TrendingUp, LineChart, Code2, Layout, Code, Phone, Star, Atom, Calculator
 } from 'lucide-react';
@@ -312,7 +313,7 @@ export default function CoursesPage() {
 
   return (
     <>
-      <Helmet>
+        <Helmet>
         <title>Internship Programs | AstirMind Software Solutions</title>
         <meta
           name="description"
@@ -323,6 +324,13 @@ export default function CoursesPage() {
         <meta property="og:description" content="Explore AstirMind's internship and training programs in web development, AI, mobile development, data science, and more." />
         <meta property="og:type" content="website" />
       </Helmet>
+
+       <OrganizationSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Courses', url: '/courses' }
+      ]} />
+      
       <div style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ── Page header ── */}

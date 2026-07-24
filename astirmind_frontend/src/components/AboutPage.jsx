@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Brain, Cloud, Award, MapPin, Users, Mail, Phone, ArrowUpRight, CheckCircle, MonitorCog, Bot, LayoutDashboard, Workflow, MessageSquareMore, BarChart3, Layers3, Palette, ShoppingCart, Megaphone, BriefcaseBusiness, ShieldCheck, GraduationCap, PenTool, Smartphone, TerminalSquare, Database, Eye, Cpu, Globe, Link as LinkIcon, Server, Wifi, Sparkles, Rocket, Target, TrendingUp, Zap, Code, BookOpen, Lightbulb, Star, Heart, Shield, Clock, Headphones, Building2, Compass } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { OrganizationSchema, LocalBusinessSchema, BreadcrumbSchema } from './Schema';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -385,7 +386,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <Helmet>
+      <Helmet key="about-page-helmet">
         <title>About Us | AstirMind Software Solutions</title>
         <meta name="description" content="Learn about AstirMind Software Solutions, our services, team, and mission." />
         <meta name="robots" content="index, follow" />
@@ -393,6 +394,13 @@ export default function AboutPage() {
         <meta property="og:description" content="Learn about AstirMind Software Solutions, our services, team, and mission." />
         <meta property="og:type" content="website" />
       </Helmet>
+
+      <OrganizationSchema />
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'About', url: '/about' }
+      ]} />
       <div ref={pageRef} style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: 68 }}>
 
         {/* ══ PAGE HEADER ══════════════════════════════════════ */}

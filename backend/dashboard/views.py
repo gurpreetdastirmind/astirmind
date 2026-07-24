@@ -5,16 +5,21 @@ import secrets
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.response import Response
 
-from .models import Recordcand, Contact, HiringApplication, QuoteRequest, BlogPost, BlogComment
+from .models import Recordcand, Contact, HiringApplication, QuoteRequest, BlogPost, BlogComment,GooglePlaceRating
 from .serializers import (
     RecordcandSerializer, ContactSerializer,
     HiringApplicationSerializer, QuoteRequestSerializer,
-    BlogPostSerializer, BlogCommentSerializer,
+    BlogPostSerializer, BlogCommentSerializer
+
 )
 
+# ADD THESE NEW IMPORTS FOR GOOGLE REVIEWS
+from django.utils import timezone
+from .models import GooglePlaceRating
+from .google_services import get_google_reviews, update_google_reviews, DEFAULT_RATING, DEFAULT_REVIEWS
 
 CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
 
@@ -379,3 +384,52 @@ def blog_comments_list(request, pk):
         s.save(post=post)
         return Response(s.data, status=201)
     return Response(s.errors, status=400)
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_google_reviews_view(request):
+    """
+    Get Google reviews from database
+    """
+    try:
+        rating_data, reviews_data = get_google_reviews()
+        
+        # Check if data is stale (> 24 hours old)
+        try:
+            place_rating = GooglePlaceRating.objects.get(place_id='ChIJqdR6UIaDGjkR2iiyvu19dHs')
+            last_updated = place_rating.last_updated
+            is_stale = (timezone.now() - last_updated).total_seconds() > 86400  # 24 hours
+            
+        except GooglePlaceRating.DoesNotExist:
+            last_updated = None
+            is_stale = True
+        
+        return Response({
+            'rating': rating_data,
+            'reviews': reviews_data,
+            'last_updated': last_updated,
+            'is_stale': is_stale,
+            'source': 'database'
+        })
+        
+    except Exception as e:
+        print(f"Error getting reviews: {e}")
+        return Response({
+            'rating': DEFAULT_RATING,
+            'reviews': DEFAULT_REVIEWS,
+            'source': 'fallback'
+        })
+
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def manual_update_reviews(request):
+    """
+    Manually trigger Google reviews update (admin only)
+    """
+    success = update_google_reviews()
+    return Response({
+        'success': success,
+        'message': 'Google reviews updated successfully' if success else 'Update failed'
+    })
