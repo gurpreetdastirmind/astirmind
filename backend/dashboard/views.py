@@ -423,7 +423,7 @@ def get_google_reviews_view(request):
 
 
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
+@permission_classes([AllowAny])
 def manual_update_reviews(request):
     """
     Manually trigger Google reviews update (admin only)
